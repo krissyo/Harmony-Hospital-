@@ -1,0 +1,305 @@
+body {  
+	margin: 0px;
+	background-color:#ffffff;
+    font-family:"Helvetica";
+}
+
+h1,a{
+    color:#999999;
+    font-family: Helvetica, arial sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h3 {
+    text-align:center;
+    color:#999999;
+    margin:0 auto;
+}
+
+img {
+    padding: 0;
+    margin: auto;
+    display: block;
+}
+
+input.rounded:focus {
+    background-color:#99ccff; 
+   <!-- border-color: #339933;-->
+}
+
+input{
+    background-color:#8ab9d6;  <!--#8ebbe7;-->
+    font-size:20px;
+    color:#ffffff;
+    border:0px;
+    padding:5px;
+    text-align:left;
+}
+
+textarea{
+    background-color:#8ab9d6;  <!--#8ebbe7;-->
+    font-size:20px;
+    color:#ffffff;
+    border:0px;
+    padding:5px;
+}
+
+table{
+    color:#999999;
+    margin:auto;
+}
+
+table td{
+    font-size:25px;
+    text-align:left;
+}
+
+td *{
+        float:left;
+      text-align:left;
+}
+
+td:first-child{
+    text-align:right;
+}
+
+<!--  -------------- Id Styles alphabetically ------------------ -->
+
+<!-- input[type="radio"]{
+    text-align:left;
+} -->
+
+#accountTable {
+	font-size: 0.8em;
+	text-align:left;
+	float: left;
+	width: 100%;
+	border: 1px solid #DFE7F2;
+	border-radius: 2px;
+}
+
+#accountTable tr.altRow {
+	background-color: #DFE7F2;
+}
+
+#accountTable td{
+    font-size: 1em;
+    text-align:left;
+}
+
+#accountTable td *{
+    float: left;
+    text-align: left;
+}
+
+#accountTable td:first-child{
+    text-align: left;
+}
+#accountTable h3 {
+	text-align: center;
+	font-size: 1.1em;
+	font-weight: bold;
+}
+/* This formats the table
+in Resource Availability Form */
+#availability {
+	font-size: 1em;
+	text-align:left;
+	float: left;
+	width: 100%;
+	border: 1px solid #DFE7F2;
+	border-radius: 2px;
+}
+
+#availability td{
+    font-size: 1em;
+    text-align:left;
+}
+
+#availability_main_table {
+	font-size: 20px;
+	text-align:left;
+	float: left;
+	width: 100%;
+	border: none;
+}
+
+#bookingsform {
+	text-align:center;
+    max-width:700px;
+    color:#999999;
+    margin:0 auto;
+}
+
+#bookingTable td {
+	font-size: 1em;
+    text-align:left;
+}
+
+#consent {
+   text-align:center;
+    max-width:700px;
+    color:#999999;
+    margin:0 auto;
+}
+
+#content{
+    color:#999999;
+    margin-left: 190px;
+	margin-right: 200px;
+	text-align: center;
+    background-color:#ffffff;
+    font-family: Helvetica, arial sans-serif;
+}
+
+/* Invoice button on Patient's Account Form */
+#generateInvoice {
+	width: 10%;
+	text-align: center;
+	float: center;
+}
+
+#header { 
+    margin: 0px;
+	padding: 10px;
+	background-color: #ffffff;
+	height: 60px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#header h1 { 
+    text-align: center;
+	margin: 0px;
+	padding: 10px;
+	color: #999999;
+    font-family: Helvetica, arial sans-serif;
+}
+
+#loginform {
+	max-width: 500px;
+	margin:auto;
+    padding-top:20px;
+}
+
+#menu { 
+    float: left;
+	margin-top: 10px;	
+}
+
+}
+#password { 
+    text-align: left	
+}
+
+#submit { margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#updateButton {
+    color:#ffffff;
+    background-color:#87bad7;
+    border: 0px;
+    border-radius: 15px;
+    width: 220px;
+    height: 50px;
+    position: relative;
+    font-family: Helvetica, arial sans-serif;
+    font-weight: 900;
+    font-size: 9pt; 
+}
+
+/* Update button on the Patient Account Form */
+#updateService {
+	width: 15%;
+	text-align: center;
+	float: center;
+}
+
+#username { 
+    text-align: left;
+}
+
+#wrapper {
+    max-width:1050px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: right;
+}
+
+#centre {
+    margin-left: auto;
+    margin-right: auto;
+    }
+#page-footer{
+    text-align:center;
+    color:#aaa;
+    margin-bottom:0.5em;
+}
+
+<!--  -------------- Class Styles alphabetically ------------------ -->
+
+.consent{
+clear:both;
+}
+
+.error{
+    font-size: 8px;
+    color:#F00;
+    text-align: left;
+}
+
+.linkingButtons {
+    color:#999999;
+    background-color:#c4dbe9;
+    border: 0px;
+    border-radius: 15px;
+    width: 90px;
+    height: 70px;
+    left: 0px;
+    top: 0px;
+    
+    font-family: Helvetica, arial sans-serif;
+    font-weight: 900;
+    font-size: 9pt;
+}
+
+.options {
+	float: left;
+	font-size: 16px;
+	color: #87bad7;
+}
+.patientTable td{
+    border:1px solid #aaa; 
+    font-size: 16px;
+}
+.patientTable{
+    font-size: 16px;
+    text-align: left;
+}
+.rounded {
+    float:left;
+}
+.submit{
+    color:#ffffff;
+    font-size:20px;
+}
+.submit:hover{
+    background-color:#99ccff;
+}
+
+
+.userdetails{
+    color:#999999;
+    font-size:30px;
+}
+
+
+
+
+
+
+
+
+
+

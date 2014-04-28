@@ -1,0 +1,192 @@
+$helvarial: Helvetica, arial sans-serif;
+$white-color: #ffffff;
+$dark-blue-color: #87bad7;
+$light-blue-color: #c4dbe9;
+$grey-color: #c8c7cb;
+    
+body {
+    margin: 0px;    
+    display: block;
+}
+
+*, *:before, *:after {
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box;
+ }
+    
+.Container{
+    width:1170px;
+    height: 100%;
+    margin: 0px;
+    
+}
+.headerBar{
+    width:100%;
+    height: 90px;
+    float: left;
+    padding: 5px;
+    
+}
+
+.sidebarColumn{
+    width:10%;
+    height: 100%;
+    float: left;
+    padding-top: 5px;
+
+}
+
+.sidebarColumn a{
+    text-decoration: none;
+}
+
+
+.contentColumn{
+    width: 90%;
+    height: 100%;
+    float: left;
+    padding-left:6px;
+    padding-top: 5px;
+    
+}
+
+.contentLinkingBox{
+    display: inline-block;
+    border: 2px solid;
+    border-color: $grey-color;
+    background-color: $grey-color;
+    border-radius: 15px 15px;
+    height: 144px;
+    width: 32%;    
+    margin-bottom: 4px;
+    
+}
+
+.contentLinkingBox h1 {
+    text-align: center;
+    color: $white-color;
+    font-family: $helvarial;
+    font-size: 25pt;
+}
+
+.contentLinkingBox a{
+    text-decoration: none;
+}
+
+.contentLinkingBox:hover{
+    border-color: $dark-blue-color;
+    background-color: $dark-blue-color;
+}
+    
+
+
+.tab_box {
+    border: 2px solid;
+    border-color: $light-blue-color;
+    border-radius: 15px 15px;
+    background-color: $light-blue-color;
+    height: 70px;    
+    margin-bottom: 4px;
+    margin-left: 4px;
+    position: relative;
+    vertical-align: middle;
+    z-index: 1;
+}
+
+.tab_box h1 {
+    text-align: center;
+    color: $white-color;
+    font-family: $helvarial;
+    font-size: 10pt;
+}
+
+.tab_box_text {
+    margin-top: 25px;
+    z-index: 3;
+}
+
+.tab_box_active{
+    background-color: $dark-blue-color;
+    color: $dark-blue-color;
+    border-color: $dark-blue-color;
+    
+}
+
+.tab_box a{
+    text-decoration: none;
+}
+
+.action_buttons {
+    background-color: #87bad7;
+    width:70px;
+    height: 30px;
+    z-index: 4;
+}
+
+.action_buttons h1{
+    text-align: center;
+    font-family: $helvarial;
+    color: #ffffff;
+    font-size: 10px;
+}
+
+#ProfileButton {
+    position:absolute;
+    top: 5%;
+    left: 75%;    
+}
+
+#HelpButton {
+    position: absolute;
+    top: 5%;
+    left: 80%;    
+}
+
+#LogoutButton {
+    position: absolute;
+    top: 5%;
+    left: 85%;    
+}
+
+#MailBox {
+    position: absolute;
+    top: 4.2%;
+    left: 92%;
+    z-index: 4;
+}
+    
+
+
+#harmony_logo {
+    width: 90px;
+    height: 90px;
+    position: absolute;
+    top: 3px;
+    left:20px;
+    z-index: 3;
+}
+
+#welcome_user_text {
+    position: absolute;
+    top: 5px;
+    left: 140px;
+    z-index: 3;
+    font-family:$helvarial;
+    font-style: italic;
+    font-weight: bold;
+    color: #000000;
+    font-size: 20pt;
+}
+    
+#welcome_user_last_login {
+    position: absolute;
+    top: 45px;
+    left: 145px;
+    z-index: 3;
+    font-family: $helvarial;
+    font-style: italic;
+    font-weight: bold;
+    color: #b4b3b3;
+    font-size: 10pt;
+}
+
+
