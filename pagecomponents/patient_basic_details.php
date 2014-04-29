@@ -1,5 +1,5 @@
 <?php 
-	$con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
+	include ("pagecomponents/connectDB.php");
 
 	if (isset($_SESSION["PatientID"])) {
 		$sql="SELECT first_name, last_name, date_of_birth, admission_id from patient_details 
