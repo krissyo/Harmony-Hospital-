@@ -1,5 +1,10 @@
 <?php session_start();
+
 require_once('../pagecomponents/validate.php');
+// This is the only place in out APP where
+// the connection to the database is established via the include file
+require_once('../pagecomponents/connectDB.php');
+	
 $validate = new Validate();
 $validated_POST = $validate->post();
 $username = $validated_POST["username"];
