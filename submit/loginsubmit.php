@@ -5,8 +5,6 @@ $validated_POST = $validate->post();
 $username = $validated_POST["username"];
 $password = $validated_POST["password"];
 
-$connection = mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
-
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
