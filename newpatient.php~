@@ -9,7 +9,7 @@ include("../harmonyhospital/pagecomponents/head.php");
             
 		</div>
 		<div id="content">
-			<form id="newpatient" method="post" action="submit/newpatientsubmit.php">
+			<form id="newpatient" method="post" action="../harmonyhospital/submit/newpatientsubmit.php">
                 <input type="hidden" >
 			<table><h3><th colspan="2" class="userdetails">Patient Details</th></h3>
                 <?php 
