@@ -1,7 +1,7 @@
-<? php
+<?php
 
     function populate_department_list(){
-    $con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
+    
     $sqldepartment="SELECT department_id, department_description from departments ORDER BY department_id";
     $result=mysqli_query($con,$sqldepartment);
 	while($row = mysqli_fetch_array($result)){
@@ -9,7 +9,7 @@
 	}	
 }
     function populate_ward_list(){
-    $con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
+    
     $sql="SELECT ward_id, ward_description from wards ORDER BY ward_id";
 	$result=mysqli_query($con,$sql);
 	while($row = mysqli_fetch_array($result)){

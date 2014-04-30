@@ -73,7 +73,7 @@
         
 	<form id="index">
 		<?php
-			$con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
+			
 			if (isset($_SESSION["roleID"])) {
 				$sql="SELECT AccessArea FROM Roles WHERE RoleId = ".$_SESSION["roleID"].";";
 			} else {

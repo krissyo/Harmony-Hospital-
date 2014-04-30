@@ -6,7 +6,7 @@
     $wardPrefixArray = array();
 
     function populate_department_list(&$deptPrefixArray){
-    $con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
+    //$con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
     $sqldepartment="SELECT department_id, department_description, department_prefix from departments ORDER BY department_id";
     $result=mysqli_query($con,$sqldepartment);
 	while($row = mysqli_fetch_array($result)){
@@ -17,7 +17,7 @@
 } 
   
     function populate_ward_list(&$wardPrefixArray){
-    $con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
+    //$con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
     $sql="SELECT ward_id,ward_description,department_id  from wards ORDER BY ward_id";
 	$result=mysqli_query($con,$sql);
 	while($row = mysqli_fetch_array($result)){
@@ -28,7 +28,7 @@
 }
 
     function change_ward_list($deptID){
-    $con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
+    //$con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
     $sql="SELECT ward_id,ward_description,department_id  from wards ORDER BY ward_id";
     $result=mysqli_query($con,$sql);
     while($row = mysqli_fetch_array($deptID)){
