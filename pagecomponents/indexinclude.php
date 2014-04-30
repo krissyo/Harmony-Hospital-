@@ -11,7 +11,7 @@
         <!-- Javascript -->        
         <script src="../harmonyhospital/lib/jquery-1.11.0.min.js"></script>
         <!--<script src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/lib/mainpage.js"></script>-->
-        <script src="../harmonyhospital/lib/adminInclude.js"></script>
+        <script src="../harmonyhospital/lib/buttonClickInclude.js"></script>
               
     </head>
     
