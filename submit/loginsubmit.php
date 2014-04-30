@@ -9,7 +9,7 @@ if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$result = mysqli_query($connection, "SELECT first_name, staff_id, username, password, salt, role_id FROM staff_details WHERE username = '$username'");
+$result = mysqli_query($con, "SELECT first_name, staff_id, username, password, salt, role_id FROM staff_details WHERE username = '$username'");
 
 $record = mysqli_fetch_array($result);
 
