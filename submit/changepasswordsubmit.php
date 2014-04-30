@@ -2,7 +2,7 @@
 session_start();
 //include("../pagecomponents/indexinclude.php");
 require_once('../pagecomponents/validate.php');
-$con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
+
 if(!$con )
 {
   die('Could not connect: ' . mysql_error());

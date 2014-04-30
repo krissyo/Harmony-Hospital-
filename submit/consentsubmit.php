@@ -1,6 +1,8 @@
 <?php session_start();
+
 require_once('../pagecomponents/validate.php');
 require_once('../pagecomponents/signature-to-image.php');
+
 $validate = new Validate();
 $validated_POST = $validate->post();
 # Getting the signature output from consent form
@@ -15,8 +17,6 @@ $imgName = $fName. "_". $lName. "_". "signature.png";
 # Cleaning up the image resource to free some memory! :)
 imagedestroy($img);
 
-$con = mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
-
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
@@ -26,7 +26,5 @@ $sql = "UPDATE patient_services SET guardian_signature =". "'". $imgName. "'". "
 		(SELECT admission_id FROM admissions WHERE patient_id = (SELECT patient_id FROM patient_details WHERE carer1_name =". "'". $fullName. "'". "OR carer2_name =". "'". $fullName. "'". "))";
 
 mysqli_query($con,$sql);
-
-mysqli_close($con);
 
 ?>

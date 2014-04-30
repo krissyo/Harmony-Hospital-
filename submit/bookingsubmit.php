@@ -37,8 +37,6 @@ if (isset($_SESSION["userID"])) {
 	$lastUpdatedBy = 100076;
 }
 
-$connection = mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
-
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
@@ -55,7 +53,7 @@ if (($checkResourceBooking == 0) && ($checkPatientBooking == 0)) {
 	VALUES ($admissionId, $procedureId, $resourceId, $staffId, $bookingDate,
 	$startTime, $finishTime, $lastUpdatedBy);";
 
-	$result=mysqli_query($connection, $sql);
+	$result=mysqli_query($con, $sql);
 
 	if ($result == 1) {
 		echo "Booking successful.";
@@ -66,7 +64,7 @@ if (($checkResourceBooking == 0) && ($checkPatientBooking == 0)) {
 		VALUES ($admissionId, $procedureId, $staffId,
 		$bookingDate, $bookingDate, $guardian_name, " . $imgName . ", $consentDate, $lastUpdatedBy);";
 
-		$result=mysqli_query($connection, $sql);
+		$result=mysqli_query($con, $sql);
 		if ($result == 1) {
 			echo "Recorded the Procedure on Patient's Account successfully.";
 		} else {
@@ -84,7 +82,6 @@ if (($checkResourceBooking == 0) && ($checkPatientBooking == 0)) {
 	echo "Booking already exists for this Patient for the selected date and times.";
 }
 
-mysqli_close($connection);
 ?>
 
 <html>
