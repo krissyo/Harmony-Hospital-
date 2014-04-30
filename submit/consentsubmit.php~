@@ -17,14 +17,14 @@ $imgName = $fName. "_". $lName. "_". "signature.png";
 # Cleaning up the image resource to free some memory! :)
 imagedestroy($img);
 
-require_once('../pagecomponents/connectDB.php');
+if (mysqli_connect_errno()) {
+  echo "Failed to connect to MySQL: " . mysqli_connect_error();
+}
 
 $fullName = $fName. " ". $lName;
 $sql = "UPDATE patient_services SET guardian_signature =". "'". $imgName. "'". "WHERE admission_id = 
 		(SELECT admission_id FROM admissions WHERE patient_id = (SELECT patient_id FROM patient_details WHERE carer1_name =". "'". $fullName. "'". "OR carer2_name =". "'". $fullName. "'". "))";
 
 mysqli_query($con,$sql);
-
-require_once('../pagecomponents/closeConnection.php');
 
 ?>
