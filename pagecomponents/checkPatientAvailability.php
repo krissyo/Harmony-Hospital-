@@ -28,8 +28,6 @@ class PatientAvailability {
 			$doubleBooking = 1;
 		}
 		
-		require_once('closeConnection.php');
-		
         return $doubleBooking;        
     }
 }
