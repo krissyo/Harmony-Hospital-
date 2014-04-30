@@ -1,8 +1,8 @@
 <?php 
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/harmonyhospital/pagecomponents/connectDB.php');
-
 require_once($_SERVER['DOCUMENT_ROOT'] . '/harmonyhospital/pagecomponents/validate.php');
+
+require_once($_SERVER['DOCUMENT_ROOT'] . '/harmonyhospital/pagecomponents/connectDB.php');
 
 //patient details
 $validate= new Validate();
