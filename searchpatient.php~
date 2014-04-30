@@ -1,6 +1,6 @@
 <?php
 $pagetitle="Search Patient";
-include("pagecomponents/head.php");
+include("harmonyhospital/pagecomponents/head.php");
 ?>
 
         	<div id="header">
@@ -8,11 +8,11 @@ include("pagecomponents/head.php");
         	</div>
         	<div id="content">
 
-            <form id="searchPatientForm" method="get" action="submit/searchpatientsubmit.php">
+            <form id="searchPatientForm" method="get" action="harmonyhospital/submit/searchpatientsubmit.php">
             <table> 
                 <?php 
                 //use this code where ever session storage is needed 
-                    include("pagecomponents/checklogin.php");
+                    include("harmonyhospital/pagecomponents/checklogin.php");
                 ?>
 		<tr><td><div class="options"><b>Search By</b></div></td></tr>
                 <tr>
@@ -33,7 +33,7 @@ include("pagecomponents/head.php");
         
         </div>
     	<?php
-include("pagecomponents/footer.php");
+include("harmonyhospital/pagecomponents/footer.php");
 ?>
     </div>
     
