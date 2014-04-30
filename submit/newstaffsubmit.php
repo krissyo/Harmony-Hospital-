@@ -1,7 +1,7 @@
 
 <?php 
 require_once('../pagecomponents/validate.php');
-$con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
+
 if(!$con )
 {
   die('Could not connect: ' . mysql_error());
@@ -20,7 +20,9 @@ $bluecard=$_POST['yes'];
 $second_language=$_POST['SecondLanguage'];
 $email_address=$_POST['EmailAddress'];
 $password=$_POST["password"];
+
 $sql='SELECT staff_id FROM staff_details ORDER BY staff_id DESC LIMIT 1';
+
 $result=mysqli_query($con,$sql);
 while($row = mysqli_fetch_array($result)){
     $staff_id=$row["staff_id"]+1; 

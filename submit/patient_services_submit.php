@@ -17,8 +17,6 @@ if (isset($_SESSION["userID"])) {
 	$lastUpdatedBy = 100076;
 }
 
-$con = mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
-
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 } else {

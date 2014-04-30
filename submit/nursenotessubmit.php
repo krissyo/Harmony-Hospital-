@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once('../pagecomponents/validate.php');
-$con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
+
 if(!$con )
 {
   die('Could not connect: ' . mysql_error());
