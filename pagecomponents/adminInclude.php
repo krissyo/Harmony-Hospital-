@@ -1,3 +1,4 @@
+header('Access-Control-Allow-Origin: http://trustinblack.com');
 <?php session_start(); ?>
 <!-- first row of buttons -->
                 <div class="adminLinkingBoxes">
