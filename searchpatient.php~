@@ -1,6 +1,6 @@
 <?php
 $pagetitle="Search Patient";
-include("harmonyhospital/pagecomponents/head.php");
+include("../harmonyhospital/pagecomponents/head.php");
 ?>
 
         	<div id="header">
@@ -12,7 +12,7 @@ include("harmonyhospital/pagecomponents/head.php");
             <table> 
                 <?php 
                 //use this code where ever session storage is needed 
-                    include("harmonyhospital/pagecomponents/checklogin.php");
+                    include("../harmonyhospital/pagecomponents/checklogin.php");
                 ?>
 		<tr><td><div class="options"><b>Search By</b></div></td></tr>
                 <tr>
@@ -33,7 +33,7 @@ include("harmonyhospital/pagecomponents/head.php");
         
         </div>
     	<?php
-include("harmonyhospital/pagecomponents/footer.php");
+include("../harmonyhospital/pagecomponents/footer.php");
 ?>
     </div>
     

@@ -8,7 +8,7 @@ include("../harmonyhospital/pagecomponents/head.php");
         	</div>
         	<div id="content">
 
-            <form id="searchPatientForm" method="get" action="harmonyhospital/submit/searchpatientsubmit.php">
+            <form id="searchPatientForm" method="get" action="../harmonyhospital/submit/searchpatientsubmit.php">
             <table> 
                 <?php 
                 //use this code where ever session storage is needed 
