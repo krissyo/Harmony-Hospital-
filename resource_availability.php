@@ -44,7 +44,7 @@ require_once('pagecomponents/connectDB.php');
 						<td><select class="rounded" id ="ResourceId" name="ResourceId" onchange="displayDetails(this.value, document.getElementById('StartDate').value);">
 						<?php
 							$sql="SELECT department_description, resource_id, resource_description FROM departments Natural Join resources";
-							$con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
+							
 							$result=mysqli_query($con,$sql);
 							while($row = mysqli_fetch_array($result)){
 								echo "<option value='" . $row["resource_id"] . "'>" . $row["department_description"] . " " . $row["resource_description"] . "</option>";
@@ -69,7 +69,7 @@ require_once('pagecomponents/connectDB.php');
 			</div>
 			
 			<?php
-				require_once('pagecomponents/closeConnection.php');
+				
 				include("pagecomponents/footer.php");
 			?>
 		</div>
