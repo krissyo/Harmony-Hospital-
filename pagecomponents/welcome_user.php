@@ -1,4 +1,6 @@
 <?php
+require_once('connectDB.php');
+
 	$_SESSION["userId"] = 100056;
 	if (isset($_SESSION["userID"])) {
 		$sql="SELECT first_name FROM staff_details WHERE staff_id = " . $_SESSION['userID'].";";
@@ -11,4 +13,6 @@
 	} else { 
 			echo '<script>document.getElementById("welcome_user_text").innerHTML="Welcome"</script>';
 		}
+		
+require_once('pagecomponents/closeConnection.php');
 ?>

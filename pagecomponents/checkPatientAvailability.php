@@ -8,6 +8,8 @@ class PatientAvailability {
         // if ($result returns a record
 		//$doubleBooking = 1 else $doubleBooking = 0
 		
+		require_once('connectDB.php');
+		
         $sql="SELECT booking_id, admission_id FROM bookings 
 			WHERE admission_id = " . $_POST['AdmissionId'] . " AND booking_date = '" . $_POST['StartDate'] . 
 			"' AND (('" . $_POST['StartTime'] . "' > start_time AND '". $_POST['StartTime'] . "' < finish_time) OR 
@@ -26,7 +28,7 @@ class PatientAvailability {
 			$doubleBooking = 1;
 		}
 		
-		mysqli_close($con);
+		require_once('closeConnection.php');
 		
         return $doubleBooking;        
     }

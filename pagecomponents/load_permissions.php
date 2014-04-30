@@ -1,6 +1,7 @@
 <?php
 		
-	// Connection is already established
+	// Connection
+	require_once('connectDB.php');
 	
 	if (isset($_SESSION["roleID"])) {
 		$sql="SELECT access_area FROM roles WHERE role_id = ".$_SESSION["roleID"].";";
@@ -39,4 +40,6 @@
 		elseif ($value == 'facilities_tab') { ?>
 			<script type="text/javascript">document.getElementById('facilities_tab').style.display='block';</script>
 <?php } 
-	} ?>
+	} 
+	require_once('closeConnection.php');
+	?>

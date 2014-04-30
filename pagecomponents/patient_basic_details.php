@@ -1,5 +1,7 @@
 <?php 
 
+require_once('connectDB.php');
+
 	if (isset($_SESSION["PatientID"])) {
 		$sql="SELECT first_name, last_name, date_of_birth, admission_id from patient_details 
 		NATURAL JOIN admissions
@@ -19,4 +21,6 @@
 		$_SESSION["DateOfBirth"] = $row["date_of_birth"];							
 		$_SESSION["AdmissionId"] = $row["admission_id"];							
 	}
+	
+	require_once('closeConnection.php');
 ?>
