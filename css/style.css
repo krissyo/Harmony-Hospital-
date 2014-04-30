@@ -166,12 +166,15 @@ body {
   display: block;
   float: left;
   text-align: center;
-  width: 30.33%;
-  margin: 1.2%;
+  width: 28.33%;
+  margin: 0.5%;
+  border:0px solid;
   border-bottom: 0.4em solid #999999;
   font-family: Helvetica;
   font-size: 13pt;
-  padding: 1em; }
+  padding: 1em;
+  border-radius: 2px;
+}
 
 .searchResults:hover {
   border-color: #87bad7; }

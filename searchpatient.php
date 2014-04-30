@@ -2,7 +2,16 @@
 $pagetitle="Search Patient";
 include("../harmonyhospital/pagecomponents/head.php");
 ?>
-
+<script>
+$(document).ready(function()
+{
+    $('#search').autocomplete(
+    {
+        source: "pagecomponents/searchautocomplete.php",
+        minLength: 3
+    });
+});
+</script>
         	<div id="header">
             		<h1>Search Patient Form</h1>
         	</div>
@@ -14,22 +23,16 @@ include("../harmonyhospital/pagecomponents/head.php");
                 //use this code where ever session storage is needed 
                     include("../harmonyhospital/pagecomponents/checklogin.php");
                 ?>
-		<tr><td><div class="options"><b>Search By</b></div></td></tr>
+                <tr><td><div class="options"><b>Search:</b></div></td></tr></tr>
                 <tr>
-                    <td>PatientId: </td>
-                    <td><input name="patientId" id="patientId" type="text"></input></td>
-                    </tr>
-                <tr><td><div class="options"><b>or</b></div></td></tr>
-                <tr>
-                    <td>Surname: </td>
-                    <td><input name="surname" id="surname" type="text"></input></td>
-                    </tr> 
+                    <td colspan="2"><input name="search" id="search" type="text" placeholder="Search" required style="color:#000;"></td>
+                </tr> 
                 <tr>
                     <td></td>
                     <td><input class="rounded" type="submit" name="sumbit" id="submit"></td>
                 </tr>
             </table>
-			</form>
+			</form> 
         
         </div>
     	<?php
