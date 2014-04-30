@@ -1,11 +1,11 @@
 <?php
-
-		$connection = mysqli_connect("mysql.Firelabs.com.au", "inb201harmony", 
-    "6wxPSiPp", "inb201harmony");
+/*
+include ("pagecomponents/connectDB.php");
 
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
+*/
 
 session_start();
 if(isset($_SESSION['role'])) {
@@ -14,7 +14,7 @@ $RoleId = $_SESSION['role'];
 
 }
 
-$result = mysqli_query($connection, "SELECT RoleId, RoleDescription FROM Roles WHERE RoleId = '$RoleId'");
+$result = mysqli_query($con, "SELECT RoleId, RoleDescription FROM Roles WHERE RoleId = '$RoleId'");
 
 $record = mysqli_fetch_array($result);
 

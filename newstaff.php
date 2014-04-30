@@ -36,7 +36,6 @@ $password=randomPassword();
             <tr><td>Mobile Number: </td> <td><input class="rounded" type="text" name="MobileNumber" id="MobileNumber" required></td></tr>
             <tr><td>Role: </td> <td><select class="rounded" name="Role" id="Role">
                 <?php
-							$con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
 							$sql="SELECT role_id, role_description FROM roles";
 							$result=mysqli_query($con,$sql);
 							while($row = mysqli_fetch_array($result)){

@@ -60,7 +60,6 @@ include("pagecomponents/head.php");
 					} 
 					
 					//extract info from DB
-					$con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
 					
 					$sql = 'SELECT patient_procedure_id, 
 							service_start_date, service_end_date,
@@ -172,7 +171,6 @@ include("pagecomponents/head.php");
 			</div>
 			
 			<?php
-			mysqli_close($con);
 			include("pagecomponents/footer.php");
 			?>		
 			</div>

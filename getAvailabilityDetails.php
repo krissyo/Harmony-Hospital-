@@ -9,7 +9,7 @@ $intervals = array('00:00:00', '01:00:00','02:00:00', '03:00:00', '04:00:00',
 			'17:00:00', '18:00:00', '19:00:00', '20:00:00', '21:00:00', '22:00:00',
 			'23:00:00', '24:00:00');
 
-$con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
+include ("pagecomponents/connectDB.php");
 if (!$con) {
   die('Could not connect: ' . mysqli_error($con));
 }
@@ -137,5 +137,5 @@ if ($num_rows == 0) {
 
 echo "</table>";
 
-mysqli_close($con);
+include ("pagecomponents/closeConnection.php");
 ?>

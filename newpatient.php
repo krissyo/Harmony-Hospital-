@@ -29,7 +29,8 @@ include("pagecomponents/head.php");
             <tr><td>Second Language:</td> <td> <input class="rounded" type="text" name="second-language" id="second-language" required></td></tr>
 			<tr><td>Country of Origin:</td> <td><select class="rounded" name='country-id'>
 			<?php
-							$con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
+							//DB connection should be already established
+							
 							$sql="SELECT country_id, country_name from countries ORDER BY country_name";
 							$result=mysqli_query($con,$sql);
 							while($row = mysqli_fetch_array($result)){
@@ -60,8 +61,9 @@ include("pagecomponents/head.php");
 		<div id="sidebar">
 		</div>
 			<?php
-include("pagecomponents/footer.php");
-?>
+
+			include("pagecomponents/footer.php");
+			?>
 		</div>
     </body>
 </html>

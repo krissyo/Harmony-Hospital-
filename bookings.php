@@ -1,7 +1,7 @@
 <?php session_start();
 $pagetitle="Book a Procedure";
 include("pagecomponents/head.php");
-include ("pagecomponents/connectDB.php");
+
 ?>
 	<body>
 		<div id="wrapper">
@@ -90,7 +90,7 @@ include ("pagecomponents/connectDB.php");
 			
 			<?php
 			include("pagecomponents/footer.php");
-			include ("pagecomponents/closeConnection.php");
+			
 			?>		
 			
 		</div>
