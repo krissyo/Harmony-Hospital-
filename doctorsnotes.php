@@ -24,8 +24,6 @@ include("pagecomponents/head.php");
             <tr><td>First Name</td> <td><input class="rounded" type="text" name= "FirstName" id="FirstName" required></td></tr>
             <tr><td>Last Name:</td> <td> <input class="rounded" type="text" name="LastName" id="LastName" required></td></tr>   
             <tr><td>Current Medication:</td> <td> <input class="rounded" type="Medication" name="Medication" id="Medication" required></td></tr>
-             <tr><td>Current Notes: 
-              
             <tr><td>Notes:</td> <td> <textarea rows="4" cols="50" placeholder="Start typing here..." name="notes" required></textarea></td></tr>  
    
                 <tr>
