@@ -41,5 +41,5 @@
 			<script type="text/javascript">document.getElementById('facilities_tab').style.display='block';</script>
 <?php } 
 	} 
-	require_once('closeConnection.php');
+
 	?>

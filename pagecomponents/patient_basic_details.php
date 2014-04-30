@@ -22,5 +22,4 @@ require_once('connectDB.php');
 		$_SESSION["AdmissionId"] = $row["admission_id"];							
 	}
 	
-	require_once('closeConnection.php');
 ?>

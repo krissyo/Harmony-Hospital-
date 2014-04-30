@@ -9,5 +9,4 @@ require_once('connectDB.php');
 		echo "<option value='" . $row["procedure_id"] . "'>" . $row["procedure_description"] . "</option>";
 }
 
-require_once('closeConnection.php');
 ?>
