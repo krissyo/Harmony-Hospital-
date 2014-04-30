@@ -1,12 +1,11 @@
 <?php 
+require_once('../pagecomponents/connectDB.php');
 
-require_once($_SERVER['DOCUMENT_ROOT'] . '/harmonyhospital/pagecomponents/connectDB.php');
-
-require_once($_SERVER['DOCUMENT_ROOT'] . '/harmonyhospital/pagecomponents/validate.php');
+require_once('../pagecomponents/validate.php');
 
 //patient details
 $validate= new Validate();
-$validatedvalidated_POST=$validate->post();
+$validated_POST=$validate->post();
 $first_name=$validated_POST['first-name'];
 $middle_name=$validated_POST['middle-name'];
 $last_name=$validated_POST['last-name'];
@@ -70,6 +69,5 @@ $sql="INSERT INTO patient_details
 
 
 mysqli_query($con,$sql);
-
-require_once($_SERVER['DOCUMENT_ROOT'] . '/harmonyhospital/pagecomponents/closeConnection.php');
+require_once('../pagecomponents/closeConnection.php');
 ?>
