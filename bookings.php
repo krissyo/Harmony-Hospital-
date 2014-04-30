@@ -32,6 +32,9 @@ include("pagecomponents/head.php");
 						</td></tr>
 					<tr><td>Specialist</td><td><select class="rounded" name='StaffId'>
 						<?php
+						
+							require_once('pagecomponents/connectDB.php');
+							
 							$sql="SELECT staff_id, first_name, last_name from staff_details;";
 							$result=mysqli_query($con,$sql);
 							while($row = mysqli_fetch_array($result)){
@@ -90,7 +93,7 @@ include("pagecomponents/head.php");
 			
 			<?php
 			include("pagecomponents/footer.php");
-			
+			require_once('pagecomponents/closeConnection.php');
 			?>		
 			
 		</div>

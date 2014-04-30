@@ -1,6 +1,7 @@
 <?php
 $pagetitle="New Staff";
 include("pagecomponents/head.php");
+
 function randomPassword() {
     $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
     $pass = array(); //remember to declare $pass as an array
@@ -37,6 +38,9 @@ $password=randomPassword();
             <tr><td>Role: </td> <td><select class="rounded" name="Role" id="Role">
                 <?php
 							$sql="SELECT role_id, role_description FROM roles";
+							
+							require_once('pagecomponents/connectDB.php');
+							
 							$result=mysqli_query($con,$sql);
 							while($row = mysqli_fetch_array($result)){
 								echo "<option value='" . $row["role_id"] . "'>" . $row["role_description"] . "</option>";

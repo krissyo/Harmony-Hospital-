@@ -2,7 +2,6 @@
 	$pagetitle="Login";
 	include("pagecomponents/head.php");
 
-
 	
 ?>
 

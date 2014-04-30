@@ -1,7 +1,7 @@
 <?php
-/*
-include ("pagecomponents/connectDB.php");
 
+include ("pagecomponents/connectDB.php");
+/*
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }

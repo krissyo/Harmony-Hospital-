@@ -17,11 +17,12 @@ if (isset($_SESSION["userID"])) {
 	$lastUpdatedBy = 100076;
 }
 
-/*
+require_once('../pagecomponents/connectDB.php');
+
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 } else {
-} */
+
 
 	$sql='UPDATE patient_services
 	SET staff_id = ' . $staffId . ', procedure_id = ' . $procedureId . ', 
@@ -37,6 +38,6 @@ if (mysqli_connect_errno()) {
 	} else {
 		echo "Error occurred. " . mysqli_errno() . " " . mysqli_error();
 	}
-
+}
 	
 ?>

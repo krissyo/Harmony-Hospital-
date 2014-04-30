@@ -5,7 +5,7 @@ include("pagecomponents/head.php");
 if(isset($_POST['recordId'])) {
     $_SESSION['patientProcedureId'] = $_POST['recordId'];
 	
-	$con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
+	require_once('pagecomponents/connectDB.php');
 	$sql="SELECT * FROM patient_services 
 			WHERE patient_procedure_id = " . $_SESSION['patientProcedureId'];
 	$result=mysqli_query($con,$sql);
@@ -111,7 +111,7 @@ if(isset($_POST['recordId'])) {
 			</div>
 			
 			<?php
-				mysqli_close($con);
+				require_once('pagecomponents/closeConnection.php');
 				include("pagecomponents/footer.php");
 			?>
 		</div>

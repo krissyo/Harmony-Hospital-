@@ -60,6 +60,7 @@ include("pagecomponents/head.php");
 					} 
 					
 					//extract info from DB
+					require_once('pagecomponents/connectDB.php');
 					
 					$sql = 'SELECT patient_procedure_id, 
 							service_start_date, service_end_date,

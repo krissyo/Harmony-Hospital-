@@ -1,7 +1,8 @@
 <?php
     $pagetitle="Patient Profile";
     include("pagecomponents/indexinclude.php");
-$con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
+require_once('pagecomponents/connectDB.php');
+
 if(!$con )
 {
   die('Could not connect: ' . mysql_error());

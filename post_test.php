@@ -1,5 +1,6 @@
 <?php
-    $con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
+    include ("pagecomponents/connectDB.php");
+	
     if(!$con )
     {
       die('Could not connect: ' . mysql_error());

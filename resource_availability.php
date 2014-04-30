@@ -1,7 +1,7 @@
 <?php session_start();
 $pagetitle="View Resource Availability";
 include("pagecomponents/head.php");
-
+require_once('pagecomponents/connectDB.php');
 ?>
     <body>
 	<script>
@@ -69,7 +69,7 @@ include("pagecomponents/head.php");
 			</div>
 			
 			<?php
-				mysqli_close($con);
+				require_once('pagecomponents/closeConnection.php');
 				include("pagecomponents/footer.php");
 			?>
 		</div>

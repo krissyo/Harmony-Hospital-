@@ -20,7 +20,7 @@ function Header()
 	
 	// Display Patient's Full Name/Address in the header
 	// establish the connection
-	$con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
+	include ('pagecomponents/connectDB.php');
 
 	// Testing with AdmissionId set to 1
 	if (!isSet($_SESSION['AdmissionId'])) {
@@ -53,7 +53,7 @@ function Header()
 		$this->Ln();
 		$this->Ln();
 	}	
-	mysqli_close($con);
+	include('pagecomponents/closeConnection.php');
 }
 
 // Page footer
@@ -71,7 +71,7 @@ function Footer()
 function LoadData($file)
 {
 	//Connect to database
-	$con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
+	include ('pagecomponents/connectDB.php');
 
 	// Testing with AdmissionId set to 1
 	if (!isSet($_SESSION['AdmissionId'])) {
@@ -94,7 +94,7 @@ function LoadData($file)
 	} else {
 		return $data;
 	}
-	mysqli_close($con);
+	include ('pagecomponents/closeConnection.php');
 }
 
 // Colored table

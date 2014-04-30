@@ -32,7 +32,7 @@ include("pagecomponents/head.php");
                 
         <?php
 
-                $con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
+                require_once('pagecomponents/connectDB.php');
 				$sql="SELECT name from allergies_conditions where description ='Allergy'";
 				$result=mysqli_query($con,$sql);
 				while($row = mysqli_fetch_array($result)){
@@ -43,7 +43,6 @@ include("pagecomponents/head.php");
 
 <tr><td> Conditions:</td> <td> 
      <?php            
-                $con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
 				$sql="SELECT name from allergies_conditions where description ='Condition'";
 				$result=mysqli_query($con,$sql);
 				while($row = mysqli_fetch_array($result)){
@@ -70,6 +69,7 @@ include("pagecomponents/head.php");
 		<div id="sidebar">
 		</div>
 			<?php
+			require_once('pagecomponents/closeConnection.php');
 include("pagecomponents/footer.php");
 ?>
 		</div>

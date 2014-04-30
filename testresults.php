@@ -23,7 +23,8 @@ include("pagecomponents/head.php");
             <tr><td>Clinical ID:</td> <td> <input class="rounded" type="text" name="Clinicalid" id="AdmissionID"></td></tr>
             <tr><td> Procedure ID:</td> <td><select class="rounded" name="ProID" id="ProcedureID">
                 <?php
-                            $con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
+                            require_once('pagecomponents/connectDB.php');
+							
 							$sql="SELECT procedure_id, procedure_description FROM procedure_listing";
                             $result=mysqli_query($con,$sql);
                             while($row = mysqli_fetch_array($result)){
@@ -51,6 +52,7 @@ include("pagecomponents/head.php");
 		</div>
             
             <?php
+			require_once('pagecomponents/closeConnection.php');
 include("pagecomponents/footer.php");
 ?>
             
