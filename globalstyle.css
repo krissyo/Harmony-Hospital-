@@ -16,7 +16,9 @@ h3 {
     color:#999999;
     margin:0 auto;
 }
-
+hr{
+    clear:right;   
+}
 img {
     padding: 0;
     margin: auto;

@@ -1,6 +1,6 @@
 <?php
 $pagetitle="Search Patient";
-include("pagecomponents/head.php");
+include("../harmonyhospital/pagecomponents/head.php");
 ?>
 
         	<div id="header">
@@ -8,22 +8,16 @@ include("pagecomponents/head.php");
         	</div>
         	<div id="content">
 
-            <form id="searchPatientForm" method="get" action="submit/searchpatientsubmit.php">
+            <form id="searchPatientForm" method="get" action="../harmonyhospital/submit/searchpatientsubmit.php">
             <table> 
                 <?php 
                 //use this code where ever session storage is needed 
-                    include("pagecomponents/checklogin.php");
+                    include("../harmonyhospital/pagecomponents/checklogin.php");
                 ?>
-		<tr><td><div class="options"><b>Search By</b></div></td></tr>
+                <tr><td><div class="options"><b>Search:</b></div></td></tr></tr>
                 <tr>
-                    <td>PatientId: </td>
-                    <td><input name="patientId" id="patientId" type="text"></input></td>
-                    </tr>
-                <tr><td><div class="options"><b>or</b></div></td></tr>
-                <tr>
-                    <td>Surname: </td>
-                    <td><input name="surname" id="surname" type="text"></input></td>
-                    </tr> 
+                    <td colspan="2"><input name="search" id="search" type="text" placeholder="Search" required ></td>
+                </tr> 
                 <tr>
                     <td></td>
                     <td><input class="rounded" type="submit" name="sumbit" id="submit"></td>
@@ -33,7 +27,7 @@ include("pagecomponents/head.php");
         
         </div>
     	<?php
-include("pagecomponents/footer.php");
+include("../harmonyhospital/pagecomponents/footer.php");
 ?>
     </div>
     
