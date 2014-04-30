@@ -1,5 +1,4 @@
 <?php 
-	include ("connectDB.php");
 
 	if (isset($_SESSION["PatientID"])) {
 		$sql="SELECT first_name, last_name, date_of_birth, admission_id from patient_details 

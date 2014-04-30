@@ -22,7 +22,7 @@
             <div class="headerBar">
         
                 <div id="harmony_logo">
-                    <a href="http://www.inb201harmony.firelabscloud.com/index.php"><img src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/images/bandaid_bird_90px.png"></a>
+                    <a href="http://www.trustinblack.com/harmonyhospital/index.php"><img src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/images/bandaid_bird_90px.png"></a>
                 </div>
                 <div id="welcome_user_text">
                     <p>
@@ -58,7 +58,7 @@
             <div id="SideMenu">    
                 <div class="tab_box" id="home_tab" >
                     <div class="tab_box_text">
-                    <a href="http://www.inb201harmony.firelabscloud.com/index.php"><h1> HOME </h1></a>
+                    <a href="http://www.trustinblack.com/harmonyhospital/index.php"><h1> HOME </h1></a>
                     </div>
                 </div>
                 

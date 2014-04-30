@@ -1,6 +1,7 @@
 <?php
 		
-	$con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
+	// Connection is already established
+	
 	if (isset($_SESSION["roleID"])) {
 		$sql="SELECT access_area FROM roles WHERE role_id = ".$_SESSION["roleID"].";";
 	} else {

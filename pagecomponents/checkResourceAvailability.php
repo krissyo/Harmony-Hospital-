@@ -8,7 +8,6 @@ class ResourceAvailability {
         // if ($result returns a record
 		//$doubleBooking = 1 else $doubleBooking = 0
 		
-		$con=mysqli_connect("mysql.Firelabs.com.au","inb201harmony","6wxPSiPp","inb201harmony");
         $sql="SELECT booking_id, resource_id FROM bookings 
 			WHERE resource_id = " . $_POST['ResourceId'] . " AND booking_date = '" . $_POST['StartDate'] . 
 			"' AND (('" . $_POST['StartTime'] . "' > start_time AND '". $_POST['StartTime'] . "' < finish_time) OR 
