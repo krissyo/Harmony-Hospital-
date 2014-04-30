@@ -1,7 +1,7 @@
 <?php
 $pagetitle="Bed Management Form";
 include("pagecomponents/head.php");
-include("lib/bedManagementScript.php");
+require_once("lib/bedManagementScript.php");
 ?>
 
     <div id="wrapper">
