@@ -37,20 +37,29 @@ include("lib/bedManagementScript.php");
                     <td>
                         <select name="selectWard" id="selectWard" type="text" required>
                         <option value="WARDDefault">-- please select a ward --</option>
-                        <?php
+                        <!--<?php
                             populate_ward_list($wardPrefixArray);
-                            ?>
+                            ?> -->
                             <script>
-                            $("#selectDpmnt").change(function(){
-                            alert("this departments id is "+this.value);
+
+                            $('#selectDpmnt').change(function(){
                             var deptID = this.value;
+                            alert("this departments id is "+ deptID);
+                            $.post('bedManagementScript.php',{deptID:deptID},function(data){
+                                alert("this function is posting");
+                                });
                             });
-                            </script>   
-                                                    
-                        </select>
-                    
+                            </script>                                                     
+                        </select>                    
                     </td>
               </tr>
+                <tr>
+                <td>Select Bed</td>    
+                    <td><select name="selectBed" id="selectBed" type="text" required></td>
+                    
+                
+                </tr>
+                    
                     
                 <tr>
                 
