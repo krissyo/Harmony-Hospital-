@@ -31,7 +31,7 @@ $(document).ready(function()
                     <td></td>
                     <td><input class="rounded" type="submit" name="sumbit" id="submit"></td>
                 </tr>
-            </table>
+            </table>  
 			</form> 
         
         </div>
