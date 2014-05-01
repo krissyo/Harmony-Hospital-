@@ -5,7 +5,7 @@
 <?php
 require_once('../pagecomponents/validate.php');
 
-require_once('../harmonyhospital/pagecomponents/connectDB.php');
+require_once('../pagecomponents/connectDB.php');
 
 $validate = new Validate();
 $validated_GET = $validate->get();
@@ -32,7 +32,7 @@ if((strlen($surname)==0 && strlen($patientid)==0)){
     }
 }
 
-require_once('../harmonyhospital/pagecomponents/closeConnection.php');
+require_once('../pagecomponents/closeConnection.php');
 
 ?>
 <script>
