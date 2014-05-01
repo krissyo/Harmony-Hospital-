@@ -1,17 +1,56 @@
 <?php
 $pagetitle="Bed Management Form";
 include("pagecomponents/head.php");
-include("lib/bedManagementScript.php");
+include("lib/bedManagementScript_Kira.php");
 ?>
 
+	<script>
+	// Display wards for the selected Department
+	function displayWardsDetails(departmentId) {
+	
+	  if (window.XMLHttpRequest) {
+		// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();
+	  } else { // code for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	  xmlhttp.onreadystatechange=function() {
+		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+		  document.getElementById("ward_drop_down_list").innerHTML=xmlhttp.responseText;
+		}
+	  }
+	  xmlhttp.open("GET","getWardDetails.php?q="+departmentId,true);
+	  xmlhttp.send();
+	}
+	
+		// Display wards for the selected Department
+	function displayBedsDetails(wardId) {
+	
+	  if (window.XMLHttpRequest) {
+		// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();
+	  } else { // code for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	  xmlhttp.onreadystatechange=function() {
+		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+		  document.getElementById("bed_drop_down_list").innerHTML=xmlhttp.responseText;
+		}
+	  }
+	  xmlhttp.open("GET","getBedDetails.php?q="+wardId,true);
+	  xmlhttp.send();
+	}
+	</script>
+	
     <div id="wrapper">
         <div id="header">
             <h1>MANAGE BEDS FORM</h1>
         </div>
         <div id="content">
             <div name=" buttonWrapper" id="centre">
-            <button  id="wardMgmtBtn" class="linkingButtons">Ward Management</button>
-            <button  id="deptMgmtBtn" class="linkingButtons">Department management</button>
+            
+            <!--<button  id="wardMgmtBtn" class="linkingButtons">Ward Management</button>
+            <button  id="deptMgmtBtn" class="linkingButtons">Department management</button>-->
             
                 </div>
             <br /><br />
@@ -24,47 +63,38 @@ include("lib/bedManagementScript.php");
                 ?>
                 <tr>
                     <td> Select Department </td>
-                    <td><select name="selectDpmnt" id="selectDpmnt"  type="text" required>
+                    <td><select name="selectDpmnt" id="selectDpmnt" onchange="displayWardsDetails(this.value);" required>
                         <option value="deptDefault">-- please select a department --</option>
                         <?php
-							populate_department_list($deptPrefixArray);
+							populate_department_list();
                             ?>
                         </select>
                         </td>
                     </tr>
-               <tr>
-                    <td> Select Ward </td>
-                    <td>
-                        <select name="selectWard" id="selectWard" type="text" required>
-                        <option value="WARDDefault">-- please select a ward --</option>
-                        <!--<?php
-                            populate_ward_list($wardPrefixArray);
-                            ?> -->
-                            <script>
-
-                            $('#selectDpmnt').change(function(){
-                            var deptID = this.value;
-                            alert("this departments id is "+ deptID);
-                            $.post('bedManagementScript.php',{deptID:deptID},function(data){
-                                alert("this function is posting");
-                                });
-                            });
-                            </script>                                                     
-                        </select>                    
-                    </td>
-              </tr>
+				<tr>
+					<td>Select Ward</td>
+					<td><select name="selectDpmnt" id="ward_drop_down_list" onchange="displayBedsDetails(this.value);" required>
+					<option value="WardDefault">-- please select a ward --</option>
+					</select>
+					</td>
+				</tr>
                 <tr>
                 <td>Select Bed</td>    
-                    <td><select name="selectBed" id="selectBed" type="text" required></td>
-                    
-                
+					
+					<td><select name="selectBed" id="bed_drop_down_list" required>
+					<option value="BedDefault">-- please select a bed --</option>
+					</select>
+					</td>
+					
                 </tr>
-                    
-                    
+                <tr> 
+				<td>Bed Description:</td>
+				<td><input type="text" name="bedDescription" id="bed_description"></td>
+                </tr>
                 <tr>
                 
                     <td></td>
-                    <td><input class="rounded" type="submit" name="sumbit" id="submit" value="Update"></td>
+                    <td><input class="rounded" type="submit" name="sumbit" id="submit" value="Create New Bed"></td>
                 </tr>
             </table>
 			</form>
