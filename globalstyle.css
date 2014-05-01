@@ -155,6 +155,12 @@ in Resource Availability Form */
     font-family: Helvetica, arial sans-serif;
 }
 
+/* Resource Mgt Form */
+#detailsTable table, #detailsTable td, #detailsTable th{
+	font-size: 1em;
+	border: 1px solid grey;
+}
+
 /* Invoice button on Patient's Account Form */
 #generateInvoice {
 	width: 10%;
