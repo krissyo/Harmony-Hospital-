@@ -5,10 +5,8 @@
 <?php
 require_once('../pagecomponents/validate.php');
 
-if(!$con )
-{
-  die('Could not connect: ' . mysql_error());
-}
+require_once('../harmonyhospital/pagecomponents/connectDB.php');
+
 $validate = new Validate();
 $validated_GET = $validate->get();
 $patientid=(int)$validated_GET["patientId"];
@@ -33,6 +31,9 @@ if((strlen($surname)==0 && strlen($patientid)==0)){
         echo '<div class="noResults">No results found.</div>';   
     }
 }
+
+require_once('../harmonyhospital/pagecomponents/closeConnection.php');
+
 ?>
 <script>
 var stringToColour = function(str) {
