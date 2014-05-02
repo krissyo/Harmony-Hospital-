@@ -11,7 +11,7 @@ $sql='SELECT ward_id, ward_prefix, ward_description, number_of_beds from wards W
 	
 $result=mysqli_query($con,$sql);
 
- echo '<table id="details" >';
+ echo '<table id="details">';
  echo '<tr><th>Id</th><th>Prefix</th><th>Description</th><th>Num of beds</th><th>Admissions</th></tr>';
 
 	while($row = mysqli_fetch_array($result)){

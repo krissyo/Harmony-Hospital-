@@ -10,35 +10,19 @@ include("lib/bedManagementScript.php");
 	// dynamic querying on Dept drop-down click
 	function displayWards(departmentId) {
 	
-		// Display wards in the drop-down list
-		displayWardList(departmentId);
+		// display the Ward drop-down list as per the search criteria
+		displayDetails("ward_drop_down_list", "getWardList.php?q=" + departmentId);
 		
-		// Display the list of wards in the main content
-		displayWardDetails(departmentId);
+		// Display a detailed list of wards for this department
+		displayDetails("detailsTable", "getWardDetails.php?q=" + departmentId);
+		
+		// Clear the New Bed Textbox value
+		clearNewBedValue();
 	}
 	
-	// Populates the wards drop-down list 
-	// for the selected Department
-	function displayWardList(departmentId) {
-	
-	  if (window.XMLHttpRequest) {
-		// code for IE7+, Firefox, Chrome, Opera, Safari
-		xmlhttp2=new XMLHttpRequest();
-	  } else { // code for IE6, IE5
-		xmlhttp2=new ActiveXObject("Microsoft.XMLHTTP");
-	  }
-	  xmlhttp2.onreadystatechange=function() {
-		if (xmlhttp2.readyState==4 && xmlhttp2.status==200) {
-		  document.getElementById("ward_drop_down_list").innerHTML=xmlhttp2.responseText;
-		}
-	  }
-	  xmlhttp2.open("GET","getWardList.php?q="+departmentId,true);
-	  xmlhttp2.send();
-	}
-	
-	// Populates the wards table
-	// for the selected Department
-	function displayWardDetails(departmentId) {
+	// Populates the specified HTML form control
+	// as per the selection from the drop-down list (Wards, Beds)
+	function displayDetails(html_id, php_file) {
 	
 	  if (window.XMLHttpRequest) {
 		// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -48,29 +32,41 @@ include("lib/bedManagementScript.php");
 	  }
 	  xmlhttp.onreadystatechange=function() {
 		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-		  document.getElementById("detailsTable").innerHTML=xmlhttp.responseText;
+		  document.getElementById(html_id).innerHTML=xmlhttp.responseText;
 		}
 	  }
-	  xmlhttp.open("GET","getWardDetails.php?q="+departmentId,true);
+	  xmlhttp.open("GET", php_file, false);
 	  xmlhttp.send();
 	}
 	
-		// Display wards for the selected Department
-	function displayBedsDetails(wardId) {
+	// Display wards for the selected Department
+	function displayBeds(wardId) {
+		
+		// display the Bed drop-down list as per the search criteria
+		displayDetails("bed_drop_down_list", "getBedList.php?q=" + wardId);
+		
+		// Display a detailed list of wards for this department
+		displayDetails("detailsTable", "getBedDetails.php?q=" + wardId);
+		
+		// Auto-populate the New Bed text-box with Dpt_Ward_Bed prefix
+		populateNewBed();
+	}
 	
-	  if (window.XMLHttpRequest) {
-		// code for IE7+, Firefox, Chrome, Opera, Safari
-		xmlhttp=new XMLHttpRequest();
-	  } else { // code for IE6, IE5
-		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	  }
-	  xmlhttp.onreadystatechange=function() {
-		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-		  document.getElementById("bed_drop_down_list").innerHTML=xmlhttp.responseText;
-		}
-	  }
-	  xmlhttp.open("GET","getBedDetails.php?q="+wardId,true);
-	  xmlhttp.send();
+	// Insert the next Bed description (auto-populated)
+	// based on the prefix fields in Departments & Wards tables.
+	function populateNewBed() {
+		var wardId, dptId;
+		
+		dptId = document.getElementById('dpt_drop_down_list').value;
+		wardId = document.getElementById('ward_drop_down_list').value;
+		
+		displayDetails("bed_description", "getNewBedName.php?q=" + dptId + "&second_param="+ wardId);
+	}
+	
+	// Clear the value in New Bed Description text-box
+	// when a ward list is being displayed
+	function clearNewBedValue() {
+		document.getElementById('bed_description').innerHTML = "";	
 	}
 	</script>
 	
@@ -96,7 +92,7 @@ include("lib/bedManagementScript.php");
 				<!-- Displaying 3 drop-down lists in one line -->
                 <tr>
                     <td>
-						<select name="selectDpmnt" id="selectDpmnt" onchange="displayWards(this.value);" required>
+						<select name="selectDpmnt" id="dpt_drop_down_list" onchange="displayWards(this.value);" required>
 							<option value="deptDefault">-- please select a department --</option>
 							<?php
 							// When the form first loads, populate the list of departments
@@ -105,7 +101,7 @@ include("lib/bedManagementScript.php");
                         </select>
                     </td>
 					<td>
-						<select name="selectDpmnt" id="ward_drop_down_list" onchange="displayBedsDetails(this.value);" required>
+						<select name="selectWard" id="ward_drop_down_list" onchange="displayBeds(this.value);" required>
 							<option value="WardDefault">-- please select a ward --</option>
 						</select>
 					</td>					
@@ -132,8 +128,7 @@ include("lib/bedManagementScript.php");
 			<table>
                 <tr> 
 				<!-- auto-populated New Bed Description -->
-				<td>New Bed:</td>
-				<td><input type="text" name="bedDescription" id="bed_description"></td>
+				<div id = "bed_description"></div>
                 </tr>
 				<!-- Three buttons in one line -->
                 <tr>                
