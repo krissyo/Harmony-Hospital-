@@ -2,16 +2,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>MAIN MENU</title>
-        <link href="../harmonyhospital/css/style.css" rel="stylesheet" type="text/css" />
         <!--<link href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/Harmony_main.css" rel="stylesheet" type="text/css" />-->
-        <link href="../harmonyhospital/globalstyle.css" rel="stylesheet" type="text/css" />
-        <link rel="shortcut icon" href="../harmonyhospital/bandaid_bird_48x48.ico" type="image/x-icon" />
+        <link href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/globalstyle.css" rel="stylesheet" type="text/css" />
+        <link rel="shortcut icon" href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/bandaid_bird_48x48.ico" type="image/x-icon" />
         
         <!-- Javascript -->        
-        <script src="../harmonyhospital/lib/jquery-1.11.0.min.js"></script>
+        <script src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/lib/jquery-1.11.0.min.js"></script>
         <!--<script src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/lib/mainpage.js"></script>-->
-        <script src="../harmonyhospital/lib/buttonClickInclude.js"></script>
+        <script src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/lib/adminInclude.js"></script>
               
     </head>
     
@@ -22,7 +20,7 @@
             <div class="headerBar">
         
                 <div id="harmony_logo">
-                    <a href="http://www.trustinblack.com/harmonyhospital/index.php"><img src="../harmonyhospital/images/bandaid_bird_90px.png"></a>
+                    <a href="http://www.trustinblack.com/harmonyhospital/index.php"><img src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/images/bandaid_bird_90px.png"></a>
                 </div>
                 <div id="welcome_user_text">
                     <p>
@@ -42,9 +40,9 @@
                         <a><h1>HELP</h1></a>
                     </div> 
                     <div class="action_buttons" id="LogoutButton">
-                        <a action="../harmonyhospital/submit/logout.php" href="loggedoff.html"><h1>LOG OUT</h1></a>
+                        <a action="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/submit/logout.php" href="loggedoff.html"><h1>LOG OUT</h1></a>
                     </div>
-                    <div id="MailBox"><img src="../harmonyhospital/images/mail_box.png"/>
+                    <div id="MailBox"><img src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/images/mail_box.png"/>
                     </div>
                 </div><!-- closes DIV for top menu bar -->
                 
@@ -52,7 +50,11 @@
         
         
     <!-- this div creates the side bar column -->
-        <div class="sidebarColumn">
+            <div class="menuresize">
+            <input type="button" value="menu" id="menutoggle">
+            </div>
+            <div class="sidebarColumn">
+            
                 
             <!-- Containing DIV for side menu *CONVERT TO PHP AFTER FINALISED*--> 
             <div id="SideMenu">    
@@ -107,7 +109,13 @@
             </div><!-- Closes side Menu DIV-->
                  
         </div> <!-- this div closes the side bar column -->
-    
+    <script>
+        // krissy
+    $("#menutoggle").click(function(){
+        $(".sidebarColumn").slideToggle();
+    })
+    </script>
     <!-- this div creates the content column -->   
     <div class="contentColumn" id="contentColumn">
     </div>
+            
