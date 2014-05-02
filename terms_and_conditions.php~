@@ -38,9 +38,6 @@ include("pagecomponents/head.php");
 					after I have signed this form. I understand that I must inform the doctor if this occurs.</p>
 			</div>
 		</div>
-			<?php
-include("pagecomponents/footer.php");
-?>
 	</div>
 </body>
 </html>	

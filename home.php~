@@ -48,8 +48,6 @@ elseif($record['RoleDescription'] == " HOSPITAL MANAGER") {
     header('Location: Hmanager.php');
     die();
 }
-
-require_once('pagecomponents/closeConnection.php');
     
 ?>
 

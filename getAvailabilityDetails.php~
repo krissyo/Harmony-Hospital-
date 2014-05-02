@@ -132,6 +132,4 @@ if ($num_rows == 0) {
 } //end if-else
 
 echo "</table>";
-
-require_once('pagecomponents/closeConnection.php');
 ?>

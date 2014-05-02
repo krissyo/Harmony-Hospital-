@@ -69,7 +69,7 @@ require_once('pagecomponents/connectDB.php');
 			</div>
 			
 			<?php
-				include('pagecomponents/closeConnection.php');
+				
 				include("pagecomponents/footer.php");
 			?>
 		</div>

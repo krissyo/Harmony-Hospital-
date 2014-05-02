@@ -1,14 +1,10 @@
 <?php
 session_start();
 require_once('../pagecomponents/validate.php');
+require_once('../pagecomponents/connectDB.php');
 
-if(!$con )
-{
-  die('Could not connect: ' . mysql_error());
-}
 $validate = new Validate();
 $validated_POST = $validate->post();
-
 $notes =$validated_POST["notes"];
 //$Medication=$validated_POST["Medication"];
 $fname =$validated_POST["FirstName"];
@@ -23,4 +19,6 @@ WHERE patient_details.first_name = '$fname' AND patient_details.last_name = '$ln
 
 $result=mysqli_query($con,$sql);
 echo success;
+
+require_once('../pagecomponents/closeConnection.php');
 ?>

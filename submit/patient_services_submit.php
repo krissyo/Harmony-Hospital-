@@ -1,5 +1,6 @@
 <?php session_start();
 require_once('../pagecomponents/validate.php');
+require_once('../pagecomponents/connectDB.php');
 
 $validate = new Validate();
 $validated_POST = $validate->post();
@@ -17,9 +18,6 @@ if (isset($_SESSION["userID"])) {
 	$lastUpdatedBy = 100076;
 }
 
-if (mysqli_connect_errno()) {
-  echo "Failed to connect to MySQL: " . mysqli_connect_error();
-} else {
 
 	$sql='UPDATE patient_services
 	SET staff_id = ' . $staffId . ', procedure_id = ' . $procedureId . ', 
@@ -36,7 +34,6 @@ if (mysqli_connect_errno()) {
 		echo "Error occurred. " . mysqli_errno() . " " . mysqli_error();
 	}
 	
-	mysqli_close($con);
-}
-	
+
+require_once('../pagecomponents/closeConnection.php');	
 ?>

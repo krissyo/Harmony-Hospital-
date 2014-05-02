@@ -43,5 +43,4 @@ if ($row = mysqli_fetch_array($result)){
 echo '<td>New Bed:</td>';
 echo '<td><input type="text" name="new_bed" id="new_bed" value = "' . $dptPrefix . '_' . $wardPrefix . '_' . $newBedNum . '"></td>';
 
-require_once('pagecomponents/closeConnection.php');
 ?>

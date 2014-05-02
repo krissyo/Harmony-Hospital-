@@ -3,6 +3,10 @@
     include("pagecomponents/indexinclude.php");
 require_once('pagecomponents/connectDB.php');
 
+if(!$con )
+{
+  die('Could not connect: ' . mysql_error());
+}
 $patientid=$_GET["patientid"];
 if(isset($patientid)){
     $sql = "SELECT * FROM patient_details WHERE patient_id = $patientid";
@@ -35,6 +39,4 @@ if(isset($patientid)){
 }else{
     echo "<div class='noResults'>No patient specified.</div>";   
 }
-
-require_once('pagecomponents/closeConnection.php');
 ?>

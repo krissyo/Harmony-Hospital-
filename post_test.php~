@@ -1,6 +1,10 @@
 <?php
     include ("pagecomponents/connectDB.php");
 	
+    if(!$con )
+    {
+      die('Could not connect: ' . mysql_error());
+    }
     function validate_post_data(){
         $result = array();
         foreach($_POST as $key=>$value){
@@ -25,7 +29,5 @@
     while($row = mysqli_fetch_array($result)){
         print_r($row);
         echo "<br/>";
-    }
-
-require_once('pagecomponents/closeConnection.php');
+    }	
 ?>

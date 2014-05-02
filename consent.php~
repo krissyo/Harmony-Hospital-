@@ -1,6 +1,6 @@
 <?php
 $pagetitle="Consent Form";
-include("pagecomponents/head.php");
+include("../harmonyhospital/pagecomponents/head.php");
 ?>
 
 		<div id="wrapper">
@@ -23,7 +23,7 @@ Capicola pig ribeye, flank doner corned beef ground round tongue kielbasa rump a
 			<table>
                 <?php 
                 //use this code where ever session storage is needed 
-                    include("pagecomponents/checklogin.php");
+                    include("../harmonyhospital/pagecomponents/checklogin.php");
                 ?>
                 <tr><td>First Name:</td> <td><input class="rounded" type="text" name="FirstName" id="FirstName" required></td></tr>
             <tr><td>Last Name:</td> <td> <input class="rounded" type="text" name="LastName" id="LastName" required></td></tr>
@@ -44,7 +44,7 @@ Capicola pig ribeye, flank doner corned beef ground round tongue kielbasa rump a
 		<div id="sidebar">
 		</div>
 			<?php
-include("pagecomponents/footer.php");
+include("../harmonyhospital/pagecomponents/footer.php");
 ?>
 		</div>
     </body>

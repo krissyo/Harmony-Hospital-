@@ -28,7 +28,7 @@ $password=randomPassword();
                     include("pagecomponents/checklogin.php");
                 ?>
             <tr><td>First Name:</td> <td><input class="rounded" type="text" name="FirstName" id="FirstName" required></td></tr>
-            <tr><td>Middle Name:</td> <td> <input class="rounded" type="text" name="MiddleName" id="MiddleName"></td></tr>
+            <tr><td>Middle Name:</td> <td> <input class="rounded" type="text" name="MiddleName" id="MiddleName" required></td></tr>
             <tr><td>Last Name:</td> <td> <input class="rounded" type="text" name="LastName" id="LastName" required></td></tr>
             <tr><td>Date Of Birth:</td> <td> <input class="rounded" type="date" name="DateOfBirth" id="DateOfBirth" required></td></tr>
             <tr><td>Address:</td> <td> <input class="rounded" type="text" name="Address" id="Address" required></td></tr>

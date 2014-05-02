@@ -1,6 +1,6 @@
 <?php
 $pagetitle="New Patient";
-include("../harmonyhospital/pagecomponents/head.php");
+include("pagecomponents/head.php");
 ?>
 
 		<div id="wrapper">
@@ -14,10 +14,10 @@ include("../harmonyhospital/pagecomponents/head.php");
 			<table><h3><th colspan="2" class="userdetails">Patient Details</th></h3>
                 <?php 
                 //use this code where ever session storage is needed 
-                    include("../harmonyhospital/pagecomponents/checklogin.php");
+                    include("pagecomponents/checklogin.php");
                 ?>
             <tr><td>First Name:</td> <td><input class="rounded" type="text" name="first-name" id="first-name" required></td></tr>
-            <tr><td>Middle Name:</td> <td> <input class="rounded" type="text" name="middle-name" id="middle-name" required></td></tr>
+            <tr><td>Middle Name:</td> <td> <input class="rounded" type="text" name="middle-name" id="middle-name"></td></tr>
             <tr><td>Last Name:</td> <td> <input class="rounded" type="text" name="last-name" id="last-name" required></td></tr>
             <tr><td>Date Of Birth:</td> <td> <input class="rounded" type="date" name="date-of-birth" id="date-of-birth" required></td></tr>
             <tr><td>Address:</td> <td> <input class="rounded" type="text" name="address" id="address" required></td></tr>
@@ -63,7 +63,7 @@ include("../harmonyhospital/pagecomponents/head.php");
 		</div>
 			<?php
 
-			include("../harmonyhospital/pagecomponents/footer.php");
+			include("pagecomponents/footer.php");
 			?>
 		</div>
     </body>

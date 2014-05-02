@@ -50,6 +50,4 @@ $result=mysqli_query($con,$sql);
     }
 	
 echo '</table>';
-
-require_once('pagecomponents/closeConnection.php');
 ?>
