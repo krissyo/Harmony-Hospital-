@@ -1,5 +1,4 @@
 <?php
-session_start();
 $pagetitle="Change Password";
 include("pagecomponents/head.php");
 ?>
@@ -16,10 +15,6 @@ include("pagecomponents/head.php");
                 <input type="hidden" >
 
 			<table><h3><th colspan="2" class="userdetails">Patient Details</th></h3>
-                <?php 
-                //use this code where ever session storage is needed 
-                    include("pagecomponents/checklogin.php");
-                ?>
                 <tr><td>Old Password:</td> <td><input class="rounded" type="password" name="OldPassword" id="OldPassword" required placeholder="Old Password"></td></tr>
                 <tr><td>New Password:</td> <td> <input class="rounded" type="password" name="NewPassword1" id="NewPassword" required placeholder="New Password"></td></tr>
                 <tr><td>New Password Again:</td> <td> <input class="rounded" type="password" name="NewPassword2" id="NewPassword" required placeholder="New Password"></td></tr>

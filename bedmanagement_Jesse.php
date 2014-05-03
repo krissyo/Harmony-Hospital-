@@ -18,10 +18,7 @@ include("lib/bedManagementScript.php");
             <form id="manageBedsForm" method="post" action="submit/manageBedssubmit.php">
             <input type="hidden">
             <table>
-                <?php 
-                //use this code where ever session storage is needed 
-                    include("pagecomponents/checklogin.php");
-                ?>
+               
                 <tr>
                     <td> Select Department </td>
                     <td><select name="selectDpmnt" id="selectDpmnt"  type="text" required>

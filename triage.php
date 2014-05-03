@@ -14,10 +14,7 @@ include("pagecomponents/head.php");
                 <input type="hidden" >
        
 			<table><h3><th colspan="2" class="userdetails">Patient Details</th></h3>
-                <?php 
-                //use this code where ever session storage is needed 
-                    include("pagecomponents/checklogin.php");
-                ?>
+               
                 <tr><td>First Name:</td> <td><input class="rounded" type="text" name="fname" id="FirstName" required></td></tr>
                 <tr><td>Last Name:</td> <td> <input class="rounded" type="text" name="lname" id="LastName" required></td></tr>
                 <tr><td>Date of Birth:</td> <td> <input class="rounded" type="date" name="DateofBirth" id="DateofBirth" required></td></tr>

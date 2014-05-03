@@ -1,4 +1,4 @@
-<?php session_start();
+<?php 
 $pagetitle="Book a Procedure";
 include("pagecomponents/head.php");
 
@@ -16,10 +16,7 @@ include("pagecomponents/head.php");
 					<input type="hidden" name="AdmissionId" id="AdmissionId" value="<?php echo $_SESSION['AdmissionId']; ?>">
 					<table id = "bookingTable">
 					<h3><th colspan="2" class="bookingdetails">Booking Details</th></h3>
-					<?php 
-					//use this code where ever session storage is needed 
-                    include("pagecomponents/checklogin.php");
-					?>
+				
 					<tr><td>Patient's ID</td><td>
 						<input type="text" class="rounded" name="PatientId" id="PatientId" value="<?php echo $_SESSION['PatientId']; ?>">
 						</td></tr>						
@@ -97,5 +94,41 @@ include("pagecomponents/head.php");
 			?>		
 			
 		</div>
+        
+        <script> 
+        jQuery.validator.setDefaults({
+          debug: false,
+          success: "valid"
+        });
+        $( "#bookings" ).validate({
+          rules: {
+            PatientId: {
+              required: true,
+               digits: true
+            },
+            PatientName: {
+              required: true,
+                minlength: 3
+            },
+            DateOfBirth,StartDate,StartTime,FinshTime,ConsentDate: {
+                required: true,
+                date: true
+           
+              
+            }
+          }
+        })
+        </script>
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 	</body>
 </html>

@@ -1,4 +1,4 @@
-<?php session_start();
+<?php
 $pagetitle="Update Patient Service";
 include("pagecomponents/head.php");
 

@@ -21,10 +21,7 @@ Capicola pig ribeye, flank doner corned beef ground round tongue kielbasa rump a
                 <input type="hidden" >
              
 			<table>
-                <?php 
-                //use this code where ever session storage is needed 
-                    include("pagecomponents/checklogin.php");
-                ?>
+               
                 <tr><td>First Name:</td> <td><input class="rounded" type="text" name="FirstName" id="FirstName" required></td></tr>
             <tr><td>Last Name:</td> <td> <input class="rounded" type="text" name="LastName" id="LastName" required></td></tr>
             <tr><td>Signature of Parent/Legal Guardian:</td> <td><div class="sig sigWrapper">

@@ -1,4 +1,4 @@
-<?php session_start();
+<?php
 $pagetitle="View Resource Availability";
 include("pagecomponents/head.php");
 require_once('pagecomponents/connectDB.php');
@@ -35,10 +35,6 @@ require_once('pagecomponents/connectDB.php');
 			<div id="content">
 				<form name="resource_availability">
 				
-					<?php 
-					//use this code where ever session storage is needed 
-                    include("pagecomponents/checklogin.php");
-					?>
 					<table id="availability_main_table">
 						<tr><td>Facility</td>
 						<td><select class="rounded" id ="ResourceId" name="ResourceId" onchange="displayDetails(this.value, document.getElementById('StartDate').value);">

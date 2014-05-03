@@ -1,4 +1,4 @@
-<?php session_start();
+<?php
 
 $pagetitle="Patient's Account";
 include("pagecomponents/head.php");
@@ -32,10 +32,7 @@ include("pagecomponents/head.php");
 					
 					<table id="accountTable">
 					<h3><th colspan="9">Services / Procedures</th></h3>
-					<?php 
-					//use this code where ever session storage is needed 
-                    include("pagecomponents/checklogin.php");
-					?>
+					
 					<tr>
 					<th scope="col">Id</th><th>Select</th><th scope="col">Start Date</th><th scope="col">End Date</th>
 					<th scope="col">Service</th>

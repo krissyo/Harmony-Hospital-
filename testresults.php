@@ -15,10 +15,7 @@ include("pagecomponents/head.php");
                 <input type="hidden" >
 			<table><h3><th colspan="2" class="userdetails">Patients Test Results</th></h3>
 
-                <?php 
-                //use this code where ever session storage is needed 
-                    include("pagecomponents/checklogin.php");
-                ?>
+               
                 
             <tr><td>Clinical ID:</td> <td> <input class="rounded" type="text" name="Clinicalid" id="AdmissionID"></td></tr>
             <tr><td> Procedure ID:</td> <td><select class="rounded" name="ProID" id="ProcedureID">

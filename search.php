@@ -19,10 +19,7 @@ $(document).ready(function()
 
             <form id="searchPatientForm" method="get" action="../harmonyhospital/submit/searchsubmit.php">
             <table> 
-                <?php 
-                //use this code where ever session storage is needed 
-                    include("../harmonyhospital/pagecomponents/checklogin.php");
-                ?>
+            
                 <tr><td><div class="options"><b>Search:</b></div></td></tr></tr>
                 <tr>
                     <td colspan="2"><input name="search" id="search" type="text" placeholder="Search" required style="color:#000;"></td>

@@ -12,10 +12,7 @@ include("pagecomponents/head.php");
 			<form id="newpatient" method="post" action="submit/newpatientsubmit.php">
                 <input type="hidden" >
 			<table><h3><th colspan="2" class="userdetails">Patient Details</th></h3>
-                <?php 
-                //use this code where ever session storage is needed 
-                    include("pagecomponents/checklogin.php");
-                ?>
+               
             <tr><td>First Name:</td> <td><input class="rounded" type="text" name="first-name" id="first-name" required></td></tr>
             <tr><td>Middle Name:</td> <td> <input class="rounded" type="text" name="middle-name" id="middle-name"></td></tr>
             <tr><td>Last Name:</td> <td> <input class="rounded" type="text" name="last-name" id="last-name" required></td></tr>

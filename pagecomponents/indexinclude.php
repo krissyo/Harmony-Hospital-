@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php session_start();
+if(!isset($_SESSION['userID'])){
+header('Location: http://trustinblack.com/harmonyhospital/login.php');
+} ?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -19,7 +22,7 @@
             <!-- this div creates the header bar -->
             <div class="headerBar">
         
-                <div id="harmony_logo">
+                <div id="harmony_logo" style="float:left">
                     <a href="http://www.trustinblack.com/harmonyhospital/index.php"><img src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/images/bandaid_bird_90px.png"></a>
                 </div>
                 <div id="welcome_user_text">
@@ -41,8 +44,6 @@
                     </div> 
                     <div class="action_buttons" id="LogoutButton">
                         <a action="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/submit/logout.php" href="loggedoff.html"><h1>LOG OUT</h1></a>
-                    </div>
-                    <div id="MailBox"><img src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/images/mail_box.png"/>
                     </div>
                 </div><!-- closes DIV for top menu bar -->
                 

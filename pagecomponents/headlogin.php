@@ -1,7 +1,3 @@
-<?php session_start();
-if(!isset($_SESSION['userID'])){
-header('Location: http://trustinblack.com/harmonyhospital/login.php');
-} ?>
 <!DOCTYPE html>
 <html>
     <head>  <title><?php echo $pagetitle; ?></title>

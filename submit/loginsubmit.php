@@ -16,12 +16,10 @@ $record = mysqli_fetch_array($result);
 
 //$salt = "cevwac8sy3298ervfn8y4fa8yeiuwxrnw8c7tywqouhfalsiufxp79wyapcr7tewqob";
 $salt = $record['salt'];
-echo $salt . "<br/>";
 //$salt = base64_encode($salt);
 $hash = crypt($password, '$5$'.$salt.'$');
 //$hash = crypt($password,$salt); 
-echo $hash . "<br/>";
-echo $record['password'] . "<br/>";
+
 
 
 if ($record['username'] == $username && $record['password'] == $hash) {

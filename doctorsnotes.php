@@ -16,14 +16,11 @@ include("pagecomponents/head.php");
             
             
 			<table><h3><th colspan="2" class="userdetails">Patient Details</th></h3>
-                <?php 
-                //use this code where ever session storage is needed 
-                    include("pagecomponents/checklogin.php");
-                ?>
+               
      
             <tr><td>First Name</td> <td><input class="rounded" type="text" name= "FirstName" id="FirstName" required></td></tr>
             <tr><td>Last Name:</td> <td> <input class="rounded" type="text" name="LastName" id="LastName" required></td></tr>   
-            <tr><td>Current Medication:</td> <td> <input class="rounded" type="Medication" name="Medication" id="Medication" required></td></tr>
+            <tr><td>Current Medication:</td> <td> <input class="rounded" type="Medication" name="Medication" id="Medication"></td></tr>
             <tr><td>Notes:</td> <td> <textarea rows="4" cols="50" placeholder="Start typing here..." name="notes" required></textarea></td></tr>  
    
                 <tr>
@@ -39,5 +36,32 @@ include("pagecomponents/head.php");
 include("pagecomponents/footer.php");
 ?>
 		</div>
+        
+        <script> 
+        jQuery.validator.setDefaults({
+          debug: false,
+          success: "valid"
+        });
+        $( "#doctorsnotes" ).validate({
+          rules: {
+            FirstName: {
+              required: true,
+                minlength: 3
+            },
+            LastName: {
+              required: true,
+                minlength: 3
+            },
+            Medication: {
+                minlength: 3
+            },
+              Notes:{
+                required: true,  
+              
+            }
+          }
+        })
+        </script>
+
     </body>
 </html>

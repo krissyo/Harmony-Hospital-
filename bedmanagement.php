@@ -85,10 +85,7 @@ include("lib/bedManagementScript.php");
             <form id="manageBedsForm" method="post" action="submit/manageBedssubmit.php">
             <input type="hidden">
             <table>
-                <?php 
-                //use this code where ever session storage is needed 
-                    include("pagecomponents/checklogin.php");
-                ?>
+            
 				<!-- Displaying 3 drop-down lists in one line -->
                 <tr>
                     <td>
