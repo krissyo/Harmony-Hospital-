@@ -64,12 +64,6 @@ header('Location: http://trustinblack.com/harmonyhospital/login.php');
                     <a href="http://www.trustinblack.com/harmonyhospital/index.php"><h1> HOME </h1></a>
                     </div>
                 </div>
-
-                 <div  id="employmentButton" class="tab_box">
-                    <div  class="tab_box_text">
-                    <h1> EMPLOYMENT </h1>        
-                    </div>
-                </div>
                 
                 <div id="adminButton" class="tab_box">                    
                     <div  class="tab_box_text">
@@ -81,6 +75,18 @@ header('Location: http://trustinblack.com/harmonyhospital/login.php');
                 <div id="patientButton" class="tab_box">
                     <div class="tab_box_text">
                     <h1> PATIENT </h1>        
+                    </div>
+                </div>
+
+                <div  id="doctorButton"class="tab_box">
+                    <div  class="tab_box_text">
+                    <h1> DOCTORS </h1>        
+                    </div>
+                </div>
+                
+                <div id="nurseButton" class="tab_box">
+                    <div  class="tab_box_text">
+                    <h1> NURSES </h1>        
                     </div>
                 </div>
                 

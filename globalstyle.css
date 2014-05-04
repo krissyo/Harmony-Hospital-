@@ -330,7 +330,10 @@ body {
 .contentLinkingBox, 
 .adminLinkingBoxes, 
 .doctorLinkingBoxes, 
-.nurseLinkingBoxes {
+.nurseLinkingBoxes,
+.employmentLinkingBoxes,
+.resourceLinkingBoxes,
+.patientLinkingBoxes {
     display: inline-block;
     border: 2px solid;
     border-radius: 15px 15px;
@@ -343,7 +346,10 @@ body {
 .contentLinkingBox h1, 
 .adminLinkingBoxes h1, 
 .doctorLinkingBoxes h1, 
-.nurseLinkingBoxes h1 {
+.nurseLinkingBoxes h1,
+.employmentLinkingBoxes h1,
+.resourceLinkingBoxes h1,
+.patientLinkingBoxes h1 {
     text-align: center;
     color: white;
     font-family: Helvetica, arial sans-serif;
@@ -352,13 +358,19 @@ body {
 .contentLinkingBox a, 
 .adminLinkingBoxes a, 
 .doctorLinkingBoxes a, 
-.nurseLinkingBoxes a {
+.nurseLinkingBoxes a,
+.employmentLinkingBoxes a,
+.resourceLinkingBoxes a,
+.patientLinkingBoxes a {
     text-decoration:none; 
 }
 .contentLinkingBox:hover, 
 .adminLinkingBoxes:hover, 
 .doctorLinkingBoxes:hover, 
-.nurseLinkingBoxes:hover {
+.nurseLinkingBoxes:hover,
+.employmentLinkingBoxes:hover,
+.resourceLinkingBoxes:hover,
+.patientLinkingBoxes:hover {
     border-color: #87bad7;
     background-color: #87bad7; 
 }
