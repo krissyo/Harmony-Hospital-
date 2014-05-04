@@ -1,7 +1,17 @@
 <?php session_start();
 if(!isset($_SESSION['userID'])){
 header('Location: http://trustinblack.com/harmonyhospital/login.php');
-} ?>
+}
+if (isset($permissions)){
+    if (isset($_SESSION["roleID"])){
+        foreach($permissions as $p){
+            if ($_SESSION["roleID"]!=$p){
+                header('Location: http://trustinblack.com/harmonyhospital/index.php');
+            }
+        }
+    }
+}
+?>
 <!DOCTYPE html>
 <html>
     <head>  <title><?php echo $pagetitle; ?></title>

@@ -1,11 +1,12 @@
 <?php
+$permissions=[3,4];
 $pagetitle="Doctors Notes";
 include("pagecomponents/head.php");
 ?>
     <body>
       
 		<div id="wrapper">
-		<div id="header">
+		<div id="header"> 
 			<h1>Doctor's Notes</h1>
             
 		</div>
