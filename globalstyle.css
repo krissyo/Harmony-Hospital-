@@ -49,26 +49,30 @@ table td{
     text-align:left;
 }
 td *{
-        float:left;
-      text-align:left;
+    float:left;
+    text-align:left;
 }
 td:first-child{
     text-align:right;
 }
-<!--  -------------- Id Styles alphabetically ------------------ -->
+
+
+/*<!--  -------------- Id Styles alphabetically ------------------ -->*/
+
 #harmony_logo {
-    width: 90px;
-    height: 90px;
     position: absolute;
+    width: 90px;
+    height: 90px;    
     top: 3px;
-    left: 20px;
-    z-index: 3; 
-    float:left;
+    left: 50px;
+    z-index: 3;
+         
 }
+
 #welcome_user_text {
     position: absolute;
     top: 5px;
-    left: 140px;
+    left: 200px;
     z-index: 3;
     font-family: Helvetica, arial sans-serif;
     font-style: italic;
@@ -79,7 +83,7 @@ td:first-child{
 #welcome_user_last_login {
     position: absolute;
     top: 45px;
-    left: 145px;
+    left: 200px;
     z-index: 3;
     font-family: Helvetica, arial sans-serif;
     font-style: italic;
@@ -159,11 +163,7 @@ in Resource Availability Form */
     background-color:#ffffff;
     font-family: Helvetica, arial sans-serif;
 }
-#harmony_logo{
-    position:absolute;
-    top:0;
-    left:0;
-}
+
 /* Resource Mgt Form */
 #detailsTable table, #detailsTable td, #detailsTable th{
 	font-size: 1em;
@@ -232,7 +232,9 @@ in Resource Availability Form */
     color:#aaa;
     margin-bottom:0.5em;
 }
-<!--  -------------- Class Styles alphabetically ------------------ -->
+
+/*<!--  -------------- Class Styles alphabetically ------------------ -->*/
+
 .consent{
     clear:both;
 }
@@ -305,7 +307,7 @@ body {
 .headerBar {
     width: 100%;
     height: 90px;
-/*    float: left;*/
+    float: left;
     padding: 5px;
 }
 .sidebarColumn {
@@ -388,9 +390,10 @@ body {
 }
 .tab_box {
     border: 2px solid;
-    border-color: #c4dbe9;
+    width: 180px;
+    border-color: #87bad7;
     border-radius: 15px 15px;
-    background-color: #c4dbe9;
+    background-color: #87bad7;
     margin-bottom: 4px;
     margin-left: 4px;
     position: relative;
@@ -403,7 +406,8 @@ body {
     text-align: center;
     color: white;
     font-family: Helvetica, arial sans-serif;
-    font-size: 10pt; 
+    font-weight: 800;
+    font-size: 12pt; 
 }
 .tab_box_text {
     z-index: 3; }
@@ -415,10 +419,11 @@ body {
 }
 .tab_box a{
     text-decoration: none;
-    color: inherit;
+    color: black;
     font-family: inherit;
     font-weight: inherit;
     font-size: 10pt;
+    font-weight: 600;
 }
 
 .action_buttons {
@@ -485,7 +490,7 @@ body {
 
 .sidebarColumn a {
     text-decoration: none; }   
-}  
+ 
 .patientLinkingBoxes{
     clear:both;
 } 
@@ -493,6 +498,20 @@ body {
     font-size: 12px;   
 }
 
+#welcome_user_text {
+    left: 120px;
+}
+
+#welcome_user_last_login {
+    left: 120px;
+}
+
+#harmony_logo{
+    position: absolute;
+    top:0;
+    left:0;
+}
+} 
 
 
 

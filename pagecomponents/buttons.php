@@ -3,7 +3,7 @@
             <!-- this div creates the header bar -->
             <div class="headerBar">
         
-                <div id="harmony_logo" style="float:left">
+                <div id="harmony_logo">
                     <a href="http://www.trustinblack.com/harmonyhospital/index.php"><img src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/images/bandaid_bird_90px.png"></a>
                 </div>
                 <div id="welcome_user_text">
