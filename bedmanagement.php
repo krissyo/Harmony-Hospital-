@@ -78,7 +78,7 @@ include("lib/bedManagementScript.php");
             <div name=" buttonWrapper" id="centre">
 
             <button  id="resourcesAvailButton" class="linkingButtons">Resource Availability</button>
-            <button  id="resourcesAvailButton" class="linkingButtons">Add Resource</button>
+            <button  id="resourcesAddButton" class="linkingButtons">Add Resource</button>
             
                 </div>
             <br /><br />
