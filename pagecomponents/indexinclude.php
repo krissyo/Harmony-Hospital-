@@ -70,19 +70,19 @@ header('Location: http://trustinblack.com/harmonyhospital/login.php');
                     <h1> EMPLOYMENT </h1>        
                     </div>
                 </div>
-                
-                <div id="adminButton" class="tab_box">                    
-                    <div  class="tab_box_text">
-                    <h1> ADMIN </h1>        
-                    </div>
-                    
-                </div>
-                
-                <div id="patientButton" class="tab_box">
+
+                 <div id="patientButton" class="tab_box">
                     <div class="tab_box_text">
                     <h1> PATIENT </h1>        
                     </div>
                 </div>
+                
+                <div id="reportsButton" class="tab_box">                    
+                    <div  class="tab_box_text">
+                    <h1> REPORTS </h1>        
+                    </div>
+                    
+                </div>                           
                 
                 <div class="tab_box">
                     <div class="tab_box_text">
