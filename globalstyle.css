@@ -311,7 +311,8 @@ body {
     padding: 5px;
 }
 .sidebarColumn {
-    width: 10%;;
+    /*width: 10%;*/
+    width: 180px;
     height: 100%;
     float: left;
     display:block;
@@ -390,7 +391,6 @@ body {
 }
 .tab_box {
     border: 2px solid;
-    width: 180px;
     border-color: #87bad7;
     border-radius: 15px 15px;
     background-color: #87bad7;
