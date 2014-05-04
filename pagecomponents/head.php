@@ -2,14 +2,13 @@
 if(!isset($_SESSION['userID'])){
 header('Location: http://trustinblack.com/harmonyhospital/login.php');
 }
+echo $_SESSION["roleID"];
 if (isset($permissions)){
     if (isset($_SESSION["roleID"])){
-        foreach($permissions as $p){
-            if ($_SESSION["roleID"]!=$p){
-                header('Location: http://trustinblack.com/harmonyhospital/index.php');
-            }
+        if(!in_array($_SESSION["roleID"],$permissions)){
+            header('Location: http://trustinblack.com/harmonyhospital/index.php');
         }
-    }
+    } 
 }
 ?>
 <!DOCTYPE html>
