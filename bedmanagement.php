@@ -3,7 +3,7 @@ $pagetitle="Bed Management Form";
 include("pagecomponents/head.php");
 include("lib/bedManagementScript.php");
 ?>
-
+	<script src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/lib/buttonClickLink.js"></script>
 	<script>
 	
 	// Central function for
@@ -77,8 +77,8 @@ include("lib/bedManagementScript.php");
         <div id="content">
             <div name=" buttonWrapper" id="centre">
 
-            <!--<button  id="wardMgmtBtn" class="linkingButtons">Ward Management</button>
-            <button  id="deptMgmtBtn" class="linkingButtons">Department management</button>-->
+            <button  id="resourcesAvailButton" class="linkingButtons">Resource Availability</button>
+            <button  id="resourcesAvailButton" class="linkingButtons">Add Resource</button>
             
                 </div>
             <br /><br />
