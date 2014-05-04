@@ -72,7 +72,7 @@ header('Location: http://trustinblack.com/harmonyhospital/login.php');
                     
                 </div>
                 
-                <div class="tab_box">
+                <div id="patientButton" class="tab_box">
                     <div class="tab_box_text">
                     <h1> PATIENT </h1>        
                     </div>
