@@ -23,6 +23,8 @@ if (isset($permissions)){
             <script src="../harmonyhospital/signaturePad/jquery.signaturepad.min.js" type="text/javascript"></script>
             <script src="../harmonyhospital/signaturePad/assets/json2.min.js" type="text/javascript"></script>
         <script src="/harmonyhospital/lib/buttons.js"></script>
+                <!-- meta -->
+        <meta name="viewport" content="width=device-width, user-scalable=no"/>
     </head>
 <body>
     <?php include("buttons.php");?>
