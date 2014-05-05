@@ -5,19 +5,32 @@ include("lib/bedManagementScript.php");
 ?>
 	<script src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/lib/buttonClickLink.js"></script>
 	<script>
+	// Display a list of all departments
+	function displayDpts() {
+
+		// Display a detailed list of departments
+		alert("im in displayDpts");
+		displayDetails("detailsTable", "getDepartmentList.php");
+	}
 	
 	// Central function for
 	// dynamic querying on Dept drop-down click
-	function displayWards(departmentId) {
+	function displayWards(departmentId) { 
 	
-		// display the Ward drop-down list as per the search criteria
-		displayDetails("ward_drop_down_list", "getWardList.php?q=" + departmentId);
-		
-		// Display a detailed list of wards for this department
-		displayDetails("detailsTable", "getWardDetails.php?q=" + departmentId);
-		
-		// Clear the New Bed Textbox value
-		clearNewBedValue();
+		if (departmentId != 'deptDefault') {
+	
+			// display the Ward drop-down list as per the search criteria
+			displayDetails("ward_drop_down_list", "getWardList.php?q=" + departmentId);
+			
+			// Display a detailed list of wards for this department
+			displayDetails("detailsTable", "getWardDetails.php?q=" + departmentId);
+			
+			// Clear the New Bed Textbox value
+			clearNewBedValue();
+		} else {
+			// Display a list of all departments
+			displayDpts();
+		}
 	}
 	
 	// Populates the specified HTML form control
@@ -42,14 +55,25 @@ include("lib/bedManagementScript.php");
 	// Display wards for the selected Department
 	function displayBeds(wardId) {
 		
-		// display the Bed drop-down list as per the search criteria
-		displayDetails("bed_drop_down_list", "getBedList.php?q=" + wardId);
-		
-		// Display a detailed list of wards for this department
-		displayDetails("detailsTable", "getBedDetails.php?q=" + wardId);
-		
-		// Auto-populate the New Bed text-box with Dpt_Ward_Bed prefix
-		populateNewBed();
+		if (wardId != 'WardDefault') {
+			// display the Bed drop-down list as per the search criteria
+			displayDetails("bed_drop_down_list", "getBedList.php?q=" + wardId);
+			
+			// Display a detailed list of wards for this department
+			displayDetails("detailsTable", "getBedDetails.php?q=" + wardId);
+			
+			// Auto-populate the New Bed text-box with Dpt_Ward_Bed prefix
+			populateNewBed();
+		} else {
+			var deptId;
+			deptId = document.getElementById('dpt_drop_down_list').value;
+			
+			if (deptId != 'deptDefault') {
+				// display wards
+				displayWards(deptId);
+			}
+
+		}
 	}
 	
 	// Insert the next Bed description (auto-populated)
@@ -82,7 +106,7 @@ include("lib/bedManagementScript.php");
             
                 </div>
             <br /><br />
-            <form id="manageBedsForm" method="post" action="submit/manageBedssubmit.php">
+            <form id="manageBedsForm" method="post" action="submit/manageBedsSubmit.php">
             <input type="hidden">
             <table>
             
