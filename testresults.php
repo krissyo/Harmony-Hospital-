@@ -17,7 +17,7 @@ include("pagecomponents/head.php");
 
                
                 
-            <tr><td>Clinical ID:</td> <td> <input class="rounded" type="text" name="Clinicalid" id="AdmissionID"></td></tr>
+            <tr><td>Clinical ID:</td> <td> <input class="rounded" type="text" name="Clinicalid" id="Clinicalid"></td></tr>
             <tr><td> Procedure ID:</td> <td><select class="rounded" name="ProID" id="ProcedureID">
                 <?php
                             require_once('pagecomponents/connectDB.php');
@@ -32,7 +32,7 @@ include("pagecomponents/head.php");
                 </select></td>
      
              
-            <tr><td>Notes:</td> <td> <textarea rows="4" cols="50" name="notes" id="TestNotes" placeholder="Please enter results..." required></textarea></td></tr>
+            <tr><td>Notes:</td> <td> <textarea rows="4" cols="50" name="notes" id="notes" placeholder="Please enter results..." required></textarea></td></tr>
             <tr><td>Medical Imaging: </td> <td><input class="rounded" type="file" name="MedicalImaging" id="Upload" value="Upload" required></td></tr>
             <tr><td>Last Updated by: </td> <td><input class="rounded" type="text" name="lastupdated" id="lastupdated" required></td></tr>   
              
@@ -53,4 +53,32 @@ include("pagecomponents/head.php");
 include("pagecomponents/footer.php");
 ?>
             
-            
+		
+		</div>
+    <script> 
+        jQuery.validator.setDefaults({
+          debug: false,
+          success: "valid"
+        });
+        $( "#testresults" ).validate({
+          rules: {
+            Clinicalid: {
+              required: true,
+                digits:true 
+            },
+            Notes: {
+                required: true,
+            },   
+           lastupdated:{
+               required: true,
+              
+            }
+          }
+        })
+        </script>
+    
+    
+    
+    
+    </body>
+</html>            

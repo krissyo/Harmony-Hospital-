@@ -25,6 +25,28 @@
 include("pagecomponents/footer.php");
 ?>
 		</div>
+
+<script> 
+        jQuery.validator.setDefaults({
+          debug: false,
+          success: "valid"
+        });
+        $( "#loginForm" ).validate({
+          rules: {
+            username: {
+              required: true,
+               minlength: 3
+            },
+            password: {
+              required: true
+
+            }
+          }
+        })
+        </script>
+
+
+
 	</body>
 </html>
   

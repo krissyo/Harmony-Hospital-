@@ -1,4 +1,4 @@
-<?php 
+<?php session_start();
 $pagetitle="Book a Procedure";
 include("pagecomponents/head.php");
 
@@ -16,7 +16,7 @@ include("pagecomponents/head.php");
 					<input type="hidden" name="AdmissionId" id="AdmissionId" value="<?php echo $_SESSION['AdmissionId']; ?>">
 					<table id = "bookingTable">
 					<h3><th colspan="2" class="bookingdetails">Booking Details</th></h3>
-				
+					
 					<tr><td>Patient's ID</td><td>
 						<input type="text" class="rounded" name="PatientId" id="PatientId" value="<?php echo $_SESSION['PatientId']; ?>">
 						</td></tr>						
@@ -100,7 +100,7 @@ include("pagecomponents/head.php");
           debug: false,
           success: "valid"
         });
-        $( "#bookings" ).validate({
+        $( "#bookingsform" ).validate({
           rules: {
             PatientId: {
               required: true,
@@ -110,25 +110,21 @@ include("pagecomponents/head.php");
               required: true,
                 minlength: 3
             },
-            DateOfBirth,StartDate,StartTime,FinshTime,ConsentDate: {
+            DateOfBirth: {
                 required: true,
                 date: true
-           
-              
+            },
+             StartDate:{
+                required: true,
+                date: true
+             },
+              ConsentDate:{
+                required: true,
+                date: true  
             }
           }
         })
         </script>
 
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
 	</body>
 </html>

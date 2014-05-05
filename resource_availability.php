@@ -69,5 +69,6 @@ require_once('pagecomponents/connectDB.php');
 				include("pagecomponents/footer.php");
 			?>
 		</div>
+
     </body>
 </html>

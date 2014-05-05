@@ -6,8 +6,8 @@ require_once('../pagecomponents/connectDB.php');
 $validate = new Validate();
 $validated_POST = $validate->post();
 
-$fname =$validated_POST["fname"];
-$lname =$validated_POST["lname"];
+$fname =$validated_POST["FirstName"];
+$lname =$validated_POST["LastName"];
 $aname=$validated_POST["Aname"];
 $cname=$validated_POST["Cname"];
 $DOB=$validated_POST["DateofBirth"];

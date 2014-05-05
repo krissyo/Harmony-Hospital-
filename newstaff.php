@@ -65,5 +65,58 @@ $password=randomPassword();
 include("pagecomponents/footer.php");
 ?>
 		</div>
+
+<script> 
+        jQuery.validator.setDefaults({
+          debug: false,
+          success: "valid"
+        });
+        $( "#loginform" ).validate({
+          rules: {
+            FirstName: {
+              required: true
+            },
+            MiddleName: {
+               required: true
+             },
+            DateOfBirth: {
+                required: true,
+                date:true
+            },
+
+            PostCode: {
+               required: true,
+                minlength:4,
+                maxlength:4,
+                digits: true
+            },
+           PhoneNumber: {
+                required: true,
+                minlength:8,
+                maxlength:8,
+                digits: true
+           },
+            MobileNumber: { 
+                required: true,
+                minlength:10,
+                maxlength:10,
+                digits: true
+            },
+            EmailAddress:{
+                required: true,
+                email:true
+              
+            }
+          }
+        })
+        </script>
+
+
+
+
+
+
+
+
 	</body>
 </html>
