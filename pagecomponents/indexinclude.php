@@ -15,7 +15,7 @@ if(!isset($_SESSION['userID'])){
         <!-- Javascript -->        
         <script src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/lib/jquery-1.11.0.min.js"></script>
         <!--<script src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/lib/mainpage.js"></script>-->
-        <script src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/lib/buttons.js"></script>
+<!--        <script src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/lib/buttons.js"></script>-->
               
     </head> 
     

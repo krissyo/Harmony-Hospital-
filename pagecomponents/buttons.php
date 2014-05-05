@@ -4,11 +4,9 @@
             <div class="headerBar">
         
                 <div id="harmony_logo">
-<<<<<<< HEAD
+
                     <a href="/harmonyhospital/index.php"><img src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/images/bandaid_bird_90px.png"></a>
-=======
-                    <a href="http://www.trustinblack.com/harmonyhospital/index.php"><img src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/images/bandaid_bird_90px.png"></a>
->>>>>>> 5ab3ad551cc2479e016054f04113e2d8773d43da
+
                 </div>
                 <div id="welcome_user_text">
                     <p>
@@ -43,10 +41,11 @@
             
                 
             <!-- Containing DIV for side menu *CONVERT TO PHP AFTER FINALISED*--> 
-            <div id="SideMenu">    
+            <div id="SideMenu"> 
+                <?php echo $_SESSION["roleID"]; ?>
                 <div class="tab_box" id="home_tab" >
                     <div class="tab_box_text">
-                    <a href="http://www.trustinblack.com/harmonyhospital/index.php"><h1> HOME </h1></a>
+                    <a href="/harmonyhospital/index.php"><h1>Home</h1></a>
                     </div>
                 </div>
 
@@ -69,7 +68,7 @@
                     </div>
                 </div>
                 
-                <div class="tab_box">
+                <div id="costButton" class="tab_box">
                     <div class="tab_box_text">
                     <h1>Costs</h1>        
                     </div>
@@ -80,12 +79,13 @@
                     <h1>Resources</h1>        
                     </div>
                 </div>
-                
+                <?php  if ($_SESSION["roleID"]==6){ ?>
                 <div class="tab_box">
-                    <div class="tab_box_text">
+                    <div id="systemAdminButton" class="tab_box_text">
                     <h1>System Admin</h1>        
                     </div>
                 </div>
+                <?php }?>
             </div><!-- Closes side Menu DIV-->
                  
         </div> <!-- this div closes the side bar column -->
@@ -94,6 +94,117 @@
     $("#menutoggle").click(function(){
         $(".sidebarColumn").slideToggle();
     })
+    
+    $(document).ready(function(){
+
+/*-- Index Buttons --*/
+
+/* loads the content for the admin tab*/
+home_tab
+$("#home_tab").mouseenter(function(){
+    $(this).append("<a href='changepassword.php'>Change Password</a><br/>");
+    $(this).append("<a href='profile.php'>Profile</a><br/>");
+    $(this).append("<a href='search.php'>Search</a><br/>");
+});
+$("#home_tab").mouseleave(function(){
+    $(this).html("<h1>Home</h1>");
+});
+        
+$("#employmentButton").mouseenter(function(){
+    $(this).append("<a href='annualleave.php'>Annual Leave</a><br/>");
+    $(this).append("<a href='sickleave.php'>Sick Leave</a><br/>");
+    
+});
+$("#employmentButton").mouseleave(function(){
+    $(this).html("<h1>Employment</h1>");
+});
+
+$("#adminButton").mouseenter(function(){
+    <?php  if($_SESSION["roleID"]==4  || $_SESSION["roleID"]==3 ){ ?>
+    $(this).append("<a href='doctorsnotes.php'>Doctors Notes</a><br/>");
+    <?php } ?>
+    <?php  if($_SESSION["roleID"]==1  || $_SESSION["roleID"]==2){ ?>
+    $(this).append("<a href='nurses.php'>Nurses Notes</a><br/>");
+    <?php } ?>
+    <?php  if($_SESSION["roleID"]==4  || $_SESSION["roleID"]==3 ){ ?>
+    $(this).append("<a href='hospitaltransfer.php'>Hospital Transfer</a><br/>");
+    <?php } ?>
+    <?php  if($_SESSION["roleID"]==6){ ?>
+    $(this).append("<a href='newstaff.php'>New Staff</a><br/>");
+    <?php } ?>
+});
+$("#adminButton").mouseleave(function(){
+    $(this).html("<h1>Admin</h1>");
+});
+
+$("#patientButton").mouseenter(function(){
+    <?php  if($_SESSION["roleID"]==4  || $_SESSION["roleID"]==3 || $_SESSION["roleID"]==1  || $_SESSION["roleID"]==2 ){ ?>
+    $(this).append("<a href='triage.php'>Triage Form</a><br/>");
+    <?php } ?>
+    <?php  if($_SESSION["roleID"]==1 || $_SESSION["roleID"]==2){ ?>
+    $(this).append("<a href='newpatient.php'>New Patient</a><br/>");
+    <?php } ?>
+    <?php  if($_SESSION["roleID"]==4  || $_SESSION["roleID"]==3 || $_SESSION["roleID"]==1 ){ ?>
+    $(this).append("<a href='admissions.php'>admissions</a><br/>");
+    <?php } ?>
+    $(this).append("<a href='patientdetails.php'>Patient Details</a><br/>");
+    <?php  if($_SESSION["roleID"]==4  || $_SESSION["roleID"]==3 || $_SESSION["roleID"]==1 ){ ?>
+    $(this).append("<a href='testresults.php'>Test Results</a><br/>");
+    <?php } ?>
+    $(this).append("<a href='death.php'>Death</a><br/>");
+    <?php  if($_SESSION["roleID"]==4  || $_SESSION["roleID"]==3 || $_SESSION["roleID"]==1 ){ ?>
+    $(this).append("<a href='discharge.php'>Discharge</a><br/>");
+    <?php } ?>
+});
+$("#patientButton").mouseleave(function(){
+    $(this).html("<h1>Patient</h1>");
+});
+
+$("#costButton").mouseenter(function(){
+    <?php  if($_SESSION["roleID"]==4){ ?>
+    $(this).append("<a href='patient_account.php'>Patient Account</a><br/>");
+    <?php } ?>
+    <?php  if($_SESSION["roleID"]==4){ ?>
+    $(this).append("<a href='services_invoice.php'>Services Invoice</a><br/>");
+    <?php } ?>
+});
+$("#costButton").mouseleave(function(){
+    $(this).html("<h1>Costs</h1>");
+});
+     
+$("#resourceButton").mouseenter(function(){
+    $(this).append("<a href='resource_availability.php'>Resource Availability</a><br/>");
+    <?php  if($_SESSION["roleID"]==4  ||  $_SESSION["roleID"]==6){ ?>
+    $(this).append("<a href='bedmanagement.php'>Bed Management</a><br/>");
+    <?php } ?>
+    <?php  if($_SESSION["roleID"]==5){ ?>
+    $(this).append("<a href='addresources.php'>Add Resources</a><br/>");
+    <?php } ?>
+    <?php  if($_SESSION["roleID"]==1 || $_SESSION["roleID"]==2 || $_SESSION["roleID"]==3){ ?>
+    $(this).append("<a href='bookings.php'>Bookings</a><br/>");
+    <?php } ?>
+    <?php  if($_SESSION["roleID"]==4  ||  $_SESSION["roleID"]==5){ ?>
+    $(this).append("<a href='#'>Reports</a><br/>");
+    <?php } ?>
+});
+$("#resourceButton").mouseleave(function(){
+    $(this).html("<h1>Resources</h1>");
+});
+     
+$("#systemAdminButton").mouseenter(function(){
+    <?php  if($_SESSION["roleID"]==6){ ?>
+    $(this).append("<a href='#'>Queries</a><br/>");
+    <?php } ?>
+});
+$("#systemAdminButton").mouseleave(function(){
+    $(this).html("<h1>System Admin</h1>");
+});
+
+
+    
+
+});
+    
     </script>
     <!-- this div creates the content column -->   
     <div class="contentColumn" id="contentColumn">
