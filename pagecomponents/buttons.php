@@ -103,7 +103,7 @@
 home_tab
 $("#home_tab").mouseenter(function(){
     $(this).append("<a href='changepassword.php'>Change Password</a><br/>");
-    $(this).append("<a href='profile.php'>Profile</a><br/>");
+    $(this).append("<a href='#'>Profile</a><br/>");
     $(this).append("<a href='search.php'>Search</a><br/>");
 });
 $("#home_tab").mouseleave(function(){
@@ -124,7 +124,7 @@ $("#adminButton").mouseenter(function(){
     $(this).append("<a href='doctorsnotes.php'>Doctors Notes</a><br/>");
     <?php } ?>
     <?php  if($_SESSION["roleID"]==1  || $_SESSION["roleID"]==2){ ?>
-    $(this).append("<a href='nurses.php'>Nurses Notes</a><br/>");
+    $(this).append("<a href='nursesnotes.php'>Nurses Notes</a><br/>");
     <?php } ?>
     <?php  if($_SESSION["roleID"]==4  || $_SESSION["roleID"]==3 ){ ?>
     $(this).append("<a href='hospitaltransfer.php'>Hospital Transfer</a><br/>");
@@ -145,15 +145,15 @@ $("#patientButton").mouseenter(function(){
     $(this).append("<a href='newpatient.php'>New Patient</a><br/>");
     <?php } ?>
     <?php  if($_SESSION["roleID"]==4  || $_SESSION["roleID"]==3 || $_SESSION["roleID"]==1 ){ ?>
-    $(this).append("<a href='admissions.php'>admissions</a><br/>");
+    $(this).append("<a href='admission.php'>admissions</a><br/>");
     <?php } ?>
-    $(this).append("<a href='patientdetails.php'>Patient Details</a><br/>");
+    $(this).append("<a href='patientdetail.php'>Patient Details</a><br/>");
     <?php  if($_SESSION["roleID"]==4  || $_SESSION["roleID"]==3 || $_SESSION["roleID"]==1 ){ ?>
     $(this).append("<a href='testresults.php'>Test Results</a><br/>");
     <?php } ?>
     $(this).append("<a href='death.php'>Death</a><br/>");
     <?php  if($_SESSION["roleID"]==4  || $_SESSION["roleID"]==3 || $_SESSION["roleID"]==1 ){ ?>
-    $(this).append("<a href='discharge.php'>Discharge</a><br/>");
+    $(this).append("<a href='#'>Discharge</a><br/>");
     <?php } ?>
 });
 $("#patientButton").mouseleave(function(){
