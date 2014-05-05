@@ -4,7 +4,11 @@
             <div class="headerBar">
         
                 <div id="harmony_logo">
+<<<<<<< HEAD
+                    <a href="/harmonyhospital/index.php"><img src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/images/bandaid_bird_90px.png"></a>
+=======
                     <a href="http://www.trustinblack.com/harmonyhospital/index.php"><img src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/images/bandaid_bird_90px.png"></a>
+>>>>>>> 5ab3ad551cc2479e016054f04113e2d8773d43da
                 </div>
                 <div id="welcome_user_text">
                     <p>
@@ -48,38 +52,38 @@
 
                  <div  id="employmentButton" class="tab_box">
                     <div  class="tab_box_text">
-                    <h1> EMPLOYMENT </h1>        
+                    <h1>Employment</h1>        
                     </div>
                 </div>
                 
                 <div id="adminButton" class="tab_box">                    
                     <div  class="tab_box_text">
-                    <h1> ADMIN </h1>        
+                    <h1>Admin</h1>        
                     </div>
                     
                 </div>
                 
                 <div id="patientButton" class="tab_box">
                     <div class="tab_box_text">
-                    <h1> PATIENT </h1>        
+                    <h1>Patient</h1>        
                     </div>
                 </div>
                 
                 <div class="tab_box">
                     <div class="tab_box_text">
-                    <h1> COSTS </h1>        
+                    <h1>Costs</h1>        
                     </div>
                 </div>
                 
                 <div id="resourceButton" class="tab_box">
                     <div class="tab_box_text">
-                    <h1> RESOURCES </h1>        
+                    <h1>Resources</h1>        
                     </div>
                 </div>
                 
                 <div class="tab_box">
                     <div class="tab_box_text">
-                    <h1> SYSTEM ADMIN </h1>        
+                    <h1>System Admin</h1>        
                     </div>
                 </div>
             </div><!-- Closes side Menu DIV-->
