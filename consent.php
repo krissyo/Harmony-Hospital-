@@ -44,5 +44,35 @@ Capicola pig ribeye, flank doner corned beef ground round tongue kielbasa rump a
 include("pagecomponents/footer.php");
 ?>
 		</div>
+
+<script> 
+        jQuery.validator.setDefaults({
+          debug: false,
+          success: "valid"
+        });
+        $( "#consent" ).validate({
+          rules: {
+            FirstName: {
+              required: true,
+               minlength: 3
+            },
+            LastName: {
+              required: true,
+               
+            },
+            Date: {
+                required: true,
+                date: true
+
+            }
+          }
+        })
+        </script>
+
+
+
+
+
+
     </body>
 </html>

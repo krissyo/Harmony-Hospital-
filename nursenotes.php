@@ -15,14 +15,9 @@ include("pagecomponents/head.php");
                 <input type="hidden" >
 
 			<table><h3><th colspan="2" class="userdetails">Patient Details</th></h3>
-                <?php 
-                //use this code where ever session storage is needed 
-                    include("pagecomponents/checklogin.php");
-                ?>
+               
                 <tr><td>First Name:</td> <td><input class="rounded" type="text" name="FirstName" id="FirstName" required></td></tr>
                 <tr><td>Last Name:</td> <td> <input class="rounded" type="text" name="LastName" id="LastName" required></td></tr>
-        <!--    <tr><td>Date of assesment:</td> <td> <input class="rounded" type="date" name="DateAss" id="DateoAss" required></td></tr>
-                <tr><td>Response to Medication:</td> <td> <textarea rows="4" cols="50" placeholder="If Relevant..." required></textarea></td></tr>></tr>    -->
                 <tr><td>General Notes:</td> <td> <textarea rows="4" cols="50" name="notes" placeholder="Start typing here..." required></textarea></td></tr>
                <tr>
                     <td></td>
@@ -37,5 +32,38 @@ include("pagecomponents/head.php");
 include("pagecomponents/footer.php");
 ?>
 		</div>
+        
+        <script> 
+        jQuery.validator.setDefaults({
+          debug: false,
+          success: "valid"
+        });
+        $( "#nursesnotes" ).validate({
+          rules: {
+            FirstName: {
+              required: true,
+                minlength: 3
+            },
+            LastName: {
+              required: true,
+            },
+            Notes: {
+                required: true,
+               
+           
+              
+            }
+          }
+        })
+        </script>
+        
+        
+        
+        
+        
+        
+        
+        
+        
     </body>
 </html>

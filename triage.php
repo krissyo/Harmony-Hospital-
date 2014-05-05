@@ -15,8 +15,8 @@ include("pagecomponents/head.php");
        
 			<table><h3><th colspan="2" class="userdetails">Patient Details</th></h3>
                
-                <tr><td>First Name:</td> <td><input class="rounded" type="text" name="fname" id="FirstName" required></td></tr>
-                <tr><td>Last Name:</td> <td> <input class="rounded" type="text" name="lname" id="LastName" required></td></tr>
+                <tr><td>First Name:</td> <td><input class="rounded" type="text" name="FirstName" id="FirstName" required></td></tr>
+                <tr><td>Last Name:</td> <td> <input class="rounded" type="text" name="LastName " id="LastName" required></td></tr>
                 <tr><td>Date of Birth:</td> <td> <input class="rounded" type="date" name="DateofBirth" id="DateofBirth" required></td></tr>
                 <tr><td>Date Admitted:</td> <td> <input class="rounded" type="date" name="Date" id="Date" required></td></tr>
                 <!--<tr><td>Condition of Patient:</td> <td> <input class="rounded" type="Condition" name="Condition" id="Condition" required></td></tr>-->
@@ -70,6 +70,40 @@ include("pagecomponents/head.php");
 include("pagecomponents/footer.php");
 ?>
 		</div>
+            
+          <script> 
+        jQuery.validator.setDefaults({
+          debug: false,
+          success: "valid"
+        });
+        $( "#triage" ).validate({
+          rules: {
+            FirstName: {
+              required: true,
+              minlength:3
+
+            },
+            LastName: {
+                required: true,
+            },   
+           DateofBirth:{
+               required: true,
+               date:true
+           },
+            Date:{
+               required: true,
+               date:true 
+              
+            }
+          }
+        })
+        </script>    
+            
+            
+            
+            
+            
+            
     </body>
 </html>
 

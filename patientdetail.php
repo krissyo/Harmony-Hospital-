@@ -3,7 +3,7 @@ $pagetitle="Patient Detail Form";
 include("pagecomponents/head.php");
 
 require_once('pagecomponents/connectDB.php');
-				$sql="SELECT * from patient_details where patient_id ='1'"; //
+				$sql="SELECT * from patient_details where patient_id ='1'";
 				$result=mysqli_query($con,$sql);
                 $row = mysqli_fetch_array($result);
 ?>

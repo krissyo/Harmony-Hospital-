@@ -12,10 +12,7 @@ include("pagecomponents/head.php");
             <form id="HospitalTransfer" action="submit/hospitaltransfersubmit.php" method="post">
                 <input type="hidden" >
 			<table><h3><th colspan="2" class="userdetails">Transfer Details</th></h3>
-                <?php 
-                //use this code where ever session storage is needed 
-                    include("pagecomponents/checklogin.php");
-                ?>
+               
                 <tr><td>Patient ID:</td> <td><input class="rounded" type="text" name="PatientId" id="PatientId" required></td></tr>
                 <tr><td>Last Name:</td> <td> <input class="rounded" type="text" name="LastName" id="LastName" required></td></tr>
                 <tr><td>Date of Discharge:</td> <td> <input class="rounded" type="date" name="DateDis" id="DateoDis" required></td></tr>
@@ -34,6 +31,40 @@ include("pagecomponents/head.php");
 include("pagecomponents/footer.php");
 ?>
 		</div>
+
+<script> 
+        jQuery.validator.setDefaults({
+          debug: false,
+          success: "valid"
+        });
+        $( "#HospitalTransfer" ).validate({
+          rules: {
+            PatientId: {
+              required: true,
+               digits: true
+            },
+            LastName: {
+              required: true,
+                minlength: 3
+            },
+              DateDis: {
+                 required: true,
+                 date: true 
+              },
+              Transfer: {
+                required: true,
+                minlength: 5
+
+            }
+          }
+        })
+        </script>
+
+
+
+
+
+
     </body>
 </html>
 

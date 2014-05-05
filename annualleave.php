@@ -51,6 +51,7 @@ include("pagecomponents/footer.php");
             AnnualLeaveEnd: {
               required: true,
               date: true
+              
             }
           }
         })
