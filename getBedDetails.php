@@ -9,10 +9,11 @@ from beds WHERE ward_id = ' . $wardId . ' ORDER BY bed_description';
 	
 $result=mysqli_query($con,$sql);
 
+ echo '<h3>Bed List</h3>';
  echo '<table id="details" >';
  
  // column headings
- echo "<tr><th>Id</th>
+ echo "<tr><th>Select</th>
 			<th>Description</th>
 			<th>Vacancy</th>
 			<th>Patient Id</th>
@@ -21,7 +22,8 @@ $result=mysqli_query($con,$sql);
 
 	while($row = mysqli_fetch_array($result)){
 		echo '<tr>';
-		echo '<td>' . $row["bed_id"] . '</td>';
+		echo '<td><input type="radio" name="record_id" value="' . $row['bed_id'] . '"></td>';
+		//echo '<td>' . $row["bed_id"] . '</td>';
 		echo '<td>' . $row["bed_description"] . '</td>';
 		
 		// Check occupancy / vacancy for this bed

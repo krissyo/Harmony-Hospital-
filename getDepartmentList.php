@@ -1,5 +1,5 @@
 <?php
-echo 'I am in department_list.php';
+
 require ("pagecomponents/connectDB.php");
 
 
@@ -8,16 +8,17 @@ $sql = 'SELECT department_id, department_description, department_prefix, number_
 	
 $result=mysqli_query($con,$sql);
 
-echo 'I am in department_list.php';
+echo '<h3>Departments</h3>';
 
  echo '<table id="details" >';
  
  // column headings
-echo '<tr><th>Id</th><th>Prefix</th><th>Desc</th><th>Num of wards</th><th>Admissions</th></tr>';
+echo '<tr><th>Select</th><th>Prefix</th><th>Desc</th><th>Num of wards</th><th>Admissions</th></tr>';
 
 	while($row = mysqli_fetch_array($result)){
 			echo '<tr>';
-			echo '<td>' . $row["department_id"] . '</td>';
+			//echo '<td>' . $row["department_id"] . '</td>';
+			echo '<td><input type="radio" name="record_id" value="' . $row['department_id'] . '"></td>';
 			echo '<td>' . $row["department_prefix"] . '</td>';
 			echo '<td>' . $row["department_description"] . '</td>';
 			echo '<td>' . $row["number_of_wards"] . '</td>';

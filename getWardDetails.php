@@ -6,13 +6,14 @@ require ("pagecomponents/connectDB.php");
 $sql='SELECT ward_id, ward_prefix, ward_description, number_of_beds from wards WHERE department_id = ' . $departmentId . ' ORDER BY ward_id';
 	
 $result=mysqli_query($con,$sql);
-
+ echo '<h3>Ward List</h3>';
  echo '<table id="details">';
- echo '<tr><th>Id</th><th>Prefix</th><th>Description</th><th>Num of beds</th><th>Admissions</th></tr>';
+ echo '<tr><th>Select</th><th>Prefix</th><th>Description</th><th>Num of beds</th><th>Admissions</th></tr>';
 
 	while($row = mysqli_fetch_array($result)){
 		echo '<tr>';
-		echo '<td>' . $row["ward_id"] . '</td>';
+		//echo '<td>' . $row["ward_id"] . '</td>';
+		echo '<td><input type="radio" name="record_id" value="' . $row['ward_id'] . '"></td>';
 		echo '<td>' . $row["ward_prefix"] . '</td>';
 		echo '<td>' . $row["ward_description"] . '</td>';
 		echo '<td>' . $row["number_of_beds"] . '</td>';
