@@ -1,3 +1,6 @@
+<?php
+    require_once('pagecomponents/connectDB.php');
+?>
 <div class="Container">
 
             <!-- this div creates the header bar -->
@@ -42,50 +45,25 @@
                 
             <!-- Containing DIV for side menu *CONVERT TO PHP AFTER FINALISED*--> 
             <div id="SideMenu"> 
-                <?php echo $_SESSION["roleID"]; ?>
-                <div class="tab_box" id="home_tab" >
-                    <div class="tab_box_text">
-                    <a href="/harmonyhospital/index.php"><h1>Home</h1></a>
+            <?php
+                $sql1 = "SELECT * FROM top_nav";
+                $result=mysqli_query($con,$sql1)
+                    or die("Error: ".mysqli_error($con)); 
+                $total = mysqli_num_rows($result);
+                if($total > 0){
+                    while($row = mysqli_fetch_array($result)){
+                        if($row["role_id"] == $_SESSION["roleID"] || $row["role_id"]==0){    
+                ?>
+                    <div class="tab_box" id="<?php echo $row["html_id"] ?>" >
+                        <div class="tab_box_text">
+                        <a href="<?php echo $row["url"]; ?>"><h1><?php echo $row["name"]?></h1></a>
+                        </div>
                     </div>
-                </div>
-
-                 <div  id="employmentButton" class="tab_box">
-                    <div  class="tab_box_text">
-                    <h1>Employment</h1>        
-                    </div>
-                </div>
-                
-                <div id="adminButton" class="tab_box">                    
-                    <div  class="tab_box_text">
-                    <h1>Admin</h1>        
-                    </div>
-                    
-                </div>
-                
-                <div id="patientButton" class="tab_box">
-                    <div class="tab_box_text">
-                    <h1>Patient</h1>        
-                    </div>
-                </div>
-                
-                <div id="costButton" class="tab_box">
-                    <div class="tab_box_text">
-                    <h1>Costs</h1>        
-                    </div>
-                </div>
-                
-                <div id="resourceButton" class="tab_box">
-                    <div class="tab_box_text">
-                    <h1>Resources</h1>        
-                    </div>
-                </div>
-                <?php  if ($_SESSION["roleID"]==6){ ?>
-                <div class="tab_box">
-                    <div id="systemAdminButton" class="tab_box_text">
-                    <h1>System Admin</h1>        
-                    </div>
-                </div>
-                <?php }?>
+                <?php
+                        }
+                    }
+                }
+                ?>
             </div><!-- Closes side Menu DIV-->
                  
         </div> <!-- this div closes the side bar column -->
@@ -100,108 +78,46 @@
 /*-- Index Buttons --*/
 
 /* loads the content for the admin tab*/
-home_tab
-$("#home_tab").mouseenter(function(){
-    $(this).append("<a href='changepassword.php'>Change Password</a><br/>");
-    $(this).append("<a href='#'>Profile</a><br/>");
-    $(this).append("<a href='search.php'>Search</a><br/>");
-});
-$("#home_tab").mouseleave(function(){
-    $(this).html("<h1>Home</h1>");
-});
-        
-$("#employmentButton").mouseenter(function(){
-    $(this).append("<a href='annualleave.php'>Annual Leave</a><br/>");
-    $(this).append("<a href='sickleave.php'>Sick Leave</a><br/>");
-    
-});
-$("#employmentButton").mouseleave(function(){
-    $(this).html("<h1>Employment</h1>");
-});
-
-$("#adminButton").mouseenter(function(){
-    <?php  if($_SESSION["roleID"]==4  || $_SESSION["roleID"]==3 ){ ?>
-    $(this).append("<a href='doctorsnotes.php'>Doctors Notes</a><br/>");
-    <?php } ?>
-    <?php  if($_SESSION["roleID"]==1  || $_SESSION["roleID"]==2){ ?>
-    $(this).append("<a href='nursesnotes.php'>Nurses Notes</a><br/>");
-    <?php } ?>
-    <?php  if($_SESSION["roleID"]==4  || $_SESSION["roleID"]==3 ){ ?>
-    $(this).append("<a href='hospitaltransfer.php'>Hospital Transfer</a><br/>");
-    <?php } ?>
-    <?php  if($_SESSION["roleID"]==6){ ?>
-    $(this).append("<a href='newstaff.php'>New Staff</a><br/>");
-    <?php } ?>
-});
-$("#adminButton").mouseleave(function(){
-    $(this).html("<h1>Admin</h1>");
-});
-
-$("#patientButton").mouseenter(function(){
-    <?php  if($_SESSION["roleID"]==4  || $_SESSION["roleID"]==3 || $_SESSION["roleID"]==1  || $_SESSION["roleID"]==2 ){ ?>
-    $(this).append("<a href='triage.php'>Triage Form</a><br/>");
-    <?php } ?>
-    <?php  if($_SESSION["roleID"]==1 || $_SESSION["roleID"]==2){ ?>
-    $(this).append("<a href='newpatient.php'>New Patient</a><br/>");
-    <?php } ?>
-    <?php  if($_SESSION["roleID"]==4  || $_SESSION["roleID"]==3 || $_SESSION["roleID"]==1 ){ ?>
-    $(this).append("<a href='admission.php'>admissions</a><br/>");
-    <?php } ?>
-    $(this).append("<a href='patientdetail.php'>Patient Details</a><br/>");
-    <?php  if($_SESSION["roleID"]==4  || $_SESSION["roleID"]==3 || $_SESSION["roleID"]==1 ){ ?>
-    $(this).append("<a href='testresults.php'>Test Results</a><br/>");
-    <?php } ?>
-    $(this).append("<a href='death.php'>Death</a><br/>");
-    <?php  if($_SESSION["roleID"]==4  || $_SESSION["roleID"]==3 || $_SESSION["roleID"]==1 ){ ?>
-    $(this).append("<a href='#'>Discharge</a><br/>");
-    <?php } ?>
-});
-$("#patientButton").mouseleave(function(){
-    $(this).html("<h1>Patient</h1>");
-});
-
-$("#costButton").mouseenter(function(){
-    <?php  if($_SESSION["roleID"]==4){ ?>
-    $(this).append("<a href='patient_account.php'>Patient Account</a><br/>");
-    <?php } ?>
-    <?php  if($_SESSION["roleID"]==4){ ?>
-    $(this).append("<a href='services_invoice.php'>Services Invoice</a><br/>");
-    <?php } ?>
-});
-$("#costButton").mouseleave(function(){
-    $(this).html("<h1>Costs</h1>");
-});
-     
-$("#resourceButton").mouseenter(function(){
-    $(this).append("<a href='resource_availability.php'>Resource Availability</a><br/>");
-    <?php  if($_SESSION["roleID"]==4  ||  $_SESSION["roleID"]==6){ ?>
-    $(this).append("<a href='bedmanagement.php'>Bed Management</a><br/>");
-    <?php } ?>
-    <?php  if($_SESSION["roleID"]==5){ ?>
-    $(this).append("<a href='addresources.php'>Add Resources</a><br/>");
-    <?php } ?>
-    <?php  if($_SESSION["roleID"]==1 || $_SESSION["roleID"]==2 || $_SESSION["roleID"]==3){ ?>
-    $(this).append("<a href='bookings.php'>Bookings</a><br/>");
-    <?php } ?>
-    <?php  if($_SESSION["roleID"]==4  ||  $_SESSION["roleID"]==5){ ?>
-    $(this).append("<a href='#'>Reports</a><br/>");
-    <?php } ?>
-});
-$("#resourceButton").mouseleave(function(){
-    $(this).html("<h1>Resources</h1>");
-});
-     
-$("#systemAdminButton").mouseenter(function(){
-    <?php  if($_SESSION["roleID"]==6){ ?>
-    $(this).append("<a href='#'>Queries</a><br/>");
-    <?php } ?>
-});
-$("#systemAdminButton").mouseleave(function(){
-    $(this).html("<h1>System Admin</h1>");
-});
+<?php
+//selects everything from top_nav
+    $sql1 = "SELECT * FROM top_nav";
+    $result=mysqli_query($con,$sql1)
+        or die("Error: ".mysqli_error($con)); 
+    //counts number of rows to see if larger than 0
+    $total = mysqli_num_rows($result);
+    if($total > 0){
+        while($row = mysqli_fetch_array($result)){
+        ?>
+            //selecting id of element and applying mouse over event handler
+            $("#<?php echo $row["html_id"] ?>").mouseenter(function(){
+                <?php
+                $sql2 = "SELECT * FROM sub_nav";
+                $result2=mysqli_query($con,$sql2)
+                    or die("Error: ".mysqli_error($con)); 
+                $total2 = mysqli_num_rows($result2);
+                if($total2 > 0){
+                    while($sub_row = mysqli_fetch_array($result2)){
+                        //if the top_nav_id matches the current top nav id, then execute following piece of js
+                        if($sub_row["top_nav_id"] == $row["id"] && ($sub_row["role_id"]==$_SESSION["roleID"] || $sub_row["role_id"]==0 )){
+                ?>
+                // if above is true, show this js
+                $(this).append("<a href='<?php echo $sub_row["url"]; ?>'><?php echo $sub_row["name"] ?></a><br/>");
+                <?php
+                        }
+                    }
+                }
+                ?>
+            });    
+            //select id, then applying mouseleave event handler
+            $("#<?php echo $row["html_id"]?>").mouseleave(function(){
+                $(this).html("<h1><?php echo $row["name"] ?></h1>");
+            });           
+        <?php
+        }
+    }
+?>
 
 
-    
 
 });
     
