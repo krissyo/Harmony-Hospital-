@@ -2,7 +2,7 @@
 $wardId = intval($_GET['q']);
 
 require ("pagecomponents/connectDB.php");
-
+$firstRow = true;
 
 $sql='SELECT bed_id, bed_description 
 from beds WHERE ward_id = ' . $wardId . ' ORDER BY bed_description';
@@ -19,10 +19,16 @@ $result=mysqli_query($con,$sql);
 			<th>Patient Id</th>
 			<th>Patient's Name</th>
 		</tr>";
-
+if ($result) {
 	while($row = mysqli_fetch_array($result)){
 		echo '<tr>';
-		echo '<td><input type="radio" name="record_id" value="' . $row['bed_id'] . '"></td>';
+		if ($firstRow) {
+			echo '<td><input type="radio" name="record_id" id = "record_id" value="' . $row['bed_id'] . '" checked></td>';
+			$firstRow = false;
+		} else {
+			echo '<td><input type="radio" name="record_id" id = "record_id" value="' . $row['bed_id'] . '"></td>';
+		}
+		
 		//echo '<td>' . $row["bed_id"] . '</td>';
 		echo '<td>' . $row["bed_description"] . '</td>';
 		
@@ -50,7 +56,7 @@ $result=mysqli_query($con,$sql);
 			
 		echo '</tr>';
     }
-	
+}	
 echo '</table>';
 
 require_once('pagecomponents/closeConnection.php');

@@ -100,18 +100,6 @@ include("lib/bedManagementScript.php");
 		document.getElementById('bed_description').innerHTML = "";
 		document.getElementById('bed_drop_down_list').innerHTML = "<option value='BedDefault'>-- please select a bed --</option>";
 	}
-	
-	function validateUpdate() {
-		alert('i am in validateUpdate');
-		
-		if (!document.getElementById('recordId').selected) {
-			document.getElementById('error').innerHTML = 
-				'Please click on the required entry in the list to update it.';
-			return false;
-		}
-		
-		return true;
-	}
 	</script>
 	
     <div id="wrapper">
@@ -120,13 +108,13 @@ include("lib/bedManagementScript.php");
         </div>
         <div id="content">
             <div name=" buttonWrapper" id="centre">
-
+			<!-- WE DO NOT NEED THESE BUTTONS 
             <button  id="resourcesAvailButton" class="linkingButtons">Resource Availability</button>
-            <button  id="resourcesAddButton" class="linkingButtons">Add Resource</button>
+            <button  id="resourcesAddButton" class="linkingButtons">Add Resource</button> -->
             
                 </div>
             <br /><br />
-            <form id="manageBedsForm" method="post" action="processBeds.php">
+            <form id="manageBedsForm" method="POST" action="processBeds.php">
             <input type="hidden">
             <table>
             
@@ -157,7 +145,7 @@ include("lib/bedManagementScript.php");
 			<!-- When the form first loads, a list of departments is displayed here
 			As soon as the user selects a Department or Ward or Bed
 			some dynamic querying of the database is displayed below DIV id=detailsTable-->
-			<span id="error"></span>
+
 			<div id="detailsTable">
 			<h3>Departments</h3>
 				<?php
@@ -173,9 +161,9 @@ include("lib/bedManagementScript.php");
                 </tr>
 				<!-- Three buttons in one line -->
                 <tr>                
-                    <td><input class="rounded" type="submit" name="submit" id="update" value="Update" onclick="return validateUpdate();"></td>
-                    <td><input class="rounded" type="submit" name="submit" id="create" value="Add New"></td>
-					<td><input class="rounded" type="submit" name="submit" id="delete" value="Delete"></td>
+                    <td><input class="rounded" type="submit" name="load" id="update" value="Update"></td>
+                    <td><input class="rounded" type="submit" name="load" id="create" value="Add New"></td>
+					<td><input class="rounded" type="submit" name="load" id="delete" value="Delete"></td>
                 </tr>
             </table>
 			</form>

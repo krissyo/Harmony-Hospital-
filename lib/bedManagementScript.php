@@ -18,9 +18,14 @@
 	function populate_dpt_details() {
 		
 		require ('pagecomponents/connectDB.php');
+		$firstRow = true;
 
-		$sql = 'SELECT department_id, department_description, department_prefix, number_of_wards
-		FROM departments ORDER BY department_id';
+		$sql = 'SELECT department_id, department_description, 
+		department_prefix, Count(wards.ward_id) as number_of_wards
+		FROM departments 
+		natural join wards 
+		Group BY department_id, 
+		department_description, department_prefix';
 		
 		$result = mysqli_query($con, $sql);
 		
@@ -29,7 +34,12 @@
 		
 		while($row = mysqli_fetch_array($result)){
 			echo '<tr>';
-			echo '<td><input type="radio" name="record_id" value="' . $row['department_id'] . '"></td>';
+			if ($firstRow) {
+				echo '<td><input type="radio" name="record_id" id = "record_id" value="' . $row['department_id'] . '" checked></td>';
+				$firstRow = false;
+			} else {
+				echo '<td><input type="radio" name="record_id" id = "record_id" value="' . $row['department_id'] . '"></td>';
+			}
 			echo '<td>' . $row["department_prefix"] . '</td>';
 			echo '<td>' . $row["department_description"] . '</td>';
 			echo '<td>' . $row["number_of_wards"] . '</td>';
