@@ -27,7 +27,6 @@ if (ISSET($_SESSION['objectId'])) {
 			$sql = 'SELECT bed_description as description
 					FROM beds 
 					WHERE bed_id = ' . $_SESSION['objectId'];
-			echo $sql;
 		}
 
 		$result = mysqli_query($con,$sql);
@@ -92,7 +91,9 @@ if (ISSET($_SESSION['objectId'])) {
 
 	<tr><td></td>               
 		<td><input class="rounded" type="submit" name="submit" id="submit" value="Submit">
-		<input class="rounded" type="submit" name="submit" id="cancel" value="Cancel"></td>
+		<input class="rounded" type="button" 
+		onclick="location.href = 'bedmanagement.php'"
+		name="submit" id="backToBedMgt" value="Back"></td>
     </tr>
 </table>
 </form>
