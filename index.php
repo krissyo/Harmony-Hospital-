@@ -4,9 +4,8 @@
     
 	
 
-		?>
-               
-        <!--PHP INJECTION FOR CONFTENT -->
+		?>     
+        <!--PHP INJECTION FOR CONTENT -->
         <head><title>Main Menu</title>
         </head>
     </div><!-- this div closes the content column --> 
@@ -15,10 +14,6 @@
          </div>
         
     <form id="index">
-		<?php
-		include ("pagecomponents/load_permissions.php");
-		//include("pagecomponents/welcome_user.php");
-		?>
     </form>
 
      <?php include ("pagecomponents/footer.php"); ?>   
