@@ -2,7 +2,7 @@
 session_start();
 $pagetitle="Add / Update a Resource";
 include("pagecomponents/head.php");
-require_once 'validate.inc';
+require_once 'pagecomponents/validate_resource_mgt.inc';
 require_once ("pagecomponents/connectDB.php");
 
 
@@ -18,7 +18,7 @@ if (ISSET($_POST['submit'])) {
 	}
 	
 	if (count($errors) === 0) {
-		require 'success_resource_post.inc';
+		require 'submit/success_resource_post.inc';
 	} else {
 		echo '<h2>Error - please correct the problems listed below</h2>';
 		require 'resourceForm.php';
@@ -54,6 +54,7 @@ if (ISSET($_POST['submit'])) {
 		
 	} else {
 		$_SESSION['object'] = 'Department';
+		$_SESSION['parentId'] = '';
 	}
 
 	if (ISSET($_POST['record_id'])) {
@@ -75,10 +76,44 @@ if (ISSET($_POST['submit'])) {
 			include 'resourceForm.php';
 			
 		} else if ($_POST['load'] == 'Delete') {
+			
 			$_SESSION['operation'] = 'Delete';
+			
+			// If there are no current admissions associated with this object,
+			// allow the delete
+			$checkCleared = checkDeleteAllowed($_SESSION['objectId'], $_SESSION['object']);
+			
+			if ($_SESSION['object'] == 'Department') {
+			
+				echo '<h2>Can not delete any Departments due to active resources.</h2>';
+?>				<table>
+				<tr><td></td>
+					<td><input class="rounded" type="button" onclick="location.href = 'bedmanagement.php'"
+						name="submit" id="backToBedMgt" value="Back"></td>
+				</tr>
+				</table>
+
+<?php
+
+			} else if ($checkCleared) {
+			
+				require 'submit/success_resource_post.inc';
+				
+			} else {
+			
+				echo '<h2>Can not delete the selected ' . $_SESSION['object'] . ' due to active admissions.</h2>';
+?>
+				<table>
+				<tr><td></td>
+					<td><input class="rounded" type="button" onclick="location.href = 'bedmanagement.php'"
+						name="submit" id="backToBedMgt" value="Back"></td>
+				</tr>
+				</table>
+
+<?php
+			}			
 		}
 	} 
-
 }
 ?>
 

@@ -1,8 +1,9 @@
 <?php
  // insert or update the database
  // display a success or failure message
+ $action = '';
 if ($_SESSION['operation'] == 'Update') {
-
+	$action = ' updated ';
 	$sql = 'UPDATE ';
 	
 	if ($_SESSION['object'] == 'Department') {
@@ -24,6 +25,7 @@ if ($_SESSION['operation'] == 'Update') {
 	
 } else if ($_SESSION['operation'] == 'Add') {
 
+	$action = ' added ';
 	$sql = 'INSERT INTO ';
 	
 	if ($_SESSION['object'] == 'Department') {
@@ -39,15 +41,46 @@ if ($_SESSION['operation'] == 'Update') {
 
 } else if ($_SESSION['operation'] == 'Delete') {
 
+	$action = ' deleted ';
+	// Can not delete departments! as they are used in the "resources" table
+	if ($_SESSION['object'] == 'Ward') {
+	
+		// also need to delete all beds associated with this ward
+		$sql = 'DELETE FROM beds WHERE ward_id = ' . $_SESSION['objectId'];
+		
+		// execute the 1st query to delete associated beds
+		$result = mysqli_query($con,$sql);
+		
+		// Deleting wards now
+		$sql = 'DELETE FROM wards WHERE ward_id = ' . $_SESSION['objectId'];
+		// 2nd query will be executed below to delete the ward record
+		
+	} else if ($_SESSION['object'] == 'Bed') {
+		$sql = 'DELETE FROM beds WHERE bed_id = ' . $_SESSION['objectId'];
+	}
+	
 }
 
 // execute the query
 $result = mysqli_query($con,$sql);
 
-if ( $result !== false ) {
-	echo 'Successfully updated the selected '. $_SESSION['object'];
+//$row = mysqli_fetch_array($result);
+?>
+
+<table><tr><td></td><td>
+
+<?php
+if ($result !== false) {
+	echo 'Successfully' . $action . 'the selected '. $_SESSION['object'];
 } else {
-	echo 'Failed to update the selected '. $_SESSION['object'];
-	echo $sql;
+	echo 'Failed to perform the ' . $_SESSION['operation'] . ' on the selected ' . $_SESSION['object'];
+	
 }
 ?>
+</td></tr>
+
+<tr><td></td>
+	<td><input class="rounded" type="button" onclick="location.href = 'bedmanagement.php'"
+		name="submit" id="backToBedMgt" value="Back"></td>
+</tr>
+</table>

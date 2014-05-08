@@ -125,8 +125,12 @@ include("lib/bedManagementScript.php");
 							<option value="deptDefault">-- please select a department --</option>
 							<?php
 							// When the form first loads, populate the list of departments
-								populate_department_list();
-								?>
+							populate_department_list();
+							// Clear some session variables
+							$_SESSION['object'] = '';
+							$_SESSION['parentId'] = '';
+							$_SESSION['objectId'] = '';
+							?>
                         </select>
                     </td>
 					<td>
