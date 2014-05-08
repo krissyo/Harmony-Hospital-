@@ -1,4 +1,4 @@
-body {  
+body{  
     margin: 0px;
 	background-color:#ffffff;
     font-family:"Helvetica";
@@ -9,7 +9,7 @@ h1,a{
     margin-left: auto;
     margin-right: auto;
 }
-h3 {
+h3{
     text-align:center;
     color:#999999;
     margin:0 auto;
@@ -17,7 +17,7 @@ h3 {
 hr{
     clear:right;   
 }
-img {
+img{
     padding: 0;
     margin: auto;
     display: block;
@@ -419,7 +419,7 @@ body {
 }
 .tab_box a{
     text-decoration: none;
-    color: black;
+    color: inherit;
     font-family: inherit;
     font-weight: inherit;
     font-size: 10pt;

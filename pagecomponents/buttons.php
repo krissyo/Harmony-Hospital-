@@ -15,11 +15,7 @@
                     <p>
                         <?php echo $pagetitle . ", " . $_SESSION["Name"] ?>
                     </p>
-                </div>
-                <div id="welcome_user_last_login">
-                    <p>your last login was 140314 @ 14:33</p>
-                </div><!-- close welcome_user_text-->
-                    
+                </div>   
                 <!-- containing DIV for top menu bar in header -->
                 <div id="TopMenuBar">
                     <div class="action_buttons" id="ProfileButton">
@@ -38,7 +34,7 @@
         
     <!-- this div creates the side bar column -->
             <div class="menuresize">
-            <input type="button" value="menu" id="menutoggle">
+                <a href="#" id="menutoggle">Menu</a>
             </div>
             <div class="sidebarColumn">
             
@@ -69,10 +65,13 @@
         </div> <!-- this div closes the side bar column -->
     <script>
         // krissy
-    $("#menutoggle").click(function(){
-        $(".sidebarColumn").slideToggle();
-    })
-    
+
+        slide = 0
+
+//        $("#menutoggle").on("tap",function(){
+//            $(".sidebarColumn").slideToggle();
+//        });    
+
     $(document).ready(function(){
 
 /*-- Index Buttons --*/
@@ -116,11 +115,13 @@
         }
     }
 ?>
-
-
+//        $(".sidebarColumn").slideUp();
+        $(".menuresize").on("touch",function(){
+            $(".sidebarColumn").slideToggle();
+        })
 
 });
-    
+   
     </script>
     <!-- this div creates the content column -->   
     <div class="contentColumn" id="contentColumn">
