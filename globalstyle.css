@@ -193,7 +193,7 @@ in Resource Availability Form */
 #password { 
     text-align: left	
 }
-#submit { margin-top: 10px;
+#submit, #backToBedMgt { margin-top: 10px;
 	margin-bottom: 10px;
 }
 /* Update button on the Patient Account Form */
@@ -466,11 +466,10 @@ body {
     display:none;
 }
 @media all and (max-width:769px ){
-.sidebarColumn {
-    width: 100%;
-    float: left;
-    display:none;
- }
+    .sidebarColumn {
+        width: 100%;
+        float: left;
+     }
     .menuresize{
     width:100%;
     padding:0;
@@ -480,37 +479,40 @@ body {
     text-align:center;
     }
     #menutoggle{
-    display:inline;
-}
-.tab_box {
-    border-radius:0; 
-    padding:2px;
-    margin:1px;
-}
+        display:inline;
+        color:#FFF;
+        font-size: 32px;
+        text-decoration: none;
+    }
+    .tab_box {
+        border-radius:0; 
+        padding:2px;
+        margin:1px;
+    }
 
-.sidebarColumn a {
-    text-decoration: none; }   
- 
-.patientLinkingBoxes{
-    clear:both;
-} 
-.patientLinkingBoxes h1{
-    font-size: 12px;   
-}
+    .sidebarColumn a {
+        text-decoration: none; }   
 
-#welcome_user_text {
-    left: 120px;
-}
+    .patientLinkingBoxes{
+        clear:both;
+    } 
+    .patientLinkingBoxes h1{
+        font-size: 12px;   
+    }
 
-#welcome_user_last_login {
-    left: 120px;
-}
+    #welcome_user_text {
+        left: 120px;
+    } 
 
-#harmony_logo{
-    position: absolute;
-    top:0;
-    left:0;
-}
+    #welcome_user_last_login {
+        left: 120px;
+    }
+
+    #harmony_logo{
+        position: absolute;
+        top:0;
+        left:0;
+    }
 } 
 
 

@@ -7,15 +7,20 @@ include("lib/bedManagementScript.php");
 	<script>
 	// Display a list of all departments
 	function displayDpts() {
-
+	
+		clearNewBedValue();
+		document.getElementById('ward_drop_down_list').innerHTML = "<option value='BedDefault'>-- please select a ward --</option>";
+		
 		// Display a detailed list of departments
-		alert("im in displayDpts");
 		displayDetails("detailsTable", "getDepartmentList.php");
 	}
 	
 	// Central function for
 	// dynamic querying on Dept drop-down click
 	function displayWards(departmentId) { 
+	
+		// Clear the New Bed Textbox value
+		clearNewBedValue();
 	
 		if (departmentId != 'deptDefault') {
 	
@@ -25,8 +30,6 @@ include("lib/bedManagementScript.php");
 			// Display a detailed list of wards for this department
 			displayDetails("detailsTable", "getWardDetails.php?q=" + departmentId);
 			
-			// Clear the New Bed Textbox value
-			clearNewBedValue();
 		} else {
 			// Display a list of all departments
 			displayDpts();
@@ -65,6 +68,10 @@ include("lib/bedManagementScript.php");
 			// Auto-populate the New Bed text-box with Dpt_Ward_Bed prefix
 			populateNewBed();
 		} else {
+			
+			// Clear the New Bed Textbox value
+			clearNewBedValue();
+			
 			var deptId;
 			deptId = document.getElementById('dpt_drop_down_list').value;
 			
@@ -90,7 +97,8 @@ include("lib/bedManagementScript.php");
 	// Clear the value in New Bed Description text-box
 	// when a ward list is being displayed
 	function clearNewBedValue() {
-		document.getElementById('bed_description').innerHTML = "";	
+		document.getElementById('bed_description').innerHTML = "";
+		document.getElementById('bed_drop_down_list').innerHTML = "<option value='BedDefault'>-- please select a bed --</option>";
 	}
 	</script>
 	
@@ -100,13 +108,13 @@ include("lib/bedManagementScript.php");
         </div>
         <div id="content">
             <div name=" buttonWrapper" id="centre">
-
+			<!-- WE DO NOT NEED THESE BUTTONS 
             <button  id="resourcesAvailButton" class="linkingButtons">Resource Availability</button>
-            <button  id="resourcesAddButton" class="linkingButtons">Add Resource</button>
+            <button  id="resourcesAddButton" class="linkingButtons">Add Resource</button> -->
             
                 </div>
             <br /><br />
-            <form id="manageBedsForm" method="post" action="submit/manageBedsSubmit.php">
+            <form id="manageBedsForm" method="POST" action="processBeds.php">
             <input type="hidden">
             <table>
             
@@ -137,7 +145,7 @@ include("lib/bedManagementScript.php");
 			<!-- When the form first loads, a list of departments is displayed here
 			As soon as the user selects a Department or Ward or Bed
 			some dynamic querying of the database is displayed below DIV id=detailsTable-->
-			
+
 			<div id="detailsTable">
 			<h3>Departments</h3>
 				<?php
@@ -153,9 +161,9 @@ include("lib/bedManagementScript.php");
                 </tr>
 				<!-- Three buttons in one line -->
                 <tr>                
-                    <td><input class="rounded" type="submit" name="update" id="update" value="Update"></td>
-                    <td><input class="rounded" type="submit" name="create" id="create" value="Create New"></td>
-					<td><input class="rounded" type="submit" name="delete" id="delete" value="Delete"></td>
+                    <td><input class="rounded" type="submit" name="load" id="update" value="Update"></td>
+                    <td><input class="rounded" type="submit" name="load" id="create" value="Add New"></td>
+					<td><input class="rounded" type="submit" name="load" id="delete" value="Delete"></td>
                 </tr>
             </table>
 			</form>
