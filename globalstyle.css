@@ -465,6 +465,21 @@ body {
 #menutoggle{
     display:none;
 }
+/*placeholder text*/
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:#999;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:#999;
+    opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:#999;
+    opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:#999;
+}
 @media all and (max-width:769px ){
     .sidebarColumn {
         width: 100%;
@@ -514,10 +529,17 @@ body {
         left:0;
     }
 } 
-
-
-
-
-
-
-
+#admin-table{
+    width:80%;
+}
+#admin-table *{
+    font-size:12px;
+    color:#000;
+}
+#admin-table tr{
+    
+}
+#admin-table td{
+    border:1px solid #000;   
+    text-align: left;   
+}
