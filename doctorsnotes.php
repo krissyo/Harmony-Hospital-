@@ -2,6 +2,9 @@
 $permissions=[3,4];
 $pagetitle="Doctors Notes";
 include("pagecomponents/head.php");
+$patientid = $_GET["id"];
+$_SESSION['passingID'] = $patientid; // Passing ID to doctors notes submit
+
 ?>
     <body>
       
@@ -16,13 +19,26 @@ include("pagecomponents/head.php");
                 <input type="hidden" >
             
             
-			<table><h3><th colspan="2" class="userdetails">Patient Details</th></h3>
-               
-     
-            <tr><td>First Name</td> <td><input class="rounded" type="text" name= "FirstName" id="FirstName" required></td></tr>
-            <tr><td>Last Name:</td> <td> <input class="rounded" type="text" name="LastName" id="LastName" required></td></tr>   
-            <tr><td>Current Medication:</td> <td> <input class="rounded" type="Medication" name="Medication" id="Medication"></td></tr>
-            <tr><td>Notes:</td> <td> <textarea rows="4" cols="50" placeholder="Start typing here..." name="notes" required></textarea></td></tr>  
+			<table><h3><th colspan="2" class="userdetails">
+                <?php
+                    $sql=" SELECT first_name, last_name FROM patient_details WHERE patient_id=" . $patientid .'';
+                    $result = mysqli_query ($con, $sql) ;
+                    while($row = mysqli_fetch_array($result)){
+                    echo $row['first_name'] . ' ' . $row['last_name'];
+                    }              
+                ?></th></h3>
+<!--            <tr><td>Current Medication:</td> <td> <input class="rounded" type="Medication" name="Medication" id="Medication"></td></tr>-->
+                
+                <tr><td>Notes:</td> <td>
+                
+                <?php
+                    $sql=" SELECT doctors_notes, nurses_notes FROM medical_history WHERE patient_id=" . $patientid .'';
+                    $result = mysqli_query ($con, $sql) ;
+                    while($row = mysqli_fetch_array($result)){
+                    echo 'Doctors Notes:'. $row['doctors_notes'] . ' <br>  Nurses Notes:' . $row['nurses_notes'];
+                    }              
+                ?>
+            <tr><td> Add Notes:</td> <td> <textarea rows="4" cols="50" placeholder="Start typing here..." name="notes" required></textarea></td></tr>  
    
                 <tr>
                     <td></td>
@@ -45,19 +61,8 @@ include("pagecomponents/footer.php");
         });
         $( "#doctorsnotes" ).validate({
           rules: {
-            FirstName: {
-              required: true,
-                minlength: 3
-            },
-            LastName: {
-              required: true,
-                minlength: 3
-            },
-            Medication: {
-                minlength: 3
-            },
               Notes:{
-                required: true,  
+                required: true
               
             }
           }
