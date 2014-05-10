@@ -1,6 +1,14 @@
 <?php
 // Author: Kira Jamison, 08795428
-// Last modified on: 8/05/2014
+// Last modified on: 10/05/2014
+
+function validate_bed_form(&$errors) {
+	validatePattern($errors, $_POST, 'description', '/^[a-zA-Z0-9\_\- ]+$/');
+	if ($_SESSION['object'] != 'Bed') {
+		validatePattern($errors, $_POST, 'prefix', '/^[a-zA-Z0-9\_\- ]+$/');
+		validateLength($errors, $_POST, 'prefix', 8);
+	}
+}
 
 // Uses Regular Expressions to make sure the fields do not contain any invalid characters
 function validatePattern(&$errors, $field_list, $field_name, $pattern) {
@@ -13,10 +21,10 @@ function validatePattern(&$errors, $field_list, $field_name, $pattern) {
 }
 
 // Makes sure the updated field does not exceed the size limit
-function validateLength(&$errors, $field, $limit) {
+function validateLength(&$errors, $field_list, $field_name, $limit) {
 	// limit prefix fields to be 8 chars long
-	if (strlen($field) > $limit)
-		$errors[$field] = 'Too long';
+	if (strlen($field_list[$field_name]) > $limit)
+		$errors[$field_name] = 'Too long';
 }
 // check if there are any current admissions at this Dpt / Ward / Bed
 function checkDeleteAllowed($objectId, $object) {
