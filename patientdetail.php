@@ -4,10 +4,11 @@ include("pagecomponents/head.php");
 
 require_once('pagecomponents/connectDB.php');
 				// CHANGE BELOW LINE LATER - patient_id=1 is for TESTING PURPOSES ONLY
-				if (ISSET($_SESSION[patient_id]))
+				if (ISSET($_SESSION[patient_id])) {
 					$sql="SELECT * from patient_details where patient_id =" . $_SESSION[patient_id];
-				else
+				} else {
 					$sql="SELECT * from patient_details where patient_id =1";
+				}
 				$result=mysqli_query($con,$sql);
                 $row = mysqli_fetch_array($result);
 ?>
@@ -27,10 +28,7 @@ require_once('pagecomponents/connectDB.php');
             <form id="patientDetailForm" method="post" action="submit/patientdetailsubmit.php">
             <input type="hidden">
             <table>
-                <?php 
-                //use this code where ever session storage is needed 
-                    include("pagecomponents/checklogin.php");
-                ?>
+
                 <tr>
                <td> First name: </td>
                <td><input name="first-name" id="first-name"  type="text" value="<?PHP echo $row['first_name']?>" required></td>
