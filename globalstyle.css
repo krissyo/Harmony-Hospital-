@@ -169,6 +169,11 @@ in Resource Availability Form */
 	font-size: 1em;
 	border: 1px solid grey;
 }
+
+/* Date of birth and Date of Death on Patient Details Form*/
+#DOB, #DOD {
+	width: 240px;
+}
 /* Invoice button on Patient's Account Form */
 #generateInvoice {
 	width: 10%;

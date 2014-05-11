@@ -4,14 +4,15 @@ $pagetitle="Patient Detail Form";
 include("pagecomponents/head.php");
 
 // Check for a current admission for this patient
+// CHANGE BELOW LINE LATER - patient_id=1 is for TESTING PURPOSES ONLY
+$_SESSION[patient_id] = 9;
 include("include/find_admission_id.inc");
 
 require_once('pagecomponents/connectDB.php');
-				// CHANGE BELOW LINE LATER - patient_id=1 is for TESTING PURPOSES ONLY
+
+				
 				if (ISSET($_SESSION[patient_id])) {
 					$sql="SELECT * from patient_details where patient_id =" . $_SESSION[patient_id];
-				} else {
-					$sql="SELECT * from patient_details where patient_id =1";
 				}
 				$result=mysqli_query($con,$sql);
                 $row = mysqli_fetch_array($result);
@@ -62,13 +63,12 @@ require_once('pagecomponents/connectDB.php');
                     </tr>
                 <tr>
                     <td>Date of birth:</td>
-                    <td><input name="DOB" id="DOB" style="width:120px" type="date" value="<?PHP echo $row['date_of_birth']?>" required></td>
+                    <td><input name="DOB" id="DOB" type="date" value="<?PHP echo $row['date_of_birth']?>" required></td>
                 </tr>
                   <tr>
                     <td>Date of death:</td>
-                    <td><input name="DOD" id="DOD" style="width:120px" type="date" value="<?PHP echo $row['date_of_death']?>" required></td>
+                    <td><input name="DOD" id="DOD" type="date" value="<?PHP echo $row['date_of_death']?>" required></td>
                 </tr>
-                <tr>
                    
                    <tr>
 				   
@@ -77,9 +77,7 @@ require_once('pagecomponents/connectDB.php');
 					<input type="radio" name="sex" value="female">Female</td>
 					
 					</tr>
-                    </td>
 					
-                    </tr>
                  <tr>
                     <td> Allergies: </td>
                      <td style="border: 1px solid grey;"><?php
