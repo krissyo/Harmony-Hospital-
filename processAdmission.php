@@ -20,15 +20,11 @@ if (ISSET($_POST['submit'])) {
 	//validatePattern($errors, $_POST, 'provider_client_number', '([A-Za-z0-9\#\- \_\/]+)');
 	
 	validatePattern($errors, $_POST, 'provider_client_number', '/^[a-zA-Z0-9\#\_\- ]+$/');
-	/*	
-	
-	validatePattern($errors, $_POST, 'cover_type', 'PATTERN HERE');
-	*/
+	validatePattern($errors, $_POST, 'cover_type', '/^[a-zA-Z0-9\#\_\- ]+$/');
 	
 	if (count($errors) === 0) {
 	
 		// no errors - so can proceed to submitting to DB
-		echo 'going to submit';
 		require 'submit/success_admission_post.inc';
 		
 	} else {

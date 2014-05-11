@@ -70,13 +70,19 @@ require_once('pagecomponents/connectDB.php');
                 </tr>
                 <tr>
                    
-                   <tr><td>Gender: </td> <td><input type="radio" name="sex" value="male" checked>Male<br>
-			<input type="radio" name="sex" value="female">Female</td></tr>
+                   <tr>
+				   
+				   <td>Gender: </td> 
+				   <td style="border: 1px solid grey;"><input type="radio" name="sex" value="male" checked>Male<br>
+					<input type="radio" name="sex" value="female">Female</td>
+					
+					</tr>
                     </td>
+					
                     </tr>
                  <tr>
                     <td> Allergies: </td>
-                     <td><?php
+                     <td style="border: 1px solid grey;"><?php
 
                 require_once('pagecomponents/connectDB.php');
 				$sql="SELECT name from allergies_conditions where description ='Allergy'";
@@ -86,10 +92,10 @@ require_once('pagecomponents/connectDB.php');
                     }
                     ?>
                      
-                    </tr>
+                    </td></tr>
                 <tr>
                     <td> Conditions: </td>
-                   <td> <?php            
+                   <td style="border: 1px solid grey;"> <?php            
                 require_once('pagecomponents/connectDB.php');
 				$sql="SELECT name from allergies_conditions where description ='Condition'";
 				$result=mysqli_query($con,$sql);
@@ -99,7 +105,7 @@ require_once('pagecomponents/connectDB.php');
 
                     ?>  
                     
-                    </tr>
+                    </td></tr>
                 <tr>
                     <td> Medicare Number: </td>
                     <td><input name="medicare-number" id="medicare-number" value="<?PHP echo $row['medicare_number']?>" required type="text"></td>
