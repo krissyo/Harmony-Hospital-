@@ -9,7 +9,7 @@ include("pagecomponents/head.php");
 require_once 'pagecomponents/validate_resource_mgt.inc';
 
 // REMOVE THE LINE BELOW LATER!!!!!!! (set for testing purposes)
-$_SESSION[patientId] = 1;
+$_SESSION[patient_id] = 1;
 
 // Check for a current admission for this patient
 include("include/find_admission_id.inc");
@@ -38,7 +38,7 @@ if (ISSET($_POST['submit'])) {
 		require 'include/admissionForm.php';
 		
 	}
-} else if (ISSET($_SESSION['admissionId'])){
+} else if (ISSET($_SESSION['admission_id'])){
 
 	// Query the DB to extract the existing admission record
 	$existingAdm = array();

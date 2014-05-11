@@ -3,7 +3,7 @@ session_start();
 require("pagecomponents/connectDB.php");
 
 	$sql = "SELECT admission_id FROM admissions
-			WHERE patient_id = " . $_SESSION[patientId] . "
+			WHERE patient_id = " . $_SESSION[patient_id] . "
 			AND discharge_date IS NULL";
 			
 	$result = mysqli_query($con,$sql);
@@ -11,6 +11,6 @@ require("pagecomponents/connectDB.php");
 	if ($result !== false) {
 		$row = mysqli_fetch_array($result);
 		
-		$_SESSION[admissionId] = $row['admission_id'];
+		$_SESSION[admission_id] = $row['admission_id'];
 	}
 ?>

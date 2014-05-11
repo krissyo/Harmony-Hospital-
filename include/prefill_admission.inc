@@ -54,7 +54,7 @@ function get_sql_query($name) {
 				ORDER BY insurance_provider_name");
 	} else if ($name == 'patientId') {
 		return ("SELECT CONCAT(last_name, ', ', first_name) AS patient_name
-		FROM patient_details WHERE patient_id = " . $_SESSION[patientId]);
+		FROM patient_details WHERE patient_id = " . $_SESSION[patient_id]);
 	}
 }
 
@@ -99,7 +99,7 @@ function input_text($errors, $existingAdm, $name, $label) {
 function patient_details() {
 	require("pagecomponents/connectDB.php");
 
-	if (ISSET($_SESSION[patientId])) {
+	if (ISSET($_SESSION[patient_id])) {
 	
 		$sql = get_sql_query('patientId');
 		$result = mysqli_query($con,$sql);
@@ -107,7 +107,7 @@ function patient_details() {
 			$row = mysqli_fetch_array($result);
 		
 			echo '<tr>';
-				echo '<td><label>Patient ID: ' . $_SESSION[patientId] . '</label></td>';
+				echo '<td><label>Patient ID: ' . $_SESSION[patient_id] . '</label></td>';
 				echo '<td><label>' . $row["patient_name"] . '</label></td>';
 			echo '</tr><tr></tr>';
 		}

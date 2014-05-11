@@ -8,9 +8,9 @@ function load_admission(&$existingAdm) {
 	// and save the info into the array
 	
 	// pull data from admissions
-	if (ISSET($_SESSION[admissionId])) {
+	if (ISSET($_SESSION[admission_id])) {
 
-		$sql = "SELECT * FROM admissions WHERE admission_id = " . $_SESSION[admissionId];
+		$sql = "SELECT * FROM admissions WHERE admission_id = " . $_SESSION[admission_id];
 		$result = mysqli_query($con,$sql);
 	
 		if ($result !== false) {
@@ -25,7 +25,7 @@ function load_admission(&$existingAdm) {
 		}
 		
 		$sql = "SELECT * FROM admission_account 
-		WHERE admission_id = " . $_SESSION[admissionId];
+		WHERE admission_id = " . $_SESSION[admission_id];
 		
 		$result = mysqli_query($con,$sql);
 	

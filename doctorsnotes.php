@@ -1,9 +1,11 @@
 <?php
+session_start();
+
 $permissions=[3,4];
 $pagetitle="Doctors Notes";
 include("pagecomponents/head.php");
 $patientid = $_GET["id"];
-$_SESSION['passingID'] = $patientid; // Passing ID to doctors notes submit
+$_SESSION['patient_id'] = $patientid; // Passing ID to doctors notes submit
 
 ?>
     <body>

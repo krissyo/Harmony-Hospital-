@@ -1,5 +1,5 @@
 <?php
-    require_once('pagecomponents/connectDB.php');
+    require_once('connectDB.php');
 ?>
 <div class="Container">
 
@@ -25,7 +25,7 @@
                         <a><h1>HELP</h1></a>
                     </div> 
                     <div class="action_buttons" id="LogoutButton">
-                        <a action="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/submit/logout.php" href="loggedoff.html"><h1>LOG OUT</h1></a>
+                        <a action="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/submit/logout.php" href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/submit/logout.php"><h1>LOG OUT</h1></a>
                     </div>
                 </div><!-- closes DIV for top menu bar -->
                 

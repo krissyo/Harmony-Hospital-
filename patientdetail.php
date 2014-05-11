@@ -3,7 +3,11 @@ $pagetitle="Patient Detail Form";
 include("pagecomponents/head.php");
 
 require_once('pagecomponents/connectDB.php');
-				$sql="SELECT * from patient_details where patient_id ='1'";
+				// CHANGE BELOW LINE LATER - patient_id=1 is for TESTING PURPOSES ONLY
+				if (ISSET($_SESSION[patient_id]))
+					$sql="SELECT * from patient_details where patient_id =" . $_SESSION[patient_id];
+				else
+					$sql="SELECT * from patient_details where patient_id =1";
 				$result=mysqli_query($con,$sql);
                 $row = mysqli_fetch_array($result);
 ?>
@@ -15,7 +19,8 @@ require_once('pagecomponents/connectDB.php');
         <div id="content">
             <div name=" buttonWrapper" id="centre">
             <button  id="admHistoryBtn" class="linkingButtons">Admissions History</button>
-            <button  id="curHistoryBtn" class="linkingButtons">Current History</button>
+            <button  id="curAdmissionBtn" class="linkingButtons" 
+			onclick="location.href = 'processAdmission.php'">Current Admission</button>
             <button  id="admHistoryBtn" class="linkingButtons">Current History</button>
                 </div>
             <br /><br />
