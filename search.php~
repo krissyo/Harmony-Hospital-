@@ -5,13 +5,9 @@ include("pagecomponents/head.php");
 <script>
 $(document).ready(function()
 {
-	// sending an ajax request and waiting for the result
 	$.ajax({
-		    // sending the request to the following URL
                     url: "pagecomponents/searchautocomplete.php",
-		    // expecting a json file as a result(response)
                     dataType: "json",
-		    // Showing the autocomplete after receiving the json file
                     success: function(data){
     			$("#search").autocomplete(
     			{
