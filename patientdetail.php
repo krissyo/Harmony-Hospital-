@@ -1,6 +1,10 @@
 <?php
+session_start();
 $pagetitle="Patient Detail Form";
 include("pagecomponents/head.php");
+
+// Check for a current admission for this patient
+include("include/find_admission_id.inc");
 
 require_once('pagecomponents/connectDB.php');
 				// CHANGE BELOW LINE LATER - patient_id=1 is for TESTING PURPOSES ONLY
@@ -19,10 +23,23 @@ require_once('pagecomponents/connectDB.php');
         </div>
         <div id="content">
             <div name=" buttonWrapper" id="centre">
+			
+			<?php
+			if (ISSET($_SESSION[admission_id])) {
+			?>
+				<button  id="curAdmissionBtn" class="linkingButtons" 
+				onclick="location.href = 'processAdmission.php'">Current Admission</button>
+			<?php
+			} else {
+			?>
+				<button  id="admitBtn" class="linkingButtons"
+				onclick="location.href = 'processAdmission.php'">New Admission</button>
+			<?php
+			}
+			?>
+			
             <button  id="admHistoryBtn" class="linkingButtons">Admissions History</button>
-            <button  id="curAdmissionBtn" class="linkingButtons" 
-			onclick="location.href = 'processAdmission.php'">Current Admission</button>
-            <button  id="admHistoryBtn" class="linkingButtons">Current History</button>
+            
                 </div>
             <br /><br />
             <form id="patientDetailForm" method="post" action="submit/patientdetailsubmit.php">

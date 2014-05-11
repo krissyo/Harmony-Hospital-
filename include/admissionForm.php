@@ -21,10 +21,10 @@ session_start();
 	
 	// show patient's ID, first_name and last_name
 	patient_details();
+	input_date($errors, $existingAdm, 'admission_date', 'Admission');
 	populate_list($errors, $existingAdm, 'staff_id', 'Staff', 'staff_name');
 	populate_list($errors, $existingAdm, 'department_id', 'Department', 'department_description');
 	populate_list($errors, $existingAdm, 'bed_id', 'Bed', 'bed_description');
-	input_date($errors, $existingAdm, 'admission_date', 'Admission');
 	populate_list($errors, $existingAdm, 'resource_id', 'Facility', 'resource_description');
 	input_textArea($errors, $existingAdm, 'notes', 'Notes');
 	populate_list($errors, $existingAdm, 'insurance_provider_id', 'Insurance', 'insurance_provider_name');
@@ -35,7 +35,7 @@ session_start();
 ?>
 	<tr>
 		<td></td>
-		<td><input class="rounded" type="submit" name="sumbit" id="submit" value="Submit"></td>
+		<td><input class="rounded" type="submit" name="submit" id="submit" value="Submit"></td>
 	</tr>
 </table>
 

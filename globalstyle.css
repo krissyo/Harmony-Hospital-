@@ -233,6 +233,17 @@ in Resource Availability Form */
     margin-bottom:0.5em;
 }
 
+/* Styling and positioning autocomplete */
+
+#autocomplete {
+	display: block; 
+	position:relative;
+} 
+.ui-autocomplete {
+    	position: absolute;
+	width: 265px;
+}
+
 /* -------------- Class Styles alphabetically ------------------ */
 
 .consent{
@@ -255,6 +266,10 @@ in Resource Availability Form */
     font-family: Helvetica, arial sans-serif;
     font-weight: 900;
     font-size: 9pt;
+}
+
+.missing {
+	color: red;
 }
 .options {
 	float: left;

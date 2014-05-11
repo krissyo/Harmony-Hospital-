@@ -10,6 +10,47 @@ function validate_bed_form(&$errors) {
 	}
 }
 
+function validateDate(&$errors, $field_list, $field_name) {
+
+	if (!ISSET($field_list[$field_name])) {
+		// left blank
+		$errors[$field_name] = 'Required';
+	} else {
+		$date = $field_list[$field_name];
+
+		list($y, $m, $d) = explode('-', $date);
+		
+		// truncate any trailing zeros for the year string
+		if (strlen($y) > 4) {
+			$y =  substr($y,0,4);
+		}
+
+		if(!checkdate($m, $d, $y)){
+			// is invalid
+			$errors[$field_name] = $field_list[$field_name] . ' is invalid';
+		}
+	}
+}
+
+// Checks a given field value
+//for invalid characters and words, e.g. &, <, >, ", ', DELETE, DROP, UPDATE, INSERT, ;
+function checkInvalidCharacters(&$errors, $field_list, $field_name) {
+
+	if (!ISSET($field_list[$field_name]) || $field_list[$field_name] == '') {
+		$errors[$field_name] = 'Required';
+	} else {
+		$illegalCharacters = array('"', "'", "DELETE", "=", "DROP", "INSERT", "UPDATE", ";");
+		$upperCase = strToUpper($field_list[$field_name]);
+	
+		foreach ($illegalCharacters as $character) { 
+			if (strPos($upperCase, $character) !== false) {
+				$errors[$field_name] = 'Invalid: contains ' . $character;
+				break; //exit the for loop
+			}
+		}
+	}
+}
+
 // Uses Regular Expressions to make sure the fields do not contain any invalid characters
 function validatePattern(&$errors, $field_list, $field_name, $pattern) {
 
