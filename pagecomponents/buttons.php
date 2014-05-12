@@ -1,5 +1,5 @@
 <?php
-    require_once('connectDB.php');
+    require_once('pagecomponents/connectDB.php');
 ?>
 <div class="Container">
 
