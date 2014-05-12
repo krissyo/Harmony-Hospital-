@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $pagetitle="Update Patient Service";
 include("pagecomponents/head.php");
 
@@ -28,28 +30,29 @@ if(isset($_POST['recordId'])) {
 			
 			<div id="content">
 				<form id="patient_services" method="post" action="submit/patient_services_submit.php">
-					<?php include ("pagecomponents/patient_basic_details.php"); ?>
+					<?php 
+					$patient_details = array();
+					require ("pagecomponents/patient_basic_details.php"); 
+					pull_details($patient_details);
+					?>
 					
-					<input type="hidden" name="AdmissionId" id="AdmissionId" value="<?php echo $_SESSION['AdmissionId']; ?>">
+					<input type="hidden" name="AdmissionId" id="AdmissionId" value="<?php echo $patient_details['admission_id']; ?>">
 					<input type="hidden" name="patientProcedureId" id="patientProcedureId" value="<?php echo $_SESSION['patientProcedureId']; ?>">
 					
 					<table>
 					
 					<h3><th colspan="2" class="bookingdetails">Services Details</th></h3>
-					<?php 
-					//use this code where ever session storage is needed 
-                    include("pagecomponents/checklogin.php");
-					?>
+
 					<tr><td>Patient's ID</td> <td>
-						<input type="text" class="rounded" name="PatientId" id="PatientId" value="<?php echo $_SESSION['PatientId']; ?>">
+						<input type="text" class="rounded" name="PatientId" id="PatientId" value="<?php echo $_SESSION[patient_id]; ?>">
 						</td></tr>	
 						
 					<tr><td>Patient's Full Name</td> <td>
-						<input class="rounded" type="text" name="PatientName" id="PatientName" value="<?php echo $_SESSION['PatientName']; ?>">
+						<input class="rounded" type="text" name="PatientName" id="PatientName" value="<?php echo $patient_details['full_name']; ?>">
 						</td></tr>		
 						
 					<tr><td>Date Of Birth</td> <td> 
-						<input class="rounded" type="date" name="DateOfBirth" id="DateOfBirth"value="<?php echo $_SESSION['DateOfBirth']; ?>">
+						<input class="rounded" type="date" name="DateOfBirth" id="DateOfBirth"value="<?php echo $patient_details['date_of_birth']; ?>">
 						</td></tr>
 						
 					<tr><td>Service Type</td> <td><select class="rounded" name="ProcedureId">					
@@ -91,9 +94,9 @@ if(isset($_POST['recordId'])) {
 					
 					<tr><td></td><td><a href="terms_and_conditions.php" title="T & C" style="font-size: 0.5em;">Terms and Conditions</a></td></tr>
 					
-<!--					<tr><td>Signature of Parent/Legal Guardian:</td> <td> <input class="rounded" type="text" 
-						name="Signature" id="Signature" value="<'?php echo $_SESSION['signature']; ?>"></td>
--->
+					<tr><td>Signature of Parent/Legal Guardian:</td> <td> <input class="rounded" type="text" 
+						name="Signature" id="Signature" value="<?php echo $_SESSION['signature']; ?>"></td>
+
 
 					<tr><td>Signature of Parent/Legal Guardian:</td> <td><img src="signatureimg/<?php echo $_SESSION['signature'];?>"></td>
 						

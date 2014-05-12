@@ -1,25 +1,24 @@
 <?php 
+function pull_details(&$patient_details) {
+	session_start();
+	require('pagecomponents/connectDB.php');
 
-require_once('connectDB.php');
+		if (isset($_SESSION[patient_id])) {
+			$sql="SELECT first_name, last_name, 
+			date_of_birth, admission_id 
+			FROM patient_details 
+			INNER JOIN admissions 
+			on patient_details.patient_id = admissions.patient_id 
+			WHERE patient_details.patient_id = " . $_SESSION[patient_id] . ";";
+			
+			$result=mysqli_query($con, $sql);
 
-	if (isset($_SESSION["PatientID"])) {
-		$sql="SELECT first_name, last_name, date_of_birth, admission_id from patient_details 
-		NATURAL JOIN admissions
-		WHERE patient_id = " . $_SESSION["PatientID"] . ";";
-	} else {
-		//Testing with PatientID = 1
-		$sql="SELECT patient_id, first_name, last_name, date_of_birth, admission_id from patient_details 
-		NATURAL JOIN admissions
-		where patient_id = 1;";
-		$_SESSION["PatientId"] = 1;
-	}
-
-	$result=mysqli_query($con, $sql);
-
-	while($row = mysqli_fetch_array($result)){							
-		$_SESSION["PatientName"] = $row["first_name"] . " " . $row["last_name"];							
-		$_SESSION["DateOfBirth"] = $row["date_of_birth"];							
-		$_SESSION["AdmissionId"] = $row["admission_id"];							
-	}
-	
+			if ($row = mysqli_fetch_array($result)){	
+				$patient_details["full_name"] = $row["first_name"] . " " . $row["last_name"];							
+				$patient_details["date_of_birth"] = $row["date_of_birth"];							
+				$patient_details["admission_id"] = $row["admission_id"];							
+			}
+		}	else
+			echo 'patientid is not set';
+}
 ?>

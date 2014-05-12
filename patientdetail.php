@@ -5,7 +5,9 @@ include("pagecomponents/head.php");
 
 // Check for a current admission for this patient
 // CHANGE BELOW LINE LATER - patient_id=1 is for TESTING PURPOSES ONLY
+
 $_SESSION[patient_id] = 9;
+
 include("include/find_admission_id.inc");
 
 require_once('pagecomponents/connectDB.php');
@@ -38,7 +40,8 @@ require_once('pagecomponents/connectDB.php');
 			<?php
 			}
 			?>
-			
+			<button  id="admHistoryBtn" class="linkingButtons"
+			onclick="location.href = 'patient_account.php'">Patient's Account</button>
             <button  id="admHistoryBtn" class="linkingButtons">Admissions History</button>
             
                 </div>
