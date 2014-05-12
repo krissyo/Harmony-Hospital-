@@ -73,7 +73,7 @@ include("pagecomponents/head.php");
 							FROM patient_services 
 							INNER JOIN procedure_listing
 							ON patient_services.procedure_id = procedure_listing.procedure_id
-							WHERE admission_id = ' . $_SESSION["AdmissionId"] . ' ORDER BY service_start_date;';
+							WHERE admission_id = ' . $patient_details['admission_id'] . ' ORDER BY service_start_date;';
 							
 					$result=mysqli_query($con,$sql);
 					
@@ -108,7 +108,13 @@ include("pagecomponents/head.php");
 						$startDate = date("d/m/Y", strToTime($row['service_start_date']));
 						echo "<td>" . $startDate . "</td>";
 						
-						$endDate = date("d/m/Y", strToTime($row['service_end_date']));
+						if (!is_null($row['service_end_date'])) {
+							
+							$endDate = date("d/m/Y", strToTime($row['service_end_date']));
+						} else {
+							
+						}
+						
 						echo "<td>" . $endDate . "</td>
 						<td>" . $row['procedure_description'] . "</td>
 						<td>$" . number_format($row['procedure_fee'], 2) . "</td>";
