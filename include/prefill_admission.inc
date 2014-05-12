@@ -25,8 +25,37 @@ function populate_list($errors, $existingAdm, $name, $label, $description) {
 		}
 		echo '</select></td>';
 	echo '</tr>';
-	errorLabel($errors, $name);
+	errorLabel($errors, $name);		
+}
+
+function populate_list_ajax($errors, 
+						$existingAdm, $name, 
+						$label, $description, $event) {
+	require("pagecomponents/connectDB.php");
+	echo '<tr>';
+	
+		label($name, $label);
 		
+		$value = straight_value($name, $existingAdm);
+		
+		echo "<td><select class=\"rounded\" name=\"$name\" id=\"$name\" onchange=\"$event\">";
+		echo '<option value="default">-- please select from list --</option>';
+		
+		$sql = get_sql_query($name);
+		$result = mysqli_query($con,$sql);
+		if ($result !== false) {
+		
+			while ($row = mysqli_fetch_array($result)) {
+				
+				if ($row[$name] == $value) 
+					echo '<option value="' . $row[$name] . '" selected>' . $row[$description] . ' </option>';
+				else
+					echo '<option value="' . $row[$name] . '">' . $row[$description] . '</option>';
+			}
+		}
+		echo '</select></td>';
+	echo '</tr>';
+	errorLabel($errors, $name);	
 }
 
 function get_sql_query($name) {
@@ -44,10 +73,10 @@ function get_sql_query($name) {
 			FROM departments 
 			ORDER BY department_description");
 	} else if ($name == 'bed_id') {
-		return ("SELECT bed_id, bed_description, ward_description 
-			FROM beds INNER JOIN wards 
-			ON beds.ward_id = wards.ward_id
-			ORDER BY ward_description, bed_description");
+		return ("SELECT bed_id, bed_description
+			FROM beds 
+			WHERE bed_id NOT IN (SELECT bed_id from admissions WHERE discharge_date IS NULL)
+			ORDER BY bed_description");
 	} else if ($name == 'insurance_provider_id') {
 		return ("SELECT insurance_provider_id, insurance_provider_name
 				FROM insurance_providers
@@ -56,6 +85,13 @@ function get_sql_query($name) {
 		return ("SELECT CONCAT(last_name, ', ', first_name) AS patient_name
 		FROM patient_details WHERE patient_id = " . $_SESSION[patient_id]);
 	}
+	
+	/* 
+	SELECT bed_id, bed_description, ward_description 
+			FROM beds INNER JOIN wards 
+			ON beds.ward_id = wards.ward_id
+			ORDER BY ward_description, bed_description
+	*/
 }
 
 function input_date($errors, $existingAdm, $name, $label) {

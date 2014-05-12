@@ -3,9 +3,38 @@
 // Last modified on: 10/05/2014
 require ('include/prefill_admission.inc');
 session_start();
+
+// ADD AJAX to populate Beds dropdown list
+// when user clicks on Department,
+// list VACANT beds ONLY for that department.
+// populateDepartmentList with event to 
+// add <script> event with AJAX
+// load bed list dynamically, 
+// "no vacant beds for this Dpt" if none found
+
+
 ?>
 
 <script src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/lib/buttonClickLink.js"></script>
+
+<script>
+function displayVacantBeds(dptId) {
+	
+	  if (window.XMLHttpRequest) {
+		// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();
+	  } else { // code for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	  }
+	  xmlhttp.onreadystatechange=function() {
+		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+		  document.getElementById("bed_id").innerHTML=xmlhttp.responseText;
+		}
+	  }
+	  xmlhttp.open("GET","getVacantBeds.php?q="+dptId,true);
+	  xmlhttp.send();
+}
+</script>
 
 <div id="wrapper">
 	<div id="header">
@@ -23,7 +52,11 @@ session_start();
 	patient_details();
 	input_date($errors, $existingAdm, 'admission_date', 'Admission');
 	populate_list($errors, $existingAdm, 'staff_id', 'Staff', 'staff_name');
-	populate_list($errors, $existingAdm, 'department_id', 'Department', 'department_description');
+	
+	populate_list_ajax($errors, $existingAdm, 'department_id', 'Department', 
+		'department_description', 
+		'displayVacantBeds(this.value);');
+		
 	populate_list($errors, $existingAdm, 'bed_id', 'Bed', 'bed_description');
 	populate_list($errors, $existingAdm, 'resource_id', 'Facility', 'resource_description');
 	input_textArea($errors, $existingAdm, 'notes', 'Notes');

@@ -94,12 +94,15 @@ if(isset($_POST['recordId'])) {
 					
 					<tr><td></td><td><a href="terms_and_conditions.php" title="T & C" style="font-size: 0.5em;">Terms and Conditions</a></td></tr>
 					
-					<tr><td>Signature of Parent/Legal Guardian:</td> <td> <input class="rounded" type="text" 
+<!--					<tr><td>Signature of Parent/Legal Guardian:</td> <td> <input class="rounded" type="text" 
 						name="Signature" id="Signature" value="<?php echo $_SESSION['signature']; ?>"></td>
+-->
 
 
-					<tr><td>Signature of Parent/Legal Guardian:</td> <td><img src="signatureimg/<?php echo $_SESSION['signature'];?>"></td>
-						
+					<tr><td>Signature of Parent/Legal Guardian:</td> <td><img src="signatureimg/<?php echo $_SESSION['signature'];?>">
+					</td>
+					</tr>
+					<tr>
 					<td>Date:</td> <td> <input class="rounded" type="date" name="ConsentDate" id="ConsentDate" 
 						value="<?php echo $_SESSION['consent_date']; ?>">
 						</td></tr>

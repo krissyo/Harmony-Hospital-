@@ -8,9 +8,6 @@ require_once('pagecomponents/connectDB.php');
 	// Display available times and bookings 
 		// for the selected Resource and Date
 	function displayDetails(resourceId, bookingDate) {
-
-	// add validation to bookingDate here
-	// TO DO stub
 	
 	  if (window.XMLHttpRequest) {
 		// code for IE7+, Firefox, Chrome, Opera, Safari
@@ -37,7 +34,9 @@ require_once('pagecomponents/connectDB.php');
 				
 					<table id="availability_main_table">
 						<tr><td>Facility</td>
-						<td><select class="rounded" id ="ResourceId" name="ResourceId" onchange="displayDetails(this.value, document.getElementById('StartDate').value);">
+						<td><select class="rounded" id ="ResourceId" name="ResourceId" 
+						onchange="displayDetails(this.value, document.getElementById('StartDate').value);">
+						
 						<?php
 							$sql="SELECT department_description, resource_id, resource_description FROM departments Natural Join resources";
 							
