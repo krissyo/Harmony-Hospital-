@@ -16,7 +16,7 @@ $(document).ready(function()
     			$("#search").autocomplete(
     			{
         		source: data,
-        		minLength: 3,
+        		minLength: 2,
 			appendTo: "#autocomplete"
     			});
 			}
