@@ -85,7 +85,7 @@
     		// Set Column Widths
     		
     		// Header
-    		$this->Cell(190,10,"PROCEDURE HISTORY",1,0,'C',true);
+    		$this->Cell(190,10,"DEPARTMENT ADMISSIONS HISTORY",1,0,'C',true);
     		$this->Ln();
     		$w = array(47.5, 47.5, 47.5, 47.5);
     		$this->SetTextColor(165,165,167);
@@ -144,7 +144,7 @@
 			include ('pagecomponents/closeConnection.php');
 			}
 
-        	function procedureTable($proheader, $prodata, $admissionIdArray){
+        	function procedureTable($proheader, $prodata, $admissionIdArray, &$procedureCount, &$proceduresPerformed){
 
     		// Colors, line width and bold font
     		$this->SetFillColor(255,255,255);
@@ -157,7 +157,7 @@
     		// Set Column Widths
     		
     		// Header
-    		$this->Cell(190,10,"DEPARTMENT ADMISSIONS HISTORY",1,0,'C',true);
+    		$this->Cell(190,10,"PROCEDURE HISTORY",1,0,'C',true);
     		$this->Ln();
     		$w = array(47.5, 47.5, 47.5, 47.5);
     		$this->SetTextColor(165,165,167);
@@ -182,13 +182,96 @@
         			$this->Cell($w[3],10,$row['procedure_id'],1,0,'L',$fill);
         			$fill = !$fill;
         			$this->Ln();
+        			array_push($proceduresPerformed, $row['procedure_id']);
+        			$procedureCount ++;
 
         		}
         		      		
-        		
+        	$this->Ln(10);
         	}
         		
-   
+   		// Load Table data
+			function LoadStatData($file,$proceduresPerformed)
+			{
+			//Connect to database
+			include ('pagecomponents/connectDB.php');
+
+			$implodeIdArray = implode(',', $proceduresPerformed);
+
+			//Select Admission records
+			$sql = 	'SELECT procedure_id, procedure_description, procedure_fee, medicare_rebate
+			FROM procedure_listing 
+			WHERE procedure_id IN ('.$implodeIdArray.')';
+			
+			$data=mysqli_query($con,$sql);
+	
+			if (!$data) {
+			return 'No data to display.';
+			} else {
+			return $data;
+			}
+			include ('pagecomponents/closeConnection.php');
+			}
+
+
+
+
+   		function statsTable($statsheader, $statdata, &$procedureCount, $proceduresPerformed){
+
+    		// Colors, line width and bold font
+    		$this->SetFillColor(255,255,255);
+    		$this->SetTextColor(135,186,214);
+    		$this->SetDrawColor(165,165,167);	
+    		$this->SetLineWidth(.8);
+   			$this->SetFont('','B');
+
+    		// Header Line of table
+    		// Set Column Widths
+    		
+    		// Header
+    		$this->Cell(190,10,"PROCEDURE STATISTICS",1,0,'C',true);
+    		$this->Ln();
+    		$w = array(50, 45, 45, 50);
+    		$this->SetTextColor(165,165,167);
+    		for($i=0; $i<count($statsheader);$i++)
+    			$this->Cell($w[$i],10,$statsheader[$i],1,0,'C',true);    			
+    		$this->Ln();
+
+
+    		// Color and font restoration
+    		$this->SetFillColor(224,235,255);
+    		$this->SetTextColor(0);
+    		$this->SetFont('');
+
+    		
+	
+           	$this->Cell($w[0],10,$procedureCount,1,0,'L',$fill);
+        	
+        	//calcualte Average fee;
+        	$feeTotal = 0;
+        	$rebateTotal = 0;
+        	while($row = mysqli_fetch_array($statdata)){
+        			for($i=0;$i<count($proceduresPerformed);$i++){
+        				if($proceduresPerformed[$i]==$row['procedure_id']){
+        					$feeTotal += $row['procedure_fee'];
+        					$rebateTotal += $row['medicare_rebate'];
+        				}
+        			}
+        		}
+        	$averageFee= $feeTotal/(count($proceduresPerformed));
+        	$this->Cell($w[1],10,$averageFee,1,0,'L',$fill);
+        	$this->Cell($w[2],10,$feeTotal,1,0,'L',$fill);
+        	$this->Cell($w[3],10,$rebateTotal,1,0,'L',$fill);
+        		
+        	$fill = !$fill;
+        	$this->Ln();
+        			
+        			
+
+        		
+        		      		
+        		
+        	}
 		
     	
 
@@ -210,12 +293,17 @@
 	$pdf->AliasNbPages();
 	$pdf->AddPage();
 	$admdata = $pdf->LoadData($file);
-	$admheader = array('Patient Id', 'Admission Id','Admission Date', 'Admission Notes');
+	$admheader = array('Patient ID', 'Admission ID','Admission Date', 'Department ID');
 	$admissionIdArray = array();
 	$pdf->AdmissionTable($admheader, $admdata, $admissionIdArray);
-	$proheader = array('Procedure number', 'Admission Id','Procedure Date', 'Procedure Id');
+	$proheader = array('Procedure number', 'Admission ID','Procedure Date', 'Procedure ID');
+	$procedureCount = 0;
+	$proceduresPerformed = array();
 	$prodata = $pdf->LoadProData($file, $admissionIdArray);	
-	$pdf->procedureTable($proheader, $prodata, $admissionIdArray);
+	$pdf->procedureTable($proheader, $prodata, $admissionIdArray, $procedureCount, $proceduresPerformed);
+	$statsheader = array('# of services provided', 'Avg. Fee','Total Fees', 'Total Medicare Rebates');
+	$statdata = $pdf->LoadStatData($file, $proceduresPerformed);
+	$pdf->statsTable($statsheader, $statdata, $procedureCount, $proceduresPerformed);
 	$pdf->Output();
 
 ?>
