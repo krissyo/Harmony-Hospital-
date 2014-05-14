@@ -41,6 +41,17 @@ function displayVacantBeds(dptId) {
 		<h1>ADD / UPDATE ADMISSIONS</h1>
 	</div>
 <div id="content">
+	<div name=" buttonWrapper" id="centre">
+		<?php
+			if (ISSET($_SESSION[admission_id])) {
+			?>
+				<button  id="curAdmissionBtn" class="linkingButtons" 
+				onclick="location.href = 'bookings.php'">Make a Booking</button>
+			<?php
+			}
+			?>
+	</div>
+
 <form method="POST" action="processAdmission.php">
 <table>
 <?php

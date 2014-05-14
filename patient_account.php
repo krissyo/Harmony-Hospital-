@@ -13,9 +13,13 @@ include("pagecomponents/head.php");
 				<form id="accountForm" method="post" action="update_patient_service.php">
 				
 					<?php 
+					// get the patient info from the DB
 					$patient_details = array();
 					require ("pagecomponents/patient_basic_details.php"); 
 					pull_details($patient_details);
+					
+					// set the admission record session variable
+					$_SESSION[admission_id] = $patient_details['admission_id'];
 					?>
 					
 					<table>
@@ -59,8 +63,8 @@ include("pagecomponents/head.php");
 					$CONVERSION = 86400;
 					
 					// Testing with AddmissionId = 1
-					if (!isSet($_SESSION['AdmissionId'])) {
-						$_SESSION['AdmissionId']  = 1;
+					if (!isSet($_SESSION[admission_id])) {
+						$_SESSION[admission_id]  = $patient_details['admission_id'];
 					} 
 					
 					//extract info from DB

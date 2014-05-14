@@ -11,21 +11,25 @@ include("pagecomponents/head.php");
 			</div>
 				<div id="content">
 				<form id="bookingsform" class="sigPad" method="post" action="submit/bookingsubmit.php">
-					<?php include ("pagecomponents/patient_basic_details.php"); ?>
+					<?php 
+					$patient_details = array();
+					require ("pagecomponents/patient_basic_details.php"); 
+					pull_details($patient_details);
+					?>
 					
-					<input type="hidden" name="AdmissionId" id="AdmissionId" value="<?php echo $_SESSION['AdmissionId']; ?>">
+					<input type="hidden" name="AdmissionId" id="AdmissionId" value="<?php echo $patient_details['admission_id']; ?>">
 					<table id = "bookingTable">
 					<h3><th colspan="2" class="bookingdetails">Booking Details</th></h3>
 					
 					<tr><td>Patient's ID</td><td>
-						<input type="text" class="rounded" name="PatientId" id="PatientId" value="<?php echo $_SESSION['PatientId']; ?>">
+						<input type="text" class="rounded" name="PatientId" id="PatientId" value="<?php echo $_SESSION[patient_id]; ?>">
 						</td></tr>						
 					<tr><td>Patient's Name</td><td>
-						<input class="rounded" type="text" name="PatientName" id="PatientName" value="<?php echo $_SESSION['PatientName']; ?>">
+						<input class="rounded" type="text" name="PatientName" id="PatientName" value="<?php echo $patient_details['full_name']; ?>">
 						</td></tr>
 						
 					<tr><td>Date Of Birth</td><td> 
-						<input class="rounded" type="date" name="DateOfBirth" id="DateOfBirth"value="<?php echo $_SESSION['DateOfBirth']; ?>">
+						<input class="rounded" type="date" name="DateOfBirth" id="DateOfBirth"value="<?php echo $patient_details["date_of_birth"]; ?>">
 						</td></tr>
 					<tr><td>Specialist</td><td><select class="rounded" name='StaffId'>
 						<?php
