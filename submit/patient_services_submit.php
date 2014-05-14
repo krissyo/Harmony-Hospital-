@@ -29,11 +29,15 @@ if (isset($_SESSION["userID"])) {
 	$result=mysqli_query($con, $sql);
 
 	if ($result == 1) {
-		echo "Update successful.";
+		$msg = "Update successful.";
 	} else {
-		echo "Error occurred. " . mysqli_errno() . " " . mysqli_error();
+		$msg = "Error occurred.";
 	}
 	
+// Let the user know of the successful / failed update
+// and display a Back to Patient Account button
+require_once('../confirm_service_update.inc');
+showMessage($msg);
 
 require_once('../pagecomponents/closeConnection.php');	
 ?>
