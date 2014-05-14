@@ -42,7 +42,10 @@ require_once('pagecomponents/connectDB.php');
 			?>
 			<button  id="admHistoryBtn" class="linkingButtons"
 			onclick="location.href = 'patient_account.php'">Patient's Account</button>
-            <button  id="admHistoryBtn" class="linkingButtons">Admissions History</button>
+			
+            <button  id="admHistoryBtn" class="linkingButtons"
+			onclick="location.href = 'view_admission_history.php'">
+			Admissions History</button>
             
                 </div>
             <br /><br />
