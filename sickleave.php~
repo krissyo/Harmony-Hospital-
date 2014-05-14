@@ -27,7 +27,10 @@ include("pagecomponents/head.php");
 			<form id="sickleave" action="submit/sicksubmit.php" method="post">
                 <input type="hidden" >
 			<table><h3><th colspan="2" class="userdetails">To be completed by the employee who has taken Sick Leave </th></h3>
-               
+                <?php 
+                //use this code where ever session storage is needed 
+                    include("pagecomponents/checklogin.php");
+                ?>
             <tr><td>Start Date:</td> <td> <input class="rounded" type="date" name="StartDate" id="StartDate" required></td></tr>
             <tr><td>End Date:</td> <td> <input class="rounded" type="date" name="EndDate" id="EndDate" onchange="numberOfDays();" required></td></tr>
             <tr><td>Number of Days Absent:</td> <td> <input class="rounded" type="NoAbsent" name="NoAbsent" id="NoAbsent" required></td></tr>
