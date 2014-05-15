@@ -2,6 +2,8 @@
 function getHistory($patient_id) {
 require('pagecomponents/connectDB.php');
 
+$patient_id = 1;
+
 $sql = getQuery($patient_id);
 
 $result = mysqli_query($con, $sql);
@@ -10,17 +12,15 @@ $result = mysqli_query($con, $sql);
 		if (mysqli_num_rows($result) !== 0 ) {
 			// Headings
 			echo '<tr>';
-				echo '<td style="border: 1px solid grey;">Start Date</td>
-				<td style="border: 1px solid grey;">End Date</td>
-				<td style="border: 1px solid grey;">Notes</td>';
+				echo '<th>Start Date</th><th>End Date</th><th>Notes</th>';
 			echo '</tr>';
 			
 			// Main data
 			while ($row = mysqli_fetch_array($result) ) {
 				echo '<tr>';
-					echo '<td style="border: 1px solid grey;">' . $row["admission_date"] . '</td>';
-					echo '<td style="border: 1px solid grey;">' . $row["discharge_date"] . '</td>';
-					echo '<td style="border: 1px solid grey;">' . $row["notes"] . '</td>';
+					echo '<td>' . date("d/m/Y", strToTime($row["admission_date"])) . '</td>';
+					echo '<td>' . date("d/m/Y", strToTime($row["discharge_date"])) . '</td>';
+					echo '<td>' . $row["notes"] . '</td>';
 				echo '</tr>';
 			}
 		} else {

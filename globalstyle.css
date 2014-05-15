@@ -118,6 +118,15 @@ td:first-child{
 	font-size: 1.1em;
 	font-weight: bold;
 }
+
+#admHistory,  #admHistory th, #admHistory td{
+	border: 1px solid grey;
+}
+
+#admHistory td {
+	font-size: 1em;
+}
+
 /* This formats the table
 in Resource Availability Form */
 #availability {

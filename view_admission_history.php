@@ -32,12 +32,12 @@ include("pagecomponents/head.php");
 					<tr><td>Date Of Birth</td><td> 
 						<?php
 						echo '<label>' . 
-							$patient_details["date_of_birth"] . '</label>';
+							date("d/m/Y", strToTime($patient_details["date_of_birth"])). '</label>';
 						?>
 						</td></tr>
 					</table>
 					
-					<table id="admHistory" style="border: 1px solid grey;">
+					<table id="admHistory">
 
 						<?php
 						// get data from DB
