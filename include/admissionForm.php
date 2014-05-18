@@ -47,6 +47,9 @@ function displayVacantBeds(dptId) {
 			?>
 				<button  id="curAdmissionBtn" class="linkingButtons" 
 				onclick="location.href = 'bookings.php'">Make a Booking</button>
+				
+				<button  id="curAdmissionBtn" class="linkingButtons" 
+				onclick="location.href = 'discharge.php'">Discharge Patient</button>
 			<?php
 			}
 			?>

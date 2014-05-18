@@ -55,6 +55,25 @@ session_start();
 	$vars['cover_type'] . "', " .
 	$vars['last_updated_by'] . ")";
 }
+
+// Returns an SQL query to discharge the patient
+// i.e. to set the discharge date
+function update_discharge_sql() {
+	session_start();
+	return "UPDATE admissions 
+			SET discharge_date = '". $_POST['discharge_date'] .
+			"', last_updated_by = " . $_SESSION['userID'] .
+			" WHERE admission_id = " . $_SESSION['admission_id'];
+}
+
+function update_services_sql() {
+	session_start();
+	return "UPDATE patient_services 
+			SET service_end_date = '". $_POST['discharge_date'] .
+			"', last_updated_by = " . $_SESSION['userID'] .
+			" WHERE admission_id = " . $_SESSION['admission_id']; 
+}
+
 // Checks if an Insurance Provider account 
 // exists for this admission
 function checkExists($admission_id) {

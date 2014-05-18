@@ -2,8 +2,6 @@
 function getHistory($patient_id) {
 require('pagecomponents/connectDB.php');
 
-$patient_id = 1;
-
 $sql = getQuery($patient_id);
 
 $result = mysqli_query($con, $sql);
