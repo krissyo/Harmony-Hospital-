@@ -45,12 +45,12 @@ $password=randomPassword();
 						  ?>
                 </select></td>
             <tr><td>Gender: </td> <td>
-					<input type="radio" name="sex" value="male" checked>Male
+					<input type="radio" name="sex" value="male" checked>Male<br>
                     <input type="radio" name="sex" value="female">Female</td></tr>
             <tr><td>Second Language:</td> <td> <input class="rounded" type="text" name="SecondLanguage" id="SecondLanguage" required> </td></tr>
             <tr><td>Email Address: </td> <td><input class="rounded" type="text" name="EmailAddress" id="EmailAddress" required></td></tr>
             <tr><td>Blue Card: </td> <td>
-					<input type="radio" name="yes" value="yes" checked>Yes
+					<input type="radio" name="yes" value="yes" checked>Yes<br>
                     <input type="radio" name="yes" value="no">No</td></tr>
                 <tr>
                     <td></td>
