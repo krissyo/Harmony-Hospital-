@@ -109,7 +109,7 @@
 			
 	
 			if (!$data) {
-			return 'No data to display.';
+			return false;
 			} else {
 			return $data;
 			}
@@ -176,10 +176,11 @@
     		//Calculate Average age
     		$totalAgesYears = 0;
     		$patdata = $this->LoadPatData($file,$patientIdArray);
-    		while($row = mysqli_fetch_array($patdata)) 
-    		{
+			if ($patdata) {
+				while($row = mysqli_fetch_array($patdata)) {
     				$totalAgesYears += (($todaysDate - strtotime($row['date_of_birth']))/31536000);
-    		}
+				}
+			}
 
 
     		$stayLength = $stayLengthSeconds / 86400;
@@ -224,22 +225,16 @@
         		
         function iterateDepartments($admheader, $depdata, $patientIdArray, $todaysDate)
 		{
-			$departmentListing = array(219);
 			$departmentName = array();
 			while($row=mysqli_fetch_array($depdata))
 			{
-				$departmentListing[] = $row['department_id'];
-				$departmentName[$row['department_id']] = $row['department_description'];
+				$id = $row['department_id'];
+				$departments[$id] = $row['department_description'];
 			}			
-			if(count($departmentListing)>1)
-			{
-			for($i=0;$i<count($departmentListing);$i++)
-				{
-					$querydepartmentno= $departmentListing[$i];
-					$querydepartmentname = $departmentName[$departmentListing[$i]];
-					//$admdata = $this->LoadAdmData($file,$departmentListing[$i]);
-					$this->AdmissionTable($admheader, $admdata, $patientIdArray, $todaysDate, $querydepartmentname, $querydepartmentno );
-				}
+			foreach ($departments as $key=>$element) {
+				$querydepartmentno = $key;
+				$querydepartmentname = $element;
+				$this->AdmissionTable($admheader, $admdata, $patientIdArray, $todaysDate, $querydepartmentname, $querydepartmentno);
 			}
 			
 		}
