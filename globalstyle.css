@@ -359,19 +359,18 @@ body {
 .sidebarColumn a {
     text-decoration: none; 
 }
+
 .contentColumn {
-    width:90%;
-    padding-left: 6px;
-    padding-top: 5px; 
+    display: inline;
+    /*width:90%;*/
+    height: 500px;
+    padding-left: 14px;
+    padding-top: 5px;
 }
-.contentLinkingBox, 
-.adminLinkingBoxes, 
-.doctorLinkingBoxes, 
-.nurseLinkingBoxes,
-.employmentLinkingBoxes,
-.resourceLinkingBoxes,
-.patientLinkingBoxes {
-/*
+
+.contentLinkingBox 
+ {
+
     display: inline-block;
     border: 2px solid;
     border-radius: 15px 15px;
@@ -379,39 +378,26 @@ body {
     width: 32%;
     margin-bottom: 4px;
     border-color: #c8c7cb;
-    background-color: #c8c7cb; 
-*/
+    background-color: #c8c7cb;
+    left:10px;
+
+
 }
-.contentLinkingBox h1, 
-.adminLinkingBoxes h1, 
-.doctorLinkingBoxes h1, 
-.nurseLinkingBoxes h1,
-.employmentLinkingBoxes h1,
-.resourceLinkingBoxes h1,
-.patientLinkingBoxes h1 {
-/*
+.contentLinkingBox h1 
+ {
+
     text-align: center;
     color: white;
     font-family: Helvetica, arial sans-serif;
     font-size: 25pt; 
-*/
+
 }
-.contentLinkingBox a, 
-.adminLinkingBoxes a, 
-.doctorLinkingBoxes a, 
-.nurseLinkingBoxes a,
-.employmentLinkingBoxes a,
-.resourceLinkingBoxes a,
-.patientLinkingBoxes a {
+.contentLinkingBox a 
+{
     text-decoration:none; 
 }
-.contentLinkingBox:hover, 
-.adminLinkingBoxes:hover, 
-.doctorLinkingBoxes:hover, 
-.nurseLinkingBoxes:hover,
-.employmentLinkingBoxes:hover,
-.resourceLinkingBoxes:hover,
-.patientLinkingBoxes:hover {
+.contentLinkingBox:hover 
+{
     border-color: #87bad7;
     background-color: #87bad7; 
 }

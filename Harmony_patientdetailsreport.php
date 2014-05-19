@@ -228,6 +228,7 @@
         			$this->Cell($w[1],10,$row['admission_date'],1,0,'L',$fill);
         			$this->Cell($w[2],10,$notes,1,0,'L',$fill);
         			$fill = !$fill;
+        			$this->Ln();
         		}       		
 
         	}
@@ -235,8 +236,8 @@
 
 
 			    		// Closing line
-    					$this->Cell(array_sum($w),0,'','T');
-    					$this->Ln(10);
+    					
+    					$this->Ln(5);
 				
     	}
 
@@ -252,7 +253,7 @@
 			}
 	
 			//Select Admission records
-			$sql = 	'SELECT doctors_notes, current_medication, allergies, conditions,
+			$sql = 	'SELECT doctors_notes, nurses_notes, current_medication, allergies, conditions,
 			height, weight
 			FROM medical_history 
 			WHERE patient_id = ' . $_SESSION["PatientId"];
@@ -319,7 +320,7 @@
         			$this->Ln();
         			$fill = !$fill;
         		}
-        		if($row['nurse_notes']){
+        		if($row['nurses_notes']){
         			$this->Cell($w[0],10,'Nurses Notes',1,0,'c',true);
 					$this->Ln();
         			$notes = $row['nurses_notes'];
@@ -367,9 +368,9 @@
 	$pdf->CarerDetails();
 	$pdf->SetXY(10,90);
 	$admdata = $pdf->LoadAdmData($file);
-	$admheader = array('Admission Id', 'Admission Date', 'Admission Notes');
-	
+	$admheader = array('Admission Id', 'Admission Date', 'Admission Notes');	
 	$pdf->AdmissionTable($admheader, $admdata);
+
 	$meddata = $pdf->LoadMedData($file);
 	$medheader = array('Height', 'Weight','Allergies');
 	$pdf->MedicalHistoryTable($medheader, $meddata);
