@@ -50,16 +50,15 @@
 			//Connect to database
 			include ('pagecomponents/connectDB.php');
 
-			if (!isSet($_SESSION['AdmissionId'])) {
-			$_SESSION['AdmissionId'] = 1;
-			}	
+			// set patient_id from session data
+			$patient = $_SESSION['patient_id'];	
 
 			//Select records
 			$sql = 'SELECT patient_id,first_name, middle_name, last_name,
 			address_line, postcode, date_of_birth, date_of_death, gender,
 			medicare_number, medicare_expiry_date
 			FROM patient_details 
-			WHERE patient_id = 3';
+			WHERE patient_id ='.$patient;
 
 			$result=mysqli_query($con,$sql);
 			
@@ -109,15 +108,14 @@
 			//Connect to database
 			include ('pagecomponents/connectDB.php');
 
-			if (!isSet($_SESSION['AdmissionId'])) {
-			$_SESSION['AdmissionId'] = 1;
-			}	
+			// set patient_id from session data
+			$patient = $_SESSION['patient_id'];
 
 			//Select records
 			$sql2 = 'SELECT carer1_name, carer1_address, carer1_phone_number, carer2_name, carer2_address, carer2_phone_number,
 			address_line, postcode
 			FROM patient_details 
-			WHERE patient_id = 1';
+			WHERE patient_id ='.$patient;
 
 			$result=mysqli_query($con,$sql2);
 			
@@ -154,15 +152,14 @@
 			//Connect to database
 			include ('pagecomponents/connectDB.php');
 
-			// Testing with AdmissionId set to 1
-			if (!isSet($_SESSION['PatientId'])) {
-			$_SESSION['PatientId'] = 1;
-			}
+			// set patient_id from session data
+			$patient = $_SESSION['patient_id'];
+			
 	
 			//Select Admission records
 			$sql = 	'SELECT admission_id, admission_date, notes
 			FROM admissions 
-			WHERE patient_id = ' . $_SESSION["PatientId"];
+			WHERE patient_id = ' . $patient;
 			
 			$data=mysqli_query($con,$sql);
 	
@@ -247,16 +244,15 @@
 			//Connect to database
 			include ('pagecomponents/connectDB.php');
 
-			// Testing with AdmissionId set to 1
-			if (!isSet($_SESSION['PatientId'])) {
-			$_SESSION['PatientId'] = 2;
-			}
+			
+			// set patient_id from session data
+			$patient = $_SESSION['patient_id'];
 	
 			//Select Admission records
 			$sql = 	'SELECT doctors_notes, nurses_notes, current_medication, allergies, conditions,
 			height, weight
 			FROM medical_history 
-			WHERE patient_id = ' . $_SESSION["PatientId"];
+			WHERE patient_id = ' .$patient;
 			
 			$data=mysqli_query($con,$sql);
 	

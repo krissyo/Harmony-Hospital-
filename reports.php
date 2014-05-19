@@ -1,33 +1,82 @@
 <?php
-$pagetitle="Annual Leave";
+$pagetitle="reports";
 include("pagecomponents/head.php");
 ?>
 
 		<div id="wrapper">
 		<div id="header">
-			<h1>Annual Leave</h1>
-            
+		          
 		</div>
 		<div id="content">
-			<form id="annualleave" action="submit/annualsubmit.php" method="post">
-                <input type="hidden" >
-			<table><h3><th colspan="2" class="userdetails">To be completed by the employee applying for Annual Leave </th></h3>
-                 
+      <h1 class="centre">PATIENT INVOICING</h1>
+      <br>
+       
                 <?php 
                 //use this code where ever session storage is needed 
-                    include("pagecomponents/checklogin.php");
+                    //include("pagecomponents/checklogin.php");
                 ?>
-                
-            <tr><td>Start Date:</td> <td> <input class="rounded" type="date" name="AnnualLeaveStart" id="StartDate" required></td></tr>
-            <tr><td>End Date:</td> <td> <input class="rounded" type="date" name="AnnualLeaveEnd" id="EndDate" required></td></tr>
-            <tr><td>Number of Days Absent:</td> <td> <input class="rounded" type="NoAbsent" name="NoAbsent" id="NoAbsent" required></td></tr>
-            <tr><td>Approving Officer: </td> <td><input class="rounded" type="text" name="ApprovingOfficer" id="ApprovingOff" required></td></tr>
-            <tr>
-                    <td></td>
-                    <td><input class="rounded" type="submit" name="sumbit" id="submit" value="Submit"></td>
-                </tr>
-                </table>
-			</form>
+            <fieldset>
+            <legend>PATIENT INVOICE</legend>
+            <form name="patientInvoiceReportForm" id="patientInvoiceReportForm" action="patientInvoiceReportSubmit.php" method="POST">
+                  <div>
+                  <select name="selectPatient" id="selectPatient">
+                  <option value=""> -- select the patient -- </option>
+                  <?php
+                      include "lib/patientlisting.inc";                      
+                      ?>
+                    </select>
+                    </div>
+                    <input class="centre" type="submit" name="sumbit" id="submit" value="Submit">
+            </form>
+            </fieldset>
+            <br>
+              <h1 class="centre">PATIENT REPORTS</h1>
+              <br>
+                <?php 
+                //use this code where ever session storage is needed 
+                    //include("pagecomponents/checklogin.php");
+                ?>
+            <fieldset>
+            <legend>PATIENT DETAIL REPORT</legend>
+            <form name="patientSubmitReportForm" id="patientSubmitReportForm" action="patientDetailReportSubmit.php" method="POST">
+                  <div>
+                  <select name="selectPatient" id="selectPatient">
+                  <option value=""> -- select the patient -- </option>
+                  <?php
+                      include "lib/patientlisting.inc";                      
+                      ?>
+                    </select>
+                    </div>
+                    <input class="centre" type="submit" name="sumbit" id="submit" value="Submit">
+            </form>
+            </fieldset>
+            <br>
+            <h1 class="centre">DEPARTMENT REPORTS</h1>
+            <br>
+            <fieldset>
+            <legend>GENERAL SURGERY DEPARTMENT REPORT</legend>
+            <br>
+            <form name="GSReportForm" id="GSReportForm" action="" method="POST">
+                    <?php
+                      include "lib/datepicker.inc";
+                      date_field($errors, 'Reporting Month', 'Birthday');                      
+                      ?>
+                    <input class="centre" type="submit" name="sumbit" id="submit" value="Submit">
+            </form>
+            </fieldset>
+             <br>
+            <fieldset>
+            <legend>DEPARTMENT USAGE STATISTICS REPORT</legend>
+            <br>
+            <br>
+            <form name="DPUsageReportForm" id="DPUsageReportForm" action="" method="POST">
+                    <?php
+                      date_field($errors, 'Reporting Month', 'Birthday');                      
+                      ?>
+                    <input class="centre" type="submit" name="sumbit" id="submit" value="Submit">
+            </form>
+            </fieldset>
+            
 		</div>
 		<div id="sidebar">
 		</div>
