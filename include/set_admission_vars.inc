@@ -3,7 +3,10 @@ function update_admissions_sql($vars) {
 	session_start();
 	
 	return "UPDATE admissions SET staff_id = " . $vars['staff_id'] . ",
-	bed_id = " . $vars['bed_id'] . ", admission_date = '" . $vars['admission_date'] .
+	bed_id = " . $vars['bed_id'] . ", 
+	triage_category_id = " . $vars['triage_category_id'] . ",
+	waiting_time = " . $vars['waiting_time'] . ", 
+	admission_date = '" . $vars['admission_date'] .
 	"', resource_id = " . $vars['resource_id'] . ", notes = '" . $vars['notes'] .
 	"', last_updated_by = " . $vars['last_updated_by'] . ", department_id = " . $vars['department_id'] .	
 	" WHERE admission_id = " . $_SESSION[admission_id];
@@ -30,12 +33,14 @@ function insert_admission_sql($vars) {
 session_start();
 
 	return "INSERT INTO admissions 
-	(patient_id, staff_id, bed_id, admission_date, 
+	(patient_id, staff_id, bed_id, triage_category_id, 
+	waiting_time, admission_date, 
 	discharge_date, resource_id, notes, 
 	last_updated_by, department_id)
 	VALUES (" . $_SESSION[patient_id] . 
-	", " . $vars['staff_id'] . ", " . $vars['bed_id'] . ", '" . 
-	$vars['admission_date'] . 
+	", " . $vars['staff_id'] . ", " . $vars['bed_id'] . ", " .
+	$vars['triage_category_id'] . ", " . $vars['waiting_time'] . 
+	", '" . $vars['admission_date'] . 
 	"', NULL, " . $vars['resource_id'] . ", 
 	'" . $vars['notes'] . "', ".
 	$vars['last_updated_by'] . ", " . $vars['department_id'] . ")";
@@ -47,7 +52,7 @@ session_start();
 	return "INSERT INTO admission_account
 	(admission_id, insurance_provider_id,
 	provider_client_number, expiry_date_of_cover,
-	cover_type, last_updated_by)
+	cover_type, last_updated_by) 
 	VALUES (" . $_SESSION[admission_id] . ", " .
 	$vars['insurance_provider_id'] . ", '" .
 	$vars['provider_client_number'] . "', '" .
@@ -107,6 +112,16 @@ function set_variables(&$vars) {
 		$vars['bed_id'] = $_POST['bed_id'];
 	else
 		$vars['bed_id'] = 0;
+		
+	if (ISSET($_POST['triage_category_id']) && !($_POST['triage_category_id'] == 'default'))
+		$vars['triage_category_id'] = $_POST['triage_category_id'];
+	else
+		$vars['triage_category_id'] = 0;
+		
+	if (ISSET($_POST['waiting_time']))
+		$vars['waiting_time'] = $_POST['waiting_time'];
+	else
+		$vars['waiting_time'] = 0;
 		
 	if (ISSET($_POST['admission_date']))
 		$vars['admission_date'] = $_POST['admission_date'];

@@ -84,6 +84,11 @@ function get_sql_query($name) {
 	} else if ($name == 'patientId') {
 		return ("SELECT CONCAT(last_name, ', ', first_name) AS patient_name
 		FROM patient_details WHERE patient_id = " . $_SESSION[patient_id]);
+	} else if ($name = 'triage_category_id') {
+		return ("SELECT triage_category_id, 
+			CONCAT(short_description, ': ', long_description) as triage_description
+			FROM triage_category
+			ORDER BY short_description");
 	}
 	
 	/* 

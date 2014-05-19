@@ -22,6 +22,8 @@ function load_admission(&$existingAdm) {
 			$existingAdm[account_id] = $row['account_id'];
 			$existingAdm[notes] = $row['notes'];
 			$existingAdm[department_id] = $row['department_id'];
+			$existingAdm[triage_category_id] = $row['triage_category_id'];
+			$existingAdm[waiting_time] = $row['waiting_time'];
 		}
 		
 		$sql = "SELECT * FROM admission_account 

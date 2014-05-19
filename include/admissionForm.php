@@ -12,7 +12,6 @@ session_start();
 // load bed list dynamically, 
 // "no vacant beds for this Dpt" if none found
 
-
 ?>
 
 <script src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/lib/buttonClickLink.js"></script>
@@ -72,6 +71,8 @@ function displayVacantBeds(dptId) {
 		'displayVacantBeds(this.value);');
 		
 	populate_list($errors, $existingAdm, 'bed_id', 'Bed', 'bed_description');
+	populate_list($errors, $existingAdm, 'triage_category_id', 'Triage Category', 'triage_description');
+	input_text($errors, $existingAdm, 'waiting_time', 'Waiting Time');
 	populate_list($errors, $existingAdm, 'resource_id', 'Facility', 'resource_description');
 	input_textArea($errors, $existingAdm, 'notes', 'Notes');
 	populate_list($errors, $existingAdm, 'insurance_provider_id', 'Insurance', 'insurance_provider_name');
