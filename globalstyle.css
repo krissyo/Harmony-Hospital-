@@ -237,10 +237,12 @@ in Resource Availability Form */
     margin-right: auto;
     text-align: right;
 }
+
 #centre {
     margin-left: auto;
     margin-right: auto;
     }
+
 #page-footer{
     text-align:center;
     color:#aaa;
@@ -263,6 +265,13 @@ in Resource Availability Form */
 .consent{
     clear:both;
 }
+
+.centre {
+    margin: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .error{
     font-size: 8px;
     color:#F00;
