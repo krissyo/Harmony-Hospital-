@@ -36,7 +36,7 @@
 			$this->Cell(100);
 			$this->SetFont('Helvetica','B',15);
 			$this->SetLineWidth(1);
-			$this->Cell(88,8,'INVOICE NUMBER',1,2,'C');
+			$this->Cell(88,8,'INVOICE NUMBER '.$_SESSION['patient_id'],1,2,'C');
 
 			//Line Break
 			$this->Ln(0);
@@ -60,7 +60,7 @@
 		}
 
 		
-		function PatientDetails(){
+		function PatientDetails($patient){
 
 			//Connect to database
 			include ('pagecomponents/connectDB.php');
@@ -122,19 +122,15 @@
 	
 			if (!$data)
 			{
-				return 'No data to display.';
+				return false;
 			} 
 			else 
 			{
 				return $data;
 			}
 			include ('pagecomponents/closeConnection.php');
-		}
 
-		foreach($data as $row)
-		{
-			array_push(array, var)
-		} 
+		}
 
 
 
@@ -156,12 +152,12 @@
 			FROM patient_services 
 			INNER JOIN procedure_listing
 			ON patient_services.procedure_id = procedure_listing.procedure_id
-			WHERE patient_id = ' . $_SESSION["AdmissionId"] . ' ORDER BY service_start_date, service_end_date';
+			WHERE admission_id = ' . $_SESSION['AdmissionId'] . ' ORDER BY service_start_date, service_end_date';
 			
 			$data=mysqli_query($con,$sql);
 	
 			if (!$data) {
-			return 'No data to display.';
+			return false;
 			} else {
 			return $data;
 			}
@@ -199,36 +195,45 @@
     		$fill = false;
 			$feeTotal = 0;
 			$rebateTotal = 0;
-	
-    		while($row = mysqli_fetch_array($data)) {
-	
-				// Calculate days if the Service is open-dated
-				if (is_null($row['service_end_date'])) {
+
+			$data = $this->LoadData();
+			
+			if($data)
+			{
+    			while($row = mysqli_fetch_array($data)) 
+				{	
+					// Calculate days if the Service is open-dated
+					if (is_null($row['service_end_date'])) {
 						
 					// Calculate fees as at today's date
 					$row['service_end_date'] = date('Y-m-d');
 					}
 			
-				if ($row['service_start_date'] == $row['service_end_date']) {		
-					$days = 1;			
-					} else {
-					$days = Round(ABS(strToTime($row['service_start_date'])-strToTime($row['service_end_date']))/$CONVERSION);
-					}
+					if ($row['service_start_date'] == $row['service_end_date']) {		
+						$days = 1;			
+						} else {
+						$days = Round(ABS(strToTime($row['service_start_date'])-strToTime($row['service_end_date']))/$CONVERSION);
+						}
 			
-				// Populate Data
-        		$this->Cell($w[0],10, $row['procedure_description'],'LR',0,'L',$fill);
-				$startDate = date("d/m/Y", strToTime($row['service_start_date']));
-       	 		$this->Cell($w[1],10, $startDate,'LR',0,'L',$fill);
-        		$this->Cell($w[2],10, '$' . number_format($row['procedure_fee'], 2),'LR',0,'R',$fill);
-        		$this->Cell($w[3],10, '$' . number_format($row['medicare_rebate'], 2),'LR',0,'R',$fill);
-				$this->Cell($w[4],10, $days,'LR',0,'R',$fill);
-        		$this->Ln();
-        		$fill = !$fill;
+					// Populate Data
+        			$this->Cell($w[0],10, $row['procedure_description'],'LR',0,'L',$fill);
+					$startDate = date("d/m/Y", strToTime($row['service_start_date']));
+       	 			$this->Cell($w[1],10, $startDate,'LR',0,'L',$fill);
+        			$this->Cell($w[2],10, '$' . number_format($row['procedure_fee'], 2),'LR',0,'R',$fill);
+        			$this->Cell($w[3],10, '$' . number_format($row['medicare_rebate'], 2),'LR',0,'R',$fill);
+					$this->Cell($w[4],10, $days,'LR',0,'R',$fill);
+        			$this->Ln();
+        			$fill = !$fill;
 			
-				// Variables to calculate total Cost
-				$feeTotal += $row['procedure_fee'] * $days;
-				$rebateTotal += $row['medicare_rebate'] * $days;
+					// Variables to calculate total Cost
+					$feeTotal += $row['procedure_fee'] * $days;
+					$rebateTotal += $row['medicare_rebate'] * $days;
     			}
+    		}
+    		else
+    		{
+    			$this->Cell($w[1],10, 'there has been an error','LR',0,'L',$fill);
+    		}
 	
     		// Closing line
     		$this->Cell(array_sum($w),0,'','T');
@@ -281,9 +286,9 @@
 	$patient = $_SESSION['patient_id'];
 	$pdf->AliasNbPages();
 	$pdf->AddPage();
-	$pdf->PatientDetails();
-	$adminData->LoadAdmData($patient);
-	$data = $pdf->LoadData($file);
+	$pdf->PatientDetails($patient);
+	
+	//$data = $pdf->LoadData();
 	$header = array('SERVICE', 'DATE', 'FEE', 'REBATE', 'DAYS');
 	$totalsHeader = array('TOTAL FEES','TOTAL REBATE','TOTAL GAP AMOUNT PAYABLE');
 	$pdf->invoiceTable($header, $data, $totalsHeader);
