@@ -69,9 +69,9 @@ include("pagecomponents/head.php");
             <legend>DEPARTMENT USAGE STATISTICS REPORT</legend>
             <br>
             <br>
-            <form name="DPUsageReportForm" id="DPUsageReportForm" action="" method="POST">
+            <form name="DPUsageReportForm" id="DPUsageReportForm" action="submit/DepartmentUsageReportSubmit.php" method="POST">
                     <?php
-                      date_field($errors, 'Reporting Month', 'Birthday');                      
+                      date_field('report', 'Reporting Month: ');                      
                       ?>
                     <input class="centre" type="submit" name="sumbit" id="submit" value="Submit">
             </form>
