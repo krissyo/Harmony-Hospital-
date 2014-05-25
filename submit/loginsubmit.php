@@ -1,5 +1,6 @@
 <?php session_start();
-
+// @author: Krissy O'Farrell, 08854114
+// Last modified on: 25/05/2014
 require_once('../pagecomponents/validate.php');
 // This is the only place in out APP where
 // the connection to the database is established via the include file

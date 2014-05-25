@@ -1,7 +1,10 @@
 <?php
 require_once('../pagecomponents/connectDB.php');
 require_once('../pagecomponents/validate.php');
-
+// @author: Krissy O'Farrell, 08854114
+// Last modified on: 25/05/2014
+$pagetitle="Submitted";	
+    include ("../pagecomponents/indexinclude.php");
 $validate = new Validate();
 $validated_POST = $validate->post();
 $LastName= $validated_POST["LastName"];
@@ -18,7 +21,7 @@ $docNotes=$validated_POST["docNotes"];
 
 $sql="INSERT INTO admissions VALUES (admission_Id	patient_id	bed_id FK	admission_date	discharge_date	resource_id	account_id	notes);";
 $result=mysqli_query($con,$sql);
-echo $result;
+echo $result . "Admission Successful";
 
 require_once('../pagecomponents/closeConnection.php');
 ?>

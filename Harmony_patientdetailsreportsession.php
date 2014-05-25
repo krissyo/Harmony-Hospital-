@@ -1,10 +1,11 @@
 <?php
 	require('pagecomponents/fpdf.php');
-
+	session_start();
 	class PDF extends FPDF
 	{
 		//page header
-		function Header(){
+		function Header()
+		{
 			// LOGO Image
 			$this->Image('http://trustinblack.com/harmonyhospital/images/PdfImages/Harmony_Logo_Header_Logo.png',10,6,55,26);
 			
@@ -45,14 +46,12 @@
 		}
 
 		
-		function PatientDetails(){
+		function PatientDetails($patient){
 
 			//Connect to database
 			include ('pagecomponents/connectDB.php');
 
-			// set patient_id from session data
-			$patient = $_SESSION['patient_id'];	
-
+			
 			//Select records
 			$sql = 'SELECT patient_id,first_name, middle_name, last_name,
 			address_line, postcode, date_of_birth, date_of_death, gender,
@@ -67,8 +66,6 @@
 			$this->SetTextColor(165,165,167);
 			$this->SetFont('Helvetica','B',12);
 
-			//Shift to the right 10mm
-			//$this->Cell(0);
 
 			//Title
 			$this->Cell(88,8,$row,0,2,'L');
@@ -84,7 +81,8 @@
 				$space = "\n";
 				$patientName = $row['first_name']." ".$row['middle_name']." ".$row['last_name'];
 				$DOB= "DOB:".$row['date_of_birth'];
-				if($row['date_of_death']){
+				if($row['date_of_death'])
+				{
 					$DOD = " DOD:".$row['date_of_death'];
 				}
 				$addressLn1 = $row['address_line']." ".$row['postcode'];
@@ -100,17 +98,14 @@
 				$this->MultiCell(88,7,$patientDetails,1,'L');			
 			}						
 			include('pagecomponents/closeConnection.php');
-			//$this->Ln(10);
 		}
 
-		function CarerDetails(){
+		function CarerDetails($patient)
+		{
 
 			//Connect to database
 			include ('pagecomponents/connectDB.php');
-
-			// set patient_id from session data
-			$patient = $_SESSION['patient_id'];
-
+			
 			//Select records
 			$sql2 = 'SELECT carer1_name, carer1_address, carer1_phone_number, carer2_name, carer2_address, carer2_phone_number,
 			address_line, postcode
@@ -124,7 +119,8 @@
 
 
 			// carer details Variables Set
-			if($result){
+			if($result)
+			{
 				$row = mysqli_fetch_array($result);
 				$space = "\n";
 				$carerName = "CARER 1: ".$row['carer1_name'];
@@ -146,34 +142,34 @@
 			$this->Ln(10);
 		}
 
-		// Load Table data
-		function LoadAdmData($file)
+		// get table data
+		function LoadAdmData($patient)
 		{
 			//Connect to database
 			include ('pagecomponents/connectDB.php');
-
-			// set patient_id from session data
-			$patient = $_SESSION['patient_id'];
-			
 	
 			//Select Admission records
 			$sql = 	'SELECT admission_id, admission_date, notes
 			FROM admissions 
-			WHERE patient_id = ' . $patient;
+			WHERE patient_id ='.$patient;
 			
 			$data=mysqli_query($con,$sql);
 	
-			if (!$data) {
-			return 'No data to display.';
-			} else {
-			return $data;
+			if (!$data)
+			{
+				return 'No data to display.';
+			} 
+			else 
+			{
+				return $data;
 			}
 			include ('pagecomponents/closeConnection.php');
-			}
+		}
 
 			
-
-		function AdmissionTable($admheader, $admdata){
+		// Load Table data
+		function AdmissionTable($admheader, $admdata)
+		{
 
     		// Colors, line width and bold font
     		$this->SetFillColor(255,255,255);
@@ -201,13 +197,15 @@
     		$this->SetFont('');
 
 	
-    		while($row = mysqli_fetch_array($admdata)) {
+    		while($row = mysqli_fetch_array($admdata)) 
+    		{
 	
 				// Populate Data
 				$notes = $row['notes'];
         		$notesLength = strlen($notes);
         		// provide for long admission notes
-				if($notesLength>40){
+				if($notesLength>40)
+				{
 					$x = $this->x;
 					$y = $this->y;	
 					$space = "\n";
@@ -220,7 +218,8 @@
         			$this->MultiCell($w[2],10,$notes,1,'L',$fill);        			
         			$fill = !$fill;
         		}
-        		else{
+        		else
+        		{
         			$this->Cell($w[0],10,$row['admission_id'],1,0,'L',$fill);
         			$this->Cell($w[1],10,$row['admission_date'],1,0,'L',$fill);
         			$this->Cell($w[2],10,$notes,1,0,'L',$fill);
@@ -230,41 +229,38 @@
 
         	}
         	$this->Ln();
-
-
-			    		// Closing line
-    					
-    					$this->Ln(5);
-				
+			// Closing line
+    		$this->Ln(5);
     	}
 
     	// Load Table data
-		function LoadMedData($file)
+		function LoadMedData($patient)
 		{
 			//Connect to database
 			include ('pagecomponents/connectDB.php');
 
-			
-			// set patient_id from session data
-			$patient = $_SESSION['patient_id'];
-	
+				
 			//Select Admission records
-			$sql = 	'SELECT doctors_notes, nurses_notes, current_medication, allergies, conditions,
+			$sql = 'SELECT doctors_notes, nurses_notes, current_medication, allergies, conditions,
 			height, weight
 			FROM medical_history 
-			WHERE patient_id = ' .$patient;
+			WHERE patient_id ='.$patient;
 			
 			$data=mysqli_query($con,$sql);
 	
-			if (!$data) {
-			return 'No data to display.';
-			} else {
-			return $data;
+			if (!$data)
+			{
+				return 'No data to display.';
+			} 
+			else
+			{
+				return $data;
 			}
 			include ('pagecomponents/closeConnection.php');
-			}
+		}
 
-    	function MedicalHistoryTable($medheader, $meddata){
+    	function MedicalHistoryTable($medheader, $meddata)
+    	{
 
     		// Colors, line width and bold font
     		$this->SetFillColor(255,255,255);
@@ -293,7 +289,8 @@
 
    		
 	
-    		while($row = mysqli_fetch_array($meddata)) {
+    		while($row = mysqli_fetch_array($meddata))
+    		{
 	
 				// Populate Data
 				$this->Cell($w[0],10,$row['height'],1,0,'c',false);
@@ -306,70 +303,72 @@
 				$notes = $row['doctors_notes'];
         		$notesLength = strlen($notes);
         		// provide for long admission notes
-				if($notesLength>40){
+				if($notesLength>40)
+				{
 					$this->MultiCell(190,10,$row['doctors_notes'],1,'L',$fill);
 					$this->Ln();        			  			
         			$fill = !$fill;
         		}
-        		else{
+        		else
+        		{
         			$this->Cell(190,10,$row['doctors_notes'],1,0,'L',$fill);
         			$this->Ln();
         			$fill = !$fill;
         		}
-        		if($row['nurses	_notes']){
+        		if($row['nurses	_notes'])
+        		{
         			$this->Cell($w[0],10,'Nurses Notes',1,0,'c',true);
 					$this->Ln();
         			$notes = $row['nurses_notes'];
         			$notesLength = strlen($notes);
         			// provide for long admission notes
-					if($notesLength>40){
+					if($notesLength>40)
+					{
 						$this->MultiCell(190,10,$row['nurses_notes'],1,'L',$fill);        			  			
         				$fill = !$fill;
-        				}
-        			else{
+        			}
+        			else
+        			{
         				$this->Cell(190,10,$row['nurses_notes'],1,0,'L',$fill);
         				$fill = !$fill;
-        				}
+        			}
         		}            		
 
         	}
         	$this->Ln();
-
-
-			    		// Closing line
-    					//$this->Cell(array_sum($w),0,'','T');
-    					//$this->Ln(10);
-				
     	}
 
 		// Page footer
 		function Footer()
 		{
-    	// Position at 1.5 cm from bottom
-    	$this->SetY(-15);
-    	// Arial italic 8
-    	$this->SetFont('Arial','I',8);
-    	// Page number
-    	$this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
+    		// Position at 1.5 cm from bottom
+    		$this->SetY(-15);
+    		// Arial italic 8
+    		$this->SetFont('Arial','I',8);
+    		// Page number
+    		$this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
 		}	
 
 		
 	}
 
 	$pdf=new PDF();
+	$patient = $_SESSION['patient_id'];
 	$pdf->AliasNbPages();
 	$pdf->AddPage();
-	$pdf->PatientDetails();
+	$pdf->PatientDetails($patient);
 	$pdf->SetXY(113,38);
-	$pdf->CarerDetails();
+	$pdf->CarerDetails($patient);
 	$pdf->SetXY(10,90);
-	$admdata = $pdf->LoadAdmData($file);
+
+	$admdata = $pdf->LoadAdmData($patient);
 	$admheader = array('Admission Id', 'Admission Date', 'Admission Notes');	
 	$pdf->AdmissionTable($admheader, $admdata);
 
-	$meddata = $pdf->LoadMedData($file);
+	$meddata = $pdf->LoadMedData($patient);
 	$medheader = array('Height', 'Weight','Allergies');
 	$pdf->MedicalHistoryTable($medheader, $meddata);
+
 	$pdf->Output();
 
 ?>

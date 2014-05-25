@@ -1,69 +1,38 @@
 <?php
-// @author: Krissy O'Farrell, 08854114
-// Last modified on: 25/05/2014
 	$pagetitle="Search Results";		
     include ("../pagecomponents/indexinclude.php");
 ?>
 <?php
 require_once('../pagecomponents/validate.php');
 
-require_once('../pagecomponents/connectDB.php');
-
-?>
-<h2>Patient Results</h2>
-<?php
+require_once('../harmonyhospital/pagecomponents/connectDB.php');
 
 $validate = new Validate();
 $validated_GET = $validate->get();
-$search=$validated_GET["search"];
-if((strlen($search)==0)){
+$patientid=(int)$validated_GET["patientId"];
+$surname=$validated_GET["surname"];
+if((strlen($surname)==0 && strlen($patientid)==0)){
     echo 'No value specified.';
     die();
 }else{
-    if ($search > 0) {
-        $sql="SELECT * FROM patient_details WHERE patient_id = '$$search'";
-    }
-    else if (strlen($search)>0) {
-        $sql="SELECT * FROM patient_details WHERE first_name LIKE '%$search%'";
+    if (strlen($surname)>0) {
+        $sql="SELECT * FROM patient_details WHERE last_name LIKE '%$surname%'";
+    }elseif (strlen($patientid)>0) {
+        $sql="SELECT * FROM patient_details WHERE patient_id = '$patientid'";
     }
     $result=mysqli_query($con,$sql)
         or die("Error: ".mysqli_error($con)); 
     $total = mysqli_num_rows($result);
     if($total > 0){
         while($row = mysqli_fetch_array($result)){
-            echo '<div class="searchResults"><a href="'. '../patientprofile.php?id=' . $row['patient_id'] . '">' . $row['first_name'] . ' ' . $row['last_name'].'</a></div>';
-        }
-    }else{
-        echo '<div class="noResults">No results found.</div>';   
-    }
-}
-?>
-<h2 style="width:89%;float:left;">Staff Results</h2>
-
-<?php
-if((strlen($search)==0)){
-    echo 'No value specified.';
-    die();
-}else{
-    if ($search > 0) {
-        $sql="SELECT * FROM staff_details WHERE staff_id = '$search'";
-    }
-    else if (strlen($search)>0) {
-        $sql="SELECT * FROM staff_details WHERE first_name LIKE '%$search%'";
-    }
-    $result=mysqli_query($con,$sql)
-        or die("Error: ".mysqli_error($con)); 
-    $total = mysqli_num_rows($result);
-    if($total > 0){
-        while($row = mysqli_fetch_array($result)){
-            echo '<div class="searchResults"><a href="'. '../staffprofile.php?staffid=' . $row['staff_id'] . '">' . $row['first_name'] . ' ' . $row['last_name'].'</a></div>';
+            echo '<div class="searchResults"><a href="'. '../profile.php?patientid=' . $row['patient_id'] . '">' . $row['first_name'] . ' ' . $row['last_name'].'</a></div>';
         }
     }else{
         echo '<div class="noResults">No results found.</div>';   
     }
 }
 
-require_once('../pagecomponents/closeConnection.php');
+require_once('../harmonyhospital/pagecomponents/closeConnection.php');
 
 ?>
 <script>
@@ -97,4 +66,3 @@ $(document).ready(function(){
     })
 })
 </script>
-<?php include ("../pagecomponents/footer.php"); ?>

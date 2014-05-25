@@ -38,9 +38,9 @@ include("pagecomponents/head.php");
                 ?>
             <fieldset>
             <legend>PATIENT DETAIL REPORT</legend>
-            <form name="patientSubmitReportForm" id="patientSubmitReportForm" action="patientDetailReportSubmit.php" method="POST">
+            <form name="patientSubmitReportForm" id="patientSubmitReportForm" action="submit/patientDetailReportSubmit.php" method="POST">
                   <div>
-                  <select name="selectPatient" id="selectPatient">
+                  <select name="patient_id" id="selectPatient">
                   <option value=""> -- select the patient -- </option>
                   <?php
                       include "lib/patientlisting.inc";                      
@@ -56,10 +56,10 @@ include("pagecomponents/head.php");
             <fieldset>
             <legend>GENERAL SURGERY DEPARTMENT REPORT</legend>
             <br>
-            <form name="GSReportForm" id="GSReportForm" action="" method="POST">
+            <form name="GSReportForm" id="GSReportForm" action="submit/GeneralSurgeryReportSubmit.php" method="POST">
                     <?php
                       include "lib/datepicker.inc";
-                      date_field($errors, 'Reporting Month', 'Birthday');                      
+                      date_field('report', 'Reporting Month: ');                      
                       ?>
                     <input class="centre" type="submit" name="sumbit" id="submit" value="Submit">
             </form>

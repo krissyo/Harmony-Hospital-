@@ -1,4 +1,8 @@
 <?php 
+// @author: Krissy O'Farrell, 08854114
+// Last modified on: 25/05/2014
+$pagetitle="Patient has been added to the system";	
+    include ("../pagecomponents/indexinclude.php");
 require_once('../pagecomponents/connectDB.php');
 
 require_once('../pagecomponents/validate.php');
@@ -71,3 +75,10 @@ $sql="INSERT INTO patient_details
 mysqli_query($con,$sql);
 require_once('../pagecomponents/closeConnection.php');
 ?>
+<html>
+    <head>
+    </head>
+    <body>
+        Success, patients details have been added to the system. 
+    </body>
+</html>

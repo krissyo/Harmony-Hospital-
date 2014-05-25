@@ -7,22 +7,18 @@
 
 	function select($name, $values)
 	{
+		$count = 0;
 		echo "<select id=\"$name\" name=\"$name\">";
 		foreach ($values as $value => $display)
 		{
-			$selected = ($value===posted_value($name))?'selected="selected"':'';
+
+			$selected = ($value===$values)?'selected="selected"':'';
 			echo "<option $selected value=\"$value\">$display</option>";
+			$count++;
 		}
 		echo '</select>';
 	}	
 
-	function posted_value($name)
-	{
-		if(isset($_POST['email']))
-			return htmlspecialchars($_POST['email']);
-		else
-			return '';
-	}
 
 	function date_field($name, $label)
 	{
@@ -30,7 +26,8 @@
 		label($name, $label);
 		
 		$year = date('Y');
-		$years = array_merge(array('' => 'Year'), range($year-10, $year+10));
+		$yearsarray = array_merge(array('Year' => 'Year'), range($year-10, $year+10));
+		$years = array_combine($yearsarray, $yearsarray);
 		$months = array('' => 'Month', 1 => 'Jan', 2 => 'Feb', 3 => 'Mar', 4 =>'Apr', 5 => 'May', 6 => 'Jun', 7 => 'Jul', 8 => 'Aug', 9 => 'Sep', 10 => 'Oct', 11 => 'Nov', 12 => 'Dec');
 		
 		select("{$name}_month", $months);

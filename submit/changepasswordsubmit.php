@@ -1,9 +1,12 @@
 <?php 
+// @author: Krissy O'Farrell, 08854114
+// Last modified on: 25/05/2014
 session_start();
 //include("../pagecomponents/indexinclude.php");
 require_once('../pagecomponents/validate.php');
 require_once('../pagecomponents/connectDB.php');
-
+$pagetitle="Password Changed";	
+    include ("../pagecomponents/indexinclude.php");
 $passwordOld=$_POST["OldPassword"];
 $passwordNew1=$_POST["NewPassword1"];
 $passwordNew2=$_POST["NewPassword2"];
