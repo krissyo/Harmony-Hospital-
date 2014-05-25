@@ -5,6 +5,7 @@ require_once('../pagecomponents/validate.php');
 require_once('../pagecomponents/connectDB.php');
 $pagetitle="Form Submited";	
     include ("../pagecomponents/indexinclude.php");
+	
 $validate = new Validate();
 $validated_POST = $validate->post();
 $first_name=$validated_POST["first-name"];
@@ -19,8 +20,8 @@ else
 $DOB=$validated_POST["DOB"];
 $DOD=$validated_POST["DOD"];
 $gender=$validated_POST["gender"];
-$allergies=$validated_POST["allergies"];
-$conditions=$validated_POST["conditions"];
+$allergies=$validated_POST["Aname"];
+$conditions=$validated_POST["Cname"];
 $medicare_number=$validated_POST["medicare-number"];
 $medicare_exp=$validated_POST["medicare-exp"];
                                 
@@ -46,6 +47,23 @@ if ($result !== false)
 else
 	$msg = 'Failed to update patient details.';
 
+	// Update the allergies and conditions
+	//medical_history table
+	//allergies, conditions fields
+	//patient_id
+	
+/*
+	$sql = "UPDATE medical_history
+			SET allergies = '$allergies',
+			conditions = '$conditions'
+			WHERE patient_id = " . $_SESSION['patient_id'];
+	$result=mysqli_query($con,$sql);
+	
+	if ($result !== false)
+		$msg = $msg . "<br>Success, patient's medical details have been updated.";
+	else
+		$msg = $msg . "<br>Failed to update patient's medical details.";
+*/	
 require_once('../pagecomponents/closeConnection.php');
 ?>
 <html>
