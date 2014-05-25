@@ -116,7 +116,7 @@
 			//Select Admission records
 			$sql = 	'SELECT admission_id
 			FROM admissions 
-			WHERE patient_id ='.$patient;
+			WHERE patient_id ='.$patient.' AND discharge_date is null';
 			
 			$data=mysqli_query($con,$sql);
 	
@@ -126,7 +126,12 @@
 			} 
 			else 
 			{
-				return $data;
+				while($row = mysqli_fetch_array($data))
+				{
+				for($i=0; $i<=0; $i++){
+					return $row[$i];
+				}
+				}
 			}
 			include ('pagecomponents/closeConnection.php');
 
@@ -135,16 +140,11 @@
 
 
 		// Load Table data
-		function LoadData()
+		function LoadData($admin_id)
 		{
 			//Connect to database
 			include ('pagecomponents/connectDB.php');
-
-			// Testing with AdmissionId set to 1
-			if (!isSet($_SESSION['AdmissionId'])) {
-			$_SESSION['AdmissionId'] = 1;
-			}
-	
+			
 			//Select records
 			$sql = 	'SELECT service_start_date, service_end_date,
 			procedure_description, procedure_fee, 
@@ -152,7 +152,7 @@
 			FROM patient_services 
 			INNER JOIN procedure_listing
 			ON patient_services.procedure_id = procedure_listing.procedure_id
-			WHERE admission_id = ' . $_SESSION['AdmissionId'] . ' ORDER BY service_start_date, service_end_date';
+			WHERE admission_id = '.$admin_id.' ORDER BY service_start_date, service_end_date';
 			
 			$data=mysqli_query($con,$sql);
 	
@@ -166,7 +166,7 @@
 
 			
 
-		function invoiceTable($header, $data, $totalsHeader){
+		function invoiceTable($header, $data, $totalsHeader, $invoiceAdmission){
 			// Special conversion used to convert 
 			// date difference into days
 			$CONVERSION = 86400;
@@ -196,7 +196,7 @@
 			$feeTotal = 0;
 			$rebateTotal = 0;
 
-			$data = $this->LoadData();
+			$data = $this->LoadData($invoiceAdmission);
 			
 			if($data)
 			{
@@ -232,7 +232,7 @@
     		}
     		else
     		{
-    			$this->Cell($w[1],10, 'there has been an error','LR',0,'L',$fill);
+    			$this->Cell($w[1],10, $invoiceAdmission.'test','LR',0,'L',$fill);
     		}
 	
     		// Closing line
@@ -288,10 +288,11 @@
 	$pdf->AddPage();
 	$pdf->PatientDetails($patient);
 	
+	$invoiceAdmission = $pdf->LoadAdmData($patient);
 	//$data = $pdf->LoadData();
 	$header = array('SERVICE', 'DATE', 'FEE', 'REBATE', 'DAYS');
 	$totalsHeader = array('TOTAL FEES','TOTAL REBATE','TOTAL GAP AMOUNT PAYABLE');
-	$pdf->invoiceTable($header, $data, $totalsHeader);
+	$pdf->invoiceTable($header, $data, $totalsHeader, $invoiceAdmission);
 	$pdf->Output();
 
 ?>
