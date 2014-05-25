@@ -42,6 +42,16 @@ if (ISSET($_SESSION[admission_id])) {
 	if ($result !== false) {
 		$msg = 'Successfully admitted the patient.<br>';
 		
+		// set the session variable of admission's record
+		$sql = "SELECT admission_id FROM admissions 
+				WHERE patient_id = " . $_SESSION['patient_id'] .
+				" AND discharge_date IS NULL ";
+		
+		$result = mysqli_query($con,$sql);
+		$row = mysqli_fetch_array($result);
+		
+		$_SESSION['admission_id'] = $row['admission_id'];
+		
 		$sql = insert_account_sql($vars);
 		
 		// save new Insurance details		

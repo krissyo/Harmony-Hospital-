@@ -4,9 +4,6 @@ $pagetitle="Patient Detail Form";
 include("pagecomponents/head.php");
 
 // Check for a current admission for this patient
-// CHANGE BELOW LINE LATER - patient_id=1 is for TESTING PURPOSES ONLY
-
-$_SESSION[patient_id] = 9;
 
 include("include/find_admission_id.inc");
 
@@ -73,7 +70,7 @@ require_once('pagecomponents/connectDB.php');
                 </tr>
                   <tr>
                     <td>Date of death:</td>
-                    <td><input name="DOD" id="DOD" type="date" value="<?PHP echo $row['date_of_death']?>" required></td>
+                    <td><input name="DOD" id="DOD" type="date" value="<?PHP echo $row['date_of_death']?>"></td>
                 </tr>
                    
                    <tr>

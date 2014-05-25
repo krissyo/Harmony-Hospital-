@@ -1,6 +1,10 @@
 <?php
-// @author: Krissy O'Farrell, 08854114
-// Last modified on: 25/05/2014
+session_start();
+// @author: Krissy O'Farrell, 08854114								//
+// Last modified on: 25/05/2014										//
+// Last modified by: Kira Jamison, 08795428							//
+//					now setting a session variable for PatientId	//
+//																	//
 	$pagetitle="Search Results";		
     include ("../pagecomponents/indexinclude.php");
 ?>
@@ -31,9 +35,13 @@ if((strlen($search)==0)){
     $total = mysqli_num_rows($result);
     if($total > 0){
         while($row = mysqli_fetch_array($result)){
-            echo '<div class="searchResults"><a href="'. '../patientprofile.php?id=' . $row['patient_id'] . '">' . $row['first_name'] . ' ' . $row['last_name'].'</a></div>';
+			$_SESSION['patient_id'] = $row['patient_id'];
+            echo '<div class="searchResults"><a href="'. 
+				'../patientprofile.php?id=' . $row['patient_id'] . 
+				'">' . $row['first_name'] . ' ' . $row['last_name'].'</a></div>';
         }
     }else{
+		$_SESSION['patient_id'] = 0;
         echo '<div class="noResults">No results found.</div>';   
     }
 }
@@ -56,7 +64,10 @@ if((strlen($search)==0)){
     $total = mysqli_num_rows($result);
     if($total > 0){
         while($row = mysqli_fetch_array($result)){
-            echo '<div class="searchResults"><a href="'. '../staffprofile.php?staffid=' . $row['staff_id'] . '">' . $row['first_name'] . ' ' . $row['last_name'].'</a></div>';
+            echo '<div class="searchResults"><a href="'. 
+				'../staffprofile.php?staffid=' . $row['staff_id'] . '">' 
+				. $row['first_name'] . ' ' 
+				. $row['last_name'].'</a></div>';
         }
     }else{
         echo '<div class="noResults">No results found.</div>';   
