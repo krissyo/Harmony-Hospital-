@@ -42,6 +42,10 @@
 			$this->SetFont('Helvetica','B',12);
 			$this->Cell(88,8,"REPORT DATE ".$currentDate,0,2,'C');
 			$this->Ln(2);
+			$this->SetTextColor(165,165,167);
+			$months = array(JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER);
+			$this->Cell(88,8,"REPORTING MONTH ".$months[($_SESSION['report_month']-1)]." ".$_SESSION['report_year'],0,2,'C');
+			$this->Ln(2);
 		}
 
 		// Load Table data
@@ -63,7 +67,7 @@
 			$data=mysqli_query($con,$sql);
 	
 			if (!$data) {
-			return 'No data to display.';
+			return false;
 			} else {
 			return $data;
 			}
@@ -137,7 +141,7 @@
 			$data=mysqli_query($con,$sql);
 	
 			if (!$data) {
-			return 'No data to display.';
+			return false;
 			} else {
 			return $data;
 			}
@@ -171,8 +175,8 @@
     		$this->SetTextColor(0);
     		$this->SetFont('');
 
-	
-    		while($row = mysqli_fetch_array($prodata)) {
+			if($prodata){
+    			while($row = mysqli_fetch_array($prodata)) {
 	
 				// Populate Data
 	
@@ -186,6 +190,7 @@
         			$procedureCount ++;
 
         		}
+        	}
         		      		
         	$this->Ln(10);
         	}
@@ -206,7 +211,7 @@
 			$data=mysqli_query($con,$sql);
 	
 			if (!$data) {
-			return 'No data to display.';
+			return false;
 			} else {
 			return $data;
 			}
@@ -250,7 +255,9 @@
         	//calcualte Average fee;
         	$feeTotal = 0;
         	$rebateTotal = 0;
-        	while($row = mysqli_fetch_array($statdata)){
+        	if($statdata)
+        	{
+        		while($row = mysqli_fetch_array($statdata)){
         			for($i=0;$i<count($proceduresPerformed);$i++){
         				if($proceduresPerformed[$i]==$row['procedure_id']){
         					$feeTotal += $row['procedure_fee'];
@@ -258,7 +265,15 @@
         				}
         			}
         		}
-        	$averageFee= $feeTotal/(count($proceduresPerformed));
+        	}
+        	if((count($proceduresPerformed)) != 0)
+			{
+        		$averageFee= $feeTotal/(count($proceduresPerformed));
+        	}
+        	else
+        	{
+        		$averageFee= 0;
+        	}
         	$this->Cell($w[1],10,$averageFee,1,0,'L',$fill);
         	$this->Cell($w[2],10,$feeTotal,1,0,'L',$fill);
         	$this->Cell($w[3],10,$rebateTotal,1,0,'L',$fill);

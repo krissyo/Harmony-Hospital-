@@ -44,7 +44,7 @@
 			$this->Ln(2);
 			$this->SetTextColor(165,165,167);
 			$months = array(JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER);
-			$this->Cell(88,8,"REPORTING MONTH ".$months[($_SESSION['report_month']-1)],0,2,'C');
+			$this->Cell(88,8,"REPORTING MONTH ".$months[($_SESSION['report_month']-1)]." ".$_SESSION['report_year'],0,2,'C');
 			$this->Ln(2);
 		}
 
