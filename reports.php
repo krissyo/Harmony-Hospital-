@@ -38,9 +38,9 @@ include("pagecomponents/head.php");
                 ?>
             <fieldset>
             <legend>PATIENT DETAIL REPORT</legend>
-            <form name="patientSubmitReportForm" id="patientSubmitReportForm" action="patientDetailReportSubmit.php" method="POST">
+            <form name="patientSubmitReportForm" id="patientSubmitReportForm" action="submit/patientDetailReportSubmit.php" method="POST">
                   <div>
-                  <select name="selectPatient" id="selectPatient">
+                  <select name="patient_id" id="selectPatient">
                   <option value=""> -- select the patient -- </option>
                   <?php
                       include "lib/patientlisting.inc";                      
