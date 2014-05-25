@@ -1,4 +1,6 @@
 <?php
+// @author: Krissy O'Farrell, 08854114
+// Last modified on: 12/05/2014
     require_once('connectDB.php');
 ?>
 <div class="Container">

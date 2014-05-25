@@ -1,4 +1,6 @@
 <?php session_start();
+// @author: Krissy O'Farrell, 08854114
+// Last modified on: 01/05/2014
 if(!isset($_SESSION['userID'])){
     header('Location: http://trustinblack.com/harmonyhospital/login.php');
 } 

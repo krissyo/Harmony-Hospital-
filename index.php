@@ -1,4 +1,6 @@
 <?php
+// @author: Krissy O'Farrell, 08854114
+// Last modified on: 01/05/2014
 	$pagetitle="Welcome";	
     include ("pagecomponents/indexinclude.php");
     

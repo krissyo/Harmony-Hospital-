@@ -66,8 +66,7 @@ td:first-child{
     height: 90px;    
     top: 3px;
     left: 50px;
-    z-index: 3;
-         
+    z-index: 3;        
 }
 
 #welcome_user_text {
