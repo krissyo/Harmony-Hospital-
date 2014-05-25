@@ -88,8 +88,11 @@ require_once('pagecomponents/connectDB.php');
                 require_once('pagecomponents/connectDB.php');
 				$sql="SELECT name from allergies_conditions where description ='Allergy'";
 				$result=mysqli_query($con,$sql);
-				while($row = mysqli_fetch_array($result)){
-                echo "<input type=\"checkbox\" name=\"Aname[]\" value=\"{$row['name']}\" /> {$row['name']}<br />";
+				while($data = mysqli_fetch_array($result)){
+					$name = $data['name'];
+					echo "<input type=\"checkbox\" name=\"Aname[]\" value=\"$name\" />$name<br />";
+					
+					//echo "<input type='checkbox' name=\"$name\" value=\"$name\" />$name<br />";
                     }
                     ?>
                      
@@ -100,8 +103,11 @@ require_once('pagecomponents/connectDB.php');
                 require_once('pagecomponents/connectDB.php');
 				$sql="SELECT name from allergies_conditions where description ='Condition'";
 				$result=mysqli_query($con,$sql);
-				while($row = mysqli_fetch_array($result)){
-                echo "<input type=\"checkbox\" name=\"Cname[]\" value=\"{$row['name']}\" /> {$row['name']}<br />";
+				while($data = mysqli_fetch_array($result)){
+					$name = $data['name'];
+					echo "<input type=\"checkbox\" name=\"Cname[]\" value=\"$name\" />$name<br />";
+					
+					//echo "<input type='checkbox' name=\"$name\" value=\"$name\" />$name<br />";
                     }
 
                     ?>  

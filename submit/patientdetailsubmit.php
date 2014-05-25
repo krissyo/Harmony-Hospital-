@@ -1,6 +1,13 @@
 <?php
 // @author: Krissy O'Farrell, 08854114
 // Last modified on: 25/05/2014
+// Last modified by: Kira Jamison, 08795428
+$allergyArray = array();
+$conditionArray = array();
+
+$allergyArray = $_POST["Aname"];
+$conditionArray = $_POST["Cname"];
+
 require_once('../pagecomponents/validate.php');
 require_once('../pagecomponents/connectDB.php');
 $pagetitle="Form Submited";	
@@ -19,9 +26,9 @@ else
 	
 $DOB=$validated_POST["DOB"];
 $DOD=$validated_POST["DOD"];
-$gender=$validated_POST["gender"];
-$allergies=$validated_POST["Aname"];
-$conditions=$validated_POST["Cname"];
+//$gender=$validated_POST["gender"];
+
+
 $medicare_number=$validated_POST["medicare-number"];
 $medicare_exp=$validated_POST["medicare-exp"];
                                 
@@ -48,23 +55,45 @@ else
 	$msg = 'Failed to update patient details.';
 
 	// Update the allergies and conditions
-	//medical_history table
-	//allergies, conditions fields
-	//patient_id
+
+	// loop through each array and extra values into a string
 	
+	$N = count($allergyArray);
+	for($i=0; $i < $N; $i++)
+    {
+      $allergies = $allergies . ',' . $allergyArray[$i];
+    }
 /*
+if (strlen($allergies) > 0 && strlen($conditions) > 0) {
 	$sql = "UPDATE medical_history
 			SET allergies = '$allergies',
 			conditions = '$conditions'
 			WHERE patient_id = " . $_SESSION['patient_id'];
+} else if (strlen($allergies) > 0) {
+	$sql = "UPDATE medical_history
+			SET allergies = '$allergies'
+			WHERE patient_id = " . $_SESSION['patient_id'];
+} else if (strlen($conditions) > 0) {
+	$sql = "UPDATE medical_history
+			SET conditions = '$conditions'
+			WHERE patient_id = " . $_SESSION['patient_id'];
+} else {
+	$sql = '';
+}
+
+echo $sql;
+// execute the query
+if (strlen($sql) > 0) {
 	$result=mysqli_query($con,$sql);
 	
 	if ($result !== false)
 		$msg = $msg . "<br>Success, patient's medical details have been updated.";
 	else
 		$msg = $msg . "<br>Failed to update patient's medical details.";
-*/	
-require_once('../pagecomponents/closeConnection.php');
+}
+*/
+echo 'allergies: ' . $allergies . 'conditions: ' . $conditions;
+//require_once('../pagecomponents/closeConnection.php');
 ?>
 <html>
     <head>
