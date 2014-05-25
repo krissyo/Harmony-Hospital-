@@ -31,7 +31,7 @@ include("pagecomponents/head.php");
             <tr><td>Start Date:</td> <td> <input class="rounded" type="date" name="StartDate" id="StartDate" required></td></tr>
             <tr><td>End Date:</td> <td> <input class="rounded" type="date" name="EndDate" id="EndDate" onchange="numberOfDays();" required></td></tr>
             <tr><td>Number of Days Absent:</td> <td> <input class="rounded" type="NoAbsent" name="NoAbsent" id="NoAbsent" required></td></tr>
-            <tr><td>Doctor's Certificate: </td> <td><input type="radio" name="certificate" value="yes">Yes
+            <tr><td>Doctor's Certificate: </td> <td><input type="radio" name="certificate" value="yes">Yes<br>
                     <input type="radio" name="certificate" value="No">No</td></tr>
             <tr>
                 <td></td>
