@@ -1,6 +1,6 @@
 <?php
 	require('pagecomponents/fpdf.php');
-
+	session_start();
 	class PDF extends FPDF
 	{
 		//page header
@@ -45,7 +45,7 @@
 		}
 
 		// Load Table data
-		function LoadData($file)
+		function LoadData($reportMonth, $reportYear)
 		{
 			//Connect to database
 			include ('pagecomponents/connectDB.php');
@@ -58,7 +58,7 @@
 			//Select Admission records
 			$sql = 	'SELECT patient_id, admission_id, admission_date, department_id
 			FROM admissions 
-			WHERE admission_date BETWEEN "2014-05-01" AND "2014-05-31" AND department_id = ' . $_SESSION["DepartmenttId"];
+			WHERE admission_date BETWEEN "'.$reportYear.'-0'.$reportMonth.'-01" AND "'.$reportYear.'-0'.$reportMonth.'-31" AND department_id = ' . $_SESSION["DepartmenttId"];
 			
 			$data=mysqli_query($con,$sql);
 	
@@ -117,7 +117,7 @@
 
 
         	// Load Table data
-			function LoadProData($file, $admissionIdArray )
+			function LoadProData($admissionIdArray, $reportMonth, $reportYear )
 			{
 			//Connect to database
 			include ('pagecomponents/connectDB.php');
@@ -132,7 +132,7 @@
 			//Select Admission records
 			$sql = 	'SELECT patient_procedure_id, admission_id, service_start_date, procedure_id
 			FROM patient_services 
-			WHERE service_start_date BETWEEN "2014-05-01" AND "2014-05-31" AND admission_id IN ('.$implodeIdArray.')';
+			WHERE service_start_date BETWEEN "'.$reportYear.'-0'.$reportMonth.'-01" AND "'.$reportYear.'-0'.$reportMonth.'-31" AND admission_id IN ('.$implodeIdArray.')';
 			
 			$data=mysqli_query($con,$sql);
 	
@@ -290,16 +290,18 @@
 	}
 
 	$pdf=new PDF();
+	$reportMonth = $_SESSION['report_month'];
+	$reportYear = $_SESSION['report_year'];
 	$pdf->AliasNbPages();
 	$pdf->AddPage();
-	$admdata = $pdf->LoadData($file);
+	$admdata = $pdf->LoadData($reportMonth, $reportYear);
 	$admheader = array('Patient ID', 'Admission ID','Admission Date', 'Department ID');
 	$admissionIdArray = array();
 	$pdf->AdmissionTable($admheader, $admdata, $admissionIdArray);
 	$proheader = array('Procedure number', 'Admission ID','Procedure Date', 'Procedure ID');
 	$procedureCount = 0;
 	$proceduresPerformed = array();
-	$prodata = $pdf->LoadProData($file, $admissionIdArray);	
+	$prodata = $pdf->LoadProData($admissionIdArray, $reportMonth, $reportYear);	
 	$pdf->procedureTable($proheader, $prodata, $admissionIdArray, $procedureCount, $proceduresPerformed);
 	$statsheader = array('# of services provided', 'Avg. Fee','Total Fees', 'Total Medicare Rebates');
 	$statdata = $pdf->LoadStatData($file, $proceduresPerformed);
