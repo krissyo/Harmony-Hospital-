@@ -1,7 +1,10 @@
 <?php
+// @author: Krissy O'Farrell, 08854114
+// Last modified on: 25/05/2014
 require_once('../pagecomponents/validate.php');
 require_once('../pagecomponents/connectDB.php');
-
+$pagetitle="Form Submited";	
+    include ("../pagecomponents/indexinclude.php");
 $validate = new Validate();
 $validated_POST = $validate->post();
 $first-name=$validated_POST["first-name"];
@@ -22,3 +25,10 @@ echo $result;
 
 require_once('../pagecomponents/closeConnection.php');
 ?>
+<html>
+    <head>
+    </head>
+    <body>
+        Success, patient details have been submitted. 
+    </body>
+</html>

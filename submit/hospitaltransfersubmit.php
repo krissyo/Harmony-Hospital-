@@ -1,5 +1,9 @@
 <?php
+// @author: Krissy O'Farrell, 08854114
+// Last modified on: 25/05/2014
 session_start();
+$pagetitle="Form Submitted";	
+    include ("../pagecomponents/indexinclude.php");
 require_once('../pagecomponents/validate.php');
 require_once('../pagecomponents/connectDB.php');
 
@@ -20,8 +24,7 @@ $sql="  Update admissions
         WHERE patient_details.last_name = '$lname' AND patient_details.patientid = '$patientid'";
 
 $result=mysqli_query($con,$sql);
-echo success;
+echo "Success, the hospital transfer has been submitted";
     
 require_once('../pagecomponents/closeConnection.php');    
 ?>    
-    

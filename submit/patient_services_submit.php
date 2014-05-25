@@ -1,7 +1,8 @@
 <?php session_start();
 require_once('../pagecomponents/validate.php');
 require_once('../pagecomponents/connectDB.php');
-
+$pagetitle="Submitted";	
+    include ("../pagecomponents/indexinclude.php");
 $validate = new Validate();
 $validated_POST = $validate->post();
 

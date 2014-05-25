@@ -1,7 +1,10 @@
 <?php 
+// @author: Krissy O'Farrell, 08854114
+// Last modified on: 25/05/2014
 require_once('../pagecomponents/validate.php');
 require_once('../pagecomponents/connectDB.php');
-
+$pagetitle="New Staff Member has been Created";	
+    include ("../pagecomponents/indexinclude.php");
 $first_name=$_POST['FirstName'];
 $middle_name=$_POST['MiddleName'];
 $last_name=$_POST['LastName'];
@@ -23,13 +26,13 @@ $result=mysqli_query($con,$sql);
 while($row = mysqli_fetch_array($result)){
     $staff_id=$row["staff_id"]+1; 
 }			
-echo $staff_id . "<br/>";
+echo "New Staff's ID: " . $staff_id . "<br/>";
  
 $user_name= substr($last_name, 0, 6) . substr($first_name, 0, 1) . $staff_id;
 
-echo $user_name. "<br/>";
+echo "New Staff's User Name: " . $user_name. "<br/>";
 
-echo $password . "<br/>";
+echo "New Staff's Temporary Password: " .$password . "<br/>";
 
 function randomSalt() {
     $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
@@ -47,8 +50,6 @@ $salt = randomSalt();
 //$hash = crypt($password, '$2y$10$'.$salt.'$');
 $hash = crypt($password, '$5$'.$salt.'$');
 
-echo $salt. "<br/>";
-echo $hash;
 
 $sql="INSERT INTO staff_details (username,password,salt,first_name,middle_name, 
 last_name,date_of_birth,address_line,postcode,phone_number,mobile_number,role_id,

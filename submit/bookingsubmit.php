@@ -1,4 +1,8 @@
 <?php session_start();
+// @author: Krissy O'Farrell, 08854114
+// Last modified on: 25/05/2014
+$pagetitle="Submitted";	
+    include ("../pagecomponents/indexinclude.php");
 require_once('../pagecomponents/connectDB.php');
 require_once('../pagecomponents/validate.php');
 require_once('../pagecomponents/checkResourceAvailability.php');
