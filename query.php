@@ -6,7 +6,7 @@
         $fp = fopen('file.csv', 'w');
         //get the query page
         $sql=$_POST["query"];
-        if(strpos(strtoupper(sql),"DROP")!=false || strpos(strtoupper(sql),"UPDATE")!=false || strpos(strtoupper(sql),"DELETE")!=false || strpos(strtoupper(sql),"ALTER")!=false || strpos(strtoupper(sql),"CREATE")!=false){
+        if(strpos(strtoupper(sql),"DROP")!=false || strpos(strtoupper($sql),"UPDATE")!=false || strpos(strtoupper(sql),"DELETE")!=false || strpos(strtoupper(sql),"ALTER")!=false || strpos(strtoupper(sql),"CREATE")!=false){
             die("SQL Error: Not an allowed query.");   
         }
         //check if the sql query is valid

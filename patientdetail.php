@@ -4,9 +4,6 @@ $pagetitle="Patient Detail Form";
 include("pagecomponents/head.php");
 
 // Check for a current admission for this patient
-// CHANGE BELOW LINE LATER - patient_id=1 is for TESTING PURPOSES ONLY
-
-$_SESSION[patient_id] = 9;
 
 include("include/find_admission_id.inc");
 
@@ -73,7 +70,7 @@ require_once('pagecomponents/connectDB.php');
                 </tr>
                   <tr>
                     <td>Date of death:</td>
-                    <td><input name="DOD" id="DOD" type="date" value="<?PHP echo $row['date_of_death']?>" required></td>
+                    <td><input name="DOD" id="DOD" type="date" value="<?PHP echo $row['date_of_death']?>"></td>
                 </tr>
                    
                    <tr>
@@ -91,8 +88,11 @@ require_once('pagecomponents/connectDB.php');
                 require_once('pagecomponents/connectDB.php');
 				$sql="SELECT name from allergies_conditions where description ='Allergy'";
 				$result=mysqli_query($con,$sql);
-				while($row = mysqli_fetch_array($result)){
-                echo "<input type=\"checkbox\" name=\"Aname[]\" value=\"{$row['name']}\" /> {$row['name']}<br />";
+				while($data = mysqli_fetch_array($result)){
+					$name = $data['name'];
+					echo "<input type=\"checkbox\" name='allergies[$name]' value=\"$name\" />$name<br />";
+					
+					//echo "<input type='checkbox' name=\"$name\" value=\"$name\" />$name<br />";
                     }
                     ?>
                      
@@ -103,8 +103,11 @@ require_once('pagecomponents/connectDB.php');
                 require_once('pagecomponents/connectDB.php');
 				$sql="SELECT name from allergies_conditions where description ='Condition'";
 				$result=mysqli_query($con,$sql);
-				while($row = mysqli_fetch_array($result)){
-                echo "<input type=\"checkbox\" name=\"Cname[]\" value=\"{$row['name']}\" /> {$row['name']}<br />";
+				while($data = mysqli_fetch_array($result)){
+					$name = $data['name'];
+					echo "<input type=\"checkbox\" name=\"Cname[]\" value=\"$name\" />$name<br />";
+					
+					//echo "<input type='checkbox' name=\"$name\" value=\"$name\" />$name<br />";
                     }
 
                     ?>  

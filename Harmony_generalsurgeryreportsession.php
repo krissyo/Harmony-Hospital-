@@ -1,6 +1,6 @@
 <?php
 	require('pagecomponents/fpdf.php');
-
+	session_start();
 	class PDF extends FPDF
 	{
 		//page header
@@ -42,10 +42,14 @@
 			$this->SetFont('Helvetica','B',12);
 			$this->Cell(88,8,"REPORT DATE ".$currentDate,0,2,'C');
 			$this->Ln(2);
+			$this->SetTextColor(165,165,167);
+			$months = array(JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER);
+			$this->Cell(88,8,"REPORTING MONTH ".$months[($_SESSION['report_month']-1)]." ".$_SESSION['report_year'],0,2,'C');
+			$this->Ln(2);
 		}
 
 		// Load Table data
-		function LoadData($file)
+		function LoadData($reportMonth, $reportYear)
 		{
 			//Connect to database
 			include ('pagecomponents/connectDB.php');
@@ -58,12 +62,12 @@
 			//Select Admission records
 			$sql = 	'SELECT patient_id, admission_id, admission_date, department_id
 			FROM admissions 
-			WHERE admission_date BETWEEN "2014-05-01" AND "2014-05-31" AND department_id = ' . $_SESSION["DepartmenttId"];
+			WHERE admission_date BETWEEN "'.$reportYear.'-0'.$reportMonth.'-01" AND "'.$reportYear.'-0'.$reportMonth.'-31" AND department_id = ' . $_SESSION["DepartmenttId"];
 			
 			$data=mysqli_query($con,$sql);
 	
 			if (!$data) {
-			return 'No data to display.';
+			return false;
 			} else {
 			return $data;
 			}
@@ -117,7 +121,7 @@
 
 
         	// Load Table data
-			function LoadProData($file, $admissionIdArray )
+			function LoadProData($admissionIdArray, $reportMonth, $reportYear )
 			{
 			//Connect to database
 			include ('pagecomponents/connectDB.php');
@@ -132,12 +136,12 @@
 			//Select Admission records
 			$sql = 	'SELECT patient_procedure_id, admission_id, service_start_date, procedure_id
 			FROM patient_services 
-			WHERE service_start_date BETWEEN "2014-05-01" AND "2014-05-31" AND admission_id IN ('.$implodeIdArray.')';
+			WHERE service_start_date BETWEEN "'.$reportYear.'-0'.$reportMonth.'-01" AND "'.$reportYear.'-0'.$reportMonth.'-31" AND admission_id IN ('.$implodeIdArray.')';
 			
 			$data=mysqli_query($con,$sql);
 	
 			if (!$data) {
-			return 'No data to display.';
+			return false;
 			} else {
 			return $data;
 			}
@@ -171,8 +175,8 @@
     		$this->SetTextColor(0);
     		$this->SetFont('');
 
-	
-    		while($row = mysqli_fetch_array($prodata)) {
+			if($prodata){
+    			while($row = mysqli_fetch_array($prodata)) {
 	
 				// Populate Data
 	
@@ -186,6 +190,7 @@
         			$procedureCount ++;
 
         		}
+        	}
         		      		
         	$this->Ln(10);
         	}
@@ -206,7 +211,7 @@
 			$data=mysqli_query($con,$sql);
 	
 			if (!$data) {
-			return 'No data to display.';
+			return false;
 			} else {
 			return $data;
 			}
@@ -250,7 +255,9 @@
         	//calcualte Average fee;
         	$feeTotal = 0;
         	$rebateTotal = 0;
-        	while($row = mysqli_fetch_array($statdata)){
+        	if($statdata)
+        	{
+        		while($row = mysqli_fetch_array($statdata)){
         			for($i=0;$i<count($proceduresPerformed);$i++){
         				if($proceduresPerformed[$i]==$row['procedure_id']){
         					$feeTotal += $row['procedure_fee'];
@@ -258,7 +265,15 @@
         				}
         			}
         		}
-        	$averageFee= $feeTotal/(count($proceduresPerformed));
+        	}
+        	if((count($proceduresPerformed)) != 0)
+			{
+        		$averageFee= $feeTotal/(count($proceduresPerformed));
+        	}
+        	else
+        	{
+        		$averageFee= 0;
+        	}
         	$this->Cell($w[1],10,$averageFee,1,0,'L',$fill);
         	$this->Cell($w[2],10,$feeTotal,1,0,'L',$fill);
         	$this->Cell($w[3],10,$rebateTotal,1,0,'L',$fill);
@@ -290,16 +305,18 @@
 	}
 
 	$pdf=new PDF();
+	$reportMonth = $_SESSION['report_month'];
+	$reportYear = $_SESSION['report_year'];
 	$pdf->AliasNbPages();
 	$pdf->AddPage();
-	$admdata = $pdf->LoadData($file);
+	$admdata = $pdf->LoadData($reportMonth, $reportYear);
 	$admheader = array('Patient ID', 'Admission ID','Admission Date', 'Department ID');
 	$admissionIdArray = array();
 	$pdf->AdmissionTable($admheader, $admdata, $admissionIdArray);
 	$proheader = array('Procedure number', 'Admission ID','Procedure Date', 'Procedure ID');
 	$procedureCount = 0;
 	$proceduresPerformed = array();
-	$prodata = $pdf->LoadProData($file, $admissionIdArray);	
+	$prodata = $pdf->LoadProData($admissionIdArray, $reportMonth, $reportYear);	
 	$pdf->procedureTable($proheader, $prodata, $admissionIdArray, $procedureCount, $proceduresPerformed);
 	$statsheader = array('# of services provided', 'Avg. Fee','Total Fees', 'Total Medicare Rebates');
 	$statdata = $pdf->LoadStatData($file, $proceduresPerformed);

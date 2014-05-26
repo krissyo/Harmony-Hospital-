@@ -142,7 +142,7 @@
 			$this->Ln(10);
 		}
 
-		// Load Table data
+		// get table data
 		function LoadAdmData($patient)
 		{
 			//Connect to database
@@ -167,7 +167,7 @@
 		}
 
 			
-
+		// Load Table data
 		function AdmissionTable($admheader, $admdata)
 		{
 
