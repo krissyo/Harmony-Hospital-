@@ -1,4 +1,5 @@
 <?php
+// Author James Clelland n8888141
 session_start();
 require_once('../pagecomponents/validate.php');
 require_once('../pagecomponents/connectDB.php');
@@ -7,8 +8,8 @@ $pagetitle="Notes Submited";
 $validate = new Validate();
 $validated_POST = $validate->post();
 $notes =$validated_POST["notes"];
-$patientid = $_SESSION['passingID'];
-$lastupdated = $_SESSION["userID"]
+$patientid = $_SESSION["patient_id"]; 
+$lastupdated = $_SESSION["userID"];
 
 $sql1= "SELECT * FROM medical_history WHERE patient_id='$patientid'";
 $result=mysqli_query($con,$sql1);
@@ -20,14 +21,13 @@ $sql3= "INSERT INTO medical_history (patient_id,nurses_notes, last_updated_by)
                     VALUES ('$patientid','$notes','$lastupdated')";
                 
     
-   if(mysqli_num_rows($result) > 0) {
+ if(mysqli_num_rows($result) > 0) {
     mysqli_query($con,$sql2);
-       echo "notes updated";
+       echo "Success, Notes have been added";     // if user in table update notes
    }
     else{
          mysqli_query($con,$sql3);
-        echo "notes added";
-    
+        echo "Success, Notes have been added";     // if user isnt in table insert
     }
           
 
@@ -37,7 +37,6 @@ require_once('../pagecomponents/closeConnection.php');
     <head>
     </head>
     <body>
-        Success, notes have been added. 
     </body>
 </html>
 

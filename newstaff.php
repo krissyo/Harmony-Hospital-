@@ -76,9 +76,6 @@ include("pagecomponents/footer.php");
             FirstName: {
               required: true
             },
-            MiddleName: {
-               required: true
-             },
             DateOfBirth: {
                 required: true,
                 date:true

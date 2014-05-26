@@ -1,15 +1,15 @@
 <?php
-session_start();
-
+// Author James Clelland n8888141
+// Last modified by Armin Khoshbin on 25/05/2014
+// Last modified by James Clelland on 26/05/2014
 $permissions=[3,4];
 $pagetitle="Doctors Notes";
 include("pagecomponents/head.php");
-$patientid = $_GET["id"];
-$_SESSION['patient_id'] = $patientid; // Passing ID to doctors notes submit
+$patientid = $_SESSION["patient_id"]; 
+
 
 ?>
     <body>
-      
 		<div id="wrapper">
 		<div id="header"> 
 			<h1>Doctor's Notes</h1>
@@ -29,19 +29,31 @@ $_SESSION['patient_id'] = $patientid; // Passing ID to doctors notes submit
                     echo $row['first_name'] . ' ' . $row['last_name'];
                     }              
                 ?></th></h3>
-<!--            <tr><td>Current Medication:</td> <td> <input class="rounded" type="Medication" name="Medication" id="Medication"></td></tr>-->
+
                 
-                <tr><td>Notes:</td> <td>
                 
                 <?php
-                    $sql=" SELECT doctors_notes, nurses_notes FROM medical_history WHERE patient_id=" . $patientid .'';
+                    $sql=" SELECT doctors_notes, nurses_notes, last_updated_by, time_stamp FROM medical_history WHERE patient_id=" . $patientid .'';
                     $result = mysqli_query ($con, $sql) ;
                     while($row = mysqli_fetch_array($result)){
+		    if ( !empty($row['time_stamp']) )
+		    {
+		    echo '<p>This note last time has been changed by <b>'. $row['last_updated_by']. '</b> at <b>'. $row['time_stamp']. '</b></p>';
+		    }
+		    echo '<tr><td>Notes:</td> <td>';
                     echo 'Doctors Notes:'. $row['doctors_notes'] . ' <br>  Nurses Notes:' . $row['nurses_notes'];
                     }              
                 ?>
-            <tr><td> Add Notes:</td> <td> <textarea rows="4" cols="50" placeholder="Start typing here..." name="notes" required></textarea></td></tr>  
-   
+            <tr><td> Add Notes:</td> <td> <textarea rows="4" cols="50" placeholder="Start typing here..." name="notes" required>
+                <?PHP
+                $sql=" SELECT doctors_notes FROM medical_history WHERE patient_id=" . $patientid .'';
+                    $result = mysqli_query ($con, $sql) ;
+                    while($row = mysqli_fetch_array($result)){
+                    echo  $row['doctors_notes'] ;   
+                    }
+                           ?>
+                </textarea></td></tr>  
+
                 <tr>
                     <td></td>
                     <td><input class="rounded" type="submit" name="sumbit" id="submit" value="Submit"></td>
@@ -55,7 +67,6 @@ $_SESSION['patient_id'] = $patientid; // Passing ID to doctors notes submit
 include("pagecomponents/footer.php");
 ?>
 		</div>
-        
         <script> 
         jQuery.validator.setDefaults({
           debug: false,

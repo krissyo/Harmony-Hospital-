@@ -1,6 +1,10 @@
 <?php
 $pagetitle="Death Form";
 include("pagecomponents/head.php");
+$patientid = $_SESSION["patient_id"]; 
+$sql="SELECT * from patient_details where patient_id ='$patientid'";
+				$result=mysqli_query($con,$sql);
+                $row = mysqli_fetch_array($result);
 ?>
 
 		<div id="wrapper">
@@ -11,12 +15,23 @@ include("pagecomponents/head.php");
 		<div id="content">
 			<form id="death" action="submit/deathsubmit.php" method="post">
                 <input type="hidden" >
-			<table><h3><th colspan="2" class="userdetails">Notification of Death</th></h3>
+			<table><h3><th colspan="2" class="userdetails">
+                <?php
+                    echo $row['first_name'] . ' ' . $row['last_name'];    
+                ?>
+                </th></h3>
                
-            <tr><td>Patient Id:</td> <td><input class="rounded" type="text" name="PatientId" id="PatientId" required></td></tr>
-            <tr><td>Authorising person: </td> <td><input class="rounded" type="text" name="authorising" id="Authorising" required></td></tr>
-            <tr>
-                    <td></td>
+            <tr><td>Date of Death</td> <td><input class="rounded" type="date" name="DOD" id="DOD" value="<?php echo $row['date_of_death'];?>  " required></td></tr>   
+            <tr><td> Authorising person:</td> <td><select class="rounded" name="AuthPerson" id="AuthoPerson">
+                <?php
+                            require_once('pagecomponents/connectDB.php');
+							$sql="SELECT staff_id, first_name,last_name FROM staff_details WHERE role_id = 4";
+                            $result=mysqli_query($con,$sql);
+                            while($row = mysqli_fetch_array($result)){
+                            echo "<option value='" . $row["staff_id"] . "'>" . $row["first_name"] . ' ' .$row['last_name'] .  "</option>";
+                	}								
+						  ?>
+                </select></td>
                     <td><input class="rounded" type="submit" name="sumbit" id="submit" value="Submit"></td>
                 </tr>
                 </table>
