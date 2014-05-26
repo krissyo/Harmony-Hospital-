@@ -10,8 +10,8 @@ include("include/find_admission_id.inc");
 require_once('pagecomponents/connectDB.php');
 
 				
-				if (ISSET($_SESSION[patient_id])) {
-					$sql="SELECT * from patient_details where patient_id =" . $_SESSION[patient_id];
+				if (ISSET($_SESSION['patient_id'])) {
+					$sql="SELECT * from patient_details where patient_id =" . $_SESSION['patient_id'];
 				}
 				$result=mysqli_query($con,$sql);
                 $row = mysqli_fetch_array($result);
@@ -25,7 +25,7 @@ require_once('pagecomponents/connectDB.php');
             <div name=" buttonWrapper" id="centre">
 			
 			<?php
-			if (ISSET($_SESSION[admission_id])) {
+			if (ISSET($_SESSION['admission_id'])) {
 			?>
 				<button  id="curAdmissionBtn" class="linkingButtons" 
 				onclick="location.href = 'processAdmission.php'">Current Admission</button>

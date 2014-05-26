@@ -17,13 +17,13 @@ include("pagecomponents/head.php");
 					// get the patient info from the DB
 					$patient_details = array();
 					require ("pagecomponents/patient_basic_details.php"); 
-					pull_details($patient_details);
+					pull_details_basic($patient_details);
 
 					?>
 					
 					<table>
 					<tr><td>Patient's ID</td><td>
-						<label><?php echo $_SESSION[patient_id]; ?></label>
+						<label><?php echo $_SESSION['patient_id']; ?></label>
 						</td></tr>						
 					<tr><td>Patient's Name</td><td>
 						<label><?php echo $patient_details['full_name']; ?></label>
@@ -43,7 +43,7 @@ include("pagecomponents/head.php");
 						// get data from DB
 						require_once('include/getAdmissionsHistory.inc');
 						
-						getHistory($_SESSION[patient_id]);
+						getHistory($_SESSION['patient_id']);
 					?>
 
 					</table>
