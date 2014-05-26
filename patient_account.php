@@ -175,13 +175,16 @@ include("pagecomponents/head.php");
 						echo '<p>Grand Total Rebates: $' . number_format($_SESSION['medicareGrandTotal'], 2) . '</p>';
 						echo '<p>Gap Amount Total: $' . number_format(($_SESSION['feesGrandTotal'] - $_SESSION['medicareGrandTotal']), 2) . '</p>';
 					?>
-					
+
+					<div id="patient-account"> 
 						<input class="rounded" type="button" name="invoiceBtn" id="generateInvoice" value="Invoice"
 									onclick="location.href = 'services_invoice.php'">
 						<input class="rounded" type="submit" name="updateBtn" id="updateService" value="Update Service">
+					</div>
 					<?php
 					}
 					?>
+
 				<script>
 				function setRecordId(radioBtnValue) {
 					document.getElementById("recordId").value = radioBtnValue;

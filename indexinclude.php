@@ -6,7 +6,6 @@ if(!isset($_SESSION['userID'])){
 <!DOCTYPE html>
 <html>
     <head>
-        <title><?php echo $pagetitle; ?></title>
         <!-- meta -->
         <meta name="viewport" content="width=device-width, user-scalable=no"/>
         <!--<link href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/Harmony_main.css" rel="stylesheet" type="text/css" />-->
