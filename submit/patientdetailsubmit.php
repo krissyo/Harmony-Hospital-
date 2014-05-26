@@ -2,17 +2,17 @@
 // @author: Krissy O'Farrell, 08854114
 // Last modified on: 25/05/2014
 // Last modified by: Kira Jamison, 08795428
-$allergyArray = array();
-$conditionArray = array();
+
 
 //$allergyArray = $_POST[Aname[]];
 //$conditionArray = $_POST[Cname[]];
 
-if(isset($_POST['Aname'])){
-  if (is_array($_POST['Aname'])) {
-    foreach($_POST['Aname'] as $value){
+//if(isset($_POST['Aname'])){
+if(!empty($_POST['allergies'])) {
+  
+    foreach($_POST['allergies'][$key] as $value){
       echo $value;
-    }
+    
   } 
 }
 
