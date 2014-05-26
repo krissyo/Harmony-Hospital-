@@ -6,7 +6,31 @@
     $pagetitle="Patient Profile";
     include("pagecomponents/indexinclude.php");
 require_once('pagecomponents/connectDB.php');
-
+?>
+        <div id="patientbuttons">
+            <div class="tab_box">
+                <a href="processAdmission.php">Admissions</a>
+            </div>
+            <div class="tab_box">
+                <a href="patientdetail.php">Patient Details</a>
+            </div>
+            <div class="tab_box">
+                    <a href="testresults.php">Test Results</a>
+            </div>
+            <div class="tab_box">
+                    <a href="death.php">Death</a>
+            </div>
+            <div class="tab_box">
+                    <a href="hospitaltransfer.php">Hospital Transfer</a>
+            </div>
+        </div>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<hr style="width:20%;">
+<?php
 //$patientid=$_GET["patientid"];
 $patientid=$_GET["id"];
 //echo $patientid;

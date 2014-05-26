@@ -61,6 +61,14 @@ td:first-child{
     text-align:right;
 }
 /*Visual attributes*/
+#patientbuttons{
+    margin:auto;
+    width:512px;
+}
+#patientbuttons div{
+    width:200px;
+    float:left;
+}
 #harmony_logo{
     position: absolute;
     width: 90px;
