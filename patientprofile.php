@@ -1,6 +1,10 @@
 <?php
+<<<<<<< HEAD
 // Author: Krissy O'Farrell
 // Last modified on: 11/05/2014
+=======
+// Author: 
+>>>>>>> a7aa6a389033959bc3b840c24eb506a02571804a
 // Last modified on: 26/05/2014
 // Last modified by: by Kira Jamison, 08795428
     $pagetitle="Patient Profile";
@@ -37,6 +41,15 @@ $patientid=$_GET["id"];
 // Setting the Session patient Id here [Kira J]
 $_SESSION['patient_id'] = $patientid;
 
+<<<<<<< HEAD
+=======
+//$patientid=$_GET["patientid"];
+$patientid=$_GET["id"];
+echo $patientid;
+// Setting the Session patient Id here [Kira J]
+$_SESSION['patient_id'] = $patientid;
+
+>>>>>>> a7aa6a389033959bc3b840c24eb506a02571804a
 if(isset($patientid)){
     $sql = "SELECT * FROM patient_details WHERE patient_id = $patientid";
     $result=mysqli_query($con,$sql)
