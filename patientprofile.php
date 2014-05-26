@@ -1,9 +1,17 @@
 <?php
+// Author: 
+// Last modified on: 26/05/2014
+// Last modified by: by Kira Jamison, 08795428
     $pagetitle="Patient Profile";
     include("pagecomponents/indexinclude.php");
 require_once('pagecomponents/connectDB.php');
 
-$patientid=$_GET["patientid"];
+//$patientid=$_GET["patientid"];
+$patientid=$_GET["id"];
+echo $patientid;
+// Setting the Session patient Id here [Kira J]
+$_SESSION['patient_id'] = $patientid;
+
 if(isset($patientid)){
     $sql = "SELECT * FROM patient_details WHERE patient_id = $patientid";
     $result=mysqli_query($con,$sql)

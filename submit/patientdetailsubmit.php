@@ -5,8 +5,16 @@
 $allergyArray = array();
 $conditionArray = array();
 
-$allergyArray = $_POST["Aname"];
-$conditionArray = $_POST["Cname"];
+//$allergyArray = $_POST[Aname[]];
+//$conditionArray = $_POST[Cname[]];
+
+if(isset($_POST['Aname'])){
+  if (is_array($_POST['Aname'])) {
+    foreach($_POST['Aname'] as $value){
+      echo $value;
+    }
+  } 
+}
 
 require_once('../pagecomponents/validate.php');
 require_once('../pagecomponents/connectDB.php');
@@ -57,13 +65,13 @@ else
 	// Update the allergies and conditions
 
 	// loop through each array and extra values into a string
-	
+/*	
 	$N = count($allergyArray);
 	for($i=0; $i < $N; $i++)
     {
       $allergies = $allergies . ',' . $allergyArray[$i];
     }
-/*
+
 if (strlen($allergies) > 0 && strlen($conditions) > 0) {
 	$sql = "UPDATE medical_history
 			SET allergies = '$allergies',
@@ -92,7 +100,7 @@ if (strlen($sql) > 0) {
 		$msg = $msg . "<br>Failed to update patient's medical details.";
 }
 */
-echo 'allergies: ' . $allergies . 'conditions: ' . $conditions;
+//echo 'allergies: ' . $allergies . 'conditions: ' . $conditions;
 //require_once('../pagecomponents/closeConnection.php');
 ?>
 <html>

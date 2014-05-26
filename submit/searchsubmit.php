@@ -35,7 +35,7 @@ if((strlen($search)==0)){
     $total = mysqli_num_rows($result);
     if($total > 0){
         while($row = mysqli_fetch_array($result)){
-			$_SESSION['patient_id'] = $row['patient_id'];
+			
             echo '<div class="searchResults"><a href="'. 
 				'../patientprofile.php?id=' . $row['patient_id'] . 
 				'">' . $row['first_name'] . ' ' . $row['last_name'].'</a></div>';
