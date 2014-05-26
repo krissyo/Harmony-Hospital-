@@ -61,6 +61,14 @@ td:first-child{
     text-align:right;
 }
 /*Visual attributes*/
+#patientbuttons{
+    margin:auto;
+    width:512px;
+}
+#patientbuttons div{
+    width:200px;
+    float:left;
+}
 #harmony_logo{
     position: absolute;
     width: 90px;
@@ -68,6 +76,10 @@ td:first-child{
     top: 3px;
     left: 50px;
     z-index: 3;        
+}
+#TopMenuBar{
+    width:350px;
+    float:right;
 }
 #welcome_user_text{
     position: absolute;
@@ -450,6 +462,12 @@ body{
     font-size: 13pt;
     padding: 1em;
     border-radius: 2px;
+}
+#search{
+    color:#fff;
+    height:30px;
+    margin:0;
+    padding:0;
 }
 .searchResults:hover{
     border-color: #87bad7; 
