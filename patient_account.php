@@ -19,7 +19,7 @@ include("pagecomponents/head.php");
 					pull_details($patient_details);
 					
 					// set the admission record session variable
-					$_SESSION[admission_id] = $patient_details['admission_id'];
+					$_SESSION['admission_id'] = $patient_details['admission_id'];
 					?>
 					
 					<table>
@@ -84,96 +84,107 @@ include("pagecomponents/head.php");
 					$rowCount = 0;
 					
 					// Display info in the table
-					while($row = mysqli_fetch_array($result)){
+					$dataFound = false;
 					
-						// Variables to store the Fees / Rebate amounts
-						$feesTotal = 0;
-						$medicareTotal = 0;
+					if ($result !== false) {
+						$dataFound = true;
+						while($row = mysqli_fetch_array($result)){
 						
-						if ($rowCount % 2 == 0) {
-							echo '<tr class = "altRow">';
-						} else {
-							echo '<tr>';
-						}
-						
-						echo "<td>" . $row['patient_procedure_id'] . "</td>";
-						
-						// For the first radio-button make it selected by default
-						// also insert the patient_procedure_id into the hidden field
-						// for the Update Service Form
-						if ($rowCount == 0) {
-							echo "<script>document.getElementById('recordId').value = '" . $row['patient_procedure_id'] . "'</script>";
-							echo "<td><input type='radio' name='record_id' value='" . $row['patient_procedure_id'] . "' checked ";
-						} else {
-							echo "<td><input type='radio' name='record_id' value='" . $row['patient_procedure_id'] . "' ";
-						}
-						echo "onclick = 'setRecordId(this.value);'/></td>";
-						
-						$startDate = date("d/m/Y", strToTime($row['service_start_date']));
-						echo "<td>" . $startDate . "</td>";
-						
-						if (!is_null($row['service_end_date'])) {
+							// Variables to store the Fees / Rebate amounts
+							$feesTotal = 0;
+							$medicareTotal = 0;
 							
-							$endDate = date("d/m/Y", strToTime($row['service_end_date']));
-						} else {
+							if ($rowCount % 2 == 0) {
+								echo '<tr class = "altRow">';
+							} else {
+								echo '<tr>';
+							}
 							
-						}
-						
-						echo "<td>" . $endDate . "</td>
-						<td>" . $row['procedure_description'] . "</td>
-						<td>$" . number_format($row['procedure_fee'], 2) . "</td>";
+							echo "<td>" . $row['patient_procedure_id'] . "</td>";
 							
-						
-						
-						// Add to the running totals
-						if (is_null($row['service_end_date'])) {
-						
-							// Calculate fees as at today's date
-							$row['service_end_date'] = date('Y-m-d');
-						} 		
+							// For the first radio-button make it selected by default
+							// also insert the patient_procedure_id into the hidden field
+							// for the Update Service Form
+							if ($rowCount == 0) {
+								echo "<script>document.getElementById('recordId').value = '" . $row['patient_procedure_id'] . "'</script>";
+								echo "<td><input type='radio' name='record_id' value='" . $row['patient_procedure_id'] . "' checked ";
+							} else {
+								echo "<td><input type='radio' name='record_id' value='" . $row['patient_procedure_id'] . "' ";
+							}
+							echo "onclick = 'setRecordId(this.value);'/></td>";
+							
+							$startDate = date("d/m/Y", strToTime($row['service_start_date']));
+							echo "<td>" . $startDate . "</td>";
+							
+							if (!is_null($row['service_end_date'])) {
+								
+								$endDate = date("d/m/Y", strToTime($row['service_end_date']));
+							} else {
+								
+							}
+							
+							echo "<td>" . $endDate . "</td>
+							<td>" . $row['procedure_description'] . "</td>
+							<td>$" . number_format($row['procedure_fee'], 2) . "</td>";
+								
+							
+							
+							// Add to the running totals
+							if (is_null($row['service_end_date'])) {
+							
+								// Calculate fees as at today's date
+								$row['service_end_date'] = date('Y-m-d');
+							} 		
 
-						if ($row['service_start_date'] == $row['service_end_date']) {
-						
-							$days = 1;
+							if ($row['service_start_date'] == $row['service_end_date']) {
 							
-						} else {
+								$days = 1;
+								
+							} else {
 
-							$days = round(abs(strtotime($row['service_start_date'])-strtotime($row['service_end_date']))/$CONVERSION);
-						}
-						
-						$feesTotal = $row['procedure_fee'] * $days;
-						$medicareTotal = $row['medicare_rebate'] * $days;
-						
-						$_SESSION['feesGrandTotal'] += $feesTotal;
-						$_SESSION['medicareGrandTotal'] += $medicareTotal;
+								$days = round(abs(strtotime($row['service_start_date'])-strtotime($row['service_end_date']))/$CONVERSION);
+							}
+							
+							$feesTotal = $row['procedure_fee'] * $days;
+							$medicareTotal = $row['medicare_rebate'] * $days;
+							
+							$_SESSION['feesGrandTotal'] += $feesTotal;
+							$_SESSION['medicareGrandTotal'] += $medicareTotal;
 
-						echo "<td>$" . number_format($feesTotal, 2) . "</td>";
-						
-						echo "<td>$" . number_format($row['medicare_rebate'], 2) . "</td>";
-						
-						echo "<td>$" . number_format($medicareTotal, 2) . "</td>";
-						
-						echo "<td>$days</td>";
-						
-						echo '</tr>';
-						$rowCount += 1;
-					} //end while loop
-					
+							echo "<td>$" . number_format($feesTotal, 2) . "</td>";
+							
+							echo "<td>$" . number_format($row['medicare_rebate'], 2) . "</td>";
+							
+							echo "<td>$" . number_format($medicareTotal, 2) . "</td>";
+							
+							echo "<td>$days</td>";
+							
+							echo '</tr>';
+							$rowCount += 1;
+						} //end while loop
+					}
 					?>
 
 					</table>
 					
 					<?php
+					if ($dataFound) {
 						// Display the Grand Total amounts
 						echo '<br />';
 						echo '<p>Grand Total Fees: $' . number_format($_SESSION['feesGrandTotal'], 2) . '</p>';
 						echo '<p>Grand Total Rebates: $' . number_format($_SESSION['medicareGrandTotal'], 2) . '</p>';
 						echo '<p>Gap Amount Total: $' . number_format(($_SESSION['feesGrandTotal'] - $_SESSION['medicareGrandTotal']), 2) . '</p>';
 					?>
+
 					<div id="patient-account"> 
-					<input class="rounded" type="button" name="invoiceBtn" id="generateInvoice" value="Invoice" onclick="location.href = 'services_invoice.php'">
-					<input class="rounded" type="submit" name="updateBtn" id="updateService" value="Update Service">
-                    </div>
+						<input class="rounded" type="button" name="invoiceBtn" id="generateInvoice" value="Invoice"
+									onclick="location.href = 'services_invoice.php'">
+						<input class="rounded" type="submit" name="updateBtn" id="updateService" value="Update Service">
+					</div>
+					<?php
+					}
+					?>
+
 				<script>
 				function setRecordId(radioBtnValue) {
 					document.getElementById("recordId").value = radioBtnValue;
