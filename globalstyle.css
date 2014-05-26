@@ -355,6 +355,7 @@ td:first-child{
     right:0;
     height:5em;
     color:#fff;
+    padding:10px;
 }
 /* Styling and positioning autocomplete */
 #autocomplete{

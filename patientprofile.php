@@ -1,10 +1,10 @@
 <?php
 // Author: Krissy O'Farrell
-// Last modified on: 11/05/2014
+// Last modified on: 27/05/2014
 // Last modified on: 26/05/2014
 // Last modified by: by Kira Jamison, 08795428
-    $pagetitle="Patient Profile";
-    include("pagecomponents/indexinclude.php");
+$pagetitle="Patient Profile";
+include("pagecomponents/indexinclude.php");
 require_once('pagecomponents/connectDB.php');
 ?> 
         <div id="patientbuttons">
