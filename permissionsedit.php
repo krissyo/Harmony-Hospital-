@@ -38,7 +38,7 @@ if(isset($_POST['remove_nav'])){
 }
 ?>
 <!-- add top nav items -->
-<div style="width:80%;float:left;">
+    <div id="wrapper">
     <h1>Add Top Navigation Item</h1>
     <form method="post" action="permissionsedit.php">
         <input type="text" placeholder="Name" name="name"><br/>
@@ -119,6 +119,7 @@ if(isset($_POST['remove_nav'])){
         }
     ?>
     </table>
+</div>
 </div>
      <?php include ("pagecomponents/footer.php"); ?>   
 </body>

@@ -28,7 +28,7 @@ img{
     display: block;
 }
 input{
-    background-color:#8ab9d6; 
+    background-color:#99ccff; 
     font-size:20px;
     color:#ffffff;
     border:0px;
@@ -39,7 +39,7 @@ input.rounded:focus{
     background-color:#99ccff; 
 }
 textarea{
-    background-color:#8ab9d6; 
+    background-color:#99ccff; 
     font-size:20px;
     color:#ffffff;
     border:0px;
@@ -89,7 +89,7 @@ td:first-child{
     font-family: Helvetica, arial sans-serif;
     font-style: italic;
     font-weight: bold;
-    color: #999999;
+    color: #fff;
     font-size: 20pt; 
 }
 #welcome_user_last_login{
@@ -100,7 +100,7 @@ td:first-child{
     font-family: Helvetica, arial sans-serif;
     font-style: italic;
     font-weight: bold;
-    color: #b4b3b3;
+    color: #fff;
     font-size: 10pt; 
 }
 #accountTable{
@@ -120,6 +120,21 @@ td:first-child{
     height: 90px;
     float: left;
     padding: 5px;
+    background-color:#99ccff;
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #999;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #999;
+    opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #999;
+    opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #999;
 }
 .sidebarColumn{
     /*width: 10%;*/
@@ -134,9 +149,9 @@ td:first-child{
 }
 .tab_box{
     border: 2px solid;
-    border-color: #87bad7;
+    border-color: #99ccff;
 /*    border-radius: 15px 15px;*/
-    background-color: #87bad7;
+    background-color: #99ccff;
     margin-bottom: 4px;
     margin-left: 4px;
     position: relative;
@@ -156,9 +171,9 @@ td:first-child{
     z-index: 3; }
 
 .tab_box_active{
-    background-color: #87bad7;
-    color: #87bad7;
-    border-color: #87bad7; 
+    background-color: #99ccff;
+    color: #99ccff;
+    border-color: #99ccff; 
 }
 .tab_box a{
     text-decoration: none;
@@ -265,9 +280,15 @@ td:first-child{
 }
 /* Invoice button on Patient's Account Form */
 #generateInvoice{
-	width: 10%;
+	width: 3.8em;
 	text-align: center;
-	float: center;
+	float: left;
+    margin: 1px;
+}
+#patient-account{
+    margin:auto;
+    width:250px;
+    
 }
 #header{ 
     margin-left:10%;
@@ -293,7 +314,7 @@ td:first-child{
 /* Update button on the Patient Account Form */
 #updateButton{
     color:#ffffff;
-    background-color:#87bad7;
+    background-color:#99ccff;
     border: 0px;
     border-radius: 15px;
     width: 220px;
@@ -304,9 +325,10 @@ td:first-child{
     font-size: 9pt; 
 }
 #updateService{
-	width: 15%;
+	width: 7.5em;
 	text-align: center;
-	float: center;
+	float: left;
+    margin:1px;
 }
 #username{ 
     text-align: left;
@@ -315,7 +337,7 @@ td:first-child{
     max-width:1050px;
     margin-left: auto;
     margin-right: auto;
-    text-align: right;
+    text-align: center;
 }
 #centre{
     margin-left: auto;
@@ -324,7 +346,15 @@ td:first-child{
 #page-footer{
     text-align:center;
     color:#aaa;
-    margin-bottom:0.5em;
+    clear:both;
+    width:100%;
+    background-color: #99ccff;
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    height:5em;
+    color:#fff;
 }
 /* Styling and positioning autocomplete */
 #autocomplete{
@@ -367,7 +397,7 @@ td:first-child{
 .options{
 	float: left;
 	font-size: 16px;
-	color: #87bad7;
+	color: #99ccff;
 }  
 .rounded{
     float:left;
@@ -422,8 +452,8 @@ body{
 }
 .contentLinkingBox:hover 
 {
-    border-color: #87bad7;
-    background-color: #87bad7; 
+    border-color: #99ccff;
+    background-color: #99ccff; 
 }
 .adminLinkingBoxes{
     border-color: #be81f7;
@@ -438,7 +468,7 @@ body{
     background-color: #8181f7; 
 }
 .action_buttons{
-    background-color: #87bad7;
+    background-color: #99ccff;
     width: 70px;
     height: 30px;
     z-index: 4;
@@ -464,13 +494,14 @@ body{
     border-radius: 2px;
 }
 #search{
-    color:#fff;
+    color:#999999;
     height:30px;
     margin:0;
     padding:0;
+    background-color:#fff;
 }
 .searchResults:hover{
-    border-color: #87bad7; 
+    border-color: #99ccff; 
 }
 .patientTable tr{
     border:0;
@@ -507,7 +538,7 @@ body{
     width:100%;
     padding:0;
     margin:0;
-    background-color:#87bad7;
+    background-color:#99ccff;
     display:inline-block;
     text-align:center;
     }

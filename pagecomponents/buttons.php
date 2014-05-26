@@ -150,4 +150,3 @@ $(document).ready(function()
     </script>
     <!-- this div creates the content column -->   
     <div class="contentColumn" id="contentColumn">
-    </div>
