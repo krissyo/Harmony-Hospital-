@@ -7,13 +7,14 @@ $pagetitle="Submitted";
     include ("../pagecomponents/indexinclude.php");
 $validate = new Validate();
 $validated_POST = $validate->post();
-$patientid= (int)$validated_POST["PatientId"];
-$authorisingperson=$validated_POST["authorising"];
-$dateofdeath=$validated_POST["DateOfDeath"];
 
-$sql="UPDATE patient_details SET date_of_death=$dateofdeath WHERE patient_id=$patientid;";
+$patientid = $_SESSION["patient_id"]; 
+$authorisingperson=$validated_POST["AuthPerson"];
+$DOD=$validated_POST["DOD"];
+
+$sql="UPDATE patient_details SET date_of_death='$DOD', authorising_person='$authorisingperson' WHERE patient_id='$patientid';";
 $result=mysqli_query($con,$sql);
-echo $result . "Notification of Death has been submitted";
+echo "Notification of Death has been submitted";
 
 require_once('../pagecomponents/closeConnection.php');
 ?>

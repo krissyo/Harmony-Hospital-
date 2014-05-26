@@ -1,8 +1,8 @@
 <?php
+// Author James Clelland n8888141
 $pagetitle="Nurse Notes";
 include("pagecomponents/head.php");
-$patientid = $_GET["id"];
-$_SESSION['passingID'] = $patientid; // Passing ID to nurses notes submit
+$patientid = $_SESSION["patient_id"]; 
 ?>
     <body>
         
@@ -26,17 +26,36 @@ $_SESSION['passingID'] = $patientid; // Passing ID to nurses notes submit
                 ?>
                 </th></h3>
                 
-                <tr><td>Notes:</td> <td>
+                <tr><td>Doctors Notes:</td> <td>
                 
                 <?php
-                    $sql=" SELECT doctors_notes, nurses_notes FROM medical_history WHERE patient_id=" . $patientid .'';
+                    $sql=" SELECT doctors_notes FROM medical_history WHERE patient_id=" . $patientid .'';
                     $result = mysqli_query ($con, $sql) ;
                     while($row = mysqli_fetch_array($result)){
-                    echo 'Doctors Notes:'. $row['doctors_notes'] . ' <br>  Nurses Notes:' . $row['nurses_notes'];
+                    echo  $row['doctors_notes'];
+                    
+                        
+                    }              
+                ?>
+                    
+                    <tr><td>Nurses Notes:</td> <td>
+                <?php
+                    $sql=" SELECT nurses_notes FROM medical_history WHERE patient_id=" . $patientid .'';
+                    $result = mysqli_query ($con, $sql) ;
+                    while($row = mysqli_fetch_array($result)){
+                    echo  $row['nurses_notes'] . '.'; 
                     }              
                 ?>
 
-                <tr><td>Add Notes:</td> <td> <textarea rows="4" cols="50" name="notes" placeholder="Start typing here..." required></textarea></td></tr>
+                <tr><td>Add Notes:</td> <td> <textarea rows="4" cols="50" name="notes" required >
+                   <?php
+                    $sql=" SELECT nurses_notes FROM medical_history WHERE patient_id=" . $patientid .'';
+                    $result = mysqli_query ($con, $sql) ;
+                    while($row = mysqli_fetch_array($result)){
+                    echo  $row['nurses_notes'] ;      
+                    }
+                ?> 
+                </textarea></td></tr>
                <tr>
                     <td></td>
                     <td><input class="rounded" type="submit" name="sumbit" id="submit" value="Submit"></td>

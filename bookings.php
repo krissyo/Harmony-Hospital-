@@ -66,7 +66,7 @@ include("pagecomponents/head.php");
 					
 					<tr><td>Guardian's Name:</td> <td><select class="rounded" name="GuardianName">
 					<?php
-						$sql="SELECT carer1_name, carer2_name, send_bill_to FROM patient_details WHERE patient_id = " . $_SESSION['patient_id'];
+						$sql="SELECT carer1_name, carer2_name, send_bill_to FROM patient_details WHERE patient_id = " . $_SESSION['PatientId'];
 						$result=mysqli_query($con,$sql);
 						
 						while($row = mysqli_fetch_array($result)){

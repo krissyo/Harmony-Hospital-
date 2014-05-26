@@ -1,15 +1,15 @@
 <?php
+// Author James Clelland n8888141
 // Last modified by Armin Khoshbin on 25/05/2014
-
+// Last modified by James Clelland on 26/05/2014
 $permissions=[3,4];
 $pagetitle="Doctors Notes";
 include("pagecomponents/head.php");
-$patientid = $_GET["id"];
-$_SESSION['passingID'] = $patientid; // Passing ID to doctors notes submit
+$patientid = $_SESSION["patient_id"]; 
+
 
 ?>
     <body>
-      
 		<div id="wrapper">
 		<div id="header"> 
 			<h1>Doctor's Notes</h1>
@@ -29,7 +29,7 @@ $_SESSION['passingID'] = $patientid; // Passing ID to doctors notes submit
                     echo $row['first_name'] . ' ' . $row['last_name'];
                     }              
                 ?></th></h3>
-<!--            <tr><td>Current Medication:</td> <td> <input class="rounded" type="Medication" name="Medication" id="Medication"></td></tr>-->
+
                 
                 
                 <?php
@@ -67,7 +67,6 @@ $_SESSION['passingID'] = $patientid; // Passing ID to doctors notes submit
 include("pagecomponents/footer.php");
 ?>
 		</div>
-        
         <script> 
         jQuery.validator.setDefaults({
           debug: false,

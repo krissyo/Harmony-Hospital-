@@ -1,7 +1,5 @@
 <?php
-// @author: Krissy O'Farrell, 08854114
-// Last modified on: 12/05/2014
-    require_once('connectDB.php');
+    require_once('pagecomponents/connectDB.php');
 ?>
 <div class="Container">
 
@@ -15,13 +13,16 @@
                 </div>
                 <div id="welcome_user_text">
                     <p>
-                        <?php echo $_SESSION["Name"] ?>
+                        <?php echo $pagetitle . ", " . $_SESSION["Name"] ?>
                     </p>
                 </div>   
                 <!-- containing DIV for top menu bar in header -->
-                <div id="TopMenuBar"> 
+                <div id="TopMenuBar">
+                    <div class="action_buttons" id="ProfileButton">
+                        <a><h1>PROFILE</h1></a>
+                    </div>  
                     <div class="action_buttons" id="HelpButton">
-                        <a href="http://trustinblack.com/harmonyhospital/help/"><h1>HELP</h1></a>
+                        <a><h1>HELP</h1></a>
                     </div> 
                     <div class="action_buttons" id="LogoutButton">
                         <a action="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/submit/logout.php" href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/submit/logout.php"><h1>LOG OUT</h1></a>

@@ -9,13 +9,12 @@ $pagetitle="Notes Submited";
     include ("../pagecomponents/indexinclude.php");
 $validate = new Validate();
 $validated_POST = $validate->post();
-$patientid = $_SESSION['passingID'];
+ 
+$patientid = $_SESSION["patient_id"]; 
 $notes =$validated_POST["notes"];
 $lastupdated = $_SESSION["Name"];
 date_default_timezone_set('Australia/Brisbane');
 $dateTime = date('Y-m-d H:i:s');
-//$Medication=$validated_POST["Medication"];
-
 
 $sql1= "SELECT * FROM medical_history WHERE patient_id='$patientid'";
 $result=mysqli_query($con,$sql1);
@@ -28,11 +27,11 @@ $sql3= "INSERT INTO medical_history (patient_id,doctors_notes, last_updated_by, 
     
    if(mysqli_num_rows($result) > 0) {
     mysqli_query($con,$sql2);
-       echo "Notes Updated";     // if user in table update notes
+       echo "Success, notes have been updated";     // if user in table update notes
    }
     else{
          mysqli_query($con,$sql3);
-        echo "notes added";     // if user isnt in table insert
+        echo "Success, notes have been added";     // if user isnt in table insert
     }
 require_once('../pagecomponents/closeConnection.php');
 ?>
