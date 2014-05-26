@@ -69,6 +69,10 @@ td:first-child{
     left: 50px;
     z-index: 3;        
 }
+#TopMenuBar{
+    width:350px;
+    float:right;
+}
 #welcome_user_text{
     position: absolute;
     top: 5px;
@@ -450,6 +454,12 @@ body{
     font-size: 13pt;
     padding: 1em;
     border-radius: 2px;
+}
+#search{
+    color:#fff;
+    height:30px;
+    margin:0;
+    padding:0;
 }
 .searchResults:hover{
     border-color: #87bad7; 

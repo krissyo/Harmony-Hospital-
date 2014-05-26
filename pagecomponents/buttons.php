@@ -3,6 +3,27 @@
 // Last modified on: 26/05/2014
     require_once('connectDB.php');
 ?>
+<script>
+$(document).ready(function()
+{
+	// sending an ajax request and waiting for the result
+	$.ajax({
+		    // sending the request to the following URL
+                    url: "http://trustinblack.com/harmonyhospital/pagecomponents/searchautocomplete.php",
+		    // expecting a json file as a result(response)
+                    dataType: "json",
+		    // Showing the autocomplete after receiving the json file
+                    success: function(data){
+    			$("#search").autocomplete(
+    			{
+        		source: data,
+        		minLength: 2,
+			appendTo: "#autocomplete"
+    			});
+			}
+	});
+});
+</script>
 <div class="Container">
 
             <!-- this div creates the header bar -->
@@ -20,9 +41,10 @@
                     </p>
                 </div>   
                 <!-- containing DIV for top menu bar in header -->
-                <div id="TopMenuBar" style="width:350px;float:right;"> 
+                <div id="TopMenuBar"> 
                     <form id="searchPatientForm" method="get" action="http://trustinblack.com/harmonyhospital/submit/searchsubmit.php" style="float:left;">
-                    <input name="search" id="search" type="text" placeholder="Search" required style="color:#fff;height:30px;margin:0;padding:0">
+                    <input name="search" id="search" type="text" placeholder="Search" required>
+                    <div id="autocomplete"></div>
 			     </form> 
                     <div class="action_buttons" id="HelpButton">
                         <a href="http://trustinblack.com/harmonyhospital/help/"><h1>HELP</h1></a>
