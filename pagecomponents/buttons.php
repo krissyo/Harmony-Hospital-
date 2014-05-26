@@ -1,6 +1,6 @@
 <?php
 // @author: Krissy O'Farrell, 08854114
-// Last modified on: 12/05/2014
+// Last modified on: 26/05/2014
     require_once('connectDB.php');
 ?>
 <div class="Container">
@@ -15,11 +15,15 @@
                 </div>
                 <div id="welcome_user_text">
                     <p>
-                        <?php echo $_SESSION["Name"] ?>
+                        <?php echo $_SESSION["Name"];
+                            if (isset($_SESSION['patient_id'])){ echo " [<a href='http://trustinblack.com/harmonyhospital/patientprofile.php?id=".$_SESSION['patient_id'] ."'>Patient: ". $_SESSION['patient_name'] . "</a>]";} ?>
                     </p>
                 </div>   
                 <!-- containing DIV for top menu bar in header -->
-                <div id="TopMenuBar"> 
+                <div id="TopMenuBar" style="width:350px;float:right;"> 
+                    <form id="searchPatientForm" method="get" action="http://trustinblack.com/harmonyhospital/submit/searchsubmit.php" style="float:left;">
+                    <input name="search" id="search" type="text" placeholder="Search" required style="color:#fff;height:30px;margin:0;padding:0">
+			     </form> 
                     <div class="action_buttons" id="HelpButton">
                         <a href="http://trustinblack.com/harmonyhospital/help/"><h1>HELP</h1></a>
                     </div> 

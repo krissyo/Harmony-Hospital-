@@ -1,4 +1,6 @@
 <?php
+// Author: Krissy O'Farrell
+// Last modified on: 26/05/2014
 $pagetitle="Search";
 include("pagecomponents/head.php");
 ?>
