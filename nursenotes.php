@@ -1,4 +1,15 @@
 <?php
+session_start();
+if (isset($_SESSION['userID']))
+	{
+		$userId = $_SESSION['userID'];
+	}
+$current_page = basename($_SERVER['PHP_SELF']);
+require 'include/check_access.inc';
+if (check_access($userId, $current_page) == false)
+{
+	die("Sorry, You don't have access to this page!");
+}
 // Author James Clelland n8888141
 $pagetitle="Nurse Notes";
 include("pagecomponents/head.php");
