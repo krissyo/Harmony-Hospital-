@@ -39,11 +39,14 @@ $(document).ready(function()
                         <?php echo $_SESSION["Name"];
                             if (isset($_SESSION['patient_id'])){ echo " [<a href='http://trustinblack.com/harmonyhospital/patientprofile.php?id=".$_SESSION['patient_id'] ."'>Patient: ". $_SESSION['patient_name'] . "</a>]";} ?>
                     </p>
+                </div>
+                <div id="harmonyNamebar">
+                <img src="images/hch_lockup.png">
                 </div>   
                 <!-- containing DIV for top menu bar in header -->
                 <div id="TopMenuBar"> 
                     <form id="searchPatientForm" method="get" action="http://trustinblack.com/harmonyhospital/submit/searchsubmit.php" style="float:left;">
-                    <input name="search" id="search" type="text" placeholder="Search" required>
+                    <input name="search" id="search" type="text" placeholder="  search" required>
                     <div id="autocomplete"></div>
 			     </form> 
                     <div class="action_buttons" id="HelpButton">

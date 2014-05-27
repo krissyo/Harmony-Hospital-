@@ -4,7 +4,7 @@ Last modified on: 26/05/2014
 */
 body{  
     margin: 0px;
-	background-color:#ffffff;
+	background: #f2f8fd;
     font-family:"Helvetica";
     color:#999999;
 }
@@ -75,12 +75,32 @@ td:first-child{
     height: 90px;    
     top: 3px;
     left: 50px;
-    z-index: 3;        
+    z-index: 3;
+            
 }
 #TopMenuBar{
+    position: inherit;
+    display: inline;
+    /*vertical-align: middle;*/
+    margin-top: 20px;
+    margin-bottom: auto;
     width:350px;
     float:right;
 }
+#harmonyNamebar{
+    position: absolute;
+    left: 48.5%;
+    display:inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 129px;
+    height: 100%;
+    visibility: hidden;
+     
+}
+
+
+
 #welcome_user_text{
     position: absolute;
     top: 5px;
@@ -117,10 +137,17 @@ td:first-child{
 }
 .headerBar{
     width: 100%;
-    height: 90px;
+    /*height: 90px;*/
+    height: 100px;
     float: left;
     padding: 5px;
-    background-color:#99ccff;
+    box-shadow: 2px 2px 2px #cccaca;
+    /*background-color:#c5c3c3;*/
+    /*opacity:0.9;*/
+    /*background: -webkit-linear-gradient(left top, red , blue); /* For Safari 5.1 to 6.0 */
+    /*background-color: -o-linear-gradient(bottom right, red, blue); /* For Opera 11.1 to 12.0 */
+    /*background-color: -moz-linear-gradient(bottom right, red, blue); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom , #bbdcfd , #99ccff); /* Standard syntax */
 }
 ::-webkit-input-placeholder { /* WebKit browsers */
     color:    #999;
@@ -148,10 +175,12 @@ td:first-child{
     text-decoration: none; 
 }
 .tab_box{
-    border: 2px solid;
-    border-color: #99ccff;
-/*    border-radius: 15px 15px;*/
-    background-color: #99ccff;
+    border: 2px solid transparent;
+    box-shadow: 2px 2px 2px #cccaca;
+    /*border-color: #99ccff;*/
+    /*border-radius: 15px 15px;*/
+    /*background-color: #99ccff;*/
+    background: linear-gradient(to bottom , #bbdcfd , #99ccff); /* Standard syntax */
     margin-bottom: 4px;
     margin-left: 4px;
     position: relative;
@@ -348,7 +377,8 @@ td:first-child{
     color:#aaa;
     clear:both;
     width:100%;
-    background-color: #99ccff;
+    /*background-color: #99ccff;*/
+    background: linear-gradient(to bottom , #99ccff, #bbdcfd ); /* Standard syntax */
     position:fixed;
     bottom:0;
     left:0;
@@ -473,15 +503,36 @@ body{
     width: 70px;
     height: 30px;
     z-index: 4;
-    float:right;
+    float:left;
 }
+
 .action_buttons h1{
     text-align: center;
     font-family: Helvetica, arial sans-serif;
     color: #ffffff;
     font-size: 10px; 
 }
+
+.action_buttons a{
+    text-decoration: none; 
+}
+
 /*Search Formatting */
+/* standardises the placeholder text in all browsers */
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #ffffff;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #ffffff;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #ffffff;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #ffffff;
+}
+
 .searchResults{
     display: block;
     float: left;
@@ -497,9 +548,12 @@ body{
 #search{
     color:#999999;
     height:30px;
+    width:160px;
     margin:0;
     padding:0;
     background-color:#fff;
+    font-style:italic;
+    font-size: .8em;
 }
 .searchResults:hover{
     border-color: #99ccff; 
