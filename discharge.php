@@ -3,7 +3,17 @@
 // 
 // link this from Current Admission and Patient Details form
 // on discharge end any services for this patient (patient_services table)
-
+session_start();
+if (isset($_SESSION['userID']))
+	{
+		$userId = $_SESSION['userID'];
+	}
+$current_page = basename($_SERVER['PHP_SELF']);
+require 'include/check_access.inc';
+if (check_access($userId, $current_page) == false)
+{
+	die("Sorry, You don't have access to this page!");
+}
 $pagetitle="Discharge Form";
 include("pagecomponents/head.php");
 require_once 'pagecomponents/validate_resource_mgt.inc';
