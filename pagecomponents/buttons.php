@@ -31,7 +31,7 @@ $(document).ready(function()
         
                 <div id="harmony_logo">
 
-                    <a href="/harmonyhospital/index.php"><img src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/images/bandaid_bird_white_90px.png"></a>
+                    <a href="/harmonyhospital/index.php"><img src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/images/hch_lockup_180px.png"></a>
 
                 </div>
                 <div id="welcome_user_text">
