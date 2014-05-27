@@ -1,7 +1,7 @@
 <?php
 // @author: Krissy O'Farrell, 08854114
 // Last modified on: 26/05/2014
-    require_once('connectDB.php');
+    require('connectDB.php');
 ?>
 <script>
 $(document).ready(function()
@@ -31,7 +31,7 @@ $(document).ready(function()
         
                 <div id="harmony_logo">
 
-                    <a href="/harmonyhospital/index.php"><img src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/images/bandaid_bird_90px.png"></a>
+                    <a href="/harmonyhospital/index.php"><img src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/images/bandaid_bird_white_90px.png"></a>
 
                 </div>
                 <div id="welcome_user_text">

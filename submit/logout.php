@@ -1,4 +1,5 @@
 <?php
+	// @author: Jesse Cunningham-Creech 05420687
         session_start();
 		session_unset();
 		session_destroy();

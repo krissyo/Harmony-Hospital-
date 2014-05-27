@@ -15,7 +15,7 @@ $approvingofficer=$validated_POST["ApprovingOfficer"];
                 
 $sql="UPDATE staff_details SET annual_leave_start=$startdate, annual_leave_end=$enddate, approving_officer=$approvingofficer WHERE staff_id=$staffid;";
 $result=mysqli_query($con,$sql);
-echo $result . "Success, your Annual Leave has been submitted.";
+echo $result . '<h3><th colspan="2" class="userdetails">Success, your Annual Leave has been submitted. </th></h3>';
 
 require_once('../pagecomponents/closeConnection.php');
 ?>

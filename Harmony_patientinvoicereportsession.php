@@ -1,4 +1,6 @@
 <?php
+	// @author: Jesse Cunningham - Creech, 05420687
+
 	require('pagecomponents/fpdf.php');
 	session_start();
 
