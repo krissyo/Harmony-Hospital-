@@ -22,7 +22,8 @@ include("pagecomponents/head.php");
 		<div id="content">
 			<form id="annualleave" action="submit/annualsubmit.php" method="post">
                 <input type="hidden" >
-			<table><h3><th colspan="2" class="userdetails">To be completed by the employee applying for Annual Leave </th></h3>
+			<table>
+<!--<h3><th colspan="2" class="userdetails"></th></h3>-->
                  
                
                 

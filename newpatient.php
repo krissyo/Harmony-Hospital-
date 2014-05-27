@@ -22,7 +22,8 @@ include("pagecomponents/head.php");
 		<div id="content">
 			<form id="newpatient" method="post" action="submit/newpatientsubmit.php">
                 <input type="hidden" >
-			<table><h3><th colspan="2" class="userdetails">Patient Details</th></h3>
+			<table>
+<!--                <h3><th colspan="2" class="userdetails">Patient Details</th></h3>-->
                
             <tr><td>First Name:</td> <td><input class="rounded" type="text" name="first-name" id="first-name" required></td></tr>
             <tr><td>Middle Name:</td> <td> <input class="rounded" type="text" name="middle-name" id="middle-name"></td></tr>

@@ -37,7 +37,8 @@ include("pagecomponents/head.php");
 		<div id="content">
 			<form id="sickleave" action="submit/sicksubmit.php" method="post">
                 <input type="hidden" >
-			<table><h3><th colspan="2" class="userdetails">To be completed by the employee who has taken Sick Leave </th></h3>
+			<table>
+<!--                <h3><th colspan="2" class="userdetails">To be completed by the employee who has taken Sick Leave </th></h3>-->
                
             <tr><td>Start Date:</td> <td> <input class="rounded" type="date" name="StartDate" id="StartDate" required></td></tr>
             <tr><td>End Date:</td> <td> <input class="rounded" type="date" name="EndDate" id="EndDate" onchange="numberOfDays();" required></td></tr>

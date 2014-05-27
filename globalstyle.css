@@ -6,17 +6,17 @@ body{
     margin: 0px;
 	background: #f2f8fd;
     font-family:"Helvetica";
-    color:#999999;
+    color:#222222;
 }
 h1,a{
-    color:#999999;
+    color:#222222;
     font-family: Helvetica, arial sans-serif;
     margin-left: auto;
     margin-right: auto;
 }
 h3{
     text-align:center;
-    color:#999999;
+    color:#222222;
     margin:0 auto;
 }
 hr{
@@ -28,7 +28,7 @@ img{
     display: block;
 }
 input{
-    background-color:#99ccff; 
+    background-color:#174a7c ; 
     font-size:20px;
     color:#ffffff;
     border:0px;
@@ -36,7 +36,7 @@ input{
     text-align:left;
 }
 input.rounded:focus{
-    background-color:#99ccff; 
+    background-color:#3b78b4 ; 
 }
 textarea{
     background-color:#99ccff; 
@@ -46,7 +46,7 @@ textarea{
     padding:5px;
 }
 table{
-    color:#999999;
+    color:#222222;
     margin:auto;
 }
 table td{
@@ -61,6 +61,22 @@ td:first-child{
     text-align:right;
 }
 /*Visual attributes*/
+.gradient{
+    background: #ebf1f6; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ebf1f6 0%, #abd3ee 50%, #d5ebfb 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ebf1f6), color-stop(50%,#abd3ee), color-stop(100%,#d5ebfb)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb',GradientType=0 ); /* IE6-9 */
+    z-index:-99999;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
 #patientbuttons{
     margin:auto;
     width:512px;
@@ -132,14 +148,15 @@ td:first-child{
 	border-radius: 2px;
 }
 .Container{
-    height: 100%;
-    margin: 0px; 
+    max-width: 960px;
+    min-width:480px;
+    margin:auto;
 }
 .headerBar{
     width: 100%;
     /*height: 90px;*/
-    height: 90px;
-    float: left;
+    height: 90px; 
+/*    float: left;*/
     padding: 5px;
     box-shadow: 2px 2px 2px #cccaca;
     /*background-color:#c5c3c3;*/
@@ -147,7 +164,10 @@ td:first-child{
     /*background: -webkit-linear-gradient(left top, red , blue); /* For Safari 5.1 to 6.0 */
     /*background-color: -o-linear-gradient(bottom right, red, blue); /* For Opera 11.1 to 12.0 */
     /*background-color: -moz-linear-gradient(bottom right, red, blue); /* For Firefox 3.6 to 15 */
-    background: linear-gradient(to bottom , #bbdcfd , #99ccff); /* Standard syntax */
+/*    background: linear-gradient(to bottom , #bbdcfd , #99ccff);  Standard syntax */
+/*    background-color:#0074D9;*/
+    background-color:#3b78b4 ;
+/*    background-color:#0074D9;*/
 }
 ::-webkit-input-placeholder { /* WebKit browsers */
     color:    #999;
@@ -164,30 +184,33 @@ td:first-child{
     color:    #999;
 }
 .sidebarColumn{
-    /*width: 10%;*/
     width: 180px;
-    height: 100%;
     float: left;
-    display:block;
     padding-top: 5px; 
 }
 .sidebarColumn a{
     text-decoration: none; 
 }
 .tab_box{
-    border: 2px solid transparent;
+    border: 2px solid #222222;
     box-shadow: 2px 2px 2px #cccaca;
     /*border-color: #99ccff;*/
     /*border-radius: 15px 15px;*/
-    /*background-color: #99ccff;*/
-    background: linear-gradient(to bottom , #bbdcfd , #99ccff); /* Standard syntax */
+/*    background-color: #afb1dc  ;*/
+    background-color: #174a7c   ;
+/*    background: linear-gradient(to bottom , #bbdcfd , #99ccff);  Standard syntax */
     margin-bottom: 4px;
     margin-left: 4px;
     position: relative;
     vertical-align: middle;
     z-index: 1; 
     text-align: center;
-    color: #FFF;
+    color: #fff;
+    padding:5px 10px 5px 10px; font-size: 1.5em;
+}
+.tab_box:hover{
+/* background-color: #AAAAAA ;*/
+    background-color: #99ccff; 
 }
 .tab_box h1{
     text-align: center;
@@ -261,7 +284,7 @@ td:first-child{
 #bookingsform{
 	text-align:center;
     max-width:700px;
-    color:#999999;
+    color:#222222;
     margin:0 auto;
 }
 #bookingTable td{
@@ -287,13 +310,11 @@ td:first-child{
 #consent{
    text-align:center;
     max-width:700px;
-    color:#999999;
+    color:#222222;
     margin:0 auto;
 }
 #content{
-    color:#999999;
-    margin-left: 190px;
-	margin-right: 200px;
+    color:#222222;
 	text-align: center;
     background-color:#ffffff;
     font-family: Helvetica, arial sans-serif;
@@ -320,7 +341,7 @@ td:first-child{
     
 }
 #header{ 
-    margin-left:10%;
+
 }
 #header h1{ 
     text-align: center;
@@ -363,10 +384,15 @@ td:first-child{
     text-align: left;
 }
 #wrapper{
-    max-width:1050px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
+background: #ebf1f6; /* Old browsers */
+background: -moz-linear-gradient(top,  #ebf1f6 0%, #abd3ee 50%, #d5ebfb 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ebf1f6), color-stop(50%,#abd3ee), color-stop(100%,#d5ebfb)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb',GradientType=0 ); /* IE6-9 */
+
 }
 #centre{
     margin-left: auto;
@@ -377,8 +403,8 @@ td:first-child{
     color:#aaa;
     clear:both;
     width:100%;
-    /*background-color: #99ccff;*/
-    background: linear-gradient(to bottom , #99ccff, #bbdcfd ); /* Standard syntax */
+    background-color: #3b78b4   ;
+/*    background: linear-gradient(to bottom , #99ccff, #bbdcfd );  Standard syntax */
     position:fixed;
     bottom:0;
     left:0;
@@ -408,7 +434,7 @@ td:first-child{
 }
 /*Not sure what to call this section */
 .linkingButtons{
-    color:#999999;
+    color:#222222;
     background-color:#c4dbe9;
     border: 0px;
     border-radius: 15px;
@@ -441,7 +467,7 @@ td:first-child{
     background-color:#99ccff;
 }
 .userdetails{
-    color:#999999;
+    color:#222222;
     font-size:30px;
 }
 body{
@@ -499,7 +525,8 @@ body{
     background-color: #8181f7; 
 }
 .action_buttons{
-    background-color: #99ccff;
+    background-color: #174a7c  ;
+/*    background-color: #99ccff;*/
     width: 70px;
     height: 30px;
     z-index: 4;
@@ -546,7 +573,7 @@ body{
     border-radius: 2px;
 }
 #search{
-    color:#999999;
+    color:#222222;
     height:30px;
     width:160px;
     margin:0;
@@ -608,6 +635,7 @@ body{
         padding:2px;
         margin:1px;
     }
+    
     .sidebarColumn a{
         text-decoration: none; 
     }   
