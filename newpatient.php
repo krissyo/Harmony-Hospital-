@@ -2,7 +2,7 @@
 $pagetitle="New Patient";
 include("pagecomponents/head.php");
 ?>
-
+		
 		<div id="wrapper">
 		<div id="header">
 			<h1>New Patient</h1>
@@ -16,7 +16,11 @@ include("pagecomponents/head.php");
             <tr><td>First Name:</td> <td><input class="rounded" type="text" name="first-name" id="first-name" required></td></tr>
             <tr><td>Middle Name:</td> <td> <input class="rounded" type="text" name="middle-name" id="middle-name"></td></tr>
             <tr><td>Last Name:</td> <td> <input class="rounded" type="text" name="last-name" id="last-name" required></td></tr>
-            <tr><td>Date Of Birth:</td> <td> <input class="rounded" type="date" name="date-of-birth" id="date-of-birth" required></td></tr>
+            <tr><td>Date Of Birth:</td> <td> <input class="rounded" type="date" name="date-of-birth" id="date-of-birth" max="<?php
+              $todaysdate=date('Y-m-d');
+              echo $todaysdate;
+              ?>"
+            required></td></tr>
             <tr><td>Address:</td> <td> <input class="rounded" type="text" name="address" id="address" required></td></tr>
             <tr><td>Post Code: </td> <td><input class="rounded" type="text" name="post-code" id="post-code" required></td></tr>
             <tr><td>Phone Number:</td> <td> <input class="rounded" type="text" name="phone-number" id="phone-number" required></td></tr>
@@ -39,7 +43,10 @@ include("pagecomponents/head.php");
             <tr><td>Allergies: </td> <td><input class="rounded" type="text" name="allergies" id="allergies" required></td></tr>
             <tr><td>Conditions: </td> <td><input class="rounded" type="text" name="conditions" id="conditions" required></td></tr>
             <tr><td>Medicare Number: </td> <td><input class="rounded" type="text" name="medicare-no" id="medicare-no" required></td></tr>
-            <tr><td>Medicare Exp Date: </td> <td><input class="rounded" type="date" name="medicare-exp" id="medicare-exp" required></td></tr>
+            <tr><td>Medicare Exp Date: </td> <td><input class="rounded" type="date" name="medicare-exp" id="medicare-exp" min="<?php
+              $todaysdate=date('Y-m-d');
+              echo $todaysdate;
+              ?>"required></td></tr>
             <tr><td>Mother's Name: </td> <td><input class="rounded" type="text" name="mothers-name" id="mothers-name" required></td></tr>
             <tr><td>Mother's Address: </td> <td><input class="rounded" type="text" name="mothers-address" id="mothers-address" required></td></tr>
 			<tr><td>Mother's Phone Number: </td> <td><input class="rounded" type="text" name="mothers-phone" id="mothers-phone" required></td></tr>
