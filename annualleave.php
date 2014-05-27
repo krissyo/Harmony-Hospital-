@@ -26,8 +26,14 @@ include("pagecomponents/head.php");
                  
                
                 
-            <tr><td>Start Date:</td> <td> <input class="rounded" type="date" name="AnnualLeaveStart" id="StartDate" required></td></tr>
-            <tr><td>End Date:</td> <td> <input class="rounded" type="date" name="AnnualLeaveEnd" id="EndDate" required></td></tr>
+            <tr><td>Start Date:</td> <td> <input class="rounded" type="date" name="AnnualLeaveStart" id="StartDate" min="<?php
+              $todaysdate=date('Y-m-d');
+              echo $todaysdate;
+              ?>" required></td></tr>
+            <tr><td>End Date:</td> <td> <input class="rounded" type="date" name="AnnualLeaveEnd" id="EndDate" min="<?php
+              $todaysdate=date('Y-m-d');
+              echo $todaysdate;
+              ?>"required></td></tr>
             <tr><td>Number of Days Absent:</td> <td> <input class="rounded" type="NoAbsent" name="NoAbsent" id="NoAbsent" required></td></tr>
             <tr><td>Approving Officer: </td> <td><select class="rounded" type="text" name="ApprovingOfficer" id="ApprovingOff" required>
             <option value="">Please select your approving officer</option>
