@@ -5,7 +5,7 @@ require_once("pagecomponents/connectDB.php");
 $roleId = intval($_GET['q']);
 
 $sql="SELECT name
-FROM sub_nav
+FROM top_nav
 WHERE role_id = " . $roleId . " or role_id = 0";
 
 $result = mysqli_query($con,$sql);
