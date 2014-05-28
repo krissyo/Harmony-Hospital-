@@ -1,7 +1,7 @@
 <?php
 // @author: Krissy O'Farrell, 08854114
 // Last modified on: 26/05/2014
-    require('connectDB.php');
+require('connectDB.php');
 ?>
 <script>
 $(document).ready(function()

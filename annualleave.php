@@ -77,9 +77,6 @@ include("pagecomponents/head.php");
 		</div>
 		<div id="footer">
 		</div>
-            	<?php
-include("pagecomponents/footer.php");
-?>
 		</div>
         <script> 
         jQuery.validator.setDefaults({
