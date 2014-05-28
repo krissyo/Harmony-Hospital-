@@ -18,6 +18,13 @@
 		{
 			case 9:
 				require 'testresults.inc';
+			break;
+			case 6:
+				require 'query.inc';
+			break;
+			case 2:
+				require 'headnurse.inc';
+			break;
 		}
 	?>
          </div>
