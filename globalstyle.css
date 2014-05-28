@@ -16,16 +16,12 @@ h1{
     font-family: Helvetica, arial sans-serif;
     margin-left: auto;
     margin-right: auto;
-    text-transform: uppercase;
-    font-size: 2em;
 }
 a{
     color:#222222;
     font-family: Helvetica, arial sans-serif;
     margin-left: auto;
     margin-right: auto;
-    text-transform: uppercase;
-    font-size: 1.2em;
 }
 
 h3{
@@ -85,9 +81,6 @@ form input{
     font-size: 1.4em;
 }
 
-
-
-
 /*Visual attributes*/
 .gradient{
     /*background: #ebf1f6; /* Old browsers */
@@ -96,8 +89,8 @@ form input{
     /*background: -webkit-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%);*/ /* Chrome10+,Safari5.1+ */
     /*background: -o-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%);*/ /* Opera 11.10+ */
     /*background: -ms-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%);*/ /* IE10+ */
-    /*background: linear-gradient(to bottom,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%);*/ /* W3C */
-    background: linear-gradient(to bottom,  #dde7fe , #ffffff); /* W3C */
+    background: linear-gradient(to bottom,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%);
+/*    background: linear-gradient(to bottom,  #dde7fe , #ffffff);  W3C */
     /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb',GradientType=0 );*/ /* IE6-9 */
     z-index:-99999;
     position:fixed;
@@ -253,9 +246,9 @@ form input{
     z-index: 3; }
 
 .tab_box_active{
-    background-color: #99ccff;
-    color: #99ccff;
-    border-color: #99ccff; 
+    background-color: #3b78b4;
+    color: #3b78b4;
+    border-color: #3b78b4; 
 }
 .tab_box a{
     text-decoration: none;
@@ -419,19 +412,18 @@ form input{
 #username{ 
     text-align: left;
 }
-/*#wrapper{
+#wrapper{
  width: 800px;
 margin: auto;
 background: #ebf1f6;*/ /* Old browsers */
-/*background: -moz-linear-gradient(top,  #ebf1f6 0%, #abd3ee 50%, #d5ebfb 100%);*/ /* FF3.6+ */
-/*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ebf1f6), color-stop(50%,#abd3ee), color-stop(100%,#d5ebfb));*/ /* Chrome,Safari4+ */
-/*background: -webkit-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%);*/ /* Chrome10+,Safari5.1+ */
-/*background: -o-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%);*/ /* Opera 11.10+ */
-/*background: -ms-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%); *//* IE10+ */
-/*background: linear-gradient(to bottom,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%); *//* W3C */
-/*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb',GradientType=0 ); *//* IE6-9 */
-
-/*}*/
+background: -moz-linear-gradient(top,  #ebf1f6 0%, #abd3ee 50%, #d5ebfb 100%);*/ /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ebf1f6), color-stop(50%,#abd3ee), color-stop(100%,#d5ebfb)); Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%);
+background: -o-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%);*
+background: -ms-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%); 
+background: linear-gradient(to bottom,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%); 
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb',GradientType=0 );
+}
 
 #centre{
     margin-left: auto;
@@ -508,7 +500,7 @@ e.g. Admissions History button on Patient Detail Form */
     font-size:20px;
 }
 .submit:hover{
-    background-color:#99ccff;
+    background-color:#3B78B4;
 }
 .userdetails{
     color:#222222;

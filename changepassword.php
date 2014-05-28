@@ -1,4 +1,6 @@
 <?php
+// @author: Krissy O'Farrell, 08854114
+// Last modified on: 25/05/2014
 session_start();
 if (isset($_SESSION['userID']))
 	{

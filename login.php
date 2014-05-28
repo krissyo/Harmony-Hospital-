@@ -4,7 +4,9 @@
 	
 ?>
 
-		<div id="wrapper">
+<div class="gradient"></div>		
+<div id="wrapper">
+            
 		<div id="header">
 			<h1>Harmony Children's Hospital <br/ > Staff Login</h1>
 		</div>
