@@ -39,7 +39,7 @@ input.rounded:focus{
     background-color:#3b78b4 ; 
 }
 textarea{
-    background-color:#99ccff; 
+    background-color:#3B78B4; 
     font-size:20px;
     color:#ffffff;
     border:0px;
@@ -315,6 +315,8 @@ td:first-child{
 }
 #content{
     color:#222222;
+	width: 800px;
+	margin: auto;
 	text-align: center;
     background-color:#ffffff;
     font-family: Helvetica, arial sans-serif;
@@ -354,6 +356,10 @@ td:first-child{
 #menu{ 
     float: left;
 	margin-top: 10px;	
+}
+/* Formats the text-area on Edit Permissions Form */
+#existing_sub_nav {
+	width: 400px;
 }
 #password{ 
     text-align: left	
@@ -432,7 +438,8 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', end
     color:#F00;
     text-align: left;
 }
-/*Not sure what to call this section */
+/* Buttons linking to other forms, 
+e.g. Admissions History button on Patient Detail Form */
 .linkingButtons{
     color:#222222;
     background-color:#c4dbe9;

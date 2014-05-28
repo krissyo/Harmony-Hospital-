@@ -1,17 +1,22 @@
+/*
+@author: Krissy O'Farrell, 08854114
+Last modified on: 26/05/2014
+*/
 body{  
     margin: 0px;
-	background-color:#ffffff;
+	background: #f2f8fd;
     font-family:"Helvetica";
+    color:#222222;
 }
 h1,a{
-    color:#999999;
+    color:#222222;
     font-family: Helvetica, arial sans-serif;
     margin-left: auto;
     margin-right: auto;
 }
 h3{
     text-align:center;
-    color:#999999;
+    color:#222222;
     margin:0 auto;
 }
 hr{
@@ -22,26 +27,26 @@ img{
     margin: auto;
     display: block;
 }
-input.rounded:focus {
-    background-color:#99ccff; 
-}
 input{
-    background-color:#8ab9d6; 
+    background-color:#174a7c ; 
     font-size:20px;
     color:#ffffff;
     border:0px;
     padding:5px;
     text-align:left;
 }
+input.rounded:focus{
+    background-color:#3b78b4 ; 
+}
 textarea{
-    background-color:#8ab9d6; 
+    background-color:#99ccff; 
     font-size:20px;
     color:#ffffff;
     border:0px;
     padding:5px;
 }
 table{
-    color:#999999;
+    color:#222222;
     margin:auto;
 }
 table td{
@@ -55,32 +60,75 @@ td *{
 td:first-child{
     text-align:right;
 }
-
-
-/* -------------- Id Styles alphabetically ------------------ */
-
-#harmony_logo {
+/*Visual attributes*/
+.gradient{
+    background: #ebf1f6; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ebf1f6 0%, #abd3ee 50%, #d5ebfb 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ebf1f6), color-stop(50%,#abd3ee), color-stop(100%,#d5ebfb)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb',GradientType=0 ); /* IE6-9 */
+    z-index:-99999;
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+#patientbuttons{
+    margin:auto;
+    width:512px;
+}
+#patientbuttons div{
+    width:200px;
+    float:left;
+}
+#harmony_logo{
     position: absolute;
     width: 90px;
     height: 90px;    
     top: 3px;
-    left: 50px;
+    left: 10px;
     z-index: 3;
-         
+            
+}
+#TopMenuBar{
+    position: inherit;
+    display: inline;
+    /*vertical-align: middle;*/
+    margin-top: 20px;
+    margin-bottom: auto;
+    width:350px;
+    float:right;
+}
+#harmonyNamebar{
+    position: absolute;
+    left: 48.5%;
+    display:inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 129px;
+    height: 100%;
+    visibility: hidden;
+
 }
 
-#welcome_user_text {
+
+
+#welcome_user_text{
     position: absolute;
     top: 5px;
-    left: 200px;
+    left: 240px;
     z-index: 3;
     font-family: Helvetica, arial sans-serif;
     font-style: italic;
     font-weight: bold;
-    color: #000000;
+    color: #fff;
     font-size: 20pt; 
 }
-#welcome_user_last_login {
+#welcome_user_last_login{
     position: absolute;
     top: 45px;
     left: 200px;
@@ -88,10 +136,10 @@ td:first-child{
     font-family: Helvetica, arial sans-serif;
     font-style: italic;
     font-weight: bold;
-    color: #b4b3b3;
+    color: #fff;
     font-size: 10pt; 
 }
-#accountTable {
+#accountTable{
 	font-size: 0.8em;
 	text-align:left;
 	float: left;
@@ -99,7 +147,96 @@ td:first-child{
 	border: 1px solid #DFE7F2;
 	border-radius: 2px;
 }
-#accountTable tr.altRow {
+.Container{
+    max-width: 960px;
+    min-width:480px;
+    margin:auto;
+}
+.headerBar{
+    width: 100%;
+    /*height: 90px;*/
+    height: 90px; 
+/*    float: left;*/
+    padding: 5px;
+    box-shadow: 2px 2px 2px #cccaca;
+    /*background-color:#c5c3c3;*/
+    /*opacity:0.9;*/
+    /*background: -webkit-linear-gradient(left top, red , blue); /* For Safari 5.1 to 6.0 */
+    /*background-color: -o-linear-gradient(bottom right, red, blue); /* For Opera 11.1 to 12.0 */
+    /*background-color: -moz-linear-gradient(bottom right, red, blue); /* For Firefox 3.6 to 15 */
+/*    background: linear-gradient(to bottom , #bbdcfd , #99ccff);  Standard syntax */
+/*    background-color:#0074D9;*/
+    background-color:#3b78b4 ;
+/*    background-color:#0074D9;*/
+}
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #999;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #999;
+    opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #999;
+    opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #999;
+}
+.sidebarColumn{
+    width: 180px;
+    float: left;
+    padding-top: 5px; 
+}
+.sidebarColumn a{
+    text-decoration: none; 
+}
+.tab_box{
+    border: 2px solid #222222;
+    box-shadow: 2px 2px 2px #cccaca;
+    /*border-color: #99ccff;*/
+    /*border-radius: 15px 15px;*/
+/*    background-color: #afb1dc  ;*/
+    background-color: #174a7c   ;
+/*    background: linear-gradient(to bottom , #bbdcfd , #99ccff);  Standard syntax */
+    margin-bottom: 4px;
+    margin-left: 4px;
+    position: relative;
+    vertical-align: middle;
+    z-index: 1; 
+    text-align: center;
+    color: #fff;
+    padding:5px 10px 5px 10px; font-size: 1.5em;
+}
+.tab_box:hover{
+/* background-color: #AAAAAA ;*/
+/*    background-color: #99ccff; */
+}
+.tab_box h1{
+    text-align: center;
+    color: white;
+    font-family: Helvetica, arial sans-serif;
+    font-weight: 800;
+    font-size: 12pt; 
+}
+.tab_box_text{
+    z-index: 3; }
+
+.tab_box_active{
+    background-color: #99ccff;
+    color: #99ccff;
+    border-color: #99ccff; 
+}
+.tab_box a{
+    text-decoration: none;
+    color: inherit;
+    font-family: inherit;
+    font-weight: inherit;
+    font-size: 10pt;
+    font-weight: 600;
+}
+/*Not sure what to call this */
+#accountTable tr.altRow{
 	background-color: #DFE7F2;
 }
 #accountTable td{
@@ -113,14 +250,19 @@ td:first-child{
 #accountTable td:first-child{
     text-align: left;
 }
-#accountTable h3 {
+#accountTable h3{
 	text-align: center;
 	font-size: 1.1em;
 	font-weight: bold;
 }
-/* This formats the table
-in Resource Availability Form */
-#availability {
+#admHistory,  #admHistory th, #admHistory td{
+	border: 1px solid grey;
+}
+#admHistory td{
+	font-size: 1em;
+}
+/* This formats the table in Resource Availability Form */
+#availability{
 	font-size: 1em;
 	text-align:left;
 	float: left;
@@ -132,134 +274,22 @@ in Resource Availability Form */
     font-size: 1em;
     text-align:left;
 }
-#availability_main_table {
+#availability_main_table{
 	font-size: 20px;
 	text-align:left;
 	float: left;
 	width: 100%;
 	border: none;
 }
-#bookingsform {
+#bookingsform{
 	text-align:center;
     max-width:700px;
-    color:#999999;
+    color:#222222;
     margin:0 auto;
 }
-#bookingTable td {
+#bookingTable td{
 	font-size: 1em;
     text-align:left;
-}
-#consent {
-   text-align:center;
-    max-width:700px;
-    color:#999999;
-    margin:0 auto;
-}
-#content{
-    color:#999999;
-    margin-left: 190px;
-	margin-right: 200px;
-	text-align: center;
-    background-color:#ffffff;
-    font-family: Helvetica, arial sans-serif;
-}
-
-/* Resource Mgt Form */
-#detailsTable table, #detailsTable td, #detailsTable th{
-	font-size: 1em;
-	border: 1px solid grey;
-}
-/* Invoice button on Patient's Account Form */
-#generateInvoice {
-	width: 10%;
-	text-align: center;
-	float: center;
-}
-#header { 
-    margin-left:10%;
-}
-#header h1 { 
-    text-align: center;
-}
-#loginform {
-	max-width: 500px;
-	margin:auto;
-    padding-top:20px;
-}
-#menu { 
-    float: left;
-	margin-top: 10px;	
-}
-#password { 
-    text-align: left	
-}
-#submit, #backToBedMgt { margin-top: 10px;
-	margin-bottom: 10px;
-}
-/* Update button on the Patient Account Form */
-#updateButton {
-    color:#ffffff;
-    background-color:#87bad7;
-    border: 0px;
-    border-radius: 15px;
-    width: 220px;
-    height: 50px;
-    position: relative;
-    font-family: Helvetica, arial sans-serif;
-    font-weight: 900;
-    font-size: 9pt; 
-}
-#updateService {
-	width: 15%;
-	text-align: center;
-	float: center;
-}
-#username { 
-    text-align: left;
-}
-#wrapper {
-    max-width:1050px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: right;
-}
-#centre {
-    margin-left: auto;
-    margin-right: auto;
-    }
-#page-footer{
-    text-align:center;
-    color:#aaa;
-    margin-bottom:0.5em;
-}
-
-/* -------------- Class Styles alphabetically ------------------ */
-
-.consent{
-    clear:both;
-}
-.error{
-    font-size: 8px;
-    color:#F00;
-    text-align: left;
-}
-.linkingButtons {
-    color:#999999;
-    background-color:#c4dbe9;
-    border: 0px;
-    border-radius: 15px;
-    width: 90px;
-    height: 70px;
-    left: 0px;
-    top: 0px;
-    font-family: Helvetica, arial sans-serif;
-    font-weight: 900;
-    font-size: 9pt;
-}
-.options {
-	float: left;
-	font-size: 16px;
-	color: #87bad7;
 }
 .patientTable{
     font-size: 16px;
@@ -276,8 +306,157 @@ in Resource Availability Form */
 } 
 .patientTable th{
     text-align:right;
-}    
-.rounded {
+}
+#consent{
+   text-align:center;
+    max-width:700px;
+    color:#222222;
+    margin:0 auto;
+}
+#content{
+    color:#222222;
+	text-align: center;
+    background-color:#ffffff;
+    font-family: Helvetica, arial sans-serif;
+}
+/* Resource Mgt Form */
+#detailsTable table, #detailsTable td, #detailsTable th{
+	font-size: 1em;
+	border: 1px solid grey;
+}
+/* Date of birth and Date of Death on Patient Details Form*/
+#DOB, #DOD{
+	width: 240px;
+}
+/* Invoice button on Patient's Account Form */
+#generateInvoice{
+	width: 3.8em;
+	text-align: center;
+	float: left;
+    margin: 1px;
+}
+#patient-account{
+    margin:auto;
+    width:250px;
+    
+}
+#header{ 
+
+}
+#header h1{ 
+    text-align: center;
+}
+#loginform{
+	max-width: 500px;
+	margin:auto;
+    padding-top:20px;
+}
+#menu{ 
+    float: left;
+	margin-top: 10px;	
+}
+#password{ 
+    text-align: left	
+}
+#submit, #backToBedMgt{ margin-top: 10px;
+	margin-bottom: 10px;
+}
+/* Update button on the Patient Account Form */
+#updateButton{
+    color:#ffffff;
+    background-color:#99ccff;
+    border: 0px;
+    border-radius: 15px;
+    width: 220px;
+    height: 50px;
+    position: relative;
+    font-family: Helvetica, arial sans-serif;
+    font-weight: 900;
+    font-size: 9pt; 
+}
+#updateService{
+	width: 7.5em;
+	text-align: center;
+	float: left;
+    margin:1px;
+}
+#username{ 
+    text-align: left;
+}
+#wrapper{
+background: #ebf1f6; /* Old browsers */
+background: -moz-linear-gradient(top,  #ebf1f6 0%, #abd3ee 50%, #d5ebfb 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ebf1f6), color-stop(50%,#abd3ee), color-stop(100%,#d5ebfb)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb',GradientType=0 ); /* IE6-9 */
+
+}
+#centre{
+    margin-left: auto;
+    margin-right: auto;
+    }
+#page-footer{
+    text-align:center;
+    color:#aaa;
+    clear:both;
+    width:100%;
+    background-color: #3b78b4   ;
+/*    background: linear-gradient(to bottom , #99ccff, #bbdcfd );  Standard syntax */
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    height:5em;
+    color:#fff;
+    padding:10px;
+}
+/* Styling and positioning autocomplete */
+#autocomplete{
+	display: block; 
+	position:relative;
+} 
+.ui-autocomplete{
+    position: absolute;
+	width: 265px;
+    color:#fff
+}
+/*Form Validation Errors*/
+.missing{
+	color: red;
+}
+.error{
+    font-size: 8px;
+    color:#F00;
+    text-align: left;
+}
+/*Not sure what to call this section */
+.linkingButtons{
+    color:#222222;
+    background-color:#c4dbe9;
+    border: 0px;
+    border-radius: 15px;
+    width: 90px;
+    height: 70px;
+    left: 0px;
+    top: 0px;
+    font-family: Helvetica, arial sans-serif;
+    font-weight: 900;
+    font-size: 9pt;
+}
+.centre{
+    margin: 0px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.options{
+	float: left;
+	font-size: 16px;
+	color: #99ccff;
+}  
+.rounded{
     float:left;
 }
 .submit{
@@ -288,52 +467,26 @@ in Resource Availability Form */
     background-color:#99ccff;
 }
 .userdetails{
-    color:#999999;
+    color:#222222;
     font-size:30px;
 }
-body {
+body{
     margin: 0px;
     display: block; 
 }
-*, *:before, *:after {
+*, *:before, *:after{
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
     box-sizing: border-box; 
 }
-.Container {
-    height: 100%;
-    margin: 0px; 
+.contentColumn{
+    display: inline;
+    /*width:90%;*/
+    height: 500px;
+    padding-left: 14px;
+    padding-top: 5px;
 }
-.headerBar {
-    width: 100%;
-    height: 90px;
-    float: left;
-    padding: 5px;
-}
-.sidebarColumn {
-    /*width: 10%;*/
-    width: 180px;
-    height: 100%;
-    float: left;
-    display:block;
-    padding-top: 5px; 
-}
-.sidebarColumn a {
-    text-decoration: none; 
-}
-.contentColumn {
-    width:90%;
-    padding-left: 6px;
-    padding-top: 5px; 
-}
-.contentLinkingBox, 
-.adminLinkingBoxes, 
-.doctorLinkingBoxes, 
-.nurseLinkingBoxes,
-.employmentLinkingBoxes,
-.resourceLinkingBoxes,
-.patientLinkingBoxes {
-/*
+.contentLinkingBox{
     display: inline-block;
     border: 2px solid;
     border-radius: 15px 15px;
@@ -341,105 +494,73 @@ body {
     width: 32%;
     margin-bottom: 4px;
     border-color: #c8c7cb;
-    background-color: #c8c7cb; 
-*/
+    background-color: #c8c7cb;
+    left:10px;
 }
-.contentLinkingBox h1, 
-.adminLinkingBoxes h1, 
-.doctorLinkingBoxes h1, 
-.nurseLinkingBoxes h1,
-.employmentLinkingBoxes h1,
-.resourceLinkingBoxes h1,
-.patientLinkingBoxes h1 {
-/*
+.contentLinkingBox h1{
     text-align: center;
     color: white;
     font-family: Helvetica, arial sans-serif;
     font-size: 25pt; 
-*/
 }
-.contentLinkingBox a, 
-.adminLinkingBoxes a, 
-.doctorLinkingBoxes a, 
-.nurseLinkingBoxes a,
-.employmentLinkingBoxes a,
-.resourceLinkingBoxes a,
-.patientLinkingBoxes a {
+.contentLinkingBox a 
+{
     text-decoration:none; 
 }
-.contentLinkingBox:hover, 
-.adminLinkingBoxes:hover, 
-.doctorLinkingBoxes:hover, 
-.nurseLinkingBoxes:hover,
-.employmentLinkingBoxes:hover,
-.resourceLinkingBoxes:hover,
-.patientLinkingBoxes:hover {
-    border-color: #87bad7;
-    background-color: #87bad7; 
+.contentLinkingBox:hover 
+{
+    border-color: #99ccff;
+    background-color: #99ccff; 
 }
-.adminLinkingBoxes {
+.adminLinkingBoxes{
     border-color: #be81f7;
     background-color: #be81f7; 
 }
-.doctorLinkingBoxes {
+.doctorLinkingBoxes{
     border-color: #bca9f5;
     background-color: #bca9f5; 
 }
-.nurseLinkingBoxes {
+.nurseLinkingBoxes{
     border-color: #8181f7;
     background-color: #8181f7; 
 }
-.tab_box {
-    border: 2px solid;
-    border-color: #87bad7;
-    border-radius: 15px 15px;
-    background-color: #87bad7;
-    margin-bottom: 4px;
-    margin-left: 4px;
-    position: relative;
-    vertical-align: middle;
-    z-index: 1; 
-    text-align: center;
-    color: #FFF;
-}
-.tab_box h1 {
-    text-align: center;
-    color: white;
-    font-family: Helvetica, arial sans-serif;
-    font-weight: 800;
-    font-size: 12pt; 
-}
-.tab_box_text {
-    z-index: 3; }
-
-.tab_box_active {
-    background-color: #87bad7;
-    color: #87bad7;
-    border-color: #87bad7; 
-}
-.tab_box a{
-    text-decoration: none;
-    color: inherit;
-    font-family: inherit;
-    font-weight: inherit;
-    font-size: 10pt;
-    font-weight: 600;
-}
-
-.action_buttons {
-    background-color: #87bad7;
+.action_buttons{
+    background-color: #174a7c  ;
+/*    background-color: #99ccff;*/
     width: 70px;
     height: 30px;
     z-index: 4;
-    float:right;
+    float:left;
 }
-.action_buttons h1 {
+
+.action_buttons h1{
     text-align: center;
     font-family: Helvetica, arial sans-serif;
     color: #ffffff;
     font-size: 10px; 
 }
-.searchResults {
+
+.action_buttons a{
+    text-decoration: none; 
+}
+
+/*Search Formatting */
+/* standardises the placeholder text in all browsers */
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #ffffff;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #ffffff;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #ffffff;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #ffffff;
+}
+
+.searchResults{
     display: block;
     float: left;
     text-align: center;
@@ -451,13 +572,23 @@ body {
     padding: 1em;
     border-radius: 2px;
 }
+#search{
+    color:#222222;
+    height:30px;
+    width:160px;
+    margin:0;
+    padding:0;
+    background-color:#fff;
+    font-style:italic;
+    font-size: .8em;
+}
+.searchResults:hover{
+    border-color: #99ccff; 
+}
 .patientTable tr{
     border:0;
 }
-.searchResults:hover {
-    border-color: #87bad7; }
-
-.itemName {
+.itemName{
     font-size:50px;
     color:#b4b3b3;
     text-align:center; 
@@ -466,22 +597,22 @@ body {
     display:none;
 }
 /*placeholder text*/
-::-webkit-input-placeholder { /* WebKit browsers */
+::-webkit-input-placeholder{ /* WebKit browsers */
     color:#999;
 }
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color:#999;
-    opacity:  1;
-}
-::-moz-placeholder { /* Mozilla Firefox 19+ */
+:-moz-placeholder{ /* Mozilla Firefox 4 to 18 */
     color:#999;
     opacity:  1;
 }
-:-ms-input-placeholder { /* Internet Explorer 10+ */
+::-moz-placeholder{ /* Mozilla Firefox 19+ */
+    color:#999;
+    opacity:  1;
+}
+:-ms-input-placeholder{ /* Internet Explorer 10+ */
     color:#999;
 }
 @media all and (max-width:769px ){
-    .sidebarColumn {
+    .sidebarColumn{
         width: 100%;
         float: left;
      }
@@ -489,7 +620,7 @@ body {
     width:100%;
     padding:0;
     margin:0;
-    background-color:#87bad7;
+    background-color:#99ccff;
     display:inline-block;
     text-align:center;
     }
@@ -499,47 +630,41 @@ body {
         font-size: 32px;
         text-decoration: none;
     }
-    .tab_box {
+    .tab_box{
         border-radius:0; 
         padding:2px;
         margin:1px;
     }
-
-    .sidebarColumn a {
-        text-decoration: none; }   
-
+    
+    .sidebarColumn a{
+        text-decoration: none; 
+    }   
     .patientLinkingBoxes{
         clear:both;
     } 
     .patientLinkingBoxes h1{
         font-size: 12px;   
     }
-
-    #welcome_user_text {
+    #welcome_user_text{
         left: 120px;
     } 
-
-    #welcome_user_last_login {
+    #welcome_user_last_login{
         left: 120px;
     }
-
     #harmony_logo{
         position: absolute;
         top:0;
         left:0;
     }
-} 
-#admin-table{
-    width:80%;
-}
-#admin-table *{
-    font-size:12px;
-    color:#000;
-}
-#admin-table tr{
-    
-}
-#admin-table td{
-    border:1px solid #000;   
-    text-align: left;   
+    #admin-table{
+        width:80%;
+    }
+    #admin-table *{
+        font-size:12px;
+        color:#000;
+    }
+    #admin-table td{
+        border:1px solid #000;   
+        text-align: left;   
+    }
 }
