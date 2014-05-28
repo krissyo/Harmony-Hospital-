@@ -11,7 +11,7 @@ body{
     color:#222222;
     padding-bottom: 5em;
 }
-h1,a{
+h1{
     color:#222222;
     font-family: Helvetica, arial sans-serif;
     margin-left: auto;
@@ -19,6 +19,15 @@ h1,a{
     text-transform: uppercase;
     font-size: 2em;
 }
+a{
+    color:#222222;
+    font-family: Helvetica, arial sans-serif;
+    margin-left: auto;
+    margin-right: auto;
+    text-transform: uppercase;
+    font-size: 1.2em;
+}
+
 h3{
     text-align:center;
     color:#222222;
