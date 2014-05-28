@@ -12,4 +12,4 @@
             <script src="../harmonyhospital/signaturePad/assets/json2.min.js" type="text/javascript"></script>
     </head>
 <body>
-    <img src="../harmonyhospital/bird.jpg" height="142" width="242" />
+    <img src="../harmonyhospital/bird.png" height="142" width="242" />
