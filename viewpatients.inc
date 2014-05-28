@@ -1,9 +1,3 @@
-<?php
-$pagetitle="View Patients";
-include("pagecomponents/head.php");
-?>
- <body>
-      
 		<div id="wrapper">
 		<div id="header"> 
 			<h1>View Patients</h1>
@@ -50,7 +44,3 @@ $result=mysqli_query($con,$sql);
 include("pagecomponents/footer.php");
 ?>
 		</div>
-     
-    </body>
-</html> 
-<!--     Author James Clelland -->
