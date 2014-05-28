@@ -25,6 +25,9 @@
 			case 3:
                 require 'viewpatients.inc';
             	break;
+			case 4:
+                require 'head_doctor_index.php';
+            	break;
 			case 6:
 				require 'query.inc';
 				break;

@@ -5,8 +5,20 @@
 
 if(isset($_POST['Submit'])) {
     echo "<pre>"; 
-    $checked = implode(',', $_POST['Aname']); 
-    echo $checked;
+
+
+	if(isset($_POST['Aname'])) {
+
+		$checked = implode(',', $_POST['Aname']);  
+
+	} else {
+
+		$checked = "nothing";
+
+	}
+	
+	echo $checked;
+
 }
 
 require_once('../pagecomponents/validate.php');

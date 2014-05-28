@@ -100,7 +100,7 @@ require_once('pagecomponents/connectDB.php');
 				$result=mysqli_query($con,$sql);
 				while($data = mysqli_fetch_array($result)){
 					$name = $data['name'];
-					echo "<input type=\"checkbox\" name=\"Aname[]\" value=\"$name\" />$name<br />";
+					echo "<input type=\"checkbox\" name='Aname[]' value=\"$name\" />$name<br />";
 					
 					//echo "<input type='checkbox' name=\"$name\" value=\"$name\" />$name<br />";
                     }
@@ -133,7 +133,7 @@ require_once('pagecomponents/connectDB.php');
                     </tr>
                 <tr>
                     <td></td>
-                    <td><input class="rounded" type="submit" name="sumbit" id="submit" value="Update"></td>
+                    <td><input class="rounded" type="submit" name="submit" id="submit" value="Update"></td>
                 </tr>
             </table>
 			</form>
