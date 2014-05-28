@@ -8,7 +8,7 @@ class ResourceAvailability {
         // if ($result returns a record
 		//$doubleBooking = 1 else $doubleBooking = 0
 		
-		require_once('connectDB.php');
+		require('connectDB.php');
 		
         $sql="SELECT booking_id, resource_id FROM bookings 
 			WHERE resource_id = " . $_POST['ResourceId'] . " AND booking_date = '" . $_POST['StartDate'] . 

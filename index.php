@@ -23,17 +23,21 @@
 				require 'headnurse.inc';
 			break;
 			case 3:
-                		require 'viewpatients.inc';
-            		break;
+                require 'viewpatients.inc';
+            	break;
 			case 6:
 				require 'query.inc';
-			break;
+				break;
+			case 7:
+                require 'newstaff.inc';
+				break;
+
 			case 8:
 				require 'newpatient.inc';
-			break;
+				break;
 			case 9:
 				require 'testresults.inc';
-			break;
+				break;
             
 		}
 	?>

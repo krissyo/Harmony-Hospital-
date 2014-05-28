@@ -4,11 +4,14 @@
             <div id="content">
 			<form id="dpt_bookings" enctype="multipart/form-data">
                 
-			<table>
+			<table style="border: 1px solid grey;">
 			<?php
-			require_once('pagecomponents/connectDB.php');
+			echo '<tr>';
+				echo "<th>Start Time</th><th>Finish Time</th><th>Patient's Name</th><th>Procedure</th><th>Staff Name</th>";
+			echo '</tr>';
+			require('pagecomponents/connectDB.php');
 			// Find out the user's department
-			if ISSET($_SESSION['userID']) {
+			if (ISSET($_SESSION['userID'])) {
 				$sql = 'SELECT department_id FROM staff_details WHERE staff_id = ' . $_SESSION['userID'];
 				$result = mysqli_query($con,$sql);
 				if ($result !== false) {
@@ -28,12 +31,14 @@
 					inner join procedure_listing on bookings.procedure_id = procedure_listing.procedure_id
 					inner join resources on bookings.resource_id = resources.resource_id
 					inner join staff_details on bookings.staff_id = staff_details.staff_id
-					where resources.department_id = " . $depId;
+					where resources.department_id = " . $depId .
+					" AND booking_date = '" . date('Y-m-d') .
+					"' ORDER BY start_time";
 					$result = mysqli_query($con,$sql);
 
 					if ($result !== false) {
 						while ($row = mysqli_fetch_array($result)) {
-							echo '<tr>';
+							echo '<tr style="border: 1px solid grey;">';
 							
 								echo '<td>' . $row['start_time'] . '</td>';
 								echo '<td>' . $row['finish_time'] . '</td>';
@@ -45,7 +50,7 @@
 						}
 					} else {
 						// No bookings for today
-							echo '<tr>';
+							echo '<tr style="border: 1px solid grey;">';
 							
 								echo '<td>No bookings for today.</td>';
 					
@@ -53,7 +58,7 @@
 					}
 				} else {
 					// department Id is not set for this user
-						echo '<tr>';
+						echo '<tr style="border: 1px solid grey;">';
 							
 							echo '<td>Department Id is not set for your username.</td>';
 					
@@ -62,7 +67,7 @@
 				
 			} else {
 				// Session variable for User id is not set
-				echo '<tr>';
+				echo '<tr style="border: 1px solid grey;">';
 							
 					echo '<td>User Id is not set.</td>';
 					
@@ -79,5 +84,5 @@
 		</div>
             
             <?php
-			require_once('pagecomponents/closeConnection.php');
+			require('pagecomponents/closeConnection.php');
 	    ?>
