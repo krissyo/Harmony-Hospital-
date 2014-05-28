@@ -5,8 +5,8 @@ require_once("pagecomponents/connectDB.php");
 $roleId = intval($_GET['q']);
 
 $sql="select distinct name 
-	from sub_nav where name not in 
-	(select name from sub_nav where role_id = " . $roleId . "
+	from top_nav where name not in 
+	(select name from top_nav where role_id = " . $roleId . "
 	or role_id = 0) 
 	order by name";
 
@@ -15,7 +15,8 @@ $result = mysqli_query($con,$sql);
 
 if ($result !== false) {
 	echo '<label><b>Select New Item</b></label><br/>';
-	echo "<select name = 'name' onchange='displayURLdetails(this.value);'>";
+	//
+	echo "<select name = 'name' onclick='display_top_URLdetails(this.value);'>";
 
 	while($row = mysqli_fetch_array($result)){
 		echo "<option value='" . $row["name"] . "'>" . $row["name"] . "</option>";
@@ -24,7 +25,7 @@ if ($result !== false) {
 	echo "</select>";
 	
 } else {
-	echo 'No results';
+	echo 'The selected role has full access to all side tabs.';
 }
 
 require_once('pagecomponents/closeConnection.php');
