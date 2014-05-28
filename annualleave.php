@@ -14,6 +14,23 @@ $pagetitle="Annual Leave";
 include("pagecomponents/head.php");
 ?>
 
+<script>
+  function numberOfDays() {
+    var date1 = Date.parse(document.getElementById("StartDate").value);
+    var date2 = Date.parse(document.getElementById("EndDate").value);
+    //Get 1 day in milliseconds
+    var one_day=1000*60*60*24;
+
+    // Calculate the difference in milliseconds
+    var difference_ms = ( date2 - date1 );
+      
+    // Convert back to days and return
+    var number_of_days = Math.round(difference_ms/one_day) + 1;
+
+    document.getElementById("NoAbsent").value = number_of_days;
+}
+</script>
+
 		<div id="wrapper">
 		<div id="header">
 			<h1>Annual Leave</h1>
@@ -31,7 +48,7 @@ include("pagecomponents/head.php");
               $todaysdate=date('Y-m-d');
               echo $todaysdate;
               ?>" required></td></tr>
-            <tr><td>End Date:</td> <td> <input class="rounded" type="date" name="AnnualLeaveEnd" id="EndDate" min="<?php
+            <tr><td>End Date:</td> <td> <input class="rounded" type="date" name="AnnualLeaveEnd" id="EndDate" onchange="numberOfDays();" min="<?php
               $todaysdate=date('Y-m-d');
               echo $todaysdate;
               ?>"required></td></tr>
