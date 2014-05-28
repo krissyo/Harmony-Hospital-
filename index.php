@@ -16,21 +16,28 @@
 		$roleId = $_SESSION['roleID'];
 		switch ($roleId)
 		{
-			case 9:
-				require 'testresults.inc';
-			break;
-			case 6:
-				require 'query.inc';
+			case 1:
+				require 'nurse_index.inc';
 			break;
 			case 2:
 				require 'headnurse.inc';
 			break;
-            		case 3:
-                		require 'viewpatients.inc';
-            		break;
+			case 3:
+                require 'viewpatients.inc';
+            	break;
+			case 6:
+				require 'query.inc';
+				break;
+			case 7:
+                require 'newstaff.inc';
+				break;
+
 			case 8:
 				require 'newpatient.inc';
-			break;
+				break;
+			case 9:
+				require 'testresults.inc';
+				break;
             
 		}
 	?>

@@ -8,7 +8,7 @@ class PatientAvailability {
         // if ($result returns a record
 		//$doubleBooking = 1 else $doubleBooking = 0
 		
-		require_once('connectDB.php');
+		require('connectDB.php');
 		
         $sql="SELECT booking_id, admission_id FROM bookings 
 			WHERE admission_id = " . $_POST['AdmissionId'] . " AND booking_date = '" . $_POST['StartDate'] . 
