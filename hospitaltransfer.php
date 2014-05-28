@@ -22,7 +22,8 @@ include("pagecomponents/head.php");
 		<div id="content">
             <form id="HospitalTransfer" action="submit/hospitaltransfersubmit.php" method="post">
                 <input type="hidden" >
-			<table><h3><th colspan="2" class="userdetails">Transfer Details</th></h3>
+			<table>
+<!--                <h3><th colspan="2" class="userdetails">Transfer Details</th></h3>-->
                
                 <tr><td>Patient ID:</td> <td><input class="rounded" type="text" name="PatientId" id="PatientId" required></td></tr>
                 <tr><td>Last Name:</td> <td> <input class="rounded" type="text" name="LastName" id="LastName" required></td></tr>

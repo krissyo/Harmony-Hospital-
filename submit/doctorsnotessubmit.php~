@@ -1,7 +1,7 @@
 <?php
 // @author: Krissy O'Farrell, 08854114
 // Last modified on: 25/05/2014
-// Last modified by Armin Khoshbin on 28/05/2014
+// Last modified by Armin Khoshbin on 25/05/2014
 session_start();
 require_once('../pagecomponents/validate.php');
 require_once('../pagecomponents/connectDB.php');
@@ -19,9 +19,9 @@ $dateTime = date('Y-m-d H:i:s');
 $sql1= "SELECT * FROM medical_history WHERE patient_id='$patientid'";
 $result=mysqli_query($con,$sql1);
 $sql2= "UPDATE medical_history
-                SET doctors_notes ='$notes', patient_id='$patientid', last_updated_by_doc = '$lastupdated', time_stamp_doc ='$dateTime' WHERE patient_id = " . $patientid .'';
+                SET doctors_notes ='$notes', patient_id='$patientid', last_updated_by = '$lastupdated', time_stamp ='$dateTime' WHERE patient_id = " . $patientid .'';
 
-$sql3= "INSERT INTO medical_history (patient_id,doctors_notes, last_updated_by_doc, time_stamp_doc)
+$sql3= "INSERT INTO medical_history (patient_id,doctors_notes, last_updated_by, time_stamp)
                     VALUES ('$patientid','$notes','$lastupdated', '$dateTime')";
                 
     

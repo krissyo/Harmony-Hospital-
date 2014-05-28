@@ -33,7 +33,8 @@ $password=randomPassword();
 		<div id="content">
 			<form id="loginform" method="post" action="submit/newstaffsubmit.php">
                 <input type="hidden" value="<?php echo $password ?>" name="password">
-			<table><h3><th colspan="2" class="userdetails">User Details</th></h3>
+			<table>
+<!--                <h3><th colspan="2" class="userdetails">User Details</th></h3>-->
                
             <tr><td>First Name:</td> <td><input class="rounded" type="text" name="FirstName" id="FirstName" required></td></tr>
             <tr><td>Middle Name:</td> <td> <input class="rounded" type="text" name="MiddleName" id="MiddleName"></td></tr>
