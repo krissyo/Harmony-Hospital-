@@ -89,7 +89,7 @@ td:first-child{
     position: absolute;
     width: 90px;
     height: 90px;    
-    top: 3px;
+    top: 10px;
     left: 10px;
     z-index: 3;
             
@@ -590,7 +590,7 @@ body{
     font-size: .8em;
 }
 .searchResults:hover{
-    border-color: #99ccff; 
+    border-color: #3B78B4; 
 }
 .patientTable tr{
     border:0;

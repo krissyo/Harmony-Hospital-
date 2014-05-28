@@ -25,9 +25,12 @@
 			case 2:
 				require 'headnurse.inc';
 			break;
-            case  3:
-                require 'viewpatients.inc';
-            break;
+            		case 3:
+                		require 'viewpatients.inc';
+            		break;
+			case 8:
+				require 'newpatient.inc';
+			break;
             
 		}
 	?>

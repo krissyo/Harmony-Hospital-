@@ -89,7 +89,7 @@ td:first-child{
     position: absolute;
     width: 90px;
     height: 90px;    
-    top: 10px;
+    top: 3px;
     left: 10px;
     z-index: 3;
             
@@ -390,6 +390,8 @@ td:first-child{
     text-align: left;
 }
 #wrapper{
+width: 800px;
+margin: auto;
 background: #ebf1f6; /* Old browsers */
 background: -moz-linear-gradient(top,  #ebf1f6 0%, #abd3ee 50%, #d5ebfb 100%); /* FF3.6+ */
 background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ebf1f6), color-stop(50%,#abd3ee), color-stop(100%,#d5ebfb)); /* Chrome,Safari4+ */
