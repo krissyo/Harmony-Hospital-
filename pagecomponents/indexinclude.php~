@@ -25,11 +25,6 @@ if(!isset($_SESSION['userID'])){
 <!--        <script src="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/lib/buttons.js"></script>-->
               
     </head> 
-
-	<head>
-		<link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css">
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.js"></script>
-	</head>
     
     <body>
        <?php include("buttons.php"); 
