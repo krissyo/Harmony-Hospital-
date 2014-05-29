@@ -54,11 +54,8 @@ require_once('pagecomponents/connectDB.php');
 <?php
 //$patientid=$_GET["patientid"];
 $patientid=$_GET["id"];
-//echo $patientid;
-// Setting the Session patient Id here [Kira J]
-$_SESSION['patient_id'] = $patientid;
-//$patientid=$_GET["patientid"];
-$patientid=$_GET["id"];
+
+
 // Setting the Session patient Id here [Kira J]
 $_SESSION['patient_id'] = $patientid;
 
@@ -73,7 +70,20 @@ if(isset($patientid)){
             $_SESSION['patient_name'] = $row['first_name'] . ' ' . $row['last_name'];
             echo '<table class="patientTable">';
             echo '<tr></tr>';
-            echo '<tr><th>Gender:</th><td>'.$row['gender'].'</td></tr><tr><th>Address:</th><td>'.$row['address_line'].'</td></tr><tr><th>Phone Number:</th><td>'.$row['phone_number'].'</td></tr><tr><th>Date of Birth:</th><td>'.$row['date_of_birth'].'</td></tr><tr><th>Date of Death:</th><td>'.$row['date_of_death'].'</td></tr><tr><th>Medicare Number:</th><td>'.$row['medicare_number'].'</td></tr><tr><th>Medicare Expiry:</th><td>'.$row['medicare_expiry_date'].'</td></tr><tr><th>Hospital Transfer:</th><td>'.$row['hospital_transfer'].'</td></tr>';
+            echo '<tr><th>Gender:</th><td>'.$row['gender'].
+			'</td></tr><tr><th>Address:</th><td>'.
+			$row['address_line'].
+			'</td></tr><tr><th>Phone Number:</th><td>'.
+			$row['phone_number'].'</td></tr><tr><th>Date of Birth:</th><td>'.
+			$row['date_of_birth'].
+			'</td></tr><tr><th>Date of Death:</th><td>'.
+			$row['date_of_death'].
+			'</td></tr><tr><th>Medicare Number:</th><td>'.
+			$row['medicare_number'].
+			'</td></tr><tr><th>Medicare Expiry:</th><td>'.
+			$row['medicare_expiry_date'].
+			'</td></tr><tr><th>Hospital Transfer:</th><td>'.
+			$row['hospital_transfer'].'</td></tr>';
         }
     }
     $sql = "SELECT * FROM admissions WHERE patient_id = $patientid";
