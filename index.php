@@ -1,7 +1,7 @@
 <?php
 	$pagetitle="Welcome";	
     include ("pagecomponents/indexinclude.php");
-    
+    require ('include/home_page.php');
 	
 
 		?>     
@@ -13,36 +13,15 @@
     </div><!-- this div closes the content column --> 
 
         <?php 
-		$roleId = $_SESSION['roleID'];
-		switch ($roleId)
-		{
-			case 1:
-				require 'nurse_index.inc';
-			break;
-			case 2:
-				require 'headnurse.inc';
-			break;
-			case 3:
-                require 'viewpatients.inc';
-            	break;
-			case 4:
-                require 'head_doctor_index.php';
-            	break;
-			case 6:
-				require 'query.inc';
-				break;
-			case 7:
-                require 'newstaff.inc';
-				break;
-
-			case 8:
-				require 'newpatient.inc';
-				break;
-			case 9:
-				require 'testresults.inc';
-				break;
-            
+		if (ISSET($_SESSION['roleID'])) {
+	
+			// Extract the home page info from DB
+			$home_page = getHomePage($_SESSION['roleID']);
+		} else {
+			$home_page = "'search.inc'"; // default page
 		}
+
+		require ($home_page);
 	?>
          </div>
         

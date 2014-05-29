@@ -53,7 +53,7 @@ require_once('pagecomponents/connectDB.php');
 <hr style="width:20%;">
 <?php
 //$patientid=$_GET["patientid"];
-$patientid=$_GET["id"];
+$patientid=intval($_GET["id"]);
 
 
 // Setting the Session patient Id here [Kira J]
