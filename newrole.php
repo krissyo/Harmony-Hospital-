@@ -1,6 +1,6 @@
 <?php
 // @author: Krissy O'Farrell, 08854114
-// Last modified on: 25/05/2014
+// Last modified on: 31/05/2014
 session_start();
 if (isset($_SESSION['userID']))
 	{
@@ -17,9 +17,8 @@ include ("pagecomponents/indexinclude.php");
 
 if (isset($_POST["query"])){
     //open ftp file
-    $fp = fopen('file.csv', 'w');
     //get the query page
-    $sql="INSERT INTO roles (role_description, access_level) VALUES ('".$_POST["role_description"]."', '".$_POST["access_level"]."')";
+    $sql="INSERT INTO roles(role_description,home_page) VALUES('".$_POST["role_description"]."','".$_POST["home_page"]."')";
 
 
     //check if the sql query is valid
@@ -30,8 +29,19 @@ if (isset($_POST["query"])){
     ?>  
 	    <form method="post" action="newrole.php">
         Role Description: <input type="text" name="role_description">
-        Access Level: <textarea rows="2" cols="20" name="access_level"></textarea>
-		<input type="submit" name="Submit">
+        <select class="rounded" name="home_page" id="Role">
+                <?php
+							$sql="SELECT DISTINCT home_page FROM roles";
+							
+							require_once('pagecomponents/connectDB.php');
+							
+							$result=mysqli_query($con,$sql);
+							while($row = mysqli_fetch_array($result)){
+								echo "<option value='" . $row["home_page"] . "'>" . $row["home_page"] . "</option>";
+							}								
+						  ?>
+                </select>
+		<input type="submit" name="query">
 	    </form>    
 	    
 	     <?php include ("pagecomponents/footer.php"); ?>
