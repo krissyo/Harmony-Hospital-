@@ -1,5 +1,5 @@
 <?php
-// Last modified by Armin Khoshbin on 28/05/2014
+// Last modified by Armin Khoshbin on 1/06/2014
 session_start();
 if (isset($_SESSION['userID']))
 	{
@@ -11,9 +11,16 @@ if (check_access($userId, $current_page) == false)
 {
 	die("Sorry, You don't have access to this page!");
 }
+	if (isset($_SESSION["patient_id"]))
+	{
+		$patientid = $_SESSION["patient_id"];
+	}
+	else
+	{
+		header('Location: search.php');
+	}
 $pagetitle="Nurse Notes";
 include("pagecomponents/head.php");
-$patientid = $_SESSION["patient_id"]; 
 ?>
     <body>
         

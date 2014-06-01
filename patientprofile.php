@@ -53,12 +53,9 @@ require_once('pagecomponents/connectDB.php');
 <hr style="width:20%;">
 <?php
 //$patientid=$_GET["patientid"];
-$patientid=$_GET["id"];
-//echo $patientid;
-// Setting the Session patient Id here [Kira J]
-$_SESSION['patient_id'] = $patientid;
-//$patientid=$_GET["patientid"];
-$patientid=$_GET["id"];
+$patientid=intval($_GET["id"]);
+
+
 // Setting the Session patient Id here [Kira J]
 $_SESSION['patient_id'] = $patientid;
 
@@ -73,9 +70,25 @@ if(isset($patientid)){
             $_SESSION['patient_name'] = $row['first_name'] . ' ' . $row['last_name'];
             echo '<table class="patientTable">';
             echo '<tr></tr>';
-            echo '<tr><th>Gender:</th><td>'.$row['gender'].'</td></tr><tr><th>Address:</th><td>'.$row['address_line'].'</td></tr><tr><th>Phone Number:</th><td>'.$row['phone_number'].'</td></tr><tr><th>Date of Birth:</th><td>'.$row['date_of_birth'].'</td></tr><tr><th>Date of Death:</th><td>'.$row['date_of_death'].'</td></tr><tr><th>Medicare Number:</th><td>'.$row['medicare_number'].'</td></tr><tr><th>Medicare Expiry:</th><td>'.$row['medicare_expiry_date'].'</td></tr><tr><th>Hospital Transfer:</th><td>'.$row['hospital_transfer'].'</td></tr>';
+            echo '<tr><th>Gender:</th><td>'.$row['gender'].
+			'</td></tr><tr><th>Address:</th><td>'.
+			$row['address_line'].
+			'</td></tr><tr><th>Phone Number:</th><td>'.
+			$row['phone_number'].'</td></tr><tr><th>Date of Birth:</th><td>'.
+			$row['date_of_birth'].
+			'</td></tr><tr><th>Date of Death:</th><td>'.
+			$row['date_of_death'].
+			'</td></tr><tr><th>Medicare Number:</th><td>'.
+			$row['medicare_number'].
+			'</td></tr><tr><th>Medicare Expiry:</th><td>'.
+			$row['medicare_expiry_date'].
+			'</td></tr><tr><th>Hospital Transfer:</th><td>'.
+			$row['hospital_transfer'].'</td></tr>';
         }
     }
+    ?>
+    <table class="patientTable">
+    <?php
     $sql = "SELECT * FROM admissions WHERE patient_id = $patientid";
     $result=mysqli_query($con,$sql)
         or die("Error: ".mysqli_error($con)); 
@@ -84,7 +97,6 @@ if(isset($patientid)){
         while($row = mysqli_fetch_array($result)){
             echo '<tr></tr>';
             echo '<tr><th>Bed:</th><td>'.$row['bed_id'].'</td></tr><tr><th>Admission Date:</th><td>'.$row['admission_date'].'</td></tr><tr><th>Dischange Date:</th><td>'.$row['dischange_date'].'</td></tr><tr><th>Notes:</th><td>'.$row['notes'].'</td></tr></tr>';
-            echo '</table>';
         }
     }else{
         echo '';   
@@ -95,3 +107,4 @@ if(isset($patientid)){
 
 require_once('pagecomponents/closeConnection.php');
 ?>
+</table>

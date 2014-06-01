@@ -9,7 +9,8 @@ body{
     background: #dde7fe;
     font-family:"Helvetica";
     color:#222222;
-    padding-bottom: 5em;
+    padding-bottom: 400px;
+    margin-bottom:400px;
 }
 h1{
     color:#222222;
@@ -18,7 +19,7 @@ h1{
     margin-right: auto;
 }
 a{
-    color:#222222;
+    color:#fff;
     font-family: Helvetica, arial sans-serif;
     margin-left: auto;
     margin-right: auto;
@@ -99,7 +100,9 @@ form input{
     right:0;
     bottom:0;
 }
-
+.noResults{
+    float:left;   
+}
 #patientbuttons{
     margin:auto;
     width:512px;
@@ -506,10 +509,6 @@ e.g. Admissions History button on Patient Detail Form */
     color:#222222;
     font-size:1.7em;
 }
-body{
-    margin: 0px;
-    display: block; 
-}
 *, *:before, *:after{
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -607,6 +606,8 @@ body{
     font-size: 13pt;
     padding: 1em;
     border-radius: 2px;
+    background-color:#174a7c;
+    color:#fff !Important;
 }
 #search{
     color:#222222;
