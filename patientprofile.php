@@ -86,6 +86,9 @@ if(isset($patientid)){
 			$row['hospital_transfer'].'</td></tr>';
         }
     }
+    ?>
+    <table class="patientTable">
+    <?php
     $sql = "SELECT * FROM admissions WHERE patient_id = $patientid";
     $result=mysqli_query($con,$sql)
         or die("Error: ".mysqli_error($con)); 
@@ -94,7 +97,6 @@ if(isset($patientid)){
         while($row = mysqli_fetch_array($result)){
             echo '<tr></tr>';
             echo '<tr><th>Bed:</th><td>'.$row['bed_id'].'</td></tr><tr><th>Admission Date:</th><td>'.$row['admission_date'].'</td></tr><tr><th>Dischange Date:</th><td>'.$row['dischange_date'].'</td></tr><tr><th>Notes:</th><td>'.$row['notes'].'</td></tr></tr>';
-            echo '</table>';
         }
     }else{
         echo '';   
@@ -105,3 +107,4 @@ if(isset($patientid)){
 
 require_once('pagecomponents/closeConnection.php');
 ?>
+</table>
