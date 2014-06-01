@@ -2,16 +2,7 @@
 // @author: Krissy O'Farrell, 08854114
 // Last modified on: 05/04/2014
 session_start();
-if (isset($_SESSION['userID']))
-	{
-		$userId = $_SESSION['userID'];
-	}
-$current_page = basename($_SERVER['PHP_SELF']);
-require 'include/check_access.inc';
-if (check_access($userId, $current_page) == false)
-{
-	die("Sorry, You don't have access to this page!");
-}
+include("pagecomponents/permissioncheckscript.php");
 $pagetitle="Annual Leave";
 include("pagecomponents/head.php");
 ?>

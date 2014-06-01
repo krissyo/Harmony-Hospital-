@@ -1,4 +1,5 @@
 <?php
+include("pagecomponents/permissioncheckscript.php");
 $pagetitle="View Results";
 include("pagecomponents/head.php");
 $patientid = $_GET["id"];

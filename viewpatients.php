@@ -1,4 +1,5 @@
 <?php
+include("pagecomponents/permissioncheckscript.php");
 $pagetitle="View Patients";
 include("pagecomponents/head.php");
 ?>

@@ -1,4 +1,5 @@
 <?php
+include("pagecomponents/permissioncheckscript.php");
     $pagetitle="Staff Profile";
     include("pagecomponents/indexinclude.php");
 require_once('pagecomponents/connectDB.php');

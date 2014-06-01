@@ -1,5 +1,5 @@
 <?php
-session_start();
+include("pagecomponents/permissioncheckscript.php");
 $pagetitle="Admissions History";
 include("pagecomponents/head.php");
 ?>

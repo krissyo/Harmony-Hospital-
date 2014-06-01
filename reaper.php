@@ -1,4 +1,5 @@
 <?php
+include("pagecomponents/permissioncheckscript.php");
 $pagetitle="Reaper Form";
 include("pagecomponents/head.php");
 ?>

@@ -1,5 +1,5 @@
 <?php
-session_start();
+include("pagecomponents/permissioncheckscript.php");
 require_once ("pagecomponents/connectDB.php");
 
 if (ISSET($_SESSION['objectId'])) {
