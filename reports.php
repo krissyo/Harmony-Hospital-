@@ -18,7 +18,7 @@ include("pagecomponents/head.php");
                 ?>
             <fieldset>
             <legend>PATIENT INVOICE</legend>
-            <form name="patientInvoiceReportForm" id="patientInvoiceReportForm" action="patientInvoiceReportSubmit.php" method="POST">
+            <form name="patientInvoiceReportForm" id="patientInvoiceReportForm" action="submit/PatientInvoiceSubmit.php" method="POST">
                   <div>
                   <select name="selectPatient" id="selectPatient">
                   <option value=""> -- select the patient -- </option>
