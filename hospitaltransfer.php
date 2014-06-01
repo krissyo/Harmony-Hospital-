@@ -2,6 +2,25 @@
 include("pagecomponents/permissioncheckscript.php");
 $pagetitle="Hospital Transfer";
 include("pagecomponents/head.php");
+
+
+$patientid = $_SESSION["patient_id"];
+date_default_timezone_set('Australia/Brisbane');
+$date = date('Y-m-d');
+
+	if (!isset($patientid)){
+        echo " Patient id is not set";
+    }else{
+        $sql= " SELECT A.patient_id,
+                        A.first_name,
+                        A.last_name,
+                        B.patient_id,
+                        B.discharge_date
+                        FROM patient_details A
+                        JOIN admissions B ON B.patient_id = A.patient_id
+                        WHERE B.patient_id = '$patientid';";
+                        $result=mysqli_query($con,$sql);
+                        $row = mysqli_fetch_array($result);
 ?>
 
 		<div id="wrapper">
@@ -13,12 +32,18 @@ include("pagecomponents/head.php");
             <form id="HospitalTransfer" action="submit/hospitaltransfersubmit.php" method="post">
                 <input type="hidden" >
 			<table>
-<!--                <h3><th colspan="2" class="userdetails">Transfer Details</th></h3>-->
-               
-                <tr><td>Patient ID:</td> <td><input class="rounded" type="text" name="PatientId" id="PatientId" required></td></tr>
-                <tr><td>Last Name:</td> <td> <input class="rounded" type="text" name="LastName" id="LastName" required></td></tr>
-                <tr><td>Date of Discharge:</td> <td> <input class="rounded" type="date" name="DateDis" id="DateoDis" required></td></tr>
-                <tr><td>Transferee Hospital:</td> <td> <input class="rounded" type="text" name="Transfer" id="Transfer" required></td></tr>
+                <h3><th colspan="2" class="userdetails"> <?php echo $row['first_name'] . ' ' . $row['last_name'];?> </th></h3>
+                <tr><td>Date of Discharge:</td> <td> <input class="rounded" type="date" max="<?PHP echo $date;?>" name="DateDis" id="DateoDis" value="<?php echo $row['discharge_date'];?>"required></td></tr>           
+                <tr><td> Transferee Hospital:</td> <td><select class="rounded" name="hospital" id="hospital">
+                <?php
+                        
+							$sql="SELECT *  FROM hospitals";
+                            $result=mysqli_query($con,$sql);
+                            while($row = mysqli_fetch_array($result)){
+                            echo "<option value='" . $row["hospital_name"] . "'>" . $row["hospital_name"] . "</option>";
+                	}								
+						  ?>
+                </select></td>
                 <tr><td>Notes:</td> <td> <textarea rows="4" cols="50" placeholder="Start typing here..." name='notes' required></textarea></td></tr>   
                 <tr>
                     <td></td>
@@ -41,32 +66,19 @@ include("pagecomponents/footer.php");
         });
         $( "#HospitalTransfer" ).validate({
           rules: {
-            PatientId: {
-              required: true,
-               digits: true
-            },
-            LastName: {
-              required: true,
-                minlength: 3
-            },
               DateDis: {
                  required: true,
                  date: true 
               },
               Transfer: {
-                required: true,
-                minlength: 5
-
+                required: true
+              },
+              notes: {
+                required: true  
             }
           }
         })
         </script>
-
-
-
-
-
-
     </body>
 </html>
 

@@ -26,7 +26,7 @@ include("pagecomponents/head.php");
             ?>
             ?>
             </td></tr>
-            <tr><td>Revised Procedure Feee:</td> <td> <input class="rounded" type="number" name="newFee" id="newFee" required></td></tr>
+            <tr><td>Revised Procedure Fee:</td> <td> <input class="rounded" type="number" name="newFee" id="newFee" required></td></tr>
             <tr><td>Revised Medicare Rebate:</td> <td> <input class="rounded" type="number" name="newRebate" id="newRebate" required></td></tr>
             <td><input class="rounded" type="submit" name="sumbit" id="submit" value="Submit"></td>
                 </tr>
@@ -39,5 +39,32 @@ include("pagecomponents/head.php");
 include("pagecomponents/footer.php");
 ?>
 		</div>
+
+<script> 
+        jQuery.validator.setDefaults({
+          debug: false,
+          success: "valid"
+        });
+        $( "#updateProcedure" ).validate({
+          rules: {
+            procedure: {
+              required:true
+            },
+              newFee: {
+                  required:true,
+                  digits:true
+              },
+              newRebate: {
+                  required:true,
+                  digits:true
+            }
+          },
+            messages:{
+                newFee: "Numbers only",
+                newRebate: "Numbers only",
+            }
+        })
+        </script>
     </body>
 </html>
+

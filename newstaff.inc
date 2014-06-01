@@ -1,21 +1,4 @@
-<?php
-include("pagecomponents/permissioncheckscript.php");
-$pagetitle="New Staff";
-include("pagecomponents/head.php");
-
-function randomPassword() {
-    $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
-    $pass = array(); //remember to declare $pass as an array
-    $alphaLength = strlen($alphabet) - 1; //put the length -1 in cache
-    for ($i = 0; $i < 8; $i++) {
-        $n = rand(0, $alphaLength);
-        $pass[] = $alphabet[$n];
-    }
-    return implode($pass); //turn the array into a string
-}
-$password=randomPassword();
- ?>
-		<div id="wrapper">
+<div id="wrapper">
 		<div id="header">
 			<h1>Create a new user</h1>
             
@@ -78,10 +61,6 @@ include("pagecomponents/footer.php");
             FirstName: {
               required: true
             },
-            LastName: {
-                required: true
-            },
-                  
             DateOfBirth: {
                 required: true,
                 date:true
@@ -94,7 +73,7 @@ include("pagecomponents/footer.php");
                 digits: true
             },
            PhoneNumber: {
-                required: false,
+                required: true,
                 minlength:8,
                 maxlength:8,
                 digits: true
@@ -108,18 +87,8 @@ include("pagecomponents/footer.php");
             EmailAddress:{
                 required: true,
                 email:true
-            },
-              Role: {
-                 required: true
-              },
-              Gender: {
-                 required: true
-              },
-              SecondLanguage: {
-                  required:false
+              
             }
           }
         })
         </script>
-	</body>
-</html>

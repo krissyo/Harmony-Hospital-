@@ -5,7 +5,7 @@ include("pagecomponents/permissioncheckscript.php");
 $pagetitle="Change Password";
 include("pagecomponents/head.php");
 ?>
-    <body>
+      <body>
         
 		<div id="wrapper">
 		<div id="header">
@@ -33,5 +33,26 @@ include("pagecomponents/head.php");
 include("pagecomponents/footer.php");
 ?>
 		</div>
+
+<script> 
+        jQuery.validator.setDefaults({
+          debug: false,
+          success: "valid"
+        });
+        $( "#changepassword" ).validate({
+          rules: {
+            OldPassword: {
+              required:true
+            },
+              NewPassword1: {
+              required:true
+            },
+              NewPassword2: {
+              required:true
+         
+            }
+          }
+        })
+        </script>
     </body>
 </html>

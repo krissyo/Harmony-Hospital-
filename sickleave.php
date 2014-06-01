@@ -48,5 +48,27 @@ include("pagecomponents/head.php");
 include("pagecomponents/footer.php");
 ?>
 		</div>
+
+<script> 
+        jQuery.validator.setDefaults({
+          debug: false,
+          success: "valid"
+        });
+        $( "#sickleave" ).validate({
+          rules: {
+            StartDate: {
+              required: true,
+                date:true
+            },
+              EndDate: {
+                required: true,
+                  date:true
+              },
+              certificate: {
+                  required: true
+            }
+          }
+        })
+        </script>
     </body>
 </html>

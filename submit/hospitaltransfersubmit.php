@@ -1,6 +1,6 @@
 <?php
 // @author: Krissy O'Farrell, 08854114
-// Last modified on: 25/05/2014
+// Last modified by James Clelland 08888141 28/5/2013
 session_start();
 $pagetitle="Form Submitted";	
     include ("../pagecomponents/indexinclude.php");
@@ -9,19 +9,18 @@ require_once('../pagecomponents/connectDB.php');
 
 $validate = new Validate();
 $validated_POST = $validate->post();
+$patientid = $_SESSION["patient_id"]; 
 
-
-$patientid =$validated_POST["PatientId"];
-$lname=$validated_POST["LastName"];
-$datedis =$validated_POST["DateDis"];
-$transfer =$validated_POST["Transfer"];
-$notes =$validated_POST["notes"];
+$datedischarged =$validated_POST["DateDis"];
+$hospitaltransfer =$validated_POST["hospital"];
+$notes = $validated_POST["notes"];
+$lastupdated = $_SESSION["Name"];
 
 $sql="  Update admissions
         JOIN patient_details 
         ON patient_details.patient_id = admissions.patient_id
-        SET admissions.discharge_date='$datedis', admissions.notes='$notes', patient_details.hospital_transfer='$transfer'
-        WHERE patient_details.last_name = '$lname' AND patient_details.patientid = '$patientid'";
+        SET admissions.notes='$notes', admissions.discharge_date='$datedischarged', patient_details.hospital_transfer='$hospitaltransfer', admissions.last_updated_by='$lastupdated'
+        WHERE patient_details.patient_id = '$patientid'";
 
 $result=mysqli_query($con,$sql);
 echo "Success, the hospital transfer has been submitted";

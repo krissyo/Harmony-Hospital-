@@ -15,22 +15,22 @@ include("pagecomponents/head.php");
 			<table>
 <!--                <h3><th colspan="2" class="userdetails">Patient Details</th></h3>-->
                
-            <tr><td>First Name:</td> <td><input class="rounded" type="text" name="first-name" id="first-name" required></td></tr>
-            <tr><td>Middle Name:</td> <td> <input class="rounded" type="text" name="middle-name" id="middle-name"></td></tr>
-            <tr><td>Last Name:</td> <td> <input class="rounded" type="text" name="last-name" id="last-name" required></td></tr>
-            <tr><td>Date Of Birth:</td> <td> <input class="rounded" type="date" name="date-of-birth" id="date-of-birth" max="<?php
+            <tr><td>First Name:</td> <td><input class="rounded" type="text" name="firstname" id="firstname" required></td></tr>
+            <tr><td>Middle Name:</td> <td> <input class="rounded" type="text" name="middlename" id="middlename"></td></tr>
+            <tr><td>Last Name:</td> <td> <input class="rounded" type="text" name="lastname" id="lastname" required></td></tr>
+            <tr><td>Date Of Birth:</td> <td> <input class="rounded" type="date" name="dateofbirth" id="dateofbirth" max="<?php
               $todaysdate=date('Y-m-d');
               echo $todaysdate;
               ?>"
             required></td></tr>
             <tr><td>Address:</td> <td> <input class="rounded" type="text" name="address" id="address" required></td></tr>
-            <tr><td>Post Code: </td> <td><input class="rounded" type="text" name="post-code" id="post-code" required></td></tr>
-            <tr><td>Phone Number:</td> <td> <input class="rounded" type="text" name="phone-number" id="phone-number" required></td></tr>
-            <tr><td>Mobile Number: </td> <td><input class="rounded" type="text" name="mobile-number" id="mobile-number" required></td></tr>
+            <tr><td>Post Code: </td> <td><input class="rounded" type="text" name="postcode" id="postcode" required></td></tr>
+            <tr><td>Phone Number:</td> <td> <input class="rounded" type="text" name="phonenumber" id="phonenumber" required></td></tr>
+            <tr><td>Mobile Number: </td> <td><input class="rounded" type="text" name="mobilenumber" id="mobilenumber" required></td></tr>
             <tr><td>Gender: </td> <td><input type="radio" name="sex" value="male" checked>Male<br>
 			<input type="radio" name="sex" value="female">Female</td></tr>
-            <tr><td>Second Language:</td> <td> <input class="rounded" type="text" name="second-language" id="second-language" required></td></tr>
-			<tr><td>Country of Origin:</td> <td><select class="rounded" name='country-id'>
+            <tr><td>Second Language:</td> <td> <input class="rounded" type="text" name="secondlanguage" id="secondlanguage" required></td></tr>
+			<tr><td>Country of Origin:</td> <td><select class="rounded" name='countryid'>
 			<?php
 							//DB connection 
 							require_once('pagecomponents/connectDB.php');
@@ -42,21 +42,23 @@ include("pagecomponents/head.php");
 							}								
 			?>
 			</select></td>
+<!--
             <tr><td>Allergies: </td> <td><input class="rounded" type="text" name="allergies" id="allergies" required></td></tr>
             <tr><td>Conditions: </td> <td><input class="rounded" type="text" name="conditions" id="conditions" required></td></tr>
-            <tr><td>Medicare Number: </td> <td><input class="rounded" type="text" name="medicare-no" id="medicare-no" required></td></tr>
-            <tr><td>Medicare Exp Date: </td> <td><input class="rounded" type="date" name="medicare-exp" id="medicare-exp" min="<?php
+-->
+            <tr><td>Medicare Number: </td> <td><input class="rounded" type="text" name="medicareno" id="medicareno" required></td></tr>
+            <tr><td>Medicare Exp Date: </td> <td><input class="rounded" type="date" name="medicareexp" id="medicareexp" min="<?php
               $todaysdate=date('Y-m-d');
               echo $todaysdate;
               ?>"required></td></tr>
-            <tr><td>Mother's Name: </td> <td><input class="rounded" type="text" name="mothers-name" id="mothers-name" required></td></tr>
-            <tr><td>Mother's Address: </td> <td><input class="rounded" type="text" name="mothers-address" id="mothers-address" required></td></tr>
-			<tr><td>Mother's Phone Number: </td> <td><input class="rounded" type="text" name="mothers-phone" id="mothers-phone" required></td></tr>
-            <tr><td>Father's Name: </td> <td><input class="rounded" type="text" name="fathers-name" id="fathers-name" required></td></tr>
-            <tr><td>Father's Address: </td> <td><input class="rounded" type="text" name="fathers-address" id="fathers-address" required></td></tr>
-			<tr><td>Father's Phone Number: </td> <td><input class="rounded" type="text" name="fathers-phone" id="fathers-phone" required></td></tr>
-            <tr><td>Name of person paying account: </td> <td><input class="rounded" type="text" name="acc-responsibility" id="acc-responsibility" required></td></tr>
-            <tr><td>Billing Address: </td> <td><input class="rounded" type="text" name="billing-address" id="billing-address" required></td></tr>
+            <tr><td>Mother's Name: </td> <td><input class="rounded" type="text" name="mothersname" id="mothersname" required></td></tr>
+            <tr><td>Mother's Address: </td> <td><input class="rounded" type="text" name="mothersaddress" id="mothersaddress" required></td></tr>
+			<tr><td>Mother's Phone Number: </td> <td><input class="rounded" type="text" name="mothersphone" id="mothersphone" required></td></tr>
+            <tr><td>Father's Name: </td> <td><input class="rounded" type="text" name="fathersname" id="fathersname" required></td></tr>
+            <tr><td>Father's Address: </td> <td><input class="rounded" type="text" name="fathersaddress" id="fathersaddress" required></td></tr>
+			<tr><td>Father's Phone Number: </td> <td><input class="rounded" type="text" name="fathersphone" id="fathersphone" required></td></tr>
+            <tr><td>Name of person paying account: </td> <td><input class="rounded" type="text" name="accresponsibility" id="accresponsibility" required></td></tr>
+            <tr><td>Billing Address: </td> <td><input class="rounded" type="text" name="billingaddress" id="billingaddress" required></td></tr>
             <tr><td>Mother's/Father's Signature to verify information provided is true: </td> <td><input class="rounded" type="text" name="signature" id="signature" required></td></tr>
             <tr>
                 <td></td>
@@ -72,5 +74,96 @@ include("pagecomponents/head.php");
 			include("pagecomponents/footer.php");
 			?>
 		</div>
+
+<script> 
+        jQuery.validator.setDefaults({
+          debug: false,
+          success: "valid"
+        });
+        $( "#newpatient" ).validate({
+          rules: {
+            firstname:{
+                required:true
+            },
+            middlename: {
+              required: false
+            },  
+              lastname: {
+              required: true
+            },
+              address: {
+              required: true
+            },
+               postcode:{
+                required:true,
+                digits:true ,
+                maxlength:4,
+                minlength:4
+            },
+               phonenumber:{
+                required:false,
+                digits:true,
+                maxlength:8,
+                minlength:8
+            },
+               mobilenumber:{
+                required:true,
+                digits:true,
+                maxlength:10,
+                minlength:10
+            },
+               secondlanguage:{
+                required:false,
+             },
+               medicareno:{
+                required:true,
+                digits:true,
+                maxlength:9,
+                minlength:9      
+            },
+               mothersname:{
+                required:false,
+
+              },
+               mothersaddress:{
+                required:false,         
+             },
+               mothersphone:{
+                required:false,
+                digits:true,
+                maxlength:10,
+                minlength:10
+             },
+               fathersname:{
+                required:false,     
+              },
+               fathersaddress:{
+                required:false,
+ 
+             },
+               fathersphone:{
+                required:false,
+                digits:true,
+                maxlength:10,
+                minlength:10
+             },
+               accresponsibility:{
+                required:true   
+             },
+               billingaddress:{
+                required:true 
+             },
+               signature:{
+                required:true       
+     }
+          }
+            
+        })
+
+</script>
+
+
+
+
     </body>
 </html>

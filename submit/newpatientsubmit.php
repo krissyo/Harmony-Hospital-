@@ -10,31 +10,31 @@ require_once('../pagecomponents/validate.php');
 //patient details
 $validate= new Validate();
 $validated_POST=$validate->post();
-$first_name=$validated_POST['first-name'];
-$middle_name=$validated_POST['middle-name'];
-$last_name=$validated_POST['last-name'];
-$date_of_birth=$validated_POST['date-of-birth'];
+$first_name=$validated_POST['firstname'];
+$middle_name=$validated_POST['middlename'];
+$last_name=$validated_POST['lastname'];
+$date_of_birth=$validated_POST['dateofbirth'];
 $address=$validated_POST['address'];
-$post_code=(int)$validated_POST['post-code'];
-$phone_number=(int)$validated_POST['phone-number'];
-$mobile_number=(int)$validated_POST['mobile-number'];
-$second_language=$validated_POST['second-language'];
-$country_id=$validated_POST['country-id'];
+$post_code=(int)$validated_POST['postcode'];
+$phone_number=(int)$validated_POST['phonenumber'];
+$mobile_number=(int)$validated_POST['mobilenumber'];
+$second_language=$validated_POST['secondlanguage'];
+$country_id=$validated_POST['countryid'];
 $allergies=$validated_POST['allergies'];
 $conditions=$validated_POST['conditions'];
-$medicare_no=$validated_POST['medicare-no'];
-$medicare_exp=$validated_POST['medicare-exp'];
+$medicare_no=$validated_POST['medicareno'];
+$medicare_exp=$validated_POST['medicareexp'];
 
 
 // Family details
-$mothers_name=$validated_POST['mothers-name'];
-$mothers_address=$validated_POST['mothers-address'];
-$mothers_phone=(int)$validated_POST['mothers-phone'];
-$fathers_name=$validated_POST['fathers-name'];
-$fathers_address=$validated_POST['fathers-address'];
-$fathers_phone=(int)$validated_POST['fathers-phone'];
-$acc_responsibility=$validated_POST['acc-responsibility'];
-$billing_address=$validated_POST['billing-address'];
+$mothers_name=$validated_POST['mothersname'];
+$mothers_address=$validated_POST['mothersaddress'];
+$mothers_phone=(int)$validated_POST['mothersphone'];
+$fathers_name=$validated_POST['fathersname'];
+$fathers_address=$validated_POST['fathersaddress'];
+$fathers_phone=(int)$validated_POST['fathersphone'];
+$acc_responsibility=$validated_POST['accresponsibility'];
+$billing_address=$validated_POST['billingaddress'];
 $signature=$validated_POST['signature'];
 
 
