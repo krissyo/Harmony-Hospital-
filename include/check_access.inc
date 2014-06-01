@@ -22,12 +22,12 @@
 				return false;
 			}
 		*/
-		if ($result !== false) {
+		if (mysqli_num_rows($result) > 0) {
 			return true;
 		} else {
 			return false;
 		}
-		require_once('../pagecomponents/closeConnection.php');
+		require_once('pagecomponents/closeConnection.php');
 		
 	}
 
