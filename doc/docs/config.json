@@ -1,0 +1,13 @@
+{
+	"title": "Harmony Hospital Help Files",
+	"tagline": "",
+	"docs_path": "docs",
+	"theme": "navy",
+	"template":"default",
+	"toggle_code": false,
+    "float":false,
+	"date_modified": true,
+	"links": {
+		"Home": "http://trustinblack.com/harmonyhospital/"
+	}
+}
