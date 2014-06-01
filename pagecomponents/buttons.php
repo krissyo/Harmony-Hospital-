@@ -49,7 +49,7 @@ $(document).ready(function()
         <div id="autocomplete"></div>
      </form> 
         <div class="action_buttons" id="HelpButton">
-            <a href="http://trustinblack.com/harmonyhospital/help/"><h1>HELP</h1></a>
+            <a href="http://trustinblack.com/harmonyhospital/doc/"><h1>HELP</h1></a>
         </div> 
         <div class="action_buttons" id="LogoutButton">
             <a action="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/submit/logout.php" href="<?php $_SERVER["DOCUMENT_ROOT"] ?>/harmonyhospital/submit/logout.php"><h1>LOG OUT</h1></a>
