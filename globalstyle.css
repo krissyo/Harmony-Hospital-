@@ -2,10 +2,48 @@
 @author: Krissy O'Farrell, 08854114
 Last modified on: 26/05/2014
 */
+
+/*placeholder text*/
+::-webkit-input-placeholder{ /* WebKit browsers */
+    color:#999;
+}
+:-moz-placeholder{ /* Mozilla Firefox 4 to 18 */
+    color:#999;
+    opacity:  1;
+}
+::-moz-placeholder{ /* Mozilla Firefox 19+ */
+    color:#999;
+    opacity:  1;
+}
+:-ms-input-placeholder{ /* Internet Explorer 10+ */
+    color:#999;
+}
+
+* standardises the placeholder text in all browsers */
+
+::-webkit-input-placeholder { /* WebKit browsers */
+    color:    #ffffff;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:    #ffffff;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color:    #ffffff;
+}
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color:    #ffffff;
+}
+
+*, *:before, *:after{
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box; 
+}
+
+
+
 body{  
     margin: 0px;
-	/*background: #f2f8fd;*/
-    /*background: linear-gradient(to bottom , #dde7fe , #ffffff);  Standard syntax */
     background: #dde7fe;
     font-family:"Helvetica";
     color:#222222;
@@ -84,15 +122,7 @@ form input{
 
 /*Visual attributes*/
 .gradient{
-    /*background: #ebf1f6; /* Old browsers */
-    /*background: -moz-linear-gradient(top,  #ebf1f6 0%, #abd3ee 50%, #d5ebfb 100%);*/ /* FF3.6+ */
-    /*background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ebf1f6), color-stop(50%,#abd3ee), color-stop(100%,#d5ebfb));*/ /* Chrome,Safari4+ */
-    /*background: -webkit-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%);*/ /* Chrome10+,Safari5.1+ */
-    /*background: -o-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%);*/ /* Opera 11.10+ */
-    /*background: -ms-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%);*/ /* IE10+ */
     background: linear-gradient(to bottom,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%);
-/*    background: linear-gradient(to bottom,  #dde7fe , #ffffff);  W3C */
-    /*filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb',GradientType=0 );*/ /* IE6-9 */
     z-index:-99999;
     position:fixed;
     top:0;
@@ -123,7 +153,6 @@ form input{
 #TopMenuBar{
     position: inherit;
     display: inline;
-    /*vertical-align: middle;*/
     margin-top: 20px;
     margin-bottom: auto;
     width:350px;
@@ -138,11 +167,7 @@ form input{
     width: 129px;
     height: 100%;
     visibility: hidden;
-
 }
-
-
-
 #welcome_user_text{
     position: absolute;
     top: 5px;
@@ -180,20 +205,10 @@ form input{
 }
 .headerBar{
     width: 100%;
-    /*height: 90px;*/
     height: 90px; 
-/*    float: left;*/
     padding: 5px;
     box-shadow: 2px 2px 2px #cccaca;
-    /*background-color:#c5c3c3;*/
-    /*opacity:0.9;*/
-    /*background: -webkit-linear-gradient(left top, red , blue); /* For Safari 5.1 to 6.0 */
-    /*background-color: -o-linear-gradient(bottom right, red, blue); /* For Opera 11.1 to 12.0 */
-    /*background-color: -moz-linear-gradient(bottom right, red, blue); /* For Firefox 3.6 to 15 */
     background: linear-gradient(to bottom , #3b78b4 , #448dd4);  Standard syntax 
-/*    background-color:#0074D9;*/
-/*    background-color:#3b78b4 ;*/
-/*    background-color:#0074D9;*/
 }
 ::-webkit-input-placeholder { /* WebKit browsers */
     color:    #999;
@@ -220,11 +235,7 @@ form input{
 .tab_box{
     border: 2px solid transparent;
     box-shadow: 2px 2px 2px #cccaca;
-    /*border-color: #99ccff;*/
-    /*border-radius: 15px 15px;*/
     background-color: #3b78b4   ;
-/*   background: linear-gradient(to bottom , #3b78b4 , #448dd4);  Standard syntax */
-/*    background: linear-gradient(to bottom , #bbdcfd , #99ccff);  Standard syntax */
     margin-bottom: 4px;
     margin-left: 4px;
     position: relative;
@@ -234,10 +245,6 @@ form input{
     color: #fff;
     padding:5px 10px 5px 10px; font-size: 1.5em;
 }
-.tab_box:hover{
-/* background-color: #AAAAAA ;*/
-/*    background-color: #99ccff; */
-}
 .tab_box h1{
     text-align: center;
     color: white;
@@ -246,8 +253,8 @@ form input{
     font-size: 12pt; 
 }
 .tab_box_text{
-    z-index: 3; }
-
+    z-index: 3; 
+}
 .tab_box_active{
     background-color: #3b78b4;
     color: #3b78b4;
@@ -261,7 +268,6 @@ form input{
     font-size: 10pt;
     font-weight: 600;
 }
-/*Not sure what to call this */
 #accountTable tr.altRow{
 	background-color: #DFE7F2;
 }
@@ -344,7 +350,6 @@ form input{
 	width: 800px;
 	margin: auto;
 	text-align: center;
-    /*background-color:#ffffff;*/
     font-family: Helvetica, arial sans-serif;
 }
 /* Resource Mgt Form */
@@ -366,7 +371,6 @@ form input{
 #patient-account{
     margin:auto;
     width:250px;
-    
 }
 #header{ 
 
@@ -427,7 +431,6 @@ background: -ms-linear-gradient(top,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%);
 background: linear-gradient(to bottom,  #ebf1f6 0%,#abd3ee 50%,#d5ebfb 100%); 
 filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', endColorstr='#d5ebfb',GradientType=0 );
 }
-
 #centre{
     margin-left: auto;
     margin-right: auto;
@@ -437,7 +440,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ebf1f6', end
     color:#aaa;
     clear:both;
     width:100%;
-    /*background-color: #3b78b4   ;*/
     background: linear-gradient(to bottom , #3b78b4 , #448dd4);  Standard syntax
     height:5em;
     color:#fff;
@@ -509,14 +511,8 @@ e.g. Admissions History button on Patient Detail Form */
     color:#222222;
     font-size:1.7em;
 }
-*, *:before, *:after{
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box; 
-}
 .contentColumn{
     display: inline;
-    /*width:90%;*/
     height: 500px;
     padding-left: 14px;
     padding-top: 5px;
@@ -561,40 +557,23 @@ e.g. Admissions History button on Patient Detail Form */
 }
 .action_buttons{
     background-color: #174a7c  ;
-/*    background-color: #99ccff;*/
     width: 70px;
     height: 30px;
     z-index: 4;
     float:left;
 }
-
 .action_buttons h1{
     text-align: center;
     font-family: Helvetica, arial sans-serif;
     color: #ffffff;
     font-size: 10px; 
 }
-
 .action_buttons a{
     text-decoration: none; 
 }
 
 /*Search Formatting */
-/* standardises the placeholder text in all browsers */
-
-::-webkit-input-placeholder { /* WebKit browsers */
-    color:    #ffffff;
-}
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color:    #ffffff;
-}
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color:    #ffffff;
-}
-:-ms-input-placeholder { /* Internet Explorer 10+ */
-    color:    #ffffff;
-}
-
+/
 .searchResults{
     display: block;
     float: left;
@@ -633,21 +612,9 @@ e.g. Admissions History button on Patient Detail Form */
 #menutoggle{
     display:none;
 }
-/*placeholder text*/
-::-webkit-input-placeholder{ /* WebKit browsers */
-    color:#999;
-}
-:-moz-placeholder{ /* Mozilla Firefox 4 to 18 */
-    color:#999;
-    opacity:  1;
-}
-::-moz-placeholder{ /* Mozilla Firefox 19+ */
-    color:#999;
-    opacity:  1;
-}
-:-ms-input-placeholder{ /* Internet Explorer 10+ */
-    color:#999;
-}
+
+
+/* Media Query for Mobile devices */
 @media all and (max-width:769px ){
     .sidebarColumn{
         width: 100%;
@@ -671,8 +638,7 @@ e.g. Admissions History button on Patient Detail Form */
         border-radius:0; 
         padding:2px;
         margin:1px;
-    }
-    
+    }    
     .sidebarColumn a{
         text-decoration: none; 
     }   
