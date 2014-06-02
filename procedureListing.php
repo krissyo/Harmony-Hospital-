@@ -3,21 +3,50 @@ require('pagecomponents/fpdf.php');
 
 class PDF extends FPDF
 {
-// Page header
-function Header()
-{
-    // Logo
-    $this->Image('bird.jpg',10,6,30);
-    // Arial bold 15
-    $this->SetFont('Arial','B',15);
-    // Move to the right
-    $this->Cell(80);
-    // Title
-	// Cell(width,height, 'title', 1?, 0?, 'C' center-aligned); 
-    $this->Cell(80,10,'Listing of Procedures / Services',1,0,'C');
-    // Line break
-    $this->Ln(20);
-}
+//page header
+		function Header(){
+			// LOGO Image
+			$this->Image('http://trustinblack.com/harmonyhospital/images/PdfImages/Harmony_Logo_Header_Logo.png',10,6,55,26);
+			
+			//--------Document Title
+
+			// Set Document Title Font
+			$this->SetTextColor(165,165,167);
+			$this->SetFont('Helvetica','B',20);
+
+			//Move to the right
+			$this->Cell(95);
+
+			//Title
+			$this->MultiCell(88,8,'HOSPITAL PROCEDURE LISTING',0,'C');
+
+			//Line Break
+			$this->Ln(2);
+
+			
+
+			////--------Document Date
+
+			// Set Text Colour
+			$this->SetTextColor(165,165,167);
+			
+			//Move to the right
+			$this->Cell(100);
+
+			//get current date
+			$currentDate = new DateTime();
+			$currentDate = $currentDate->format('d-m-Y');
+
+			//output Report Date
+			$this->SetTextColor(135,186,214);
+			$this->SetFont('Helvetica','B',12);
+			$this->Cell(88,8,"REPORT DATE ".$currentDate,0,2,'C');
+			$this->Ln(2);
+			$this->SetTextColor(165,165,167);
+			$months = array(JANUARY, FEBRUARY, MARCH, APRIL, MAY, JUNE, JULY, AUGUST, SEPTEMBER, OCTOBER, NOVEMBER, DECEMBER);
+			$this->Ln(2);
+		}
+
 
 // Page footer
 function Footer()
@@ -66,6 +95,7 @@ function LoadData()
 		
 		// Header
 		$w = array(80, 30, 35);
+		$this->setX(35);
 		for($i=0;$i<count($header);$i++)
 			$this->Cell($w[$i],7,$header[$i],1,0,'C',true);
 		
@@ -75,6 +105,7 @@ function LoadData()
 		$this->SetFillColor(224,235,255);
 		$this->SetTextColor(0);
 		$this->SetFont('');
+		$this->setX(35);
 		// Data
 		$fill = false;
 		$feeTotal = 0;
@@ -82,7 +113,7 @@ function LoadData()
 		
 		if ($data !== false) {
 			while($row = mysqli_fetch_array($data)) {
-			
+				$this->setX(35);
 				$this->Cell($w[0],6, $row['procedure_description'],'LR',0,'L',$fill);
 				$this->Cell($w[1],6, '$' . number_format($row['procedure_fee'], 2),'LR',0,'R',$fill);
 				$this->Cell($w[2],6, '$' . number_format($row['medicare_rebate'], 2),'LR',0,'R',$fill);
@@ -91,6 +122,7 @@ function LoadData()
 			}
 		}
 		// Closing line
+		$this->setX(35);
 		$this->Cell(array_sum($w),0,'','T');
 	}
 }
