@@ -3,10 +3,7 @@
 // Last modified on: 25/05/2014
 // Last modified by: Kira Jamison, 08795428
 
-if(isset($_POST['Submit'])) {
-    echo "<pre>"; 
-
-
+/* James' code
 	if(isset($_POST['Aname'])) {
 
 		$checked = implode(',', $_POST['Aname']);  
@@ -16,10 +13,8 @@ if(isset($_POST['Submit'])) {
 		$checked = "nothing";
 
 	}
-	
-	echo $checked;
+*/
 
-}
 
 require_once('../pagecomponents/validate.php');
 require_once('../pagecomponents/connectDB.php');
@@ -38,7 +33,7 @@ else
 	$gender='M';
 	
 $DOB=$validated_POST["DOB"];
-$DOD=$validated_POST["DOD"];
+//$DOD=$validated_POST["DOD"];
 //$gender=$validated_POST["gender"];
 
 
@@ -56,6 +51,18 @@ if (ISSET($_POST["DOD"])) {
 		$sql = $sql . " date_of_death = '$DOD', ";
 }
 
+if(ISSET($_POST['Aname'])) {
+
+	$allergies = implode(',', $_POST['Aname']); 
+
+}
+
+if(ISSET($_POST['Cname'])) {
+
+	$conditions = implode(',', $_POST['Cname']); 
+
+}
+
 $sql = $sql . " gender = '$gender', 
 			medicare_number = '$medicare_number',
 			medicare_expiry_date = '$medicare_exp'
@@ -68,33 +75,44 @@ else
 	$msg = 'Failed to update patient details.';
 
 	// Update the allergies and conditions
-
-	// loop through each array and extra values into a string
-/*	
-	$N = count($allergyArray);
-	for($i=0; $i < $N; $i++)
-    {
-      $allergies = $allergies . ',' . $allergyArray[$i];
-    }
-/*
-if (strlen($allergies) > 0 && strlen($conditions) > 0) {
-	$sql = "UPDATE medical_history
-			SET allergies = '$allergies',
-			conditions = '$conditions'
-			WHERE patient_id = " . $_SESSION['patient_id'];
-} else if (strlen($allergies) > 0) {
-	$sql = "UPDATE medical_history
-			SET allergies = '$allergies'
-			WHERE patient_id = " . $_SESSION['patient_id'];
-} else if (strlen($conditions) > 0) {
-	$sql = "UPDATE medical_history
-			SET conditions = '$conditions'
-			WHERE patient_id = " . $_SESSION['patient_id'];
-} else {
-	$sql = '';
+// check if record exists!
+$sql = "SELECT * FROM medical_history WHERE patient_id = ". $_SESSION['patient_id'];
+$result=mysqli_query($con,$sql);
+if ($result !== false) { // record exists, update operation
+	if (strlen($allergies) > 0 && strlen($conditions) > 0) {
+		$sql = "UPDATE medical_history
+				SET allergies = '$allergies',
+				conditions = '$conditions'
+				WHERE patient_id = " . $_SESSION['patient_id'];
+	} else if (strlen($allergies) > 0) {
+		$sql = "UPDATE medical_history
+				SET allergies = '$allergies'
+				WHERE patient_id = " . $_SESSION['patient_id'];
+	} else if (strlen($conditions) > 0) {
+		$sql = "UPDATE medical_history
+				SET conditions = '$conditions'
+				WHERE patient_id = " . $_SESSION['patient_id'];
+	} else {
+		$sql = '';
+	}
+} else {	// no record, insert operation
+	if (strlen($allergies) > 0 && strlen($conditions) > 0) {
+		$sql = "INSERT into medical_history
+				(patient_id, allergies, conditions)
+				VALUES (" . $_SESSION['patient_id'] . ", '" . $allergies . "', '" . $conditions . "')";
+	} else if (strlen($allergies) > 0) {
+		$sql = "INSERT into medical_history
+				(patient_id, allergies)
+				VALUES (" . $_SESSION['patient_id'] . ", '" . $allergies . "')";
+	} else if (strlen($conditions) > 0) {
+		$sql = "INSERT into medical_history
+				(patient_id, conditions)
+				VALUES (" . $_SESSION['patient_id'] . ", '" . $conditions . "')";
+	} else {
+		$sql = '';
+	}
 }
 
-echo $sql;
 // execute the query
 if (strlen($sql) > 0) {
 	$result=mysqli_query($con,$sql);
@@ -104,8 +122,7 @@ if (strlen($sql) > 0) {
 	else
 		$msg = $msg . "<br>Failed to update patient's medical details.";
 }
-*/
-//echo 'allergies: ' . $allergies . 'conditions: ' . $conditions;
+
 //require_once('../pagecomponents/closeConnection.php');
 ?>
 <html>

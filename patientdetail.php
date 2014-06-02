@@ -86,15 +86,31 @@ require_once('pagecomponents/connectDB.php');
                      <td style="border: 1px solid grey;"><?php
 
                 require_once('pagecomponents/connectDB.php');
+				// first check for any existing allergies
+				$sql = "SELECT allergies, conditions FROM medical_history WHERE patient_id = " .$_SESSION['patient_id'];
+				$result = mysqli_query($con,$sql);
+				
+				if ($result !== false) {	// fetch existing allergies
+					$record = mysqli_fetch_array($result);
+					if (ISSET($record['allergies']) && !IS_NULL($record['allergies'])) 
+						$array_of_allergies = explode(",", $record['allergies']);
+					if (ISSET($record['conditions']) && !IS_NULL($record['conditions'])) 
+						$array_of_conditions = explode(",", $record['conditions']);
+				}
+					
+				// display checkboxes to choose from
 				$sql="SELECT name from allergies_conditions where description ='Allergy'";
 				$result=mysqli_query($con,$sql);
 				while($data = mysqli_fetch_array($result)){
 					$name = $data['name'];
-					echo "<input type=\"checkbox\" name='Aname[]' value=\"$name\" />$name<br />";
-					
-					//echo "<input type='checkbox' name=\"$name\" value=\"$name\" />$name<br />";
-                    }
-                    ?>
+					if (in_array($name, $array_of_allergies)) {
+						echo "<input type=\"checkbox\" name='Aname[]' value=\"$name\" checked />$name<br />";
+					} else {
+						echo "<input type=\"checkbox\" name='Aname[]' value=\"$name\" />$name<br />";
+					}					
+				}
+				
+				?>
                      
                     </td></tr>
                 <tr>
@@ -105,10 +121,14 @@ require_once('pagecomponents/connectDB.php');
 				$result=mysqli_query($con,$sql);
 				while($data = mysqli_fetch_array($result)){
 					$name = $data['name'];
-					echo "<input type=\"checkbox\" name=\"Cname[]\" value=\"$name\" />$name<br />";
 					
-					//echo "<input type='checkbox' name=\"$name\" value=\"$name\" />$name<br />";
-                    }
+					if (in_array($name, $array_of_conditions)) {
+						echo "<input type=\"checkbox\" name=\"Cname[]\" value=\"$name\" checked />$name<br />";
+					} else {
+						echo "<input type=\"checkbox\" name=\"Cname[]\" value=\"$name\" />$name<br />";
+					}
+
+                }
 
                     ?>  
                     
