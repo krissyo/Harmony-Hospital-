@@ -57,7 +57,7 @@ require_once('pagecomponents/connectDB.php');
              
                 <tr>
                     <td> Middle name: </td>
-                    <td><input name="middle-name" id="middle-name"  type="text" value="<?PHP echo $row['middle_name']?>" required></td>
+                    <td><input name="middle-name" id="middle-name"  type="text" value="<?PHP echo $row['middle_name']?>"></td>
                     </tr>
                 
                 <tr>
