@@ -178,7 +178,7 @@ include("pagecomponents/head.php");
 
 					<div id="patient-account"> 
 						<input class="rounded" type="button" name="invoiceBtn" id="generateInvoice" value="Invoice"
-									onclick="location.href = 'services_invoice.php'">
+									onclick="location.href = 'Harmony_patientinvoicereportsession.php'">
 						<input class="rounded" type="submit" name="updateBtn" id="updateService" value="Update Service">
 					</div>
 					<?php

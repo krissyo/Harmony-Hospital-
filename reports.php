@@ -38,7 +38,7 @@ include("pagecomponents/head.php");
                     //include("pagecomponents/checklogin.php");
                 ?>
             <fieldset>
-            <legend>PATIENT DETAIL REPORT</legend>
+            <legend>PATIENT TRANSFER REPORT</legend>
             <form name="patientSubmitReportForm" id="patientSubmitReportForm" action="submit/patientDetailReportSubmit.php" method="POST">
                   <div>
                   <select name="patient_id" id="selectPatient">
