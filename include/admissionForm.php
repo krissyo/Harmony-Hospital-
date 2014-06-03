@@ -42,7 +42,7 @@ function displayVacantBeds(dptId) {
 <div id="content">
 	<div name=" buttonWrapper" id="centre">
 		<?php
-			if (ISSET($_SESSION[admission_id])) {
+			if (ISSET($_SESSION['admission_id'])) {
 			?>
 				<button  id="curAdmissionBtn" class="linkingButtons" 
 				onclick="location.href = 'bookings.php'">Make a Booking</button>

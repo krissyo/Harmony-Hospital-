@@ -36,24 +36,33 @@ $sql3= "INSERT INTO clinical_history_detail (patient_id,test_notes,medical_image
 
       //specify type of image          
      if (($type =="image/jpeg") || ($type =="image/jpg") || ($type =="image/png")){  
-         //bytes (10mb)
-         if ($size <= 10000000){
-             //uploading to server
-             move_uploaded_file($temp,"../testresultsimg/$name");       
-                if(mysqli_num_rows($result) > 0) {
-                    mysqli_query($con,$sql2);
-                        echo "Success, notes have been added";     // if user in table update notes
-   }
-    else{
-         mysqli_query($con,$sql3);
-        echo "Success,notes have been added";     // if user isnt in table insert
-    }   
-     }else{
-             echo "file size too big";
-     }
-     }else{
-         echo "File type not allowed, please try again";
-     }
+			 //bytes (10mb)
+			 if ($size <= 10000000){
+				 //uploading to server
+				 move_uploaded_file($temp,"../testresultsimg/$name");       
+					if(mysqli_num_rows($result) > 0) {
+						mysqli_query($con,$sql2);
+							echo "Success, notes have been added";     // if user in table update notes
+						echo $sql;
+					} else{
+						 mysqli_query($con,$sql3);
+						echo "Success,notes have been added";     // if user isnt in table insert
+						echo $sql;
+					}   
+			}else{
+				 echo "file size too big";
+			}
+		}else if (IS_NULL($temp)){
+			if(mysqli_num_rows($result) > 0) {
+						mysqli_query($con,$sql2);
+							echo "Success, notes have been added";     // if user in table update notes
+			} else{
+				 mysqli_query($con,$sql3);
+				echo "Success,notes have been added";     // if user isnt in table insert
+			}   
+		} else {
+			echo "File type not allowed, please try again";
+		}
 require_once('../pagecomponents/closeConnection.php');
 ?>
 

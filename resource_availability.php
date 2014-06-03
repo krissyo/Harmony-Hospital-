@@ -52,8 +52,10 @@ require_once('pagecomponents/connectDB.php');
 								onchange="displayDetails( document.getElementById('ResourceId').value, this.value);"
 								value="<?php echo date('Y-m-d'); ?>">	
 						</td></tr>
-						<tr><td></td><td><input class="rounded" type="button" name="backToBookingsBtn" id="backToBookings" 
-						value="Back to Bookings" onclick=""></td></tr>
+						<tr><td></td>
+						<td><input class="rounded" type="button" name="backToBookingsBtn" id="backToBookings" 
+						value="Back to Bookings" onclick="location.href = 'bookings.php'">
+						</td></tr>
 					</table>
 		<!-- Dynamic querying of the database-->				
 					<div id="availabilityTable"></div>	

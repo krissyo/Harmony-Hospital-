@@ -23,7 +23,7 @@ include("pagecomponents/head.php");
 					<h3><th colspan="2" class="bookingdetails">Booking Details</th></h3>
 					
 					<tr><td>Patient's ID</td><td>
-						<input type="text" class="rounded" name="PatientId" id="PatientId" value="<?php echo $_SESSION[patient_id]; ?>">
+						<input type="text" class="rounded" name="PatientId" id="PatientId" value="<?php echo $_SESSION['patient_id']; ?>">
 						</td></tr>						
 					<tr><td>Patient's Name</td><td>
 						<input class="rounded" type="text" name="PatientName" id="PatientName" value="<?php echo $patient_details['full_name']; ?>">

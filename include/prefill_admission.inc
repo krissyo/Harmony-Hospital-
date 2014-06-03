@@ -140,7 +140,7 @@ function input_text($errors, $existingAdm, $name, $label) {
 function patient_details() {
 	require("pagecomponents/connectDB.php");
 
-	if (ISSET($_SESSION[patient_id])) {
+	if (ISSET($_SESSION['patient_id'])) {
 	
 		$sql = get_sql_query('patientId');
 		$result = mysqli_query($con,$sql);
@@ -148,7 +148,7 @@ function patient_details() {
 			$row = mysqli_fetch_array($result);
 		
 			echo '<tr>';
-				echo '<td><label>Patient ID: ' . $_SESSION[patient_id] . '</label></td>';
+				echo '<td><label>Patient ID: ' . $_SESSION['patient_id'] . '</label></td>';
 				echo '<td><label>' . $row["patient_name"] . '</label></td>';
 			echo '</tr><tr></tr>';
 		}
