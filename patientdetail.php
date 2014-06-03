@@ -103,11 +103,13 @@ require_once('pagecomponents/connectDB.php');
 				$result=mysqli_query($con,$sql);
 				while($data = mysqli_fetch_array($result)){
 					$name = $data['name'];
-					if (in_array($name, $array_of_allergies)) {
-						echo "<input type=\"checkbox\" name='Aname[]' value=\"$name\" checked />$name<br />";
+					if (!IS_NULL($array_of_allergies)) {
+						if (in_array($name, $array_of_allergies)) {
+							echo "<input type=\"checkbox\" name='Aname[]' value=\"$name\" checked />$name<br />";
+						} 	
 					} else {
 						echo "<input type=\"checkbox\" name='Aname[]' value=\"$name\" />$name<br />";
-					}					
+					}
 				}
 				
 				?>
@@ -121,13 +123,13 @@ require_once('pagecomponents/connectDB.php');
 				$result=mysqli_query($con,$sql);
 				while($data = mysqli_fetch_array($result)){
 					$name = $data['name'];
-					
-					if (in_array($name, $array_of_conditions)) {
-						echo "<input type=\"checkbox\" name=\"Cname[]\" value=\"$name\" checked />$name<br />";
+					if (!IS_NULL($array_of_conditions)) {
+						if (in_array($name, $array_of_conditions)) {
+							echo "<input type=\"checkbox\" name=\"Cname[]\" value=\"$name\" checked />$name<br />";
+						} 
 					} else {
 						echo "<input type=\"checkbox\" name=\"Cname[]\" value=\"$name\" />$name<br />";
 					}
-
                 }
 
                     ?>  
