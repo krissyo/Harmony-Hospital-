@@ -27,28 +27,37 @@ $_SESSION['passingID'] = $patientid; // patient id
                 ?>
                 </th></h3>
                 
-                <tr><td>Image:</td> <td> 
+                 
                  <?php
                             require_once('pagecomponents/connectDB.php');
-							$sql="SELECT medical_image FROM clinical_history_detail WHERE patient_id=" . $patientid .''; // Patient Image
+							$sql="SELECT medical_image, test_notes FROM clinical_history_detail WHERE patient_id=" . $patientid .''; // Patient Image
                             $result=mysqli_query($con,$sql);
-                            while($row = mysqli_fetch_array($result)){
-                                if (empty($row['medical_image'])){
-                                    echo 'No image uploaded';
-                                }else{
-                            echo "<img src=/harmonyhospital/testresultsimg/" . $row['medical_image'] . " style = height:100%; width:100%>";
                             
-                	}
+                            while($row = mysqli_fetch_array($result)){
+                                if (empty($row['medical_image']))
+                                {
+                                    echo 'No image uploaded';
+                                }
+                                else
+                                {
+                                    echo "<tr><td>Image:</td>";
+                                    echo "<td>";
+                                    echo "<div>";
+                                    echo '<a href="/harmonyhospital/testresultsimg/'.$row['medical_image'].'">';
+                                    echo '<img src="/harmonyhospital/testresultsimg/'.$row['medical_image'].'" style ="height:50%; width:50%; max-width:400px; margin:0; margin-left:auto; margin-right:auto;">';
+                                    echo '</a>';
+                                    echo "</div>";
+                                    echo "</td>";
+                                    echo "<td>";
+                                    echo '<p>'.$row['test_notes'].'</p>';
+                                    
+                                    echo "</td>";
+                                    echo "</tr>";
+
+                	           }
                             }
 						  ?>
-                    <tr><td>Notes:</td> <td> 
-                 <?php
-							$sql="SELECT test_notes FROM clinical_history_detail WHERE patient_id=" . $patientid .'';
-                            $result=mysqli_query($con,$sql);
-                            while($row = mysqli_fetch_array($result)){
-                            echo $row['test_notes'];
-                	}								
-						  ?>
+
 
                 
                 </td></tr>   
