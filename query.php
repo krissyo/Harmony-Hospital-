@@ -5,16 +5,17 @@ include("pagecomponents/permissioncheckscript.php");
 	$pagetitle="Queries";
 	include ("pagecomponents/indexinclude.php");
 
-	    if (isset($_POST["query"])){
+	if (isset($_POST["query"])){
 		//open ftp file
 		$fp = fopen('file.csv', 'w');
 		//get the query page
 		$sql=$_POST["query"];
-		if(strpos(strtoupper($sql),"DROP")!=false 
-		|| strpos(strtoupper($sql),"UPDATE")!=false 
-		|| strpos(strtoupper($sql),"DELETE")!=false 
-		|| strpos(strtoupper($sql),"ALTER")!=false 
-		|| strpos(strtoupper($sql),"CREATE")!=false){
+		if((strpos(strtoupper($sql),"DROP")!==false) 
+		|| (strpos(strtoupper($sql),"UPDATE")!==false) 
+		|| (strpos(strtoupper($sql),"DELETE")!==false) 
+		|| (strpos(strtoupper($sql),"ALTER")!==false) 
+		|| (strpos(strtoupper($sql),"CREATE")!==false)
+		|| (strpos(strtoupper($sql),"INSERT")!==false)){
 		    die("SQL Error: Not an allowed query.");   
 		}
 		//check if the sql query is valid
@@ -47,7 +48,7 @@ include("pagecomponents/permissioncheckscript.php");
 		}
 	//        print_r($list);
 		echo "<a href='file.csv'>CSV file</a>";
-	    }
+	}
 
 			?>  
 	    <form method="post" action="query.php">
