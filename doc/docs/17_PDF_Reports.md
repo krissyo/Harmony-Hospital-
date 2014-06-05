@@ -10,17 +10,17 @@
 	snapshot of the patients personal circumstance and previous medical history.
 
 	To access this report, navigate to the Resources section of the navigation sidebar, under
-	the fifth tab. Once on the reports page scroll to the patient detail report under the patient
+	the fifth tab, and select Reports. Once on the reports page scroll to the patient detail report under the patient
 	report header. The drop down menu will provide the complete list of admitted patients, once the correct patient is chosen, submit the report and the PDF report will be generated. The report can 	be print from screen, or saved for reference.
 
 3. General Surgery department Reports
 	The General surgery department report provides a snapshot of the selected month, summarising the admissions,  procedure and costing of general surgery. 
 
 	To access this report, navigate to the Resources section of the navigation sidebar, under
-	the fifth tab. Once on the reports page scroll to the The General surgery department report under the department reports header. The drop down menu allows for the reporting period to be selected using month and year. once the period is specified, submit the report and the PDF report will be generated. The report can be printed from screen, or saved for reference.
+	the fifth tab, and select Reports. Once on the reports page scroll to the The General surgery department report under the department reports header. The drop down menu allows for the reporting period to be selected using month and year. once the period is specified, submit the report and the PDF report will be generated. The report can be printed from screen, or saved for reference.
 
 4. Department Usage Statistics report
 	the Department Usage Statistics report provides a statistical snapshot of each hospital department for a selected month, showing admission, discharge and patient statistics.
 
 	To access this report, navigate to the Resources section of the navigation sidebar, under
-	the fifth tab. Once on the reports page scroll to the The department usage statistics report under the department reports header. The drop down menu allows for the reporting period to be selected using month and year. once the period is specified, submit the report and the PDF report will be generated. The report can be printed from screen, or saved for reference.
+	the fifth tab, and select Reports. Once on the reports page scroll to the The department usage statistics report under the department reports header. The drop down menu allows for the reporting period to be selected using month and year. once the period is specified, submit the report and the PDF report will be generated. The report can be printed from screen, or saved for reference.
